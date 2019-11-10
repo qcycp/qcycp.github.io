@@ -4,7 +4,7 @@ title:
   tag: 標籤
   schedule: 日程表
 
-author: 博主
+author: 作者
 
 menu:
   home: 首頁
@@ -34,6 +34,9 @@ post:
   wordcount: 字數統計
   min2read: 閱讀時長
   totalcount: Site words total count
+  copy_button: 複製
+  copy_success: 複製成功
+  copy_failure: 複製失敗
   copyright:
     author: Post author
     link: Post link
