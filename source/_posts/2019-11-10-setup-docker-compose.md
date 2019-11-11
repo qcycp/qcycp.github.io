@@ -2,10 +2,11 @@
 title: Setup docker-compose
 abbrlink: d3e1e91
 date: 2019-11-10 00:48:26
-categories: Docker
+categories: [Software, Docker]
 tags: 
-- installation
 - docker
+- ubuntu
+- 安裝
 ---
 Install docker-compose (1.22.0) on ubuntu
 ```sh

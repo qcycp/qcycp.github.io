@@ -1,9 +1,9 @@
 ---
 title: 文章加密
-categories: Hexo
+categories: [Software, Hexo]
 tags:
-  - Hexo
-  - 教學
+- Hexo
+- 教學
 abbrlink: '750422e1'
 date: 2019-11-11 09:43:47
 ---

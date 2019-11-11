@@ -2,7 +2,7 @@
 title: 批次更改檔案副檔名
 categories: Linux
 tags:
-  - Linux
+- Linux
 abbrlink: 4b76f376
 date: 2019-11-11 13:47:00
 ---
