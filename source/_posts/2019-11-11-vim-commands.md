@@ -6,6 +6,7 @@ tags:
 - linux
 abbrlink: d436f53
 date: 2019-11-11 14:25:30
+description: 在Linux下，常用的vim指令與配置
 ---
 # config配置
 ```
@@ -34,6 +35,12 @@ date: 2019-11-11 14:25:30
 `u`
 - redo
 `ctrl+r`
+- 跳到第一列
+`gg`
+- 跳到最後一列
+`G (shift+g)`
+- 跳到指令列
+`列號 + G (shift+g)`
 - 搜尋字串
 `/search_string`
   - 向上搜尋

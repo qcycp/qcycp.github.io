@@ -6,6 +6,7 @@ tags:
 - 教學
 abbrlink: '750422e1'
 date: 2019-11-11 09:43:47
+description: 將Hexo的文章加密
 ---
 [hexo-blog-encrypt](https://github.com/MikeCoder/hexo-blog-encrypt/blob/master/ReadMe.zh.md) project on GitHub
 

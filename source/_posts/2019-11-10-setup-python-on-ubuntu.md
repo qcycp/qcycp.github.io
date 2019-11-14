@@ -7,6 +7,7 @@ tags:
 - python
 - ubuntu
 - 安裝
+description: 在ubuntu16.04下，安裝python3.6環境
 ---
 # 安裝python3.6
 ```sh

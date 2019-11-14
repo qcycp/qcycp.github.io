@@ -5,6 +5,7 @@ tags:
 - Linux
 abbrlink: 4b76f376
 date: 2019-11-11 13:47:00
+description: 批次修改目錄下指定檔案的副檔名
 ---
 範例: 把所有.JPG的副檔名，全部改成.jpg
 `for f in *.JPG; do mv -- "$f" "${f%.JPG}.jpg"; done`

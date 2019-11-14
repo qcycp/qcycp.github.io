@@ -7,6 +7,7 @@ tags:
 - docker
 - ubuntu
 - 安裝
+description: 安裝docker-compose
 ---
 Install docker-compose (1.22.0) on ubuntu
 ```sh
