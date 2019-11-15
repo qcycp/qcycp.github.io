@@ -56,6 +56,8 @@ description: 在Linux下，常用的vim指令與配置
   `:50,100s/search_from/replace_to/g`
 - 將游標停留在欲搜尋的字串上，向下搜尋該字串
 `*`
+- 游標不動、往上移動內容
+`ctrl+e`
 - 選取、複製、貼上
   - 複製一整列
   `ff`
