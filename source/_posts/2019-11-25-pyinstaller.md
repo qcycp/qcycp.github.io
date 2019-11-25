@@ -6,7 +6,7 @@ categories: [Software, Python]
 tags:
 - python
 - 安裝
-Description: 使用pyinstaller，打包python程式成一個執行檔
+description: 使用pyinstaller，打包python程式成一個執行檔
 ---
 
 # 安裝
