@@ -32,9 +32,8 @@ image push前必須先tag
 ```bash
 $ docker tag myimage host:5000/myimage:1.0.0
 $ docker push host:5000/myimage:1.0.0
-$ docker pull host:5000/myimage
-
-$ docker image remove host:5000/myimage
+$ docker image remove host:5000/myimage:1.0.0 # remove the locally-cached host:5000/myimage:1.0.0
+$ docker pull host:5000/myimage:1.0.0
 ```
 
 # trouble shooting
@@ -58,17 +57,55 @@ $ sudo service docker restart
 $ curl -X GET http://10.36.94.120:5000/v2/_catalog | jq
 {
   "repositories": [
-    "ubuntu_python"
+    "myimage"
   ]
 }
 
-$ curl -X GET http://10.36.94.120:5000/v2/ubuntu_python/tags/list | jq
+$ curl -X GET http://10.36.94.120:5000/v2/<myimage>/tags/list | jq
 {
-  "name": "ubuntu_python",
+  "name": "myimage",
   "tags": [
-    "1.0.0"
+    "1.0.0",
+    "1.1.0",
+    "1.2.0",
+    "1.3.0"
   ]
 }
+```
+
+# delete images on registry server
+1. delete using registry REST API
+```bash
+$ curl -i -X GET http://host:5000/v2/<myimage>/manifests/<tag>
+HTTP/1.1 200 OK
+Content-Length: 7106
+Content-Type: application/vnd.docker.distribution.manifest.v1+prettyjws
+Docker-Content-Digest: sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad
+Docker-Distribution-Api-Version: registry/2.0
+Etag: "sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad"
+X-Content-Type-Options: nosniff
+Date: Mon, 25 Nov 2019 10:52:54 GMT
+
+{
+   "schemaVersion": 1,
+   "name": "myimage",
+   "tag": "1.3.0",
+...
+}
+
+$ curl -v -X DELETE http://host:5000/v2/<myimage>/manifests/sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad
+```
+2. delete in the file system
+```bash
+$ docker exec -it registry sh
+/ # export NAME="<myimage>"
+/ # export VERSION="<tag>"
+/ # cd /var/lib/registry/docker/registry/v2
+/var/lib/registry/docker/registry/v2 # find . | grep `ls ./repositories/$NAME/_manifests/tags/$VERSION/index/sha256`| xargs rm -rf $1
+/var/lib/registry/docker/registry/v2 # rm -rf ./repositories/$NAME/_manifests/tags/$VERSION
+/var/lib/registry/docker/registry/v2 # registry garbage-collect  /etc/docker/registry/config.yml
+/ # exit
+$ docker restart registry
 ```
 
 # GUI tool via docker image
