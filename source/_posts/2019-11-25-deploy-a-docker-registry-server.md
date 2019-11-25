@@ -37,12 +37,17 @@ $ docker pull host:5000/myimage
 $ docker image remove host:5000/myimage
 ```
 
-# client-side docker settings
+# trouble shooting
+error message then push images to registry server
+```bash
+The push refers to repository [host:5000/myimage]
+Get https://10.36.94.120:5000/v2/: http: server gave HTTP response to HTTPS client
+```
+by default，registry server必須支援TLS憑證
+若沒有設定TLS憑證，則必須要在client端的docker配置中，加入以下設定
 ```bash
 $ sudo vim /etc/docker/daemon.json
 {
-  "live-restore": true,
-  "group": "dockerroot",
   "insecure-registries": ["host:5000"]
 }
 $ sudo service docker restart
