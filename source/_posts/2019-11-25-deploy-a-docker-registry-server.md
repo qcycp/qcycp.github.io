@@ -25,6 +25,8 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - /opt/docker-software/registry:/var/lib/registry
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
 ```
 
 # push/pull images
@@ -73,27 +75,25 @@ $ curl -X GET http://10.36.94.120:5000/v2/<myimage>/tags/list | jq
 }
 ```
 
-# delete images on registry server
+# delete images in registry server
 1. delete using registry REST API
+* REGISTRY_STORAGE_DELETE_ENABLED必須設定為true，DELETE API才支援
+* DELETE API僅會刪除link資料，影響API查詢的結果，但實際上的layer data還是存在，必須再執行garbage-collect才能刪除
+* 一定要設定header的Accept為application/vnd.docker.distribution.manifest.v2+json，收到的Content才會是對的
 ```bash
-$ curl -i -X GET http://host:5000/v2/<myimage>/manifests/<tag>
+$ curl -I -H "Accept: application/vnd.docker.distribution.manifest.v2+json"  http://host:5000/v2/<myimage>/manifests/<tag>
 HTTP/1.1 200 OK
-Content-Length: 7106
-Content-Type: application/vnd.docker.distribution.manifest.v1+prettyjws
-Docker-Content-Digest: sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad
+Content-Length: 1362
+Content-Type: application/vnd.docker.distribution.manifest.v2+json
+Docker-Content-Digest: sha256:7185dc9a13a5178f5d33654ebe5cf5982e51c9bfff0b1e227e3735dffffe7226
 Docker-Distribution-Api-Version: registry/2.0
-Etag: "sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad"
+Etag: "sha256:7185dc9a13a5178f5d33654ebe5cf5982e51c9bfff0b1e227e3735dffffe7226"
 X-Content-Type-Options: nosniff
-Date: Mon, 25 Nov 2019 10:52:54 GMT
+Date: Tue, 26 Nov 2019 13:47:34 GMT
 
-{
-   "schemaVersion": 1,
-   "name": "myimage",
-   "tag": "1.3.0",
-...
-}
-
-$ curl -v -X DELETE http://host:5000/v2/<myimage>/manifests/sha256:9fe9e9855c395d6cc4c3a27c99ba865c676f807097dd9cd423cc4794d97d12ad
+$ curl -v -X DELETE http://host:5000/v2/<myimage>/manifests/sha256:7185dc9a13a5178f5d33654ebe5cf5982e51c9bfff0b1e227e3735dffffe7226
+$ docker exec -it registry registry garbage-collect /etc/docker/registry/config.yml
+$ docker restart registry
 ```
 2. delete in the file system
 ```bash
