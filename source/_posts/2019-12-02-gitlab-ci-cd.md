@@ -94,36 +94,40 @@ $ docker exec -it gitlab-runner gitlab-runner unregister -n test-runner
 ```
 
 #### Trouble Shooting
-### Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?
-
-## method 1
-
-# .gitlab-ci.yml
+1. Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?
+`method 1`
+```
+$ vim .gitlab-ci.yml
 variables:
   DOCKER_TLS_CERTDIR: ""
-
-## method 2
-
+```
+`method 2`
+```
 $ vim config.toml
 [[runners]]
   environment = ["DOCKER_TLS_CERTDIR="]
+```
 
-### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+2. Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 執行docker:dind，gitlab-runner config.toml中的privileged要設定為true，否則會有error
 
-### error
+3. docker image download failed
+```
 Step 1/13 : FROM 10.36.94.120:50000/kaluta:1.0.0
 Get https://10.36.94.120:50000/v2/: http: server gave HTTP response to HTTPS client
-
+```
 在gitlab-runner config.toml中的volume要加入/etc/docker/daemon.json的設定
 volumes = ["/cache", "/etc/docker/daemon.json:/etc/docker/daemon.json"]
 
-### /bin/sh: eval: line 87: docker-compose: not found
+4. /bin/sh: eval: line 87: docker-compose: not found
+```
+$ vim .gitlab-ci.yml
 build:
   stage: build
   before_script:
     - apk add --update libffi-dev openssl-dev py-pip python python-dev build-base
     - pip install docker-compose
+```
 
 #### final config.toml
 ```sh
@@ -165,7 +169,6 @@ RUN apk add --update libffi-dev openssl-dev py-pip python python-dev build-base 
 
 1. 在.gitlab-ci.yml中可以直接使用這個base image `image: 10.36.94.120:50000/docker:19.03.5`，這樣可以省略安裝package的步驟
 2. 在config.toml中可以不用設定volumes: "/etc/docker/daemon.json:/etc/docker/daemon.json"
-
 
 #### Note
 1. GitLab 的 build 都是在 Docker 上執行的，因此一開始會需要定義 image 名稱，而它將會成為下面執行 build 的環境。
