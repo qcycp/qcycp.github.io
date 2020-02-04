@@ -74,6 +74,7 @@ user@ubuntu:~$ update-alternatives --list python
 
 * Set default command of python
 ```bash
+user@ubuntu:~$ sudo update-alternatives --config python
 There are 2 choices for the alternative python (providing /usr/bin/python).
 
   Selection    Path                Priority   Status
