@@ -7,6 +7,8 @@ tags:
 - Android
 - adb
 ---
+https://developer.android.com/studio/command-line/adb
+
 ##### adb
 ```
 adb kill-server                         // 關掉 adb 伺服器
@@ -70,7 +72,25 @@ $ am start -a android.intent.action.MAIN -n com.android.settings/.Settings
 ```
 * StartService
 ```
-$ adb shell am startservice com.foxconn.monitorservice/.service.MonitorServie
-$ adb shell am startforegroundservice com.foxconn.monitorservice/.service.MonitorServie
-$ adb shell am stopservice com.foxconn.monitorservice/.service.MonitorServie
+$ adb shell am startservice -n com.foxconn.monitorservice/.service.MonitorServie
+$ adb shell am startforegroundservice -n com.foxconn.monitorservice/.service.MonitorServie
+$ adb shell am stopservice -n com.foxconn.monitorservice/.service.MonitorServie
+```
+
+##### pm
+* pm list packages
+```
+prints all packages, optionally only those whose package name contains the text in FILTER. Options:
+-f: see their associated file.
+-d: filter to only show disbled packages.
+-e: filter to only show enabled packages.
+-s: filter to only show system packages.
+-3: filter to only show third party packages.
+-i: see the installer for the packages.
+-u: also include uninstalled packages.
+
+$ adb shell pm list packages com.google
+package:com.google.android.youtube
+package:com.google.android.ext.services
+...
 ```
