@@ -171,9 +171,9 @@ RUN apk add --update libffi-dev openssl-dev py-pip python python-dev build-base 
 2. 在config.toml中可以不用設定volumes: "/etc/docker/daemon.json:/etc/docker/daemon.json"
 
 #### Note
-1. GitLab 的 build 都是在 Docker 上執行的，因此一開始會需要定義 image 名稱，而它將會成為下面執行 build 的環境。
+1. GitLab 的 build 都是在 Docker 上執行的，因此一開始會需要定義 image 名稱，而它將會成為下面執行 build 的環境
 2. artifacts 會把裡面編譯或程式的產出物存放起來，提供介面給其他需要的人使用
-3. dependencies 設定意思是指，它這個測試要取用 build_job 的 artifacts 。別忘了，每個 job 都是獨立的 container ，互不相關，因此要靠這些設定來傳遞 Artifacts
+3. dependencies 設定意思是指，test job 要取用 build job 的 artifacts，每個 job 都是獨立的 container ，互不相關，因此要靠這些設定來傳遞 artifacts
 4. image 和 service 雖然有全域定義，但也能 job 各自定義
 5. services:
    - docker:dind
