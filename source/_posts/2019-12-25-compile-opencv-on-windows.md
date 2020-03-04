@@ -2,7 +2,7 @@
 title: Compile opencv on windows
 abbrlink: f3c7f3
 date: 2019-12-25 17:44:44
-categories: 
+categories: [Software, opencv]
 tags:
 - opencv
 description: 在windows中，使用Visual Studio來編譯opencv

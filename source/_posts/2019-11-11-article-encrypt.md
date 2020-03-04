@@ -1,5 +1,5 @@
 ---
-title: 文章加密
+title: Hexo 文章加密
 categories: [Software, Hexo]
 tags:
 - Hexo

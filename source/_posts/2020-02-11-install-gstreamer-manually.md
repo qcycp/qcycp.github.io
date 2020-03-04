@@ -2,7 +2,7 @@
 title: Install Gstreamer Manually
 abbrlink: fcb954dd
 date: 2020-02-11 16:32:24
-categories: [Tools, gastramer]
+categories: [Software, gstreamer]
 tags:
 - 教學
 - gstreamer

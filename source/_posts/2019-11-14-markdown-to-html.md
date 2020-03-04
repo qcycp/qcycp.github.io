@@ -2,7 +2,7 @@
 title: Markdown to HTML
 abbrlink: 6ca74c1e
 date: 2019-11-14 21:12:56
-categories: [Tools, Sublime Text 3]
+categories: [Software, Sublime Text 3]
 tags: 
 - 教學
 - Markdown
