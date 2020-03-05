@@ -6,7 +6,7 @@ tags:
 abbrlink: 327d13d
 date: 2020-03-05 15:16:35
 ---
-![](before.jpg)
+{% asset_img before.jpg 修改前 %}
 category跟tag的改法一樣
 ```
 diff --git a/themes/next/layout/category.swig b/themes/next/layout/category.swig
@@ -47,4 +47,4 @@ index 8e3aa72..83e7916 100644
 +{% endblock %}
 \ No newline at end of file
 ```
-![](after.jpg)
+{% asset_img after.jpg 修改後 %}
