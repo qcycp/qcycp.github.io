@@ -190,3 +190,16 @@ user@ubuntu:~$ chmod +x /usr/local/bin/docker-compose
 user@ubuntu:~$ docker-compose --version
 docker-compose version 1.22.0, build f46880fe
 ```
+
+* Remove docker
+  * 查看系統中有安裝多少跟docker有關的package
+  ```console
+  $ dpkg -l | grep -i docker
+  ```
+  * remove all packages about docker
+  ```console
+  $ sudo apt-get purge -y docker-ce
+  $ sudo apt-get autoremove -y --purge docker-ce
+  $ sudo apt-get autoclean
+  $ sudo rm -rf /var/lib/docker
+  ```

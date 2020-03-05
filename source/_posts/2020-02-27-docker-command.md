@@ -27,3 +27,14 @@ edit /etc/docker/daemon.json configuration file:
 $ docker version -f '{{.Server.Experimental}}'
 true
 ```
+
+### container data
+* docker的資料在本機端會存在/var/lib/docker
+* 每個container的資料會在/var/lib/docker/containers裡
+* 每個container的log會存在/var/lib/docker/containers/11a5d77b1c4922f876cd508e635b7b97a3d7e4a00b8ed2a586e035b12e90b339/11a5d77b1c4922f876cd508e635b7b97a3d7e4a00b8ed2a586e035b12e90b339-json.log
+
+### image size and Dockerfile
+[Refactoring a Dockerfile for image size](https://blog.replicated.com/refactoring-a-dockerfile-for-image-size/)
+1. 每一個RUN都會產生一個Layer
+2. 多個指令分成多個Layer來執行，比起多個指令在同一個Layer執行，所佔的空間要大
+3. install package跟remove package如果在不同Layer執行，image size並不會變小，必須要在同一個Layer內執行，remove package才能縮減image size
