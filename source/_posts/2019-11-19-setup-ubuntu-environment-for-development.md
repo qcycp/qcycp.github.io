@@ -182,12 +182,15 @@ Docker version 19.03.4, build 9013bf583a
 ```
 
 * Install docker-compose
+#### release page
+https://github.com/docker/compose/releases
+
+#### Install docker-compose (1.22.0) on ubuntu
 ```bash
-user@ubuntu:~$ sudo su
-user@ubuntu:~$ rm -rf /usr/local/bin/docker-compose
-user@ubuntu:~$ curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-user@ubuntu:~$ chmod +x /usr/local/bin/docker-compose
-user@ubuntu:~$ docker-compose --version
+$ rm -rf /usr/local/bin/docker-compose
+$ curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ chmod +x /usr/local/bin/docker-compose
+$ docker-compose --version
 docker-compose version 1.22.0, build f46880fe
 ```
 

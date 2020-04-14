@@ -35,12 +35,16 @@ description: 在Linux下，常用的vim指令與配置
 `u`
 - redo
 `ctrl+r`
+- 跳轉到相配對的括號
+`%`
 - 跳到第一列
 `gg`
 - 跳到最後一列
 `G (shift+g)`
 - 跳到指令列
 `列號 + G (shift+g)`
+- 跳轉到局部變量的宣告處
+`gD`
 - 搜尋字串
 `/search_string`
   - 向上搜尋
