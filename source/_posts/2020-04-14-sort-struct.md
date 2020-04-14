@@ -30,19 +30,22 @@ int main()
     data[0].name = "Nick"; data[0].age = 37;
     data[1].name = "John"; data[1].age = 45;
     data[2].name = "Mary"; data[2].age = 20;
-    data[3].name = "Jack"; data[3].age = 28;
 
     cout << data[0].name << ": " << data[0].age << endl;
     cout << data[1].name << ": " << data[1].age << endl;
     cout << data[2].name << ": " << data[2].age << endl;
-    cout << data[3].name << ": " << data[3].age << endl;
 
-    sort(data, data+4);
+    sort(data, data+3);
 
     cout << data[0].name << ": " << data[0].age << endl;
     cout << data[1].name << ": " << data[1].age << endl;
     cout << data[2].name << ": " << data[2].age << endl;
-    cout << data[3].name << ": " << data[3].age << endl;
+
+    sort(data, data+3, [](Person a, Person b){ return a.age > b.age; });
+
+    cout << data[0].name << ": " << data[0].age << endl;
+    cout << data[1].name << ": " << data[1].age << endl;
+    cout << data[2].name << ": " << data[2].age << endl;
 
     return 0;
 }
@@ -52,10 +55,12 @@ int main()
 Nick: 37
 John: 45
 Mary: 20
-Jack: 28
 
 Mary: 20
-Jack: 28
 Nick: 37
 John: 45
+
+John: 45
+Nick: 37
+Mary: 20
 ```
