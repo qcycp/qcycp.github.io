@@ -2,8 +2,10 @@
 title: shell_script_note
 abbrlink: dd240c9a
 date: 2020-04-15 10:56:34
-categories:
+categories: Linux
 tags:
+- linux
+- shell script
 ---
 * check file exist
 ```bash
