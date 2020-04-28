@@ -37,6 +37,14 @@ docker exec -it $DOCKER_CONTAINER /usr/bin/mysqldump -u $USER --password=$PWD $D
 
 `$sh restore.sh backup.sql`
 
+* 在restore時，若有錯誤時，可以加上--force強制執行
+```bash
+root@44197bac7b4c:/# mysql -u username -p db_name --force < backup.sql
+Enter password:
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mysqldump: [Warning] Using a password on the command line interface can be insec' at line 1
+ERROR 1231 (42000) at line 945: Variable 'character_set_client' can't be set to the value of 'NULL'
+```
+
 ```bash
 #!/bin/sh
 # shell script to restore MySQL database to mysql docker container
