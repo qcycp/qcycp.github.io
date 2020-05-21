@@ -19,7 +19,7 @@ ftp.quit()
 ```
 
 * General Operation
-```shell
+```bash
 # Set the current directory on the server.
 ftp.cwd(pathname)
 
@@ -41,7 +41,7 @@ ftp.delete(filename)
 # Request the size of the file named filename on the server.
 ftp.size(filename)
 
-# Produce a directory listing as returned by the LIST command
+# Produce a directory listing as returned by the LIST command.
 ftp.dir()
 
 # Return a list of file names as returned by the NLST command.
