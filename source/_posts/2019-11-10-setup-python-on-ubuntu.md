@@ -11,9 +11,9 @@ description: 在ubuntu16.04下，安裝python3.6環境
 ---
 # 安裝python3.6
 ```sh
-user@ubuntu:~$ sudo add-apt-repository ppa:deadsnakes/ppa  
-user@ubuntu:~$ sudo apt-get update  
-user@ubuntu:~$ sudo apt-get install python3.6  
+user@ubuntu:~$ sudo add-apt-repository ppa:deadsnakes/ppa
+user@ubuntu:~$ sudo apt-get update
+user@ubuntu:~$ sudo apt-get install python3.6
 ```
 
 # 建立update-alternatives list for python
