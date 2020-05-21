@@ -15,19 +15,37 @@ ftp.set_debuglevel(2)
 ftp.connect('192.168.56.3', 21)
 ftp.login('account', 'password')
 print(ftp.getwelcome())
-ftp.quit
+ftp.quit()
 ```
 
 * General Operation
 ```shell
-ftp.cwd(pathname) #設置FTP當前操作的路徑
-ftp.dir() #顯示目錄下文件信息
-ftp.nlst() #獲取目錄下的文件
-ftp.mkd(pathname) #新建遠程目錄
-ftp.pwd() #返回當前所在位置
-ftp.rmd(dirname) #刪除遠程目錄
+# Set the current directory on the server.
+ftp.cwd(pathname)
+
+# Create a new directory on the server.
+ftp.mkd(pathname)
+
+# Return the pathname of the current directory on the server.
+ftp.pwd()
+
+# Remove the directory named dirname on the server.
+ftp.rmd(dirname)
+
+# Rename file fromname on the server to toname.
+ftp.rename(fromname, toname)
+
+# Remove the file named filename from the server.
 ftp.delete(filename)
-ftp.rename(name, new_name)
+
+# Request the size of the file named filename on the server.
+ftp.size(filename)
+
+# Produce a directory listing as returned by the LIST command
+ftp.dir()
+
+# Return a list of file names as returned by the NLST command.
+ftp.nlst()
 ```
 
 * Upload
