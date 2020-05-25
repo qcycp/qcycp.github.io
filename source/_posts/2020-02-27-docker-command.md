@@ -57,7 +57,6 @@ https://docs.docker.com/engine/reference/commandline/docker/
 * build and run
 `docker build --no-cache -t myimage .`
 `docker run -d -p 1337:80 myimage`
-`docker run -d -p 1337:80 myimage mycontainer`
 `docker run -d --restart=always --name mycontainer -e PYTHONUNBUFFERED=0 -p 1337:80 myimage`
 `docker run -d --restart=always --name mycontainer -e REMOTE_HOST_IP=172.18.71.12:8857 -p 1337:80 myimage`
 可以使用update更新指令中的參數
