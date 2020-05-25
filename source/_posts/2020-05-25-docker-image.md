@@ -10,7 +10,11 @@ tags:
 ```
 FROM python:3.6-alpine
 
-RUN pip install --no-cache-dir docker
+RUN apk update && \
+    apk add bash && \
+    pip install --no-cache-dir docker && \
+    rm -rf /var/cache/apk/*
+
 CMD tail -f /dev/null
 ```
 * build & run
