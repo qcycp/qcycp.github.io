@@ -3,9 +3,14 @@ title: 連結
 date: 2019-11-15 15:52:17
 type: "links"
 ---
-
 - A collection of .gitignore templates
 https://github.com/github/gitignore
 
 - crontab guru
 https://crontab.guru/
+
+- Comprehensive Python Cheatsheet
+https://gto76.github.io/python-cheatsheet/
+
+- Comprehensive Linux Cheatsheet
+https://gto76.github.io/linux-cheatsheet/
