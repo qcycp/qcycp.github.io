@@ -89,8 +89,8 @@ https://docs.docker.com/engine/reference/commandline/docker/
 `docker logs -f container_id`
 * bash operations
 `docker exec -it container_id bash`
-`docker exec -i mysql /usr/bin/mysql -u root -p1234 <<< 'use dbname;show tables;`
-`docker exec -i mysql /usr/bin/mysql -u root -p1234 -e 'use dbname;show tables;`
+`docker exec -i mysql /usr/bin/mysql -u root -p1234 <<< 'use dbname;show tables;'`
+`docker exec -i mysql /usr/bin/mysql -u root -p1234 -e 'use dbname;show tables;'`
 `docker exec -it mycontainer ls`
 `docker exec -it mycontainer sh -c 'ls'`
 * copy file from/to container

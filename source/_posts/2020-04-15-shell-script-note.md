@@ -1,5 +1,5 @@
 ---
-title: shell_script_note
+title: shell script note
 abbrlink: dd240c9a
 date: 2020-04-15 10:56:34
 categories: Linux
@@ -59,7 +59,7 @@ set -x
 sed -i "/^#/d" file
 ```
 
-* 
+* 字串處理
 ```
 result=$(echo $msg | grep xxx)
 if [ -z "$result" ]; then
@@ -77,4 +77,28 @@ trap "kill 0" EXIT
 tail -F test.log &
 
 wait
+```
+
+* echo -n 不換行輸出
+```bash
+$echo -n "123"
+$echo "456"
+
+output: 
+123456
+```
+
+* echo -e 處理特殊字符
+若字符串中出現字符，則特别加以處理，不會將它當成一般文字輸出：
+```bash
+\a 發出警告聲；
+\b 删除前一个字符；
+\c 最後不加上换行符號；
+\f 换行但光标仍舊停留在原来的位置；
+\n 换行且光标移至行首；
+\r 光标移至行首，但不换行；
+\t 插入tab；
+\v 与\f相同；
+\\ 插入\字符；
+\nnn 插入nnn（八进制）所代表的ASCII字符；
 ```

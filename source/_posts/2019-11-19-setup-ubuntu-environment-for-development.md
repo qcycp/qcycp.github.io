@@ -16,6 +16,17 @@ http://old-releases.ubuntu.com/releases/16.04.1/ubuntu-16.04.1-server-amd64.iso
 * Ubuntu 16.04.6 Server (64-bit)
 http://releases.ubuntu.com/16.04/ubuntu-16.04.6-server-amd64.iso
 
+# Preparation
+1. 如果VM的網路卡沒有「僅限主機」介面卡可以用，必須先手動建立
+`VirtualBox - 全域工具 - 主機網路管理員`
+建立新的network interface
+可以手動設定ip, f.g. ip: 192.168.199.1, mask: 255.255.255.0
+2. 配置網路
+a. 介面卡1: NAT
+   主要是建立VM的對外網路
+b. 介面卡2: 「僅限主機」介面卡
+   主要是建立VM跟Windows之間的，可以進行溝通的網路
+
 # Environment Setup
 1. General settings
 2. Python
@@ -32,13 +43,17 @@ user@ubuntu:~$ ifconfig -a
 ```bash
 user@ubuntu:~$ sudo vim /etc/network/interfaces
 ```
-
 * Add following commands at the bottom
 ```bash
 auto enp0s8
 iface enp0s8 inet dhcp
 ```
-
+* Or, you can set static ip address
+```bash
+auto enp0s8
+iface enp0s8 inet static
+address 192.168.56.3
+```
 * Restart networking and check enp0s8 again
 ```bash
 user@ubuntu:~$ sudo service networking restart
@@ -48,8 +63,8 @@ user@ubuntu:~$ ifconfig -a
 
 * Install ssh and then you can connect to vm via terminal tools
 ```bash
-user@ubuntu:~$  sudo apt-get update
-user@ubuntu:~$  sudo apt-get install ssh
+user@ubuntu:~$ sudo apt-get update
+user@ubuntu:~$ sudo apt-get install ssh
 ```
 
 ### 2. Python
