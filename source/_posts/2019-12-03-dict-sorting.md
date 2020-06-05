@@ -1,6 +1,5 @@
 ---
 title: dict sorting
-description: dict sorting by key or value
 abbrlink: 3932c779
 date: 2019-12-03 11:07:07
 categories: [Programming, python]

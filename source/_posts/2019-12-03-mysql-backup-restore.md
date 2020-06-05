@@ -6,7 +6,6 @@ categories: [Software, mysql]
 tags:
 - docker
 - mysql
-description: mysql data in docker container的備份與還原
 ---
 ### backup script
 `docker exec -it mysql_container /usr/bin/mysqldump -u username --password=password db_name > backup.sql`

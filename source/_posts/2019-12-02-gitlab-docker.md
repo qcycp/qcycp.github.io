@@ -6,7 +6,6 @@ categories: [Software, gitlab]
 tags:
 - gitlab
 - docker
-description: 建立gitlab的docker-compose.yml
 ---
 ```yml
 version: '3' 

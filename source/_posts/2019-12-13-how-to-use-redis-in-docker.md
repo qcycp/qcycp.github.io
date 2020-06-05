@@ -6,7 +6,6 @@ categories: [Software, redis]
 tags:
 - redis
 - docker
-description: 安裝redis，並且使用supervisor來啟動redis-server
 ---
 1. in Dockerfile
 ```

@@ -6,7 +6,6 @@ categories: [Software, Sublime Text 3]
 tags: 
 - 教學
 - Markdown
-description: 使用Sublime Text 3，將Markdown文件轉換為HTML檔案
 ---
 1. 在Sublime Text 3上，安裝MarkdownEditing
 - Preferences->Package Control

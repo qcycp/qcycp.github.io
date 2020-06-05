@@ -1,11 +1,11 @@
 ---
 title: Append date time to file
-categories: [Programming, c++]
-tags:
-  - c++
-  - Sample code
 abbrlink: 4228bd6
 date: 2020-03-18 10:00:24
+categories: [Programming, c++]
+tags:
+- c++
+- Sample code
 ---
 ```cpp
 #include <iostream>

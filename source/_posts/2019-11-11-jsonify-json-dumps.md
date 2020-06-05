@@ -1,11 +1,10 @@
 ---
 title: jsonify v.s. json.dumps
+abbrlink: 39e057a1
+date: 2019-11-11 17:22:22
 categories: [Programming, python]
 tags:
 - python
-abbrlink: 39e057a1
-date: 2019-11-11 17:22:22
-description: Flask api server中，jsonify 與 json.dumps 回傳格式的差異
 ---
 主要的差異在於response的Content-Type不同
 ```python

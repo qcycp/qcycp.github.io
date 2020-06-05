@@ -7,7 +7,6 @@ tags:
 - docker
 - ubuntu
 - 安裝
-description: 建立Private Docker倉庫
 ---
 
 # pull registry image

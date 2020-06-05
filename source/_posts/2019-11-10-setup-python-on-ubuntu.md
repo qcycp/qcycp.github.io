@@ -1,13 +1,12 @@
 ---
 title: Setup python on ubuntu16.04
-categories: [Programming, python]
 abbrlink: 35cf5995
 date: 2019-11-10 11:02:16
+categories: [Programming, python]
 tags: 
 - python
 - ubuntu
 - 安裝
-description: 在ubuntu16.04下，安裝python3.6環境
 ---
 # 安裝python3.6
 ```sh

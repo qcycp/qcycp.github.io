@@ -1,11 +1,10 @@
 ---
 title: curl指令
+abbrlink: 7de9a293
+date: 2019-11-11 20:42:15
 categories: [Software, curl]
 tags:
 - curl
-abbrlink: 7de9a293
-date: 2019-11-11 20:42:15
-description: 常用的curl指令
 ---
 # GET
 - `curl -X GET http://localhost:80/api/get`

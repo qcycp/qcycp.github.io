@@ -4,7 +4,7 @@ abbrlink: 6826a2b4
 date: 2020-02-15 11:28:15
 categories: [Software, Happytime]
 tags:
-  - rtsp
+- rtsp
 ---
 ##### Download link
 http://www.happytimesoft.com/download.html

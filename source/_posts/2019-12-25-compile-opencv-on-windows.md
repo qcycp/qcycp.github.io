@@ -5,7 +5,6 @@ date: 2019-12-25 17:44:44
 categories: [Software, opencv]
 tags:
 - opencv
-description: 在windows中，使用Visual Studio來編譯opencv
 ---
 #### 更新Visual Studio套件
 1. 打開Visual Studio 2019

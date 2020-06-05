@@ -1,13 +1,12 @@
 ---
 title: OpenCV sample in c++
+abbrlink: 648a241a
+date: 2020-01-20 09:22:46
 categories: [Programming, c++]
 tags:
 - c++
 - opencv
 - Sample code
-abbrlink: 648a241a
-date: 2020-01-20 09:22:46
-description: Sample for reading rtsp stream using opencv in c++
 ---
 ```cpp
 #include "opencv2/opencv.hpp"

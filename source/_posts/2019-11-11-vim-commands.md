@@ -1,12 +1,11 @@
 ---
 title: vim常用指令
+abbrlink: d436f53
+date: 2019-11-11 14:25:30
 categories: [Software, vim]
 tags:
 - vim
 - linux
-abbrlink: d436f53
-date: 2019-11-11 14:25:30
-description: 在Linux下，常用的vim指令與配置
 ---
 # config配置
 ```
@@ -20,10 +19,6 @@ description: 在Linux下，常用的vim指令與配置
 
 :set ic " 搜尋字串不分大小寫
 :set noic " 搜尋字串區分大小寫
-
-:set ff " 顯示文件格式
-:set ff=unix " 設定文件格式為unix
-:set ff=dos " 設定文件格式為dos
 ```
 
 # 常用指令

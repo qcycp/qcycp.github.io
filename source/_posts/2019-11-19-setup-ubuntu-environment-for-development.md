@@ -1,14 +1,13 @@
 ---
 title: 設置ubuntu環境
+abbrlink: b4ce8caa
+date: 2019-11-19 11:33:09
+categories: [Software, Ubuntu]
 tags:
   - ubuntu
   - linux
   - docker
   - python
-description: 設置ubuntu環境 for python 程式開發
-abbrlink: b4ce8caa
-date: 2019-11-19 11:33:09
-categories: [Software, Ubuntu]
 ---
 * Ubuntu 16.04.1 Server (64-bit)
 http://old-releases.ubuntu.com/releases/16.04.1/ubuntu-16.04.1-server-amd64.iso

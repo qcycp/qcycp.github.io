@@ -4,9 +4,8 @@ abbrlink: d96b0415
 date: 2019-12-02 15:34:12
 categories: [Software, gitlab]
 tags:
-  - gitlab
-  - cicd
-description: 使用gitlab建立CI/CD流程
+- gitlab
+- cicd
 ---
 
 #### 建立gitlab-runner
