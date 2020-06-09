@@ -26,10 +26,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(pjdir, 'data.sqlite')
 db = SQLAlchemy(app)
 
-@app.route('/')
-def index():
-    return '<h1>Hello World!</h1>'
-
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -46,6 +42,13 @@ class User(db.Model):
             self.username,
             self.password
         )
+
+db.create_all()
+db.session.commit()
+
+@app.route('/')
+def index():
+    return '<h1>Hello World!</h1>'
 
 if __name__ == '__main__':
     app.run()
