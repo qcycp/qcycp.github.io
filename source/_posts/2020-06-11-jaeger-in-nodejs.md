@@ -48,9 +48,17 @@ app.get('/extract', function (req, res) {
   span.finish();
 });
 
+app.get('/inject', function (req, res) {
+  res.send('Hello World!');
+});
+
 app.listen(9527, function () {
   console.log('Example app listening on port 9527!');
 });
+```
+* tag
+```golang
+span.setTag("key", "value")
 ```
 * Reference
 https://rainmakerho.github.io/2019/01/15/2019004/

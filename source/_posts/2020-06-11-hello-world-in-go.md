@@ -1,5 +1,5 @@
 ---
-title: Hello World in golang
+title: Hello World in golnag(gin)
 abbrlink: 2ac2687f
 date: 2020-06-11 14:39:53
 categories: [Programming, golang]

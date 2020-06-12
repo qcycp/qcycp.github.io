@@ -14,3 +14,6 @@ https://gto76.github.io/python-cheatsheet/
 
 - Comprehensive Linux Cheatsheet
 https://gto76.github.io/linux-cheatsheet/
+
+- useful projects on github
+[Awesome Flask](https://github.com/humiaozuzu/awesome-flask)
