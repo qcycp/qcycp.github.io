@@ -63,8 +63,8 @@ func before() gin.HandlerFunc {
 }
 
 func main() {
-    //
+    //...
     r.Use(before())
-    //
+    //...
 }
 ```

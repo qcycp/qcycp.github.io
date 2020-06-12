@@ -7,21 +7,21 @@ tags:
 - golang
 ---
 1. 安裝golang
+go version 1.11+ is required for gin
 ```bash
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
 sudo apt install golang-go
 ```
 2. 安裝gin套件
-go version 1.11+ is required
 `go get -u github.com/gin-gonic/gin`
 3. app.go
 ```golang
 package main
 
 import (
-    "github.com/gin-gonic/gin"
     "net/http"
+    "github.com/gin-gonic/gin"
 )
 
 func main() {
