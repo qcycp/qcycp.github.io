@@ -1,5 +1,5 @@
 ---
-title: Hello World in Rust
+title: Hello World for Rust
 abbrlink: bfb3e384
 date: 2020-06-05 13:55:27
 categories: [Programming, Rust]

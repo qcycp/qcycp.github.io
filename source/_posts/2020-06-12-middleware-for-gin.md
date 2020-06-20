@@ -2,9 +2,9 @@
 title: middleware for golang(gin)
 abbrlink: a3df554
 date: 2020-06-12 11:16:17
-categories: [Programming, golang]
+categories: [Programming, Go]
 tags:
-- golang
+- Go
 ---
 * c.Next()
 It means that after middleware is done executing, we can pass on request handler to the next function in the chain.

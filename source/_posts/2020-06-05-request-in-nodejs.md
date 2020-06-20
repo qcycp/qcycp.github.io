@@ -1,10 +1,10 @@
 ---
-title: call API in nodejs
+title: API Request in Node.js
 abbrlink: c81ebda3
 date: 2020-06-05 14:42:39
-categories: [Programming, nodejs]
+categories: [Programming, Node.js]
 tags:
-- nodejs
+- Node.js
 ---
 ```js
 var request = require('request');

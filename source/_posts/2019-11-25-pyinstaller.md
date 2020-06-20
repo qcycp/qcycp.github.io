@@ -4,8 +4,7 @@ abbrlink: d585e6aa
 date: 2019-11-25 17:29:00
 categories: [Software, Python]
 tags:
-- python
-- 安裝
+- Python
 ---
 
 # 安裝

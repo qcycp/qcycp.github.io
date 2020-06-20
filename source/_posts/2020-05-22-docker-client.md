@@ -1,11 +1,11 @@
 ---
-title: docker client
+title: Docker Client
 abbrlink: '20536423'
 date: 2020-05-22 17:11:03
-categories: [Programming, python]
+categories: [Programming, Python]
 tags: 
-- python
-- docker
+- Python
+- Docker
 ---
 在container的程式中，獲取docker information
 * 安裝docker module

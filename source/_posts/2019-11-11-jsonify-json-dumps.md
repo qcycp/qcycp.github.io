@@ -2,9 +2,9 @@
 title: jsonify v.s. json.dumps
 abbrlink: 39e057a1
 date: 2019-11-11 17:22:22
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 主要的差異在於response的Content-Type不同
 ```python

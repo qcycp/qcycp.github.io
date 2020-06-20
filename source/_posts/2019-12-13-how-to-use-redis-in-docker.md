@@ -1,11 +1,11 @@
 ---
-title: How to use redis in docker
+title: How to Use Docker in Docker
 abbrlink: 787ab444
 date: 2019-12-13 08:59:15
-categories: [Software, redis]
+categories: [Software, Redis]
 tags:
-- redis
-- docker
+- Redis
+- Docker
 ---
 1. in Dockerfile
 ```

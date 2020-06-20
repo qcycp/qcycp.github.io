@@ -1,10 +1,10 @@
 ---
-title: threading in Python
+title: Threading in Python
 abbrlink: 828ababc
 date: 2020-06-04 16:59:38
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 ```python
 import threading

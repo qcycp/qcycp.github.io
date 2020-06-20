@@ -2,15 +2,15 @@
 title: Information of flask.request
 abbrlink: f4d5bb19
 date: 2020-06-12 09:18:54
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- flask
+- Python
+- Flask
 ---
 * GET api request
 `curl -X GET http://127.0.0.1:5000/api/test?x=abc`
 
-* information in flask.request
+* Information of flask.request
 ```
 request.method:              GET
 request.url:                 http://127.0.0.1:5000/api/test?x=abc

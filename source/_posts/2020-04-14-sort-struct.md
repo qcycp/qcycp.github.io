@@ -2,10 +2,9 @@
 title: Sort with structs
 abbrlink: '4294109'
 date: 2020-04-14 16:51:56
-categories: [Programming, c++]
+categories: [Programming, C++]
 tags:
-- c++
-- Sample code
+- C++
 ---
 針對struct內的某個欄位，進行sort
 ```cpp

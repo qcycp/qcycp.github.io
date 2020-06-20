@@ -1,10 +1,11 @@
 ---
-title: flask cors
+title: Flask cors
 abbrlink: 22884ce3
 date: 2020-06-04 17:25:26
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
+- Flask
 ---
 * document
 https://flask-cors.readthedocs.io/en/latest/

@@ -1,11 +1,11 @@
 ---
-title: docker-compose.yml for gitlab
+title: docker-compose.yml for GitLab
 abbrlink: cb549ab5
 date: 2019-12-02 11:05:17
-categories: [Software, gitlab]
+categories: [Software, GitLab]
 tags:
-- gitlab
-- docker
+- GitLab
+- Docker
 ---
 ```yml
 version: '3' 

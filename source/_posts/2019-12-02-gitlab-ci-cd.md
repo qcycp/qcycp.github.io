@@ -1,11 +1,11 @@
 ---
-title: gitlab建置CI/CD流程
+title: GitLab 建置CI/CD流程
 abbrlink: d96b0415
 date: 2019-12-02 15:34:12
-categories: [Software, gitlab]
+categories: [Software, GitLab]
 tags:
-- gitlab
-- cicd
+- GitLab
+- CICD
 ---
 
 #### 建立gitlab-runner

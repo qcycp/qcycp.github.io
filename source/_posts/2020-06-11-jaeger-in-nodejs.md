@@ -1,11 +1,11 @@
 ---
-title: jaeger in nodejs
+title: Jaeger in Node.js
 abbrlink: 9a34aaf2
 date: 2020-06-11 10:58:23
-categories: [Programming, nodejs]
+categories: [Programming, Node.js]
 tags:
-- nodejs
-- jaeger
+- Node.js
+- Jaeger
 ---
 * package
 ```bash

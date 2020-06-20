@@ -1,10 +1,10 @@
 ---
-title: 快速建立 Docker image
+title: 快速建立 Docker Image
 abbrlink: 6a707551
 date: 2020-05-25 14:16:13
 categories: [Software, Docker]
 tags:
-- docker
+- Docker
 ---
 * Dockerfile
 ```

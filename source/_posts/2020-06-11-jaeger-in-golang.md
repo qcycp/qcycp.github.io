@@ -1,11 +1,11 @@
 ---
-title: jaeger in golang(gin)
+title: Jaeger in golang(gin)
 abbrlink: 1306a70
 date: 2020-06-11 16:33:18
-categories: [Programming, golang]
+categories: [Programming, Go]
 tags:
-- golang
-- jaeger
+- Go
+- Jaeger
 ---
 * package
 ```bash

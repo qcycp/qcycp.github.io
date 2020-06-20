@@ -1,10 +1,10 @@
 ---
-title: ping and nc in python
+title: ping and nc in Python
 abbrlink: dfaf3d8a
 date: 2020-06-05 17:36:17
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 linux與windows中，ping的參數不一樣
 * the ping will stop afer 1 package is replied

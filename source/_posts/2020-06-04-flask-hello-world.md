@@ -1,11 +1,11 @@
 ---
-title: Hello World in flask
+title: Hello World for Flask
 abbrlink: d5faf89c
 date: 2020-06-04 16:44:46
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- flask
+- Python
+- Flask
 ---
 1. setup virtual environment
 `$ virtualenv venv`

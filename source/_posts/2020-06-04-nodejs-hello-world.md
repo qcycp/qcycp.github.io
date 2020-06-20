@@ -1,10 +1,10 @@
 ---
-title: Hello World in nodejs
+title: Hello World for Node.js
 abbrlink: 3bd1d4df
 date: 2020-06-04 16:28:19
-categories: [Programming, nodejs]
+categories: [Programming, Node.js]
 tags:
-- nodejs
+- Node.js
 ---
 1. 建立project，過程中一直Enter即可
 `$ npm init`

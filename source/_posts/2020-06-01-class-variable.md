@@ -1,10 +1,10 @@
 ---
-title: python class variable
+title: Class Variable in Python
 abbrlink: 78834cdd
 date: 2020-06-01 14:28:44
-categories: [Programming, python]
+categories: [Programming, Python]
 tags: 
-- python
+- Python
 ---
 ```python
 class test(object):

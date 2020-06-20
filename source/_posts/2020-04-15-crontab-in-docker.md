@@ -1,10 +1,10 @@
 ---
-title: crontab in docker
+title: Crontab in Docker
 abbrlink: ca10b1f5
 date: 2020-04-15 11:30:40
-categories: [Software, cron]
+categories: Docker
 tags:
-- docker
+- Docker
 - cron
 ---
 #### 手動執行cron task，並查看目前系統中執行的cron task

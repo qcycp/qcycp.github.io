@@ -1,11 +1,10 @@
 ---
-title: uuid generator in linux
+title: uuid Generator in Linux
 abbrlink: fa21d003
 date: 2020-04-23 14:29:20
 categories: Linux
 tags:
-- 教學
-- linux
+- Linux
 ---
 透過系統中的uuid檔案，生成UUID
 ```bash

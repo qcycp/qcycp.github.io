@@ -1,10 +1,10 @@
 ---
-title: calculate fps
+title: Calculate FPS
 abbrlink: 6e72c2d5
 date: 2020-06-05 14:20:39
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 ```python
 from imutils.video import FPS

@@ -1,10 +1,10 @@
 ---
-title: docker notes
+title: Docker Notes
 abbrlink: 374b29bd
 date: 2020-02-27 10:43:34
 categories: [Software, Docker]
 tags:
-- docker
+- Docker
 ---
 * How to keep docker container running
 add following command at end of Dockerfile

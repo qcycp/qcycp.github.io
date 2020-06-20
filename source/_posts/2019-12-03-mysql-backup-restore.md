@@ -1,11 +1,11 @@
 ---
-title: mysql backup and restore
+title: MySQL Backup and Restore
 abbrlink: 50121f15
 date: 2019-12-03 11:13:26
-categories: [Software, mysql]
+categories: [Software, MySQL]
 tags:
-- docker
-- mysql
+- Docker
+- MySQL
 ---
 ### backup script
 `docker exec -it mysql_container /usr/bin/mysqldump -u username --password=password db_name > backup.sql`

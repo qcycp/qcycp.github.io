@@ -1,11 +1,12 @@
 ---
-title: Execute mysql commands in shell script
+title: Execute MySQL Commands in shell script
 abbrlink: 7bd7c7e8
 date: 2020-04-23 16:55:45
 categories: Linux
 tags:
-- linux
+- Linux
 - shell script
+- MySQL
 ---
 ```bash
 #!/bin/bash

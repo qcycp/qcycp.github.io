@@ -1,11 +1,10 @@
 ---
-title: dict sorting
+title: dict Sorting
 abbrlink: 3932c779
 date: 2019-12-03 11:07:07
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- Sample code
+- Python
 ---
 ```python
 from collections import OrderedDict

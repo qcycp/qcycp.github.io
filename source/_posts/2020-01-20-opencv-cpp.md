@@ -1,12 +1,11 @@
 ---
-title: OpenCV sample in c++
+title: OpenCV sample in C++
 abbrlink: 648a241a
 date: 2020-01-20 09:22:46
-categories: [Programming, c++]
+categories: [Programming, C++]
 tags:
-- c++
-- opencv
-- Sample code
+- C++
+- OpenCV
 ---
 ```cpp
 #include "opencv2/opencv.hpp"

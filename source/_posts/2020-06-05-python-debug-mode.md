@@ -1,10 +1,10 @@
 ---
-title: debug mode in python
+title: Debug Mode in Python
 abbrlink: 641ef2a2
 date: 2020-06-05 14:17:54
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 ```python
 if __debug__:

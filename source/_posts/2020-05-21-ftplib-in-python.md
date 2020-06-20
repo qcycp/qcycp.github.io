@@ -1,10 +1,10 @@
 ---
-title: ftplib in python
+title: ftplib in Python
 abbrlink: 741b618f
 date: 2020-05-21 08:42:02
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 * Connection
 ```python

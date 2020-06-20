@@ -1,11 +1,10 @@
 ---
-title: gitbook文件轉換成pdf
+title: GitBook文件轉換成pdf
 abbrlink: 8931cf79
 date: 2019-12-02 09:58:20
-categories: [Software, gitbook]
+categories: [Software, GitBook]
 tags:
-- 教學
-- gitbook
+- GitBook
 ---
 ```bash
 sudo apt-get install npm

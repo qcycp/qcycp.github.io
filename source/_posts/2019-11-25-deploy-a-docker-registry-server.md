@@ -1,12 +1,11 @@
 ---
-title: Deploy a docker registry server
+title: Deploy a Docker registry server
 abbrlink: 410ebdbd
 date: 2019-11-25 17:19:29
 categories: [Software, Docker]
 tags:
-- docker
-- ubuntu
-- 安裝
+- Docker
+- Ubuntu
 ---
 
 # pull registry image

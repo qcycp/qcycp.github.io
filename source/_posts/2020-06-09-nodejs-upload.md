@@ -1,10 +1,10 @@
 ---
-title: file server for upload in nodejs
+title: File Server for Upload in Node.js
 abbrlink: ee140a30
 date: 2020-06-09 18:01:15
-categories: [Programming, nodejs]
+categories: [Programming, Node.js]
 tags:
-- nodejs
+- Nodejs
 ---
 * setup server
 ```bash

@@ -1,12 +1,11 @@
 ---
-title: Setup a file server quickly
+title: Setup a File Server Quickly
 abbrlink: dbaaf77f
 date: 2020-04-30 10:00:37
 categories: Linux
 tags:
-- 教學
-- linux
-- nodejs
+- Linux
+- Node.js
 ---
 透過nodejs，在ubuntu中快速建立一個File server
 ```

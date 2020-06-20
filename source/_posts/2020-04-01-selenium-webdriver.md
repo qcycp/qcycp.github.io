@@ -1,11 +1,12 @@
 ---
-title: Test open url via selenium
+title: Open Web Page using Selenium
 abbrlink: 3db6e2b6
 date: 2020-04-01 17:30:14
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- Sample code
+- Python
+- Docker
+- Selenium
 ---
 ```python
 import os

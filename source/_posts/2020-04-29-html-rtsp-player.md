@@ -1,10 +1,10 @@
 ---
-title: RTSP player on web page
+title: RTSP Player on Web Page
 abbrlink: b9c5d30
 date: 2020-04-29 11:40:29
-categories: [Software, JSMpeg]
+categories: Web
 tags:
-- 教學
+- JSMpeg
 ---
 * git source: https://github.com/qcycp/SampleCode/tree/master/HTML_RTSP_Player
 * reference: https://my.oschina.net/chengpengvb/blog/1832469?p=4

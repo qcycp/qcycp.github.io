@@ -4,7 +4,7 @@ abbrlink: bfd5d971
 date: 2020-06-10 11:30:49
 categories: [Software, Jaeger]
 tags:
-- 教學
+- Jaeger
 ---
 ![](architecture-v1.png)
 * cassandra DB

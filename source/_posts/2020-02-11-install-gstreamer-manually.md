@@ -4,7 +4,6 @@ abbrlink: fcb954dd
 date: 2020-02-11 16:32:24
 categories: [Software, gstreamer]
 tags:
-- 教學
 - gstreamer
 ---
 1. 安裝meson

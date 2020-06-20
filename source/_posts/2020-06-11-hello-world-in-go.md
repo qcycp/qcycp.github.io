@@ -1,10 +1,10 @@
 ---
-title: Hello World in golnag(gin)
+title: Hello World for golnag(gin)
 abbrlink: 2ac2687f
 date: 2020-06-11 14:39:53
-categories: [Programming, golang]
+categories: [Programming, Go]
 tags:
-- golang
+- Go
 ---
 1. 安裝golang
 go version 1.11+ is required for gin

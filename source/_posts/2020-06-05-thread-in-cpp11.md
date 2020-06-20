@@ -1,10 +1,10 @@
 ---
-title: thread in c++11
+title: Thread in C++11
 abbrlink: f5b96866
 date: 2020-06-05 14:24:58
-categories: [Programming, c++]
+categories: [Programming, C++]
 tags:
-- c++
+- C++
 ---
 On GCC, compile with -std=c++0x -pthread
 

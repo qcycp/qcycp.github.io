@@ -1,10 +1,10 @@
 ---
-title: Compile opencv on windows
+title: Compile OpenCV on Windows
 abbrlink: f3c7f3
 date: 2019-12-25 17:44:44
-categories: [Software, opencv]
+categories: [Software, OpenCV]
 tags:
-- opencv
+- OpenCV
 ---
 #### 更新Visual Studio套件
 1. 打開Visual Studio 2019

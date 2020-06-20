@@ -1,12 +1,12 @@
 ---
-title: jaeger in flask
+title: Jaeger in Flask
 abbrlink: cbe29751
 date: 2020-06-10 16:57:34
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- flask
-- jaeger
+- Python
+- Flask
+- Jaeger
 ---
 * package
 ```bash

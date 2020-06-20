@@ -1,10 +1,10 @@
 ---
-title: python list operation
+title: list Operation in Python
 abbrlink: ccc82893
 date: 2020-06-01 11:32:41
-categories: [Programming, python]
+categories: [Programming, Python]
 tags: 
-- python
+- Python
 ---
 * List
 ```

@@ -2,9 +2,9 @@
 title: pywebview
 abbrlink: e8087d33
 date: 2020-06-01 15:32:12
-categories: [Programming, python]
+categories: [Programming, Python]
 tags: 
-- python
+- Python
 ---
 * Installation
 `pip install pywebview`

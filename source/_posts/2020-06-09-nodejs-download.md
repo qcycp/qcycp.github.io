@@ -1,10 +1,10 @@
 ---
-title: file server for download in nodejs
+title: File Server for Download in Node.js
 abbrlink: c3baede7
 date: 2020-06-09 18:01:25
-categories: [Programming, nodejs]
+categories: [Programming, Node.js]
 tags:
-- nodejs
+- Nodejs
 ---
 * setup server
 ```bash

@@ -4,10 +4,10 @@ abbrlink: b4ce8caa
 date: 2019-11-19 11:33:09
 categories: [Software, Ubuntu]
 tags:
-  - ubuntu
-  - linux
-  - docker
-  - python
+- Ubuntu
+- Linux
+- Docker
+- Python
 ---
 * Ubuntu 16.04.1 Server (64-bit)
 http://old-releases.ubuntu.com/releases/16.04.1/ubuntu-16.04.1-server-amd64.iso

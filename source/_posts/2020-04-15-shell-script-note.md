@@ -1,10 +1,10 @@
 ---
-title: shell script note
+title: shell script Notes
 abbrlink: dd240c9a
 date: 2020-04-15 10:56:34
 categories: Linux
 tags:
-- linux
+- Linux
 - shell script
 ---
 * check file exist

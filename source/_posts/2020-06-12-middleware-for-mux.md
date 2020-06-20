@@ -2,9 +2,9 @@
 title: middleware for golang(mux)
 abbrlink: 1509988e
 date: 2020-06-12 15:54:03
-categories: [Programming, golang]
+categories: [Programming, Go]
 tags:
-- golang
+- Go
 ---
 * main.go
 ```golang

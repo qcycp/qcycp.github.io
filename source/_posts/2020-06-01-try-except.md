@@ -1,10 +1,10 @@
 ---
-title: python try-except
+title: try-except in Python
 abbrlink: 2abc1d30
 date: 2020-06-01 15:25:40
-categories: [Programming, python]
+categories: [Programming, Python]
 tags: 
-- python
+- Python
 ---
 else: 如果沒有發生例外，執行
 finally: 無論有沒有發生例外，都會執行

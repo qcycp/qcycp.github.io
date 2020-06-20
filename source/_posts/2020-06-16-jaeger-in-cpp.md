@@ -1,11 +1,11 @@
 ---
-title: jaeger_in_cpp
+title: Jaeger in C++
 abbrlink: 18b7c14f
 date: 2020-06-16 17:59:15
-categories: [Programming, c++]
+categories: [Programming, C++]
 tags:
-- c++
-- jaeger
+- C++
+- Jaeger
 ---
 * Preparation
 下載jaeger-client-cpp專案，並編譯

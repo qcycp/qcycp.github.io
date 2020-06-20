@@ -1,10 +1,10 @@
 ---
-title: python pexpect
+title: Python pexpect
 abbrlink: c7bdd75f
 date: 2020-06-10 10:28:44
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 - shell script
 ---
 expect("xxx")=>等待"xxx"字串出現

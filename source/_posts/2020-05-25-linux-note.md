@@ -1,10 +1,10 @@
 ---
-title: linux notes
+title: Linux Notes
 abbrlink: 106b04cc
 date: 2020-05-25 16:48:03
 categories: Linux
 tags:
-- linux
+- Linux
 ---
 * change image format
 ```bash

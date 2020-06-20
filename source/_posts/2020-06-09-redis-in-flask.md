@@ -1,11 +1,11 @@
 ---
-title: redis used in flask
+title: redis in Flask
 abbrlink: 602ee73a
 date: 2020-06-09 14:49:30
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- redis
+- Python
+- Redis
 ---
 1. setup redis server in ubuntu
 `$ sudo apt install redis-server`

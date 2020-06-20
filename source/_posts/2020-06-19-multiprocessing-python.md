@@ -1,10 +1,10 @@
 ---
-title: multiprocessing pool in python
+title: Multiprocessing Pool in Python
 abbrlink: 91c6bb0e
 date: 2020-06-19 10:15:19
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
+- Python
 ---
 ```python
 import logging

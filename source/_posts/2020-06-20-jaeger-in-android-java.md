@@ -1,15 +1,17 @@
 ---
-title: jaeger_in_android_java
+title: Jaeger in Android Java
 abbrlink: db4f4223
 date: 2020-06-20 17:18:43
 categories: [Programming, Java]
 tags:
 - Java
 - Android
-- jaeger
+- Jaeger
 ---
 * package in gapp.radle
 ```
+implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+
 implementation group: 'io.opentracing', name: 'opentracing-api', version: '0.33.0'
 implementation group: 'io.jaegertracing', name: 'jaeger-client', version: '1.2.0'
 ```
@@ -51,7 +53,7 @@ public class Tracing {
     }
 }
 ```
-* carrier
+* http headers carrier
 ```java
 import java.util.Iterator;
 import java.util.Map;

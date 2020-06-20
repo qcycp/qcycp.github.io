@@ -1,11 +1,11 @@
 ---
-title: flask sqlalchemy
+title: Flask sqlalchemy
 abbrlink: 9d490f81
 date: 2020-06-04 17:32:48
-categories: [Programming, python]
+categories: [Programming, Python]
 tags:
-- python
-- flask
+- Python
+- Flask
 ---
 * Preparation
 ```bash

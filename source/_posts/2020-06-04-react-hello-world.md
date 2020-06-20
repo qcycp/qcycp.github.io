@@ -1,10 +1,10 @@
 ---
-title: Hello World in react
+title: Hello World for React
 abbrlink: 991d0773
 date: 2020-06-04 17:41:33
-categories: [Programming, react]
+categories: [Programming, React]
 tags:
-- react
+- React
 ---
 1. install react installation package
 `$ sudo npm install -g create-react-app`

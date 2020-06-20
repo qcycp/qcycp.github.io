@@ -1,10 +1,11 @@
 ---
-title: crontab in linux
+title: crontab in Docker
 abbrlink: f9ddbed
 date: 2020-05-22 08:48:48
-categories: [Software, cron]
+categories: Linux
 tags:
-- cron
+- Linux
+- Docker
 ---
 設定週期性要執行的指令
 第一次執行會先讓user選擇editor
