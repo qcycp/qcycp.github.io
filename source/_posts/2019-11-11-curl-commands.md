@@ -46,3 +46,24 @@ Set-Cookie: session=3c8d8462-8590-435e-9227-485f96e4bec5; HttpOnly; Path=/
   "data": "..."
 }
 ```
+* Get further information from curl
+  * simple mode
+  `$ curl -w 'Total: %{time_total}s\n' -o /dev/null -s http://ip:port/api/`
+  * Create a new file, curl-format.txt, and paste in:
+```
+    time_namelookup:  %{time_namelookup}s\n
+       time_connect:  %{time_connect}s\n
+    time_appconnect:  %{time_appconnect}s\n
+   time_pretransfer:  %{time_pretransfer}s\n
+      time_redirect:  %{time_redirect}s\n
+ time_starttransfer:  %{time_starttransfer}s\n
+                    ----------\n
+         time_total:  %{time_total}s\n
+```
+  * Make a request
+```
+$ curl -w "@curl-format.txt" -o /dev/null -s "http://ip:port/api/"
+-w "@curl-format.txt" tells cURL to use our format file
+-o /dev/null redirects the output of the request to /dev/null
+-s tells cURL not to show a progress meter
+```

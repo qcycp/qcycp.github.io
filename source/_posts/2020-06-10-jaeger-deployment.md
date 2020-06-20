@@ -94,7 +94,7 @@ services:
       container_name: cassandra
       ports:
         - 9042:9042
-      restart: on-failure
+      restart: always
       volumes:
         - /opt/docker-software/cassandra/data:/var/lib/cassandra
         - /opt/docker-software/cassandra/log:/var/log/cassandra
@@ -112,7 +112,7 @@ services:
       ports:
         - "16686:16686"
         - "16687"
-      restart: on-failure
+      restart: always
       depends_on:
         - cassandra-schema
 
@@ -125,7 +125,7 @@ services:
         - "14268:14268"
         - "14250"
         - "9411:9411"
-      restart: on-failure
+      restart: always
       depends_on:
         - cassandra-schema
 
@@ -138,7 +138,7 @@ services:
         - "5778:5778"
         - "6831:6831/udp"
         - "6832:6832/udp"
-      restart: on-failure
+      restart: always
       depends_on:
         - jaeger-collector
 ```
