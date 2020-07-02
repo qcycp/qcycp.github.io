@@ -1,5 +1,5 @@
 ---
-title: jaeger_in_python
+title: Jaeger in Python
 abbrlink: af8f76b
 date: 2020-06-22 08:36:55
 categories: [Programming, Python]

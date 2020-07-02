@@ -150,3 +150,10 @@ sampler:
   type: const
   param: 1
 ```
+* config by code
+```cpp
+bool disabled = false;
+jaegertracing::samplers::Config sampler {"const", 1, "", 0, std::chrono::seconds(0)};
+jaegertracing::reporters::Config reporter {0, std::chrono::seconds(0), true, "192.168.56.5:6831", ""};
+jaegertracing::Config config {disabled, sampler, reporter};
+```

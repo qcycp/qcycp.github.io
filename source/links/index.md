@@ -17,3 +17,6 @@ https://gto76.github.io/linux-cheatsheet/
 
 - useful projects on github
 [Awesome Flask](https://github.com/humiaozuzu/awesome-flask)
+
+- Good Blogs
+[TechBridge 技術共筆部落格](https://blog.techbridge.cc/)

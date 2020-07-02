@@ -9,6 +9,8 @@ tags:
 ---
 * document
 https://flask-cors.readthedocs.io/en/latest/
+* install
+`pip install flask_cors`
 * 全域設定
 ```python
 from flask import Flask

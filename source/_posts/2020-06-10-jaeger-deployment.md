@@ -93,7 +93,7 @@ services:
       image: cassandra
       container_name: cassandra
       ports:
-        - 9042:9042
+        - "9042:9042"
       restart: always
       volumes:
         - /opt/docker-software/cassandra/data:/var/lib/cassandra
@@ -141,4 +141,11 @@ services:
       restart: always
       depends_on:
         - jaeger-collector
+
+    spark:
+      image: jaegertracing/spark-dependencies
+      container_name: spark
+      environments:
+        - STORAGE=cassandra
+        - CASSANDRA_CONTACT_POINTS=192.168.56.5:9042
 ```

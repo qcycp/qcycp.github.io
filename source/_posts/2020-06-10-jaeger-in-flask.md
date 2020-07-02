@@ -40,10 +40,10 @@ def initTracer():
 app = Flask(__name__)
 conn = redis.Redis(host='192.168.56.5', port=6379)
 
-#Tracing MySQL and Redis automatically
+#Trace MySQL and Redis automatically
 install_all_patches()
 
-#Trace all requests automatically, it's necessary to create span manually
+#Trace all api requests automatically, it's not necessary to create span manually
 tracer = FlaskTracing(initTracer, trace_all_requests=True, app=app)
 
 pjdir = os.path.abspath(os.path.dirname(__file__))
