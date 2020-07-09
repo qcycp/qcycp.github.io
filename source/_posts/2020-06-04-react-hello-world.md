@@ -16,6 +16,6 @@ tags:
 4. install json server
 `$ npm install -g json-server`
 5. start json server
-到當前的project folder
---watch可以監控當data有修改時，會自動重load server
+到當前的 project folder
+`--watch`可以監控當 data 有修改時，會自動 reload server
 `$ json-server.cmd --watch --port 3004 ./src/db.json`

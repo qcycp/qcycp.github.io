@@ -1,21 +1,47 @@
 ---
-title: Hello World for golnag(gin)
+title: Hello World for Golnag
 abbrlink: 2ac2687f
 date: 2020-06-11 14:39:53
 categories: [Programming, Go]
 tags:
 - Go
 ---
-1. 安裝golang
+* 安裝 Golang in 開發環境
 go version 1.11+ is required for gin
 ```bash
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt update
 sudo apt install golang-go
 ```
-2. 安裝gin套件
+* Without any framework
+```golang
+package main
+
+import (
+    "fmt"
+    "log"
+    "net/http"
+)
+
+func index(w http.ResponseWriter, r *http.Request){
+    fmt.Fprintf(w, "Hello World!")
+}
+
+func main() {
+    http.HandleFunc("/", index)
+    http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
+        res := "Hello World!"
+        fmt.Fprintf(w, "%s", res)
+    })
+
+
+    log.Fatal(http.ListenAndServe(":8888", nil))
+}
+```
+* Using gin
+1. 安裝gin套件
 `go get -u github.com/gin-gonic/gin`
-3. app.go
+2. app.go
 ```golang
 package main
 
@@ -34,5 +60,8 @@ func main() {
     r.Run(":8888")
 }
 ```
-4. start server
+3. start server
 `go run app.go`
+4. compile
+`go build`
+`go build -o app`

@@ -73,3 +73,14 @@ Linux 4.4.0-131-generic (vm-docker)     04/02/2019      _x86_64_        (4 CPU)
   IP address for enp0s3:          10.0.2.15
   IP address for enp0s8:          192.168.56.5
 ```
+* Boot Information
+  * boot-id, 每次重開機都會自動生成一組unique uuid
+`cat /proc/sys/kernel/random/boot_id`
+  * Bootup Identifier History
+`journalctl --list-boots`
+* Machine Identifier
+`cat /etc/machine-id`
+* Hard Drive Block ID
+`sudo blkid | grep -oP 'UUID="\K[^"]+'`
+* Drive Identifiers
+`sudo fdisk -l | grep -i "Disk identifier" | awk '{print $3}'`
