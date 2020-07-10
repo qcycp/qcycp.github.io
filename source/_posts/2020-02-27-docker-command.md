@@ -68,6 +68,7 @@ https://docs.docker.com/engine/reference/commandline/docker/
 `docker-compose down`
 `docker-compose images`
 `docker-compose restart -d service_name`
+`docker-compose -f tmp_docker-compose_ci.yml up -d`
 * save docker image
 `docker save myimage > myimage.tar`
 `docker save -o myimage.tar myimage`

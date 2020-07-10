@@ -44,3 +44,7 @@ tags:
         * B 先用 <font color=#0000FF>CApub</font> 解密
         * B 再用自己的 private key 解密
 * A/B 在交換 public key 後，透過具有公信力的第三方，再確認一次拿到的真的是對方的 public key
+* AES (Advanced Encryption Standard)
+  * 對稱式加密算法
+  * allows 128, 192 or 256 bit (16, 24, 32 bytes) key length
+* AEC
