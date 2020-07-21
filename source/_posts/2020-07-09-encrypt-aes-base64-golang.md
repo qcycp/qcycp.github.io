@@ -1,5 +1,5 @@
 ---
-title: Encrypt string with AES and Base64
+title: Encrypt with AES and Base64
 abbrlink: d7f0b4a8
 date: 2020-07-09 11:32:35
 categories: [Programming, Golang]

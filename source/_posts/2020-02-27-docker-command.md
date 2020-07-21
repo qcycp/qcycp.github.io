@@ -104,3 +104,8 @@ $ docker stats --no-stream
 CONTAINER ID        NAME                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
 b753136fd716        mycontainer                37.76%              144.7MiB / 1.953GiB   7.24%               107MB / 2.05MB      7.64MB / 0B         31
 ```
+* get a shell on the host
+`$ docker run --privileged --pid=host -it alpine:3.8 \
+nsenter -t 1 -m -u -n -i sh`
+* Links
+[Container Namespaces](https://platform9.com/blog/container-namespaces-deep-dive-container-networking/)
