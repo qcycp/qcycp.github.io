@@ -1,5 +1,5 @@
 ---
-title: python_subprocess
+title: subprocess
 abbrlink: b1b1ed69
 date: 2020-07-17 15:54:48
 categories: [Programming, Python]

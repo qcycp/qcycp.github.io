@@ -1,5 +1,5 @@
 ---
-title: golang_file_upload
+title: File Upload Operation
 abbrlink: f3b1b78
 date: 2020-07-21 08:52:35
 categories: [Programming, Golang]
@@ -54,6 +54,7 @@ import (
     "bytes"
     "fmt"
     "io"
+    "io/ioutil"
     "log"
     "mime/multipart"
     "net/http"
@@ -104,13 +105,12 @@ func main() {
     if err != nil {
         log.Fatal(err)
     } else {
-        body := &bytes.Buffer{}
-        _, err := body.ReadFrom(resp.Body)
+        defer resp.Body.Close()
+        body, err := ioutil.ReadAll(resp.Body)
         if err != nil {
             log.Fatal(err)
         }
-        resp.Body.Close()
-        fmt.Println(body)
+        fmt.Println(string(body))
     }
 }
 ```
