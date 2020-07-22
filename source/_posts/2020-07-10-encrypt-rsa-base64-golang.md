@@ -2,9 +2,9 @@
 title: Encrypt with RSA and Base64
 abbrlink: ca690ff5
 date: 2020-07-10 20:05:09
-categories: [Programming, Golang]
+categories: [Programming, Go]
 tags:
-- Golang
+- Go
 ---
 RSA 是非對稱性加密算法
 * import

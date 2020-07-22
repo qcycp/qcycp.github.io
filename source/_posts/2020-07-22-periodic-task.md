@@ -2,9 +2,9 @@
 title: Periodic Task
 abbrlink: 812d43
 date: 2020-07-22 16:42:40
-categories: [Programming, Golang]
+categories: [Programming, Go]
 tags:
-- Golang
+- Go
 ---
 * General goroutine
 ```golang

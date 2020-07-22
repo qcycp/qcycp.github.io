@@ -2,9 +2,9 @@
 title: Golang notes
 abbrlink: d5617b5e
 date: 2020-07-09 10:52:47
-categories: [Programming, Golang]
+categories: [Programming, Go]
 tags:
-- Golang
+- Go
 ---
 * struct
 ```golang

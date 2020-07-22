@@ -2,9 +2,9 @@
 title: File Upload Operation
 abbrlink: f3b1b78
 date: 2020-07-21 08:52:35
-categories: [Programming, Golang]
+categories: [Programming, Go]
 tags:
-- Golang
+- Go
 ---
 * server
 ```golang

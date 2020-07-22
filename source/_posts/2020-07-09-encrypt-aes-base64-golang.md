@@ -2,9 +2,9 @@
 title: Encrypt with AES and Base64
 abbrlink: d7f0b4a8
 date: 2020-07-09 11:32:35
-categories: [Programming, Golang]
+categories: [Programming, Go]
 tags:
-- Golang
+- Go
 ---
 AES 是對稱性加密算法，AES key 長度可以設定為 16, 24, or 32 bytes，分別對應到 AES-128, AES-192, or AES-256
 ```golang
