@@ -20,8 +20,7 @@ go func() {
 var ticker *time.Ticker
 ticker = time.NewTicker(1 * time.Second)
 go func() {
-    for t := range ticker.C {
-        fmt.Println(t)
+    for range ticker.C {
         //do something...
     }
 }()

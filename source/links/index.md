@@ -21,6 +21,7 @@ https://gto76.github.io/linux-cheatsheet/
 - Good Blogs
 [TechBridge 技術共筆部落格](https://blog.techbridge.cc/)
 [小丁的个人博客](https://tding.top/)
+[Huli](https://blog.huli.tw/)
 
 - Dockerhub
 [sameersbn](https://hub.docker.com/u/sameersbn)

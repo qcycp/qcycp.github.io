@@ -76,6 +76,8 @@ func newfileUploadRequest(uri string, params map[string]string, paramName, path 
         return nil, err
     }
     _, err = io.Copy(part, file)
+    //we can also use string to fill the file content
+    //part.Write([]byte("content_in_a_file"))
 
     for key, val := range params {
         _ = writer.WriteField(key, val)
