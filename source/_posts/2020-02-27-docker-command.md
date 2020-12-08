@@ -105,7 +105,57 @@ CONTAINER ID        NAME                       CPU %               MEM USAGE / L
 b753136fd716        mycontainer                37.76%              144.7MiB / 1.953GiB   7.24%               107MB / 2.05MB      7.64MB / 0B         31
 ```
 * get a shell on the host
-`$ docker run --privileged --pid=host -it alpine:3.8 \
-nsenter -t 1 -m -u -n -i sh`
+`$ docker run --privileged --pid=host -it alpine:3.8 nsenter -t 1 -m -u -n -i sh`
 * Links
 [Container Namespaces](https://platform9.com/blog/container-namespaces-deep-dive-container-networking/)
+* 清理系統
+  * 刪除沒有 tag 的 image
+```sh
+$ docker image prune
+WARNING! This will remove all dangling images.
+Are you sure you want to continue? [y/N] y
+Total reclaimed space: 0B
+```
+  * 刪除沒有 running container 參考到的 image
+```sh
+$ docker image prune --all
+WARNING! This will remove all images without at least one container associated to them.
+Are you sure you want to continue? [y/N] y
+Deleted Images:
+untagged: 10.36.94.120:50000/node:12.2.0-alpine
+untagged: 10.36.94.120:50000/node@sha256:44833e4939cae1d429eaf303db96df2a7676114822e50c77ddcb888fc40d2e55
+deleted: sha256:f391dabf9dce53bfc184823f18b7703db8dfead7f25e5b376865e690433bec78
+deleted: sha256:336cfdd902c9e424a9ddf5d12f844ea7657bb93fff1ac480f2f58d03a0d61712
+deleted: sha256:8e16b58e2279476d2b32eac06400116114fb9facbd8205409d2285e1bdcb7312
+
+Total reclaimed space: 3.704GB
+```
+  * 刪除 image 及 container
+```sh
+$ docker system prune
+WARNING! This will remove:
+        - all stopped containers
+        - all networks not used by at least one container
+        - all dangling images
+        - all dangling build cache
+Are you sure you want to continue? [y/N] y
+Total reclaimed space: 0B
+
+$ docker system prune --all
+WARNING! This will remove:
+        - all stopped containers
+        - all networks not used by at least one container
+        - all images without at least one container associated to them
+        - all build cache
+Are you sure you want to continue? [y/N] y
+Total reclaimed space: 0B
+```
+* Get information of docker system
+```sh
+$ docker system df
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              5                   5                   2.023GB             0B (0%)
+Containers          5                   5                   3.54MB              0B (0%)
+Local Volumes       3                   1                   1.66GB              30.44MB (1%)
+Build Cache         0                   0                   0B                  0B
+```

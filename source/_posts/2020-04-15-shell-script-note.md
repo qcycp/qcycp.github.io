@@ -13,7 +13,7 @@ tags:
 
 file="./test.log"
 
-if [ -e "$file" ] ; then
+if [ -f "$file" ]; then
     echo "$file found."
 fi
 ```
@@ -25,8 +25,19 @@ fi
 file1="./test1.log"
 file2="./test2.log"
 
-if [ -e "$file1" -a -e "$file2" ] ; then
+if [ -f "$file1" -a -f "$file2" ]; then
     echo "$file1 and $file2 are both found."
+fi
+```
+
+* check folder exist
+```bash
+#!/bin/bash
+
+folder="/home/user"
+
+if [ -d "$folder" ]; then
+    echo "$folder found."
 fi
 ```
 
@@ -102,3 +113,34 @@ output:
 \\ 插入\字符；
 \nnn 插入nnn（八进制）所代表的ASCII字符；
 ```
+
+* 大小寫轉換
+```
+NAME="NaMe"
+echo ${NAME^} => Name
+echo ${NAME^^} => NAME
+echo ${NAME,} => naMe
+echo ${NAME,,} => name
+```
+
+* stdin/stdout/stderr
+0: stdin
+1: stdout
+2: stderr
+```
+> /dev/null 2>&1 => stdout 跟 stderr 都丟掉
+2>&1 => 把 stderr 導到 stdout
+> 等同於 1>
+&> file => 把 stdout 跟 stderr 都導向 file
+```
+
+# Close STDOUT file descriptor
+exec 1<&-
+# Close STDERR FD
+exec 2<&-
+
+# Open STDOUT as $LOG_FILE file for read and write.
+exec 1<>$LOG_FILE
+
+# Redirect STDERR to STDOUT
+exec 2>&1
