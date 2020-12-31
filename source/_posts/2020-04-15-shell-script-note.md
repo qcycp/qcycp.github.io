@@ -55,6 +55,17 @@ else
 fi
 ```
 
+* check symbolic link
+```bash
+#!/bin/bash
+
+lrwxrwxrwx. 1 root root 22 Dec 31 16:26 bbu_cli -> /home/user/bbu_cli
+
+if [ -L bbu_cli ] ; then
+    echo "This is a symbolic link"
+fi
+```
+
 * 除了stdout，把所有output也導一份到test.log去
 set -x: 把執行的command也印出來
 ```bash
