@@ -7,6 +7,11 @@ tags:
 - Linux
 - shell script
 ---
+* get the folder where the shell script is
+```
+DIR=`dirname $0`
+```
+
 * check file exist
 ```bash
 #!/bin/bash
