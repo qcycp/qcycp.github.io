@@ -2,8 +2,9 @@
 title: linux_commands
 abbrlink: 78a715c
 date: 2021-03-11 17:09:57
-categories:
+categories: System
 tags:
+- Linux
 ---
 0. ubuntu版本
 lsb_release -a
