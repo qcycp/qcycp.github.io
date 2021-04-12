@@ -240,3 +240,43 @@ echo "${RESULT[@]}" // 1
 array_diff RESULT array2 array1
 echo "${RESULT[@]}" // 3 4
 ```
+* color
+Text Style
+Code | Description
+-----|-------
+0 | Reset/Normal
+1 | Bold text
+2 | Faint text
+3 | Italics
+4 | Underlined text
+
+Color | Foreground | Background
+Black | 30 | 40
+Red | 31 | 41
+Green | 32 | 42
+Yellow | 33 | 43
+Blue | 34 | 44
+Magenta | 35 | 45
+Cyan | 36 | 46
+Light Gray | 37 | 47
+Gray | 90 | 100
+Light Red | 91 | 101
+Light Green 92 | 102
+Light Yellow | 93 | 103
+Light Blue | 94 | 104
+Light Magenta | 95 | 105
+Light Cyan | 96 | 106
+White | 97 | 107
+
+```
+#!/bin/bash
+
+RED='\033[0;31m'
+BOLD='\033[1m'
+BOLD_RED='\033[1;31m'
+NC='\033[0m'
+
+echo -e ${RED}RED${NC}
+echo -e ${BOLD}BOLD${NC}
+echo -e ${BOLD_RED}BOLD_RED${NC}
+```
