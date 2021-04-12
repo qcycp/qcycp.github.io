@@ -195,7 +195,8 @@ foo()
 ret=$(foo 1 2)
 echo $ret # 4
 ```
-
+* array
+```
 array 宣告
 declare -a array
 
@@ -238,3 +239,4 @@ echo "${RESULT[@]}" // 1
 
 array_diff RESULT array2 array1
 echo "${RESULT[@]}" // 3 4
+```
