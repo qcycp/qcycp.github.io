@@ -26,3 +26,12 @@ password: 123456
 # 解鎖
 ![](image02.jpg)
 ![](image03.jpg)
+
+# 直接隱藏文章
+```
+---
+title: Hello World
+date: 2019-11-11 11:11:11
+published: false
+---
+```
