@@ -2,10 +2,9 @@
 title: shell script Notes
 abbrlink: dd240c9a
 date: 2020-04-15 10:56:34
-categories: Linux
+categories: [Programming, Shell Script]
 tags:
-- Linux
-- shell script
+- Shell Script
 ---
 * get the folder where the shell script is
 ```
@@ -220,9 +219,25 @@ done
 // item2
 // item3
 // item4
-
-
-
+```
+* check item in an array
+```
+array=(1 2 3)
+value=3
+if [[ "${array[@]}" =~ "$value" ]]; then
+  echo "found $value in the array"
+fi
+```
+* check item is a list
+```
+list="a ab abc"
+value=bc
+if [[ $list =~ (^|[[:space:]])"$value"($|[[:space:]]) ]]; then
+  echo "found $value in the list"
+fi
+```
+* array difference
+```
 array_diff()
 {
     eval local ARR1=\(\"\${$2[@]}\"\)
