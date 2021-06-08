@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qcycp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ubuntu版本lsb_release -a  pwd &#x2F;&#x2F; 看目前所在目錄的路徑  mount  mount -t smbfs -o username=”nick.cheng”,password=”123456” &#x2F;&#x2F;172.16.66.24&#x2F;public &#x2F;mnt&#x2F;sda1  umount &#x2F;mnt&#x2F;nick   mount -t smbfs -o -I 172.16.66.24 -N ‘&#x2F;">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux_commands">
+<meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;78a715c&#x2F;index.html">
+<meta property="og:site_name" content="筆記本">
+<meta property="og:description" content="ubuntu版本lsb_release -a  pwd &#x2F;&#x2F; 看目前所在目錄的路徑  mount  mount -t smbfs -o username=”nick.cheng”,password=”123456” &#x2F;&#x2F;172.16.66.24&#x2F;public &#x2F;mnt&#x2F;sda1  umount &#x2F;mnt&#x2F;nick   mount -t smbfs -o -I 172.16.66.24 -N ‘&#x2F;">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2021-04-12T03:41:18.750Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://qcycp.github.io/posts/78a715c/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>linux_commands | 筆記本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">筆記本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>連結</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/78a715c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux_commands
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-03-11 17:09:57" itemprop="dateCreated datePublished" datetime="2021-03-11T17:09:57+08:00">2021-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-04-12 11:41:18" itemprop="dateModified" datetime="2021-04-12T11:41:18+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol start="0">
+<li><p>ubuntu版本<br>lsb_release -a</p>
+</li>
+<li><p>pwd // 看目前所在目錄的路徑</p>
+</li>
+<li><p>mount<br>  mount -t smbfs -o username=”nick.cheng”,password=”123456” //172.16.66.24/public /mnt/sda1<br>  umount /mnt/nick</p>
+<p>  mount -t smbfs -o -I 172.16.66.24 -N ‘//msbn7835/public’ /mnt/nick<br>  mount -t smbfs -o //172.16.66.24/public /mnt/nick<br>  mount -t ntfs //172.16.66.24/public /mnt/nick<br>  mount -t ntfs //msnb7835/public /mnt/nick</p>
+<p>  mount -t nfs -o nolock 172.16.40.25:/home/ssg /mnt/ssg<br>  mount -t nfs -o nolock swhcsvr16:/home/nick.cheng /mnt/sda1<br>  mount -t nfs -o nolock 172.16.40.25:/public /mnt/sda1<br>  mount -t nfs -o nolock 172.16.40.25:/home/nick.cheng /mnt/sda1</p>
+<p>  mount -t nfs username=”nick.cheng”,password=”123456” 172.16.40.25:/public /mnt/sda1<br>  mount -t nfs -o nolost 172.16.40.25:/public /mnt/sda1</p>
+<p>  *在ubuntu下mount server<br>  mount -t cifs //192.168.210.173/sis4990 /home/cyc/sisvnc02/ -o user=sis4990 -o password=123456</p>
+<p>  利用 mount 指令解決 Read-only file system 問題<br>  mount -o remount,rw /</p>
+<p>  格式：mount  -t  檔案系統類型  -o 選項  裝置  掛入點</p>
+<p>  mount -t nfs -o nolock 172.16.66.29:/home/nick.cheng/ /home<br>  mount -t nfs -o nolock 172.16.66.29:/home/nick.cheng/SC1.2_testcase/ /usb/sda1<br>  mount -t vfat -o ro /dev/block/mmcblk1p1 /storage/sdcard1<br>  mount -t vfat -o rw /dev/block/mmcblk1p1 /storage/sdcard1</p>
+<p>  umount /mnt/media_rw/usbdrive/A<br>  mount -t ntfs /dev/block/sda /mnt/media_rw/usbdrive/B</p>
+<p>  mount –t vfat /dev/block/sda1  /mnt/usb_test   ( 如果Partition Type為 FAT32)<br>  mount –t tntfs /dev/block/sda1  /mnt/usb_test   ( 如果Partition Type為 NTFS)</p>
+</li>
+<li><p>時區設定, time<br>  vi /etc/sysconfig/clock  時區設定<br>  ZONE=”Asia/Taipei”</p>
+<p>  改時區<br>  1) vi /etc/sysconfig/clock</p>
+<pre><code>ZONE=&quot;Europe/Luxembourg&quot;
+ZONE=&quot;Asia/Taipei&quot;</code></pre><p>  2) cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime</p>
+<pre><code>cp /usr/share/zoneinfo/Europe/Luxembourg /etc/localtime</code></pre><p>  hwclock -r //讀取BIOS時間<br>  hwclock -w //將軟體時間寫入BIOS</p>
+<p>  在板子上設定時間&amp;時區<br>  1)mount -o remount, rw /   -&gt;將/etc改成r/w<br>  2)mount -t nfs -o nolock 172.16.66.156:/home/nick.cheng /home<br>  3)cp /home/localtime /etc<br>  4)ntpdate clock.stdtime.gov.tw</p>
+</li>
+</ol>
+<pre><code> *Generic procedure to change timezone
+Change directory to /etc
+# cd /etc
+Create a symlink to file localtime:
+# ln -sf /usr/share/zoneinfo/EST localtime
+
+ *Use of environment variable
+You can use TZ environment variable to display date and time according to your timezone:
+$ export TZ=America/Los_Angeles
+$ date</code></pre><ol start="4">
+<li><p>read file<br>  cat  由第一行開始顯示檔案內容<br>  tac  從最後一行開始顯示，可以看出 tac 是 cat 的倒著寫！<br>  nl   顯示的時候，順道輸出行號！<br>  more 一頁一頁的顯示檔案內容<br>  less 與 more 類似，但是比 more 更好的是，他可以往前翻頁！<br>  head 只看頭幾行<br>  tail 只看尾巴幾行<br>  od   以二進位的方式讀取檔案內容！</p>
+</li>
+<li><p>grep<br>  grep -inr DeviceDemodCreate *<br>  grep -inr DeviceDemodCreate *  | grep t12<br>  vi pcb/device_pcb_t12_116A.cpp<br>  grep -inr IspProcFlash *<br>  vi demodulator/device_demodulator_msb123x_extend.cpp<br>  make ui image_all<br>  cat /etc/issue</p>
+<p>  grep “CURRENT HEAP” 2315.log // 在檔案2315.log中搜尋字串CURRENT HEAP<br>  grep ‘&lt;Cached&gt;‘ 2315.log   // 在檔案2315.log中限定搜尋字串Cached</p>
+<p>  ps aux|grep server|grep -v grep | awk ‘{print $2}’|xargs kill -9</p>
+<p>  -r: current目錄下的所有子目錄都會search<br>  -i: 不區分大小寫<br>  -n: 列出line number<br>  rpm -qa | grep faca | while read line ; do echo “$line” ; done</p>
+</li>
+</ol>
+<ol start="6">
+<li><p>line number in vi<br>  To display line numbers along the left side of a window, type any one of the following:</p>
+<pre><code>:set number</code></pre><p>  or</p>
+<pre><code>:set nu</code></pre><p>  To turn off line number again enter the same command:</p>
+<pre><code>:set nu!
+:set nonu</code></pre><p>  If you need number every time you start vi/vim, append following line to your ~/.vimrc file:</p>
+<pre><code>set number</code></pre><p>  set warp! //設定不斷行顯示</p>
+</li>
+<li><p>bashrc<br>  1)把檔案/etc/skel/.bashrc複制到/users/nick.cheng<br>  每次登入時先讓設定好的bashrc生效==&gt;source ~/.bashrc</p>
+<p>  2)直接create file<br>  vi ~/.bashrc</p>
+<h1 id="Source-global-definitions"><a href="#Source-global-definitions" class="headerlink" title="Source global definitions"></a>Source global definitions</h1><p> if [ -f /etc/bashrc ]; then</p>
+<pre><code>. /etc/bashrc</code></pre><p> fi</p>
+<p> #User specific aliases and functions<br> HOME=/home/nick.cheng<br> export PATH=$PATH:/tools/mips-4.3-51/mips-4.3/bin:/tools/cmake/i686/cmake-2.8.0/bin/</p>
+<p> #PS1=’[\033[1m]\u@\h \w$[\033[0m]‘<br> PS1=’[\033[1;33m]\u@\h:[\033[m][\033[01;34m]\W $ [\033[m]‘</p>
+<p>  source ~/.bashrc</p>
+<p> 3)設定~/.bash_profile</p>
+<h1 id="Source-global-definitions-1"><a href="#Source-global-definitions-1" class="headerlink" title="Source global definitions"></a>Source global definitions</h1><p>if [ -f $HOME/.bashrc ]; then</p>
+<pre><code>. $HOME/.bashrc</code></pre><p>fi</p>
+<pre><code>login的時候會自動執行~/.bash_profile</code></pre></li>
+<li><p>tar<br> 壓縮 // 把資料夾 test 壓起來，生成 test.tar<br> tar -cf test.tar test<br> tar -czf test.tar.gz test<br> tar -czf test.tgz test<br> tar -cjf test.tar.bz2 test<br> 解壓縮 // 解壓縮放到test去<br> tar -xf test.tar -C test<br> tar -xzf test.tar.gz -C test<br> tar -xzf test.tgz -C test<br> tar -xjf test.tar.bz2 -C test</p>
+</li>
+<li><p>gdb<br> g++ -g test.cpp -o test // compile</p>
+<ol>
+<li>gdb //進入</li>
+<li>file test //指定除錯file, 1+2 = gdb ./test</li>
+<li>run //執行</li>
+<li>list //列出code, l-&gt;下一段</li>
+<li>break num //設定中斷點在第num行</li>
+<li>info break //檢查目前中斷點設定</li>
+<li>display x //在執行每一行後都顯示x的值</li>
+<li>next //設定完break並執行時, 執行下一行</li>
+</ol>
+</li>
+</ol>
+<pre><code>run (r) -- 開始執行程式
+continue (c) -- 離開中斷點，繼續執行程式
+next (n) -- 單步執行 (step over)
+step (s) -- 進入函式 (step into)
+until (u) -- 離開 while, for等迴圈。 執行到程式碼的行數比目前的大，如果目前是迴圈的最後一行，就會離開迴圈
+finish -- 繼續執行程式直到函式返回
+start --在 main 設置暫時中斷點，並開始執行程式
+advance -- 執行程式直到指定的位置
+run arglist -- 同 run，並指定程式參數
+start arglist -- 同 start，並指定程式參數
+kill (k) --終止程式執行
+quit (q) --離開 GDB</code></pre><p>10.檔案容量<br>    df: 用來察看硬碟空間的指令<br>     du: 用來察看目錄內所有檔案使用掉的空間的情況</p>
+<pre><code>du -sh nick.cheng
+ -a  ：列出所有的檔案與目錄容量，因為預設僅統計目錄底下的檔案量而已。
+-h  ：以人們較易讀的容量格式 (G/M) 顯示；
+-s  ：列出總量而已，而不列出每個各別的目錄佔用容量；
+-S  ：不包括子目錄下的總計，與 -s 有點差別。
+-k  ：以 KBytes 列出容量顯示；
+-m  ：以 MBytes 列出容量顯示；
+
+ df -h
+ ls -l | grep ^d | awk &apos;{print $9}&apos; | xargs du -sh | sort -n</code></pre><p>11.AWK<br>    grep “CURRENT HEAP” 1201.log | awk ‘{print $5}’ &gt; heap.txt<br>    grep ‘&lt;Cached&gt;‘ 1201.log | awk ‘{print $2}’ &gt; cache.txt<br>    grep ‘&lt;MemFree&gt;‘ 1201.log | awk ‘{print $2}’ &gt; Free.txt<br>    grep ‘&lt;before collect objectCount&gt;‘ 1201.log | awk ‘{print $7}’ &gt; JSHeap_free.txt<br>    grep ‘&lt;before collect objectCount&gt;‘ 1201.log | awk ‘{print $6}’ &gt; JSHeap_size.txt<br>    grep ‘&lt;before collect objectCount&gt;‘ 1201.log | awk ‘{print $5}’ &gt; JSHeap_obj_count.txt<br>    grep “Number of Nodes:” 1201.log | awk ‘{print $4}’ &gt; node.txt<br>    cat /proc/meminfo | grep MemFree | awk ‘{print $2}’<br>    cat /proc/meminfo | grep -w ‘MemFree|Cached’ | awk ‘{print $1  $3}’<br>    awk -F”:” ‘{ print $1 “ “ $3 }’ /etc/passwd<br>    cat /proc/meminfo | awk ‘/MemFree/ &amp;&amp; /Cached/‘</p>
+<p>12.include and library<br>    gcc sin.c -lm -L/lib -L/usr/lib  // -L/path<br>     gcc sin.c -lm -I/usr/include     // -I/path</p>
+<p>13.checn gcc version<br>    gcc -v</p>
+<p>14.sync<br>    當資料被讀取到memory後，若檔案有修改，並不會即時將檔案寫回硬碟<br>     執行sync指令，會強制將目前memory中的資料，寫回硬碟</p>
+<p>15.find<br>     find . -iname filename //i: 不分大小寫<br>     find -iname MSrv_Control_common.cpp<br>     find -name MSrv_Control_common.cpp<br>     find . -name <em>.o -exec cp -rf {} ./tmp ; // 將找到的檔案全部copy到tmp下<br>     find . -iname <strong>pycache</strong> -exec rm -rf {} ;<br>     find . -type f -exec dos2unix {} ;<br>     find . -iname “</em>.sh” -print0 | xargs -0 grep libjpeg_old -n</p>
+<p>16.alias<br>    alias ll=”ls -al”</p>
+<p>17.<br>            u(user)       +(加入)     r<br>    chmod   g(group)      -(除去)     w      file or folder<br>            o(others)     =(設定)     x<br>            a(all)<br>     e.g. chmod u+wx -R DAILEO //將DAILEO目錄的user權限加入wx, 並且遞迴(-R)設定DAILEO內所有檔案及資料夾</p>
+<p>18.su<br>    su可以讓目前使用者的shell暫停，轉換成另一個user與group，並重新執行起一個新shell<br>    感覺上就好像暫時變成了另外一個帳號，再執行exit時，就可變回本尊<br>     -l: 模擬一個全新的login，所有的環境變數全部重新設定<br>     -m: 除了變成另一個帳號外，所有的環境都不變，目錄不變，環境變數也不變</p>
+<pre><code>su //預設是切換到root
+su username //切換到username帳號
+sudo su //切換到root</code></pre><p>19.Makefile<br>    := 會將整個 Makefile 展開後，再決定變數的值<br>     ?= 若變數未定義，則替它指定新的值，否則，採用原有的值<br>     += 聯集<br>     @：不要顯示執行的指令<br>     -：表示即使該行指令出錯，也不會中斷執行</p>
+<p>20.fg/bg<br>    fg: 將stopped的程式叫到前景執行<br>     bg: 將stopped的程式叫到背景執行</p>
+<p>21.cut: 將一行訊息當中，取出某部分我們想要的<br>    export | cut -c 12-<br>         將export的輸出-&gt;以行為準切齊，從第12個字元開始印出來<br>    echo $PATH | cut -d ‘:’ -f 5<br>         將輸出以’:’為準做切割，印出第5個element，for example，a:b:c:d:e:f:g ==&gt; 只會印出e</p>
+<p>22.刪除PATH中不要的部份<br>    for example, 要刪掉/usr/local/bin<br>    export PATH=$(echo $PATH | sed ‘s/:/usr/local/bin:/:/g’)</p>
+<p>23.Busybox<br>    檔案系統是Linux不可缺少的一部份，不過在Embedded System上資源有限，不可能建立像PC那麼大的檔案系統，<br>     系統工具程式必須經過精簡化將檔案縮小這樣才可節省Embedded System資源。<br>    現在在Embedded Linux上最常用的檔案系統為 “Busybox”，<br>     “Buzybox”整合的各種系統工具程式(ex: ls, mkdir, rmdir, mount, ifconfig, kill …)成為一個單一執行檔，<br>     大大縮減了系統使用容量。</p>
+<p>24.echo<br>    將字串寫入到指定文件中<br>    echo xxxxxx &gt; filename    // 會把文件內容全部清除，再寫入xxxxxx<br>    echo xxxxxx &gt;&gt; filename  // 會將xxxxxx寫入到原本文件的最末端</p>
+<p>25.bash_history<br>    在~/.bashrc中設定export HISTSIZE=10000<br>    可以更改.bash_history中記錄的指令數量</p>
+<p>26.java -fullversion</p>
+<p>27.patch<br>    patch -pN &lt; patchfile.diff</p>
+<pre><code>for example, a file test.c, origin test.c is stored in old folder and the modified test.c is stored in new folder
+current folder: /home/nick/
+comapre: /home/nick/old  and  /home/nick/new
+==&gt; diff -Naur old new &gt; diff.patch // 比較old and new folder內的所有檔案
+1. 假設現在有一個舊的test.c file存放在/home/nick下, 要把它變得跟/home/nick/new/test.c一樣 ==&gt; patch -p1 &lt; diff.patch
+    // 因為原本是對old/ &amp; new/下的檔案作比較，所以要省略一層目錄
+2. 假設現在有一個新的test.c file存放在/home/nick下, 要把它變得跟/home/nick/old/test.c一樣 ==&gt; patch -R -p1 &lt; patch.diff
+3. 假設現在有一個舊的test.c file存放在/home/nick/old下, 要把它變得跟/home/nick/new/test.c一樣 ==&gt; patch -p0 &lt; diff.patch
+4. 假設現在有一個新的test.c file存放在/home/nick/old下, 要把它變得跟/home/nick/old/test.c一樣 ==&gt; patch -R -p0 &lt; diff.patch</code></pre><p>28.踢登入<br>    pkill -kill -t pts/1</p>
+<ol start="29">
+<li><p>ctags -R *<br> ctags -R * ../umflib/ ../../OceanBlue/sunrise/app/cvt_eu/stb/src/ ../../../DRIVERS/kmf/basesrc_dvbeu/ ../../../DRIVERS/kmf/kmflib/ ../../../KERNEL/linux-2.6.35.9/include/sis516/<br> 會create出一個tags檔, 記錄所有標籤</p>
+</li>
+<li><p>抓log<br> script /home/cht/log.txt<br> 按ctrl+D停止log</p>
+</li>
+<li><p>使用cat將文字輸入到文件中<br> cat &gt; filename<br> 貼上要輸入的文字<br> 按ctrl+D結束</p>
+</li>
+<li><p>EOF =&gt; ctrl+D</p>
+</li>
+<li><p>在SSH中傳訊給其他使用者<br> write sis4990<br> 按ctrl+D結束<br> wall // broadcast<br> 按ctrl+D結束</p>
+</li>
+<li><p>sudo shutdown -P 0 //0分鐘後關機<br>sudo poweroff</p>
+</li>
+<li><p>scp<br> scp -r <a href="mailto:nick@172.17.2.11" target="_blank" rel="noopener">nick@172.17.2.11</a>:./test/* ~/test/  把172.17.2.11上的test目錄下所有檔案都複製到本地端test目錄下<br> scp -r <a href="mailto:nick@172.17.2.11" target="_blank" rel="noopener">nick@172.17.2.11</a>:/home/architecture/SuperNova_CodeBase/tools.tar.gz ~/scp/<br> scp -P 2222 -r docker-compose.yml <a href="mailto:user@172.18.32.226" target="_blank" rel="noopener">user@172.18.32.226</a>:/home/user/</p>
+</li>
+<li><p>查看系統之 process<br> ps 或 ps –x (查看系統中，屬於自己的 process。)<br> ps –au (查看系統中，所有使用者的 process。)<br> ps –aux (查看系統中，包含系統內部，及所有使用者的 process。)<br> ps -elf</p>
+</li>
+<li><p>lsusb // 查看目前系統usb port的情況</p>
+</li>
+</ol>
+<p>38.<br>while true; do cat /proc/meminfo; sleep 1; done<br>while true; do cat /proc/meminfo; sleep 1; echo “===============================”; done<br>while true; do cat /proc/meminfo | grep MemFree; sleep 1; echo “===============================”; done</p>
+<ol start="39">
+<li>載入module<br>  insmod /system/lib/modules/ehci-hcd.ko<br>  insmod /system/lib/modules/usb-storage.ko</li>
+</ol>
+<p>40.screen<br>    screen //執行screen<br>    screen -r //重新回到（resume）screen 裡</p>
+<pre><code>C-a c // 新增一個screen, 並切換到新的screen去
+C-a n // 切換到下一個screen
+C-a p // 切換到上一個screen
+C-a w // 列出目前所有的screen
+C-a a // 切換到上一個顯示過的視窗（不是照順序切換）
+C-a d // 脫離（detach）目前的 screen ，並放到背景執行（不管開了幾個視窗）</code></pre><p>41.sp &amp; vs<br>    1)在命令列下:sp filename, 會將視窗上下切割並開啟filename檔案<br>        2)在命令列下:vs filename, 會將視窗左右切割並開啟filename檔案<br>        C-w w //在兩個視窗中切換<br>        C-w j/k // 在上下兩個視窗中切換<br>        C-w h/l // 在左右兩個視窗中切換</p>
+<ol start="42">
+<li><p>zip<br> unzip xxx.zip<br> unzip xxx.zip -d dest_dir<br> zip -r test.zip * // 把當前目錄下所有東西都包到test.zip中</p>
+</li>
+<li><p>free -m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ free -m</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           1999         119        1592           1         288        1707</span><br><span class="line">Swap:           975          41         934</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ps -eo pid,ppid,cmd,%mem,%cpu –sort=-%mem | head<br>top -b -o +%MEM | head -n 17<br>top -b -o +%CPU | head -n 17<br>top -bn1 | awk ‘/gunicorn/ {print  strftime(“%Y-%m-%d %H:%M:%S”), $9, $10}’</p>
+</li>
+</ol>
+<p>while true; do uptime; top -bn1 | awk ‘/gunicorn/ {print  strftime(“%Y-%m-%d %H:%M:%S”), $9, $10}’; sleep 5; done<br>while true; do uptime | tr -d ‘\n’; top -bn1 | awk ‘/mysqld/ {print  “  “ $9 “  “ $10}’; sleep 5; done<br>while true; do uptime | tr -d ‘\n’; top -bn1 | awk ‘/nucleus/ {printf(“%6s%6s\n”, $9, $10)}’; sleep 5; done<br>while true; do uptime | tr -d ‘\n’; top -bn1 | awk ‘/nucleus/ {printf(“%6s%8s\n”, $9, $6)}’; sleep 5; done</p>
+<ol start="45">
+<li><p>顯示誰已登錄，他們正在做什麼？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ w</span><br><span class="line"> 19:31:52 up 4 days, 10:46,  5 users,  load average: 0.00, 0.01, 0.00</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">user     pts/0    192.168.56.1     Thu16    1:38m  4.67s  2.89s vim /home/user/git/IMFR/WSGIServer.py</span><br><span class="line">user     pts/1    192.168.56.1     Thu17    5:52   2.67s  1.43s docker-compose up</span><br><span class="line">user     pts/2    192.168.56.1     Thu17    0.00s 23.53s  0.00s w</span><br><span class="line">user     pts/3    192.168.56.1     Thu18    8:39m  0.16s  0.16s -bash</span><br><span class="line">user     pts/4    192.168.56.1     Thu18    1:59m  0.84s  0.84s -bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uptime - 告訴系統已經運行了多久？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ uptime </span><br><span class="line"> 19:32:57 up 4 days, 10:47,  5 users,  load average: 0.00, 0.00, 0.00</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看系統中的sh指向</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al `which sh`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>設定時區</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure tzdata</span><br></pre></td></tr></table></figure></li>
+<li><p>top 查特定 process</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">top -p `pgrep -d &quot;,&quot; monitor.sh`</span><br><span class="line">top -p pid</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/67918593/" rel="prev" title="xml_parser">
+      <i class="fa fa-chevron-left"></i> xml_parser
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/fba335b8/" rel="next" title="sed">
+      sed <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-global-definitions"><span class="nav-number">1.</span> <span class="nav-text">Source global definitions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-global-definitions-1"><span class="nav-number">2.</span> <span class="nav-text">Source global definitions</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nick Cheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Cheng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

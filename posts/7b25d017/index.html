@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qcycp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="redis-clienthttps:&#x2F;&#x2F;github.com&#x2F;rgl&#x2F;redis&#x2F;downloads  redis-serversudo apt-get install redis-serversudo apt-get purge –auto-remove redis-server  Instruction    Start&#x2F;Stop Redis server$ sudo service red">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;7b25d017&#x2F;index.html">
+<meta property="og:site_name" content="筆記本">
+<meta property="og:description" content="redis-clienthttps:&#x2F;&#x2F;github.com&#x2F;rgl&#x2F;redis&#x2F;downloads  redis-serversudo apt-get install redis-serversudo apt-get purge –auto-remove redis-server  Instruction    Start&#x2F;Stop Redis server$ sudo service red">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2021-04-12T01:08:24.899Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://qcycp.github.io/posts/7b25d017/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>redis | 筆記本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">筆記本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>連結</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7b25d017/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          redis
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-12-31 17:00:03" itemprop="dateCreated datePublished" datetime="2020-12-31T17:00:03+08:00">2020-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-04-12 09:08:24" itemprop="dateModified" datetime="2021-04-12T09:08:24+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol>
+<li><p>redis-client<br><a href="https://github.com/rgl/redis/downloads" target="_blank" rel="noopener">https://github.com/rgl/redis/downloads</a></p>
+</li>
+<li><p>redis-server<br>sudo apt-get install redis-server<br>sudo apt-get purge –auto-remove redis-server</p>
+</li>
+<li><p>Instruction</p>
+</li>
+</ol>
+<ul>
+<li><p>Start/Stop Redis server<br>$ sudo service redis-server start<br>$ sudo service redis-server restart<br>$ sudo service redis-server stop</p>
+</li>
+<li><p>Open Redis CLI tool<br>$ redis-cli<br>$ redis-cli -h redis15.localnet.org -p 6379 ping</p>
+</li>
+<li><p>Config<br>$ sudo vim /etc/redis/redis.conf<br>port：連結到Redis Server所通過的連接埠。預設為6379，如果有跟其他服務衝突到，應該要修改掉。<br>bind：連結到Redis Server所使用的網路介面。預設為127.0.0.1，也就是內部迴圈(lo)，僅本機可以直接連接。<br>requirepass：連結到此Redis Server所需的密碼。</p>
+<p>修改bind設定<br>$ sudo vim /etc/redis/redis.conf<br>bind 127.0.0.1 =&gt; bind 0.0.0.0</p>
+</li>
+</ul>
+<p><a href="https://blogs.technet.microsoft.com/jessicadeen/uncategorized/how-to-configure-redis-server-on-bash-on-ubuntu-on-windows-10-wsl/" target="_blank" rel="noopener">How to configure Redis-Server on Bash on Ubuntu on Windows 10 (WSL) – Jessica Deen on Technet</a></p>
+<ul>
+<li>Commands<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set test 123</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get test</span><br><span class="line">&quot;123&quot;</span><br><span class="line">127.0.0.1:6379&gt; exists test</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; del test</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://redis.io/topics/rediscli" target="_blank" rel="noopener">https://redis.io/topics/rediscli</a><br><a href="https://www.itread01.com/content/1545205270.html" target="_blank" rel="noopener">https://www.itread01.com/content/1545205270.html</a><br><a href="https://pypi.org/project/redis/" target="_blank" rel="noopener">https://pypi.org/project/redis/</a><br><a href="https://www.jianshu.com/p/2639549bedc8" target="_blank" rel="noopener">https://www.jianshu.com/p/2639549bedc8</a></p>
+<p>redis-cli -p 6379 –stat</p>
+<ul>
+<li>Setup in nodejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const session = require(&apos;express-session&apos;);</span><br><span class="line">const RedisStore = require(&apos;connect-redis&apos;)(session);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    store: new RedisStore(&#123;</span><br><span class="line">        host: &apos;localhost&apos;,</span><br><span class="line">        port: 6379,</span><br><span class="line">        ttl: 30 * 60 // valid in 30 minutes</span><br><span class="line">    &#125;),</span><br><span class="line">    secret: &apos;keyboard cat&apos;,</span><br><span class="line">    resave: false,</span><br><span class="line">    saveUninitialized: false</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    if (req.session.key) &#123;</span><br><span class="line">        res.redirect(&apos;/index&apos;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        res.redirect(&apos;/login&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.post(&apos;/login&apos;,function(req, res)&#123;</span><br><span class="line">    // when user login set the key to redis</span><br><span class="line">    req.session.key = req.body.email;</span><br><span class="line">    res.end(&apos;done&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://github.com/tj/connect-redis" target="_blank" rel="noopener">https://github.com/tj/connect-redis</a><br><a href="https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/" target="_blank" rel="noopener">https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/</a></p>
+<p>SET (Setting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET foo &quot;Hello World&quot;</span><br><span class="line">OK // setting a key</span><br></pre></td></tr></table></figure>
+
+<p>GET (Getting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br></pre></td></tr></table></figure>
+
+<p>DEL (Deleting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo </span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br><span class="line">127.0.0.1:6379&gt; DEL foo</span><br><span class="line">(integer) 1 // key just got deleted</span><br><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">(nil) // since key is deleted therefore, result is nil.</span><br></pre></td></tr></table></figure>
+
+<p>SETEX (Setting a key with an expiry)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SETEX foo 40 &quot;I said, Hello World!&quot;</span><br><span class="line">OK // key has been set with 40 seconds as expiration</span><br></pre></td></tr></table></figure>
+
+<p>TTL (Total Time left for a key that has a timeout)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; TTL foo</span><br><span class="line">(integer) 36 // 36 seconds left to timeout</span><br></pre></td></tr></table></figure>
+
+<p>PERSIST (Removing the timeout from key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PERSIST foo</span><br><span class="line">(integer) 1 // turning the key from volatile to persistent (key won&apos;t expire)</span><br></pre></td></tr></table></figure>
+
+<p>RENAME (Renaming the current existing key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RENAME foo bar</span><br><span class="line">OK // renaming the key &apos;foo&apos; as bar</span><br></pre></td></tr></table></figure>
+
+<p>FLUSHALL (Flushing everything so far saved)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; flushall</span><br><span class="line">OK // just got flushed</span><br></pre></td></tr></table></figure>
+
+<p>dump redis data<br><a href="https://github.com/sripathikrishnan/redis-rdb-tools" target="_blank" rel="noopener">https://github.com/sripathikrishnan/redis-rdb-tools</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">查找所有key</span><br><span class="line">keys *</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 keys &apos;subject_id*&apos; &gt; keys.txt</span><br><span class="line"></span><br><span class="line">dump data to /data/dump.rdb</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 bgsave</span><br><span class="line"></span><br><span class="line">要先把dump.rdb從redis container中複製出來</span><br><span class="line">pip install rdbtools python-lzf</span><br><span class="line"></span><br><span class="line">Memory Report</span><br><span class="line">rdb -c memory dump.rdb &gt; memory.csv</span><br><span class="line"></span><br><span class="line">data</span><br><span class="line">rdb --command json dump.rdb &gt; data.txt</span><br><span class="line">rdb --command justkeyvals --key &quot;user.*&quot; dump.rdb &gt; data.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>設定、查詢 live time<br>redis&gt; keys *<br>1) key1<br>2) key2<br>redis&gt; EXPIRE key1 10086<br>(integer) 1<br>redis&gt; TTL key1<br>(integer) 10084</li>
+</ul>
+<p><a href="https://tachingchen.com/tw/blog/redis-data-persistence/" target="_blank" rel="noopener">https://tachingchen.com/tw/blog/redis-data-persistence/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;yes&quot;</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET stop-writes-on-bgsave-error no</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;no&quot;</span><br></pre></td></tr></table></figure>
+
+<p>app.pool = redis.ConnectionPool(host=app.config[‘REDIS_HOST’] , port=app.config[‘REDIS_PORT’] , decode_responses=True)<br>app.gredis = redis.Redis(connection_pool=app.pool)<br>app.gredis.config_set(“stop-writes-on-bgsave-error”, “no”)</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Redis/" rel="tag"># Redis</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/2de1df7e/" rel="prev" title="crontab">
+      <i class="fa fa-chevron-left"></i> crontab
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/41da0a7b/" rel="next" title="openshift">
+      openshift <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nick Cheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Cheng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

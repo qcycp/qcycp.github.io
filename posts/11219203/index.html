@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qcycp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;doc.dpdk.org&#x2F;dts&#x2F;test_plans&#x2F;vf_macfilter_test_plan.html https:&#x2F;&#x2F;blog.csdn.net&#x2F;HiWangWenBing&#x2F;article&#x2F;details&#x2F;106878102https:&#x2F;&#x2F;blog.csdn.net&#x2F;HiWangWenBing&#x2F;category_10056821.htmlhttps:&#x2F;&#x2F;blog.csdn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5g_document">
+<meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;11219203&#x2F;index.html">
+<meta property="og:site_name" content="筆記本">
+<meta property="og:description" content="https:&#x2F;&#x2F;doc.dpdk.org&#x2F;dts&#x2F;test_plans&#x2F;vf_macfilter_test_plan.html https:&#x2F;&#x2F;blog.csdn.net&#x2F;HiWangWenBing&#x2F;article&#x2F;details&#x2F;106878102https:&#x2F;&#x2F;blog.csdn.net&#x2F;HiWangWenBing&#x2F;category_10056821.htmlhttps:&#x2F;&#x2F;blog.csdn">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2021-02-05T15:55:19.821Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://qcycp.github.io/posts/11219203/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>5g_document | 筆記本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">筆記本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>連結</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/11219203/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5g_document
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-04 16:22:49" itemprop="dateCreated datePublished" datetime="2021-01-04T16:22:49+08:00">2021-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-05 23:55:19" itemprop="dateModified" datetime="2021-02-05T23:55:19+08:00">2021-02-05</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://doc.dpdk.org/dts/test_plans/vf_macfilter_test_plan.html" target="_blank" rel="noopener">https://doc.dpdk.org/dts/test_plans/vf_macfilter_test_plan.html</a></p>
+<p><a href="https://blog.csdn.net/HiWangWenBing/article/details/106878102" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106878102</a><br><a href="https://blog.csdn.net/HiWangWenBing/category_10056821.html" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/category_10056821.html</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106872841" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106872841</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106877671" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106877671</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106875790" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106875790</a><br><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D</a><br><a href="https://tel3c.tw/blog/post/28669" target="_blank" rel="noopener">https://tel3c.tw/blog/post/28669</a><br><a href="https://zhuanlan.zhihu.com/p/59654520" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/59654520</a><br><a href="https://www.linkedin.com/pulse/3gpp-5g-adhoc-any-decisions-ran-internal-functional-split-eiko-seidel" target="_blank" rel="noopener">https://www.linkedin.com/pulse/3gpp-5g-adhoc-any-decisions-ran-internal-functional-split-eiko-seidel</a></p>
+<p>DTU (Data Terminal Unit)<br>採用 5G/4G 無線、有線網絡，將本地串口數據經 DTU 打包成 IP 數據或者是將 IP 數據轉換成串口數據的無線通訊終端，進行遠程傳輸的設備<br>可以充當UE測試Throughput</p>
+<p>PA (Power Amplifier)<br>功率放大器</p>
+<p>SFP (Small From Pluggable)<br>SFP的最高速率可達4G，SFP+的速率是10G</p>
+<p>PDU (Packet Data Unit)<br>5G網絡以數據包的形式將終端（UE）和外部網絡之間發送和接收的數據進行傳送，通常把這些用戶的數據包叫做PDU<br>PDU session 建立過程是由UE側發起的，目的是在UE和DN之間建立一條新的連線，即終端和外部網絡之間的數據通道</p>
+<p>MCS</p>
+<p>EVM (Error Vector Magnitude)<br>經由 PF 打出來的訊號，跟理想訊號的誤差值</p>
+<p>PLMN (Public Land Mobile Network)<br>PLMN = MCC + MNC<br>MCC: 移動國家碼<br>MNC: 行動網路碼</p>
+<p><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D</a><br>在通訊網路中, 無線接取部份分成4個子層 PDCP, RLC, MAC, PHY</p>
+<p>資料在各個子層中進行相對應的封裝，子層從上層收到的資料視為此子層的服務資料單元(Service Data Unit, SDU)，經過子層封裝後成為協定資料單元(Protocol Data Unit, PDU)，再傳遞給下一個子層</p>
+<p>PDCP (Packet Data Convergence Protocol)<br>負責的主要功能有資料封包的標頭(Header)壓縮與解壓縮、資料加密/解密、資料完整性的保護<br>PDCP 的 PDU 格式分成兩種，分別是攜帶資料和序號(Sequence Number, SN)的PDCP Data PDU和攜帶PDCP狀態報告(Status Report)或標頭壓縮控制(Header Compression Control)資訊的PDCP控制PDU</p>
+<p>在LTE通訊協定的設計中，每個無線承載都由一個PDCP實體(Entity)來負責管理，而根據無線承載的不同特性(單向或雙向)，以及RLC是以承認模式(AM)或非承認模式(UM)來傳輸資料，一個PDCP實體可能會對應到一或兩個RLC實體。</p>
+<p>無線承載還可分為專用無線承載(Dedicated Radio Bearer, DRB)和信令無線承載(Signaling Radio Bearer, SRB)兩種，PDCP實體提供無線承載的功能雖然均包含使用者面(User Plane)與控制面(Control Plane)資料傳送、PDCP序號維護、資料加解密、剔除過時資料封包和確保上層資料封包於重建時的順序正確和不重複，但標頭壓縮/解壓縮功能只適用於DRB，資料完整性保護亦僅適用於SRB。  </p>
+<p>RLC (Radio Link Control)<br>該子層主要的功能為對資料SDU進行切割及組合，使之成為適當大小的 PDU 送給 MAC 層。<br>RLC子層負責的另一項重要工作則是在封包遺失時進行自動重傳請求(Automatic Repeat Request, ARQ)</p>
+<p>RLC子層的操作模式可分為三類，分別為透明模式(TM)、非承認模式及承認模式。<br>透明模式為直接穿透模式，資料不須在RLC層進行重新封裝的工作，SDU即為PDU<br>而在承認和非承認模式下，RLC子層均須將所收到的SDU進行切割和重組，以組成MAC子層所要求的PDU。承認和非承認模式之間的主要差別，便是由是否支援ARQ功能進行區分。承認模式須支援ARQ功能，而非承認模式則不支援ARQ功能。在承認模式下，MAC必須在接收端對於PDU接收的結果進行回報，回報結果為接收成功(ACK)或接收失敗(NACK)，當結果為NACK時，RLC的傳送端必須進行重傳。</p>
+<p>ARQ機制旨在克服PDU遺失的問題。在傳送端會將組成的PDU暫存在緩衝區內，用以進行PDU的重傳。在重傳時，若是傳輸空間大小不足以容納須要重傳的PDU時，可以針對已經組成的PDU再次進行切割(Re-segment)，以組成PDU進行傳送。在接收端亦會對收到的PDU進行暫存動作，嘗試將收到的PDU解封裝成為SDU並且維持SDU的先後順序傳送給上層。  </p>
+<p>MAC (Media Access Control) 負責資料的重傳 (HARQ)<br>MAC子層將接手執行排程(Scheduling)、多工(Multiplexing)等任務，以組成MAC子層PDU<br>在MAC子層端，為防止RLC提供的PDU遺失，具備混合式自動回覆請求重傳(HARQ)等功能</p>
+<p>多工的目標，在於將多個不同邏輯通道的資料組合在同一個傳輸通道中傳送，在MAC子層中會將一或多個邏輯通道得到的SDU封裝在同一個 MAC PDU中，然後在傳輸通道中進行傳送。相反的接收時亦會對MAC PDU進行解多工 (De-multiplexing)的動作，將在同一個傳輸通道中的PDU拆解為一至多個邏輯通道SDU，即在接收端將SDU對應到原屬的邏輯通道</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/41da0a7b/" rel="prev" title="openshift">
+      <i class="fa fa-chevron-left"></i> openshift
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/b0e67c8c/" rel="next" title="ptp">
+      ptp <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nick Cheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Cheng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

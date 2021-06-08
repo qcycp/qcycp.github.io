@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"qcycp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="config配置12345678910:set nu &amp;quot; 顯示行數:set nonu &amp;quot; 不顯示行數:set wrap &amp;quot; 自動斷行:set nowrap &amp;quot; 不自動斷行:set hlsearch &amp;quot; highlight搜尋字串:set ic &amp;quot; 搜尋字串不分大小寫:set noic &amp;quot; 搜尋字串區分大小寫 用 user 打開了">
+<meta name="keywords" content="vim,Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vim常用指令">
+<meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;d436f53&#x2F;index.html">
+<meta property="og:site_name" content="筆記本">
+<meta property="og:description" content="config配置12345678910:set nu &amp;quot; 顯示行數:set nonu &amp;quot; 不顯示行數:set wrap &amp;quot; 自動斷行:set nowrap &amp;quot; 不自動斷行:set hlsearch &amp;quot; highlight搜尋字串:set ic &amp;quot; 搜尋字串不分大小寫:set noic &amp;quot; 搜尋字串區分大小寫 用 user 打開了">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2021-02-05T15:55:14.453Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://qcycp.github.io/posts/d436f53/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-tw'
+  };
+</script>
+
+  <title>vim常用指令 | 筆記本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">筆記本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>連結</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d436f53/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vim常用指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-11-11 14:25:30" itemprop="dateCreated datePublished" datetime="2019-11-11T14:25:30+08:00">2019-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-02-05 23:55:14" itemprop="dateModified" datetime="2021-02-05T23:55:14+08:00">2021-02-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/vim/" itemprop="url" rel="index"><span itemprop="name">vim</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="config配置"><a href="#config配置" class="headerlink" title="config配置"></a>config配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:set nu &quot; 顯示行數</span><br><span class="line">:set nonu &quot; 不顯示行數</span><br><span class="line"></span><br><span class="line">:set wrap &quot; 自動斷行</span><br><span class="line">:set nowrap &quot; 不自動斷行</span><br><span class="line"></span><br><span class="line">:set hlsearch &quot; highlight搜尋字串</span><br><span class="line"></span><br><span class="line">:set ic &quot; 搜尋字串不分大小寫</span><br><span class="line">:set noic &quot; 搜尋字串區分大小寫</span><br></pre></td></tr></table></figure>
+<h1 id="用-user-打開了-root-權限的檔案，編輯之後無法儲存"><a href="#用-user-打開了-root-權限的檔案，編輯之後無法儲存" class="headerlink" title="用 user 打開了 root 權限的檔案，編輯之後無法儲存"></a>用 user 打開了 root 權限的檔案，編輯之後無法儲存</h1><p>用以下指令，即可儲存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w !sudo tee %</span><br></pre></td></tr></table></figure>
+<h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><ul>
+<li>切換到編輯模式<br><code>i</code></li>
+<li>往下插入一列，並切換到編輯模式<br><code>o</code></li>
+<li>undo<br><code>u</code></li>
+<li>redo<br><code>ctrl+r</code></li>
+<li>跳轉到相配對的括號<br><code>%</code></li>
+<li>跳到第一列<br><code>gg</code></li>
+<li>跳到最後一列<br><code>G (shift+g)</code></li>
+<li>跳到指令列<br><code>列號 + G (shift+g)</code></li>
+<li>跳轉到局部變量的宣告處<br><code>gD</code></li>
+<li>搜尋字串<br><code>/search_string</code><ul>
+<li>向上搜尋<br><code>N (shift+n)</code></li>
+<li>向下搜尋<br><code>n</code></li>
+</ul>
+</li>
+<li>批次取代字串<ul>
+<li>將所有 “search_from” 的字串替換成 “replace_to”<br><code>:%s/search_from/replace_to/g</code></li>
+<li>忽略大小寫差異<br><code>:%s/search_from/replace_to/gi</code></li>
+<li>只取代指定行數範圍的字串<br><code>:50,100s/search_from/replace_to/g</code></li>
+</ul>
+</li>
+<li>將游標停留在欲搜尋的字串上，向下搜尋該字串<br><code>*</code></li>
+<li>游標不動、往上移動內容<br><code>ctrl+e</code></li>
+<li>游標不動、往下移動內容<br><code>ctrl+y</code></li>
+<li>選取、複製、貼上<ul>
+<li>複製一整列<br><code>ff</code></li>
+<li>剪下一整列<br><code>dd</code></li>
+<li>貼上<br><code>p</code></li>
+<li>整列選取<br><code>V (shift+v)</code></li>
+<li>區塊選取<br><code>v</code></li>
+<li>方形區塊選取<br><code>ctrl+v</code></li>
+<li>複製選取<br><code>y</code></li>
+<li>刪除選取<br><code>d</code></li>
+<li>多列刪除<ul>
+<li>先 <code>V</code> 切換到整行選取模式</li>
+<li>上下選擇</li>
+<li>選取完後，按下 <code>d</code> 即可刪除所選</li>
+</ul>
+</li>
+<li>區塊刪除<ul>
+<li>先 <code>v</code> 或 <code>ctrl+v</code> 切換到想要的選取模式</li>
+<li>上下選擇</li>
+<li>選取完後，按下 <code>d</code> 即可刪除所選</li>
+</ul>
+</li>
+<li>插入多行一樣的文字，例如要將整個function區塊，往右縮排(即插入4個空白)<ul>
+<li><code>ctrl+v</code> 切換到方形區塊選取模式</li>
+<li>往下選取整個function的第一行</li>
+<li><code>shift+i</code>，此時游標會跳到所選區塊的第一列</li>
+<li>輸入欲插入的文字 (4個空白)</li>
+<li>輸入完畢後，<code>Esc</code> 結束編輯模式</li>
+<li>跳出後，其餘的地方均會自動補上跟第一列相同的操作(4個空白)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>開啟檔案瀏覽器<br><code>:Ex</code></li>
+<li>新增水平分割視窗<br><code>:new</code></li>
+<li>新增垂直分割視窗<br><code>:vnew</code></li>
+<li>切換視窗<br><code>ctrl+w -&gt; 方向鍵</code></li>
+<li>儲存退出<br><code>:wq</code></li>
+<li>退出不儲存<br><code>:q!</code></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/4b76f376/" rel="prev" title="批次更改檔案副檔名">
+      <i class="fa fa-chevron-left"></i> 批次更改檔案副檔名
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/39e057a1/" rel="next" title="jsonify v.s. json.dumps">
+      jsonify v.s. json.dumps <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#config配置"><span class="nav-number">1.</span> <span class="nav-text">config配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用-user-打開了-root-權限的檔案，編輯之後無法儲存"><span class="nav-number">2.</span> <span class="nav-text">用 user 打開了 root 權限的檔案，編輯之後無法儲存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用指令"><span class="nav-number">3.</span> <span class="nav-text">常用指令</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Nick Cheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Cheng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
