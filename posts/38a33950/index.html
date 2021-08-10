@@ -30,7 +30,10 @@
 <meta property="og:description" content="修改提示符Edit cmder&#x2F;vendor&#x2F;clink.lua，將λ改成$即可  1242     local cmder_prompt = &quot;\x1b[1;32;40m&amp;#123;cwd&amp;#125; &amp;#123;git&amp;#125;&amp;#123;hg&amp;#125;&amp;#123;svn&amp;#125; \n\x1b[1;39;40m&amp;#123;lamb&amp;#125; \x1b[0m&quot;43     local">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;38a33950&#x2F;cmder.png">
-<meta property="og:updated_time" content="2020-06-22T01:20:20.227Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;38a33950&#x2F;image01.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;38a33950&#x2F;image02.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;38a33950&#x2F;image03.png">
+<meta property="og:updated_time" content="2021-06-08T13:00:28.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;38a33950&#x2F;cmder.png">
 
@@ -220,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+                <time title="修改時間：2021-06-08 21:00:28" itemprop="dateModified" datetime="2021-06-08T21:00:28+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,8 +256,20 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">42     <span class="built_in">local</span> cmder_prompt = <span class="string">"\x1b[1;32;40m&#123;cwd&#125; &#123;git&#125;&#123;hg&#125;&#123;svn&#125; \n\x1b[1;39;40m&#123;lamb&#125; \x1b[0m"</span></span><br><span class="line">43     <span class="built_in">local</span> lambda = <span class="string">"λ"</span></span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>設定預設路徑<br>Settings =&gt; Startup =&gt; Tasks =&gt; {cmd::Cmder}<br><code>cmd /k &quot;&quot;%ConEmuDir%\..\init.bat&quot; &quot; -new_console:d:D:\GoogleDrive</code><br><img src="/posts/38a33950/cmder.png" alt></li>
+<li><p>設定預設路徑<br>Settings =&gt; Startup =&gt; Tasks =&gt; {cmd::Cmder}<br><code>cmd /k &quot;&quot;%ConEmuDir%\..\init.bat&quot; &quot; -new_console:d:D:\GoogleDrive</code><br><img src="/posts/38a33950/cmder.png" alt></p>
+</li>
+<li><p>使用 cmder 操作 SSH<br>ssh <a href="mailto:user@192.168.56.101" target="_blank" rel="noopener">user@192.168.56.101</a><br>scp <a href="mailto:user@192.168.56.101" target="_blank" rel="noopener">user@192.168.56.101</a>:/home/user/file .</p>
+</li>
+<li><p>設定快速連接 SSH</p>
+</li>
 </ul>
+<ol>
+<li>新增 Task<br><img src="/posts/38a33950/image01.png" alt></li>
+<li>設定ssh類別<br>a. <code>ssh::root@192.168.56.101</code><br>b. <code>/icon &quot;%CMDER_ROOT%\icons\cmder.ico&quot;</code><br>c. <code>cmd /c &quot;%ConEmuDir%\..\git-for-windows\usr\bin\ssh root@192.168.56.101 -new_console:d:%USERPROFILE% &quot;-new_console:t:192.168.56.101&quot;</code></li>
+<li>設定 host 位址</li>
+<li>設定 連線資訊<br><img src="/posts/38a33950/image02.png" alt></li>
+<li>連線<br><img src="/posts/38a33950/image03.png" alt></li>
+</ol>
 
     </div>
 
@@ -350,20 +365,20 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">146</span>
+          <span class="site-state-item-count">153</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
