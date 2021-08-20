@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="安裝hexo，並且使用git追蹤所有資料 Pre-required  Node.js git   安裝hexo 12$ npm install hexo-cli -g (預設裝的hexo是4.0.0)$ npm install hexo@5.0.0 建立github repositoryqcycp.github.io  建立branchmaster: hexo生成的網頁資料hexo (set de">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2021-06-08T05:50:34.967Z">
+<meta property="og:updated_time" content="2021-08-20T06:19:17.803Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/ab21860c/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:50:34" itemprop="dateModified" datetime="2021-06-08T13:50:34+08:00">2021-06-08</time>
+                <time title="修改時間：2021-08-20 14:19:17" itemprop="dateModified" datetime="2021-08-20T14:19:17+08:00">2021-08-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,7 +301,9 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
 </ul>
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
 <li>新建文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new article_name</span><br><span class="line">$ cd source/_post</span><br><span class="line">$ edit article_name.md</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></li>
-<li>local server<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></li>
+<li>草稿<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft article_name</span><br><span class="line">$ cd source/_drafts</span><br><span class="line">$ edit article_name.md</span><br><span class="line">$ hexo publish article_name.md</span><br></pre></td></tr></table></figure>
+可以手動將文章</li>
+<li>local server<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line"></span><br><span class="line">$ hexp server --draft // 可以顯示草稿文章</span><br></pre></td></tr></table></figure></li>
 <li>刪除文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd source/_post</span><br><span class="line">$ rm target_file</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
 
 </li>
