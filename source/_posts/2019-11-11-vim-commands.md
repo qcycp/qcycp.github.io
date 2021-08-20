@@ -19,6 +19,19 @@ tags:
 
 :set ic " 搜尋字串不分大小寫
 :set noic " 搜尋字串區分大小寫
+
+set cursorline
+set nowrap
+set laststatus=2
+set statusline=%4*%<\%m%<[%f\%r%h%w]%=%l,%v\ \ \ \ \ \ \ \ %p%%
+```
+# monokai
+https://github.com/sickill/vim-monokai
+1. Put monokai.vim file in ~/.vim/colors/
+2. edit .vimrc
+```
+syntax enable
+colorscheme monokai
 ```
 # 用 user 打開了 root 權限的檔案，編輯之後無法儲存
 用以下指令，即可儲存

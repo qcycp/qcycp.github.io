@@ -106,8 +106,10 @@ lsb_release -a
      -r: current目錄下的所有子目錄都會search
      -i: 不區分大小寫
      -n: 列出line number
+     -w: 精準單詞比對
      rpm -qa | grep faca | while read line ; do echo "$line" ; done
 
+     grep -rin "test$" * // 搜尋以 test 為句尾的
 
 6. line number in vi
      To display line numbers along the left side of a window, type any one of the following:
