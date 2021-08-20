@@ -208,7 +208,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-08-10 11:48:17 / 修改時間：11:57:38" itemprop="dateCreated datePublished" datetime="2021-08-10T11:48:17+08:00">2021-08-10</time>
+              <time title="創建時間：2021-08-10 11:48:17 / 修改時間：14:37:37" itemprop="dateCreated datePublished" datetime="2021-08-10T11:48:17+08:00">2021-08-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +231,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>netstat -anSlp</p>
+<p>ip a<br>ip link show<br>ip route add 192.168.99.0/24 via 192.168.82.100</p>
+<p>vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>ifdown /etc/sysconfig/network-scripts/ifcfg-eth0<br>ifup /etc/sysconfig/network-scripts/ifcfg-eth0</p>
+<p>tcpdump -i any -w gNB.pcap<br>tcpdump -i any -w gNB.pcap -s0 sctp</p>
+<p>rpm -qa | grep faca | while read line ; do rpm -e “$line” ; done<br>while true; do date; sleep 1; done</p>
+<p>find /sys/devices/system/node -name “*_hugepages” | xargs -I {} bash -c “echo {} $(cat {})” bash<br>ls -lh /dev/hugepages/</p>
+<p>crontab -r # clear all cron jobs<br>crontab -l # list all cron jobs</p>
+<p>systemctl start ptp4l.service<br>systemctl is-active ptp4l.service<br>systemctl is-enabled ptp4l.service<br>systemctl –all –type service<br>systemctl list-units –type service –state running<br>systemctl list-unit-files<br>journalctl -x -u ptp4l.service</p>
+<p>ptp4l -i enp134s0f0 -m -s -f ptp4l-multicast.conf<br>phc2sys -s enp134s0f0 -w -m -n 24</p>
+<p>ptp4l -i enp134s0f0 -m -s -f ptp4l-unicast.conf<br>phc2sys -s enp134s0f0 -w -m -n 44</p>
+
       
     </div>
 

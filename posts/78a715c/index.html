@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="ubuntu版本lsb_release -a  pwd &#x2F;&#x2F; 看目前所在目錄的路徑  mount  mount -t smbfs -o username=”nick.cheng”,password=”123456” &#x2F;&#x2F;172.16.66.24&#x2F;public &#x2F;mnt&#x2F;sda1  umount &#x2F;mnt&#x2F;nick   mount -t smbfs -o -I 172.16.66.24 -N ‘&#x2F;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2021-06-08T05:59:26.484Z">
+<meta property="og:updated_time" content="2021-08-13T10:11:46.967Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/78a715c/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+                <time title="修改時間：2021-08-13 18:11:46" itemprop="dateModified" datetime="2021-08-13T18:11:46+08:00">2021-08-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,10 +280,9 @@ $ date</code></pre><ol start="4">
 <li><p>grep<br>  grep -inr DeviceDemodCreate *<br>  grep -inr DeviceDemodCreate *  | grep t12<br>  vi pcb/device_pcb_t12_116A.cpp<br>  grep -inr IspProcFlash *<br>  vi demodulator/device_demodulator_msb123x_extend.cpp<br>  make ui image_all<br>  cat /etc/issue</p>
 <p>  grep “CURRENT HEAP” 2315.log // 在檔案2315.log中搜尋字串CURRENT HEAP<br>  grep ‘&lt;Cached&gt;‘ 2315.log   // 在檔案2315.log中限定搜尋字串Cached</p>
 <p>  ps aux|grep server|grep -v grep | awk ‘{print $2}’|xargs kill -9</p>
-<p>  -r: current目錄下的所有子目錄都會search<br>  -i: 不區分大小寫<br>  -n: 列出line number<br>  rpm -qa | grep faca | while read line ; do echo “$line” ; done</p>
+<p>  -r: current目錄下的所有子目錄都會search<br>  -i: 不區分大小寫<br>  -n: 列出line number<br>  -w: 精準單詞比對<br>  rpm -qa | grep faca | while read line ; do echo “$line” ; done</p>
+<p>  grep -rin “test$” * // 搜尋以 test 為句尾的</p>
 </li>
-</ol>
-<ol start="6">
 <li><p>line number in vi<br>  To display line numbers along the left side of a window, type any one of the following:</p>
 <pre><code>:set number</code></pre><p>  or</p>
 <pre><code>:set nu</code></pre><p>  To turn off line number again enter the same command:</p>
