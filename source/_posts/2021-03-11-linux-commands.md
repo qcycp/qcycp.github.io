@@ -110,6 +110,8 @@ lsb_release -a
      rpm -qa | grep faca | while read line ; do echo "$line" ; done
 
      grep -rin "test$" * // 搜尋以 test 為句尾的
+     grep -v 'grep' 去除搜尋結果中有 'grep' 字眼的
+     因為下了 grep 指令，process中除了會有 'xxx'，還會有一個 'grep xxx'
 
 6. line number in vi
      To display line numbers along the left side of a window, type any one of the following:

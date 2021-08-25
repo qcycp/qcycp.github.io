@@ -50,3 +50,11 @@ plt.show() # show the image
 1. `OverflowError: Exceeded cell block limit (set 'agg.path.chunksize' rcparam)`
 當要處理的數據太多，必須手動設定 chunksize
 `plt.rcParams['agg.path.chunksize'] = 100000`
+
+2. 在大量使用 plt.plot and plt.savefig 時，會遇到以下 error
+`Fail to allocate bitmap`
+即使有執行 plt.close() 也無效，且固定產生 369 張圖後，會 failed
+```
+import matplotlib
+matplotlib.use("Agg")
+```
