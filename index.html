@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/da9ed956/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a7a9482c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/da9ed956/" class="post-title-link" itemprop="url">Commonly Used Commands in Linux</a>
+            <a href="/posts/a7a9482c/" class="post-title-link" itemprop="url">python socket server</a>
         </h2>
 
         <div class="post-meta">
@@ -208,16 +208,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-08-10 11:48:17 / 修改時間：14:37:37" itemprop="dateCreated datePublished" datetime="2021-08-10T11:48:17+08:00">2021-08-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
+              <time title="創建時間：2021-08-25 18:12:47 / 修改時間：18:13:17" itemprop="dateCreated datePublished" datetime="2021-08-25T18:12:47+08:00">2021-08-25</time>
             </span>
 
           
@@ -231,16 +222,145 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>netstat -anSlp</p>
-<p>ip a<br>ip link show<br>ip route add 192.168.99.0/24 via 192.168.82.100</p>
-<p>vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>ifdown /etc/sysconfig/network-scripts/ifcfg-eth0<br>ifup /etc/sysconfig/network-scripts/ifcfg-eth0</p>
-<p>tcpdump -i any -w gNB.pcap<br>tcpdump -i any -w gNB.pcap -s0 sctp</p>
-<p>rpm -qa | grep faca | while read line ; do rpm -e “$line” ; done<br>while true; do date; sleep 1; done</p>
-<p>find /sys/devices/system/node -name “*_hugepages” | xargs -I {} bash -c “echo {} $(cat {})” bash<br>ls -lh /dev/hugepages/</p>
-<p>crontab -r # clear all cron jobs<br>crontab -l # list all cron jobs</p>
-<p>systemctl start ptp4l.service<br>systemctl is-active ptp4l.service<br>systemctl is-enabled ptp4l.service<br>systemctl –all –type service<br>systemctl list-units –type service –state running<br>systemctl list-unit-files<br>journalctl -x -u ptp4l.service</p>
-<p>ptp4l -i enp134s0f0 -m -s -f ptp4l-multicast.conf<br>phc2sys -s enp134s0f0 -w -m -n 24</p>
-<p>ptp4l -i enp134s0f0 -m -s -f ptp4l-unicast.conf<br>phc2sys -s enp134s0f0 -w -m -n 44</p>
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">serv.bind((<span class="string">'0.0.0.0'</span>, <span class="number">9527</span>))</span><br><span class="line">serv.listen()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn, addr = serv.accept()</span><br><span class="line">    print(<span class="string">'Client from'</span>, addr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = conn.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data: <span class="keyword">break</span></span><br><span class="line">        conn.send(data)</span><br><span class="line"></span><br><span class="line">    conn.close()</span><br><span class="line">    print(<span class="string">'Client disconnected'</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b080c008/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b080c008/" class="post-title-link" itemprop="url">split pcap</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-20 16:57:43 / 修改時間：16:59:18" itemprop="dateCreated datePublished" datetime="2021-08-20T16:57:43+08:00">2021-08-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>使用 wireshark 提供的程式<br>editcap.exe -c frame_size old_file new_files</p>
+</li>
+<li><p>使用 tcpdump<br>tcpdump -r old_file -w new_files -c frame_size</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4ccc247a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4ccc247a/" class="post-title-link" itemprop="url">vf mirror</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-20 14:58:46 / 修改時間：16:39:40" itemprop="dateCreated datePublished" datetime="2021-08-20T14:58:46+08:00">2021-08-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包"><a href="#使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包" class="headerlink" title="使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包"></a>使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包</h4><p>假設網卡 interface 為 enp97s0f0</p>
+<ol>
+<li>先建立 3 個 vf for enp97s0f0<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> 3 &gt; /sys/class/net/enp97s0f0/device/sriov_numvfs</span></span><br></pre></td></tr></table></figure></li>
+<li>bind dpdk driver<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.0</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py --status-dev net</span></span><br><span class="line"></span><br><span class="line">Network devices using DPDK-compatible driver</span><br><span class="line">============================================</span><br><span class="line">0000:61:02.0 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br><span class="line">0000:61:02.1 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br></pre></td></tr></table></figure></li>
+<li>設定 vlan/mac for vf 0, 1 used for CU-plane (vf 0 for uplane and vf 1 for cplane)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 vlan 2</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 vlan 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link show enp97s0f0</span></span><br><span class="line">1: enp97s0f0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 28:c1:3c:95:6f:9c brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    vf 0 MAC 00:11:22:33:44:66, vlan 2, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 1 MAC 00:11:22:33:44:66, vlan 1, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 2 MAC 00:00:00:00:00:00, spoof checking on, link-state auto, trust off</span><br></pre></td></tr></table></figure></li>
+<li>建立 vlan_mirror<ul>
+<li>add 1, 2 是 vf 0/1 設定的 vlan id</li>
+<li>sriov/2 是指 vf 2</li>
+<li>enp97s2f2 是 vf 2 的 interface (可以用 ifconfig 查詢)</li>
+<li>vf 2 的 mtu size 必須要設大，否則無法側錄到 uplane<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo add 1,2 &gt; /sys/class/net/enp97s0f0/device/sriov/2/vlan_mirror</span><br><span class="line">$ ifconfig enp97s2f2 mtu 9000</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>錄製封包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump -i enp97s2f2 -w ecpri.pcap</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>Reference<br><a href="https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html" target="_blank" rel="noopener">https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html</a></li>
+</ul>
 
       
     </div>
@@ -624,7 +744,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:49" itemprop="dateModified" datetime="2021-08-10T12:00:49+08:00">2021-08-10</time>
+                <time title="修改時間：2021-08-24 14:40:03" itemprop="dateModified" datetime="2021-08-24T14:40:03+08:00">2021-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -672,7 +792,10 @@
 </li>
 </ul>
 <ol>
-<li><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></li>
+<li><p><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></p>
+</li>
+<li><p>在大量使用 plt.plot and plt.savefig 時，會遇到以下 error<br><code>Fail to allocate bitmap</code><br>即使有執行 plt.close() 也無效，且固定產生 369 張圖後，會 failed</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&quot;Agg&quot;)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -838,186 +961,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/6543690e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/6543690e/" class="post-title-link" itemprop="url">Prompt</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-04-12 11:22:23" itemprop="dateCreated datePublished" datetime="2021-04-12T11:22:23+08:00">2021-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:52:14" itemprop="dateModified" datetime="2021-06-08T13:52:14+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html" target="_blank" rel="noopener">https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html</a></p>
-<ul>
-<li>預設 Prompt<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo $PS1</span><br><span class="line">[\u@\h \W]\$</span><br></pre></td></tr></table></figure></li>
-<li>format<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\d：當前日期，以「週 月 日」的格式顯示</span><br><span class="line">\D&#123;format&#125;：當前日期，可指定格式，例如 「\D&#123;%Y-%m-%d&#125;」</span><br><span class="line">\t：當前時間，以 24 小時時制顯示</span><br><span class="line">\u：使用者名稱</span><br><span class="line">\W：當前資料夾名稱</span><br><span class="line">\w：當前路徑</span><br><span class="line">\h：主機名稱 (Host Name)&#125;</span><br></pre></td></tr></table></figure></li>
-<li>用指令取得動態資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export PS1=&quot;\$(date +%d.%m.%Y) [\u@\h \W]# &quot;</span><br></pre></td></tr></table></figure></li>
-<li>顏色標記<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ export PS1=&quot;[\e[0;31m\u\e[m@\h \W]# &quot;</span><br><span class="line">$ export PS1=&quot;[\[\e[0;31m\]\u\[\e[m\]@\h \W]# &quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fba335b8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/fba335b8/" class="post-title-link" itemprop="url">sed</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-03-23 16:04:59" itemprop="dateCreated datePublished" datetime="2021-03-23T16:04:59+08:00">2021-03-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-04-12 13:56:17" itemprop="dateModified" datetime="2021-04-12T13:56:17+08:00">2021-04-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Reference<br><a href="https://linuxhint.com/50_sed_command_examples/" target="_blank" rel="noopener">https://linuxhint.com/50_sed_command_examples/</a><br><a href="http://shyuanliang.blogspot.com/2013/05/sed.html" target="_blank" rel="noopener">http://shyuanliang.blogspot.com/2013/05/sed.html</a></li>
-</ul>
-<ol>
-<li>[:alnum:] 代表英文大小寫字元及數字，亦即 0-9, A-Z, a-z</li>
-<li>[:alpha:] 代表任何英文大小寫字元，亦即 A-Z, a-z</li>
-<li>[:blank:] 代表空白鍵與 [Tab] 按鍵兩者</li>
-<li>[:cntrl:] 代表鍵盤上面的控制按鍵，亦即包括 CR, LF, Tab, Del.. 等等</li>
-<li>[:digit:] 代表數字而已，亦即 0-9</li>
-<li>[:graph:] 除了空白字元 (空白鍵與 [Tab] 按鍵) 外的其他所有按鍵</li>
-<li>[:lower:] 代表小寫字元，亦即 a-z</li>
-<li>[:print:] 代表任何可以被列印出來的字元</li>
-<li>[:punct:] 代表標點符號 (punctuation symbol)，亦即：” ‘ ? ! ; : # $…</li>
-<li>[:upper:] 代表大寫字元，亦即 A-Z</li>
-<li>[:space:] 任何會產生空白的字元，包括空白鍵, [Tab], CR 等等</li>
-<li>[:xdigit:] 代表 16 進位的數字類型，因此包括： 0-9, A-F, a-f 的數字與字元</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">replace the first match</span><br><span class="line"># echo &quot;Bash Bash Scripting Language&quot; | sed &apos;s/Bash/Perl/&apos;</span><br><span class="line">Perl Bash Scripting Language</span><br><span class="line"></span><br><span class="line">g: replace all occurrences</span><br><span class="line">g2: replace the second match    </span><br><span class="line"># echo &quot;Bash Bash Scripting Language&quot; | sed &apos;s/Bash/Perl/g&apos;</span><br><span class="line">Perl Perl Scripting Language</span><br><span class="line"></span><br><span class="line">在 abc 後加上 123</span><br><span class="line"># echo &quot;abcefg&quot; | sed &apos;s/abc/&amp;123/g&apos;</span><br><span class="line">abc123efg</span><br><span class="line"></span><br><span class="line">在 abc 前加上 123</span><br><span class="line"># echo &quot;abcefg&quot; | sed &apos;s/abc/123&amp;/g&apos;</span><br><span class="line">123abcefg</span><br><span class="line"></span><br><span class="line">\(.*\) =&gt; 取得字串</span><br><span class="line">\1 =&gt; 印出第一個取得的字串</span><br><span class="line"># echo &quot;Bash language&quot; | sed &apos;s/Bash\(.*\)/Shell script\1/&apos;</span><br><span class="line">Shell script language</span><br><span class="line"></span><br><span class="line">把 Bash 替換成 Learn Bash programming</span><br><span class="line"># echo &quot;Bash language&quot; | sed &apos;s/\(Bash\)/Learn \1 programming/&apos;</span><br><span class="line">Learn Bash programming language</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">//file</span><br><span class="line">CSE - Count</span><br><span class="line">EEE - Count</span><br><span class="line">Civil - Count</span><br><span class="line"></span><br><span class="line"># sed  -e &apos;/CSE/ s/Count/100/; /EEE/ s/Count/70/;&apos; file</span><br><span class="line">CSE - 100</span><br><span class="line">EEE - 70</span><br><span class="line">Civil - Count</span><br><span class="line"># sed -i -e &apos;/CSE/! s/Count/80/;&apos; file</span><br><span class="line">CSE - Count</span><br><span class="line">EEE - 80</span><br><span class="line">Civil - 80</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">刪除空白行</span><br><span class="line"># sed &apos;/^$/d&apos; file</span><br><span class="line"></span><br><span class="line"># echo hgdfjg678gfdg kjg45nn | sed &apos;s/[^0-9]//g&apos;</span><br><span class="line">67845</span><br><span class="line"></span><br><span class="line"># echo &quot;hgdfjg678gfdg kjg45nn&quot; | sed &apos;s/[^[:digit:]]//g&apos;</span><br><span class="line">67845</span><br><span class="line"></span><br><span class="line"># echo hgdfjg678gfdg kjg45nn | sed &apos;s/[0-9]//g&apos;</span><br><span class="line">hgdfjggfdg kjgnn</span><br><span class="line"></span><br><span class="line"># echo &quot;hgdfjg678gfdg kjg45nn&quot; | sed &apos;s/[[:digit:]]//g&apos;</span><br><span class="line">hgdfjggfdg kjgnn</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行後加上 !!</span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;/Hello/ s/$/ !!/&apos;</span><br><span class="line">Hello World !!</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行前加上 !!</span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;/Hello/ s/^/ !!/&apos;</span><br><span class="line"> !!Hello World</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行除外，加上 !!</span><br><span class="line">sed &apos;/Hello/! S/$/ !!/&apos;</span><br><span class="line"></span><br><span class="line">刪除所有不包含 Hello 的 line</span><br><span class="line"># sed -i &apos;/Hello/!d&apos; test</span><br><span class="line"></span><br><span class="line"># echo &quot;Kaniz Fatema,30th,batch&quot; | sed &quot;s/,/\n/g&quot;</span><br><span class="line">Kaniz Fatema</span><br><span class="line">30th</span><br><span class="line">batch</span><br><span class="line"></span><br><span class="line">i =&gt; 不分大小寫</span><br><span class="line"># echo &quot;I like bash programming&quot; | sed &apos;s/Bash/PHP/i&apos;</span><br><span class="line">I like PHP programming</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;s/\(hello\)/\U\1/Ig&apos;</span><br><span class="line">HELLO World</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;s/\(hello\)/\L\1/Ig&apos;</span><br><span class="line">hello World</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed  &apos;s/\(.*\)/\U\1/&apos;</span><br><span class="line">HELLO WORLD</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed  &apos;s/\(.*\)/\L\1/&apos;</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>刪除 file 中，所有 # 開頭的行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;/^#/d&quot; file</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="列出第-n-行的結果"><a href="#列出第-n-行的結果" class="headerlink" title="列出第 n 行的結果"></a>列出第 n 行的結果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -l | sed -n &apos;np&apos;</span><br><span class="line">ls -l | sed -n &apos;2p&apos;</span><br><span class="line">ls -l | sed -n &apos;3p&apos;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1086,7 +1029,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

@@ -183,6 +183,186 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/6543690e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/6543690e/" class="post-title-link" itemprop="url">Prompt</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-04-12 11:22:23" itemprop="dateCreated datePublished" datetime="2021-04-12T11:22:23+08:00">2021-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:52:14" itemprop="dateModified" datetime="2021-06-08T13:52:14+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html" target="_blank" rel="noopener">https://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html</a></p>
+<ul>
+<li>預設 Prompt<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo $PS1</span><br><span class="line">[\u@\h \W]\$</span><br></pre></td></tr></table></figure></li>
+<li>format<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\d：當前日期，以「週 月 日」的格式顯示</span><br><span class="line">\D&#123;format&#125;：當前日期，可指定格式，例如 「\D&#123;%Y-%m-%d&#125;」</span><br><span class="line">\t：當前時間，以 24 小時時制顯示</span><br><span class="line">\u：使用者名稱</span><br><span class="line">\W：當前資料夾名稱</span><br><span class="line">\w：當前路徑</span><br><span class="line">\h：主機名稱 (Host Name)&#125;</span><br></pre></td></tr></table></figure></li>
+<li>用指令取得動態資訊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export PS1=&quot;\$(date +%d.%m.%Y) [\u@\h \W]# &quot;</span><br></pre></td></tr></table></figure></li>
+<li>顏色標記<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ export PS1=&quot;[\e[0;31m\u\e[m@\h \W]# &quot;</span><br><span class="line">$ export PS1=&quot;[\[\e[0;31m\]\u\[\e[m\]@\h \W]# &quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fba335b8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/fba335b8/" class="post-title-link" itemprop="url">sed</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-03-23 16:04:59" itemprop="dateCreated datePublished" datetime="2021-03-23T16:04:59+08:00">2021-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-04-12 13:56:17" itemprop="dateModified" datetime="2021-04-12T13:56:17+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>Reference<br><a href="https://linuxhint.com/50_sed_command_examples/" target="_blank" rel="noopener">https://linuxhint.com/50_sed_command_examples/</a><br><a href="http://shyuanliang.blogspot.com/2013/05/sed.html" target="_blank" rel="noopener">http://shyuanliang.blogspot.com/2013/05/sed.html</a></li>
+</ul>
+<ol>
+<li>[:alnum:] 代表英文大小寫字元及數字，亦即 0-9, A-Z, a-z</li>
+<li>[:alpha:] 代表任何英文大小寫字元，亦即 A-Z, a-z</li>
+<li>[:blank:] 代表空白鍵與 [Tab] 按鍵兩者</li>
+<li>[:cntrl:] 代表鍵盤上面的控制按鍵，亦即包括 CR, LF, Tab, Del.. 等等</li>
+<li>[:digit:] 代表數字而已，亦即 0-9</li>
+<li>[:graph:] 除了空白字元 (空白鍵與 [Tab] 按鍵) 外的其他所有按鍵</li>
+<li>[:lower:] 代表小寫字元，亦即 a-z</li>
+<li>[:print:] 代表任何可以被列印出來的字元</li>
+<li>[:punct:] 代表標點符號 (punctuation symbol)，亦即：” ‘ ? ! ; : # $…</li>
+<li>[:upper:] 代表大寫字元，亦即 A-Z</li>
+<li>[:space:] 任何會產生空白的字元，包括空白鍵, [Tab], CR 等等</li>
+<li>[:xdigit:] 代表 16 進位的數字類型，因此包括： 0-9, A-F, a-f 的數字與字元</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">replace the first match</span><br><span class="line"># echo &quot;Bash Bash Scripting Language&quot; | sed &apos;s/Bash/Perl/&apos;</span><br><span class="line">Perl Bash Scripting Language</span><br><span class="line"></span><br><span class="line">g: replace all occurrences</span><br><span class="line">g2: replace the second match    </span><br><span class="line"># echo &quot;Bash Bash Scripting Language&quot; | sed &apos;s/Bash/Perl/g&apos;</span><br><span class="line">Perl Perl Scripting Language</span><br><span class="line"></span><br><span class="line">在 abc 後加上 123</span><br><span class="line"># echo &quot;abcefg&quot; | sed &apos;s/abc/&amp;123/g&apos;</span><br><span class="line">abc123efg</span><br><span class="line"></span><br><span class="line">在 abc 前加上 123</span><br><span class="line"># echo &quot;abcefg&quot; | sed &apos;s/abc/123&amp;/g&apos;</span><br><span class="line">123abcefg</span><br><span class="line"></span><br><span class="line">\(.*\) =&gt; 取得字串</span><br><span class="line">\1 =&gt; 印出第一個取得的字串</span><br><span class="line"># echo &quot;Bash language&quot; | sed &apos;s/Bash\(.*\)/Shell script\1/&apos;</span><br><span class="line">Shell script language</span><br><span class="line"></span><br><span class="line">把 Bash 替換成 Learn Bash programming</span><br><span class="line"># echo &quot;Bash language&quot; | sed &apos;s/\(Bash\)/Learn \1 programming/&apos;</span><br><span class="line">Learn Bash programming language</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">//file</span><br><span class="line">CSE - Count</span><br><span class="line">EEE - Count</span><br><span class="line">Civil - Count</span><br><span class="line"></span><br><span class="line"># sed  -e &apos;/CSE/ s/Count/100/; /EEE/ s/Count/70/;&apos; file</span><br><span class="line">CSE - 100</span><br><span class="line">EEE - 70</span><br><span class="line">Civil - Count</span><br><span class="line"># sed -i -e &apos;/CSE/! s/Count/80/;&apos; file</span><br><span class="line">CSE - Count</span><br><span class="line">EEE - 80</span><br><span class="line">Civil - 80</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">刪除空白行</span><br><span class="line"># sed &apos;/^$/d&apos; file</span><br><span class="line"></span><br><span class="line"># echo hgdfjg678gfdg kjg45nn | sed &apos;s/[^0-9]//g&apos;</span><br><span class="line">67845</span><br><span class="line"></span><br><span class="line"># echo &quot;hgdfjg678gfdg kjg45nn&quot; | sed &apos;s/[^[:digit:]]//g&apos;</span><br><span class="line">67845</span><br><span class="line"></span><br><span class="line"># echo hgdfjg678gfdg kjg45nn | sed &apos;s/[0-9]//g&apos;</span><br><span class="line">hgdfjggfdg kjgnn</span><br><span class="line"></span><br><span class="line"># echo &quot;hgdfjg678gfdg kjg45nn&quot; | sed &apos;s/[[:digit:]]//g&apos;</span><br><span class="line">hgdfjggfdg kjgnn</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行後加上 !!</span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;/Hello/ s/$/ !!/&apos;</span><br><span class="line">Hello World !!</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行前加上 !!</span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;/Hello/ s/^/ !!/&apos;</span><br><span class="line"> !!Hello World</span><br><span class="line"></span><br><span class="line">在搜尋到 Hello 的那一行除外，加上 !!</span><br><span class="line">sed &apos;/Hello/! S/$/ !!/&apos;</span><br><span class="line"></span><br><span class="line">刪除所有不包含 Hello 的 line</span><br><span class="line"># sed -i &apos;/Hello/!d&apos; test</span><br><span class="line"></span><br><span class="line"># echo &quot;Kaniz Fatema,30th,batch&quot; | sed &quot;s/,/\n/g&quot;</span><br><span class="line">Kaniz Fatema</span><br><span class="line">30th</span><br><span class="line">batch</span><br><span class="line"></span><br><span class="line">i =&gt; 不分大小寫</span><br><span class="line"># echo &quot;I like bash programming&quot; | sed &apos;s/Bash/PHP/i&apos;</span><br><span class="line">I like PHP programming</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;s/\(hello\)/\U\1/Ig&apos;</span><br><span class="line">HELLO World</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed &apos;s/\(hello\)/\L\1/Ig&apos;</span><br><span class="line">hello World</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed  &apos;s/\(.*\)/\U\1/&apos;</span><br><span class="line">HELLO WORLD</span><br><span class="line"></span><br><span class="line"># echo &quot;Hello World&quot; | sed  &apos;s/\(.*\)/\L\1/&apos;</span><br><span class="line">hello world</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>刪除 file 中，所有 # 開頭的行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &quot;/^#/d&quot; file</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="列出第-n-行的結果"><a href="#列出第-n-行的結果" class="headerlink" title="列出第 n 行的結果"></a>列出第 n 行的結果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -l | sed -n &apos;np&apos;</span><br><span class="line">ls -l | sed -n &apos;2p&apos;</span><br><span class="line">ls -l | sed -n &apos;3p&apos;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/78a715c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +394,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-13 18:11:46" itemprop="dateModified" datetime="2021-08-13T18:11:46+08:00">2021-08-13</time>
+                <time title="修改時間：2021-08-25 18:11:18" itemprop="dateModified" datetime="2021-08-25T18:11:18+08:00">2021-08-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,7 +457,7 @@ $ date</code></pre><ol start="4">
 <p>  grep “CURRENT HEAP” 2315.log // 在檔案2315.log中搜尋字串CURRENT HEAP<br>  grep ‘&lt;Cached&gt;‘ 2315.log   // 在檔案2315.log中限定搜尋字串Cached</p>
 <p>  ps aux|grep server|grep -v grep | awk ‘{print $2}’|xargs kill -9</p>
 <p>  -r: current目錄下的所有子目錄都會search<br>  -i: 不區分大小寫<br>  -n: 列出line number<br>  -w: 精準單詞比對<br>  rpm -qa | grep faca | while read line ; do echo “$line” ; done</p>
-<p>  grep -rin “test$” * // 搜尋以 test 為句尾的</p>
+<p>  grep -rin “test$” * // 搜尋以 test 為句尾的<br>  grep -v ‘grep’ 去除搜尋結果中有 ‘grep’ 字眼的<br>  因為下了 grep 指令，process中除了會有 ‘xxx’，還會有一個 ‘grep xxx’</p>
 </li>
 <li><p>line number in vi<br>  To display line numbers along the left side of a window, type any one of the following:</p>
 <pre><code>:set number</code></pre><p>  or</p>
@@ -1040,217 +1220,6 @@ C-a d // 脫離（detach）目前的 screen ，並放到背景執行（不管開
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/41da0a7b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/41da0a7b/" class="post-title-link" itemprop="url">openshift</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-01-04 16:21:20" itemprop="dateCreated datePublished" datetime="2021-01-04T16:21:20+08:00">2021-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>How to Setup OpenShift Origin (OKD) on Ubuntu 19.04/18.04/16.04<br><a href="https://computingforgeeks.com/how-to-setup-openshift-origin-on-ubuntu/#ex1" target="_blank" rel="noopener">https://computingforgeeks.com/how-to-setup-openshift-origin-on-ubuntu/#ex1</a></p>
-</li>
-<li><p>How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7<br><a href="https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/" target="_blank" rel="noopener">https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7b25d017/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7b25d017/" class="post-title-link" itemprop="url">redis</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-12-31 17:00:03" itemprop="dateCreated datePublished" datetime="2020-12-31T17:00:03+08:00">2020-12-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>redis-client<br><a href="https://github.com/rgl/redis/downloads" target="_blank" rel="noopener">https://github.com/rgl/redis/downloads</a></p>
-</li>
-<li><p>redis-server<br>sudo apt-get install redis-server<br>sudo apt-get purge –auto-remove redis-server</p>
-</li>
-<li><p>Instruction</p>
-</li>
-</ol>
-<ul>
-<li><p>Start/Stop Redis server<br>$ sudo service redis-server start<br>$ sudo service redis-server restart<br>$ sudo service redis-server stop</p>
-</li>
-<li><p>Open Redis CLI tool<br>$ redis-cli<br>$ redis-cli -h redis15.localnet.org -p 6379 ping</p>
-</li>
-<li><p>Config<br>$ sudo vim /etc/redis/redis.conf<br>port：連結到Redis Server所通過的連接埠。預設為6379，如果有跟其他服務衝突到，應該要修改掉。<br>bind：連結到Redis Server所使用的網路介面。預設為127.0.0.1，也就是內部迴圈(lo)，僅本機可以直接連接。<br>requirepass：連結到此Redis Server所需的密碼。</p>
-<p>修改bind設定<br>$ sudo vim /etc/redis/redis.conf<br>bind 127.0.0.1 =&gt; bind 0.0.0.0</p>
-</li>
-</ul>
-<p><a href="https://blogs.technet.microsoft.com/jessicadeen/uncategorized/how-to-configure-redis-server-on-bash-on-ubuntu-on-windows-10-wsl/" target="_blank" rel="noopener">How to configure Redis-Server on Bash on Ubuntu on Windows 10 (WSL) – Jessica Deen on Technet</a></p>
-<ul>
-<li>Commands<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set test 123</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get test</span><br><span class="line">&quot;123&quot;</span><br><span class="line">127.0.0.1:6379&gt; exists test</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; del test</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><a href="https://redis.io/topics/rediscli" target="_blank" rel="noopener">https://redis.io/topics/rediscli</a><br><a href="https://www.itread01.com/content/1545205270.html" target="_blank" rel="noopener">https://www.itread01.com/content/1545205270.html</a><br><a href="https://pypi.org/project/redis/" target="_blank" rel="noopener">https://pypi.org/project/redis/</a><br><a href="https://www.jianshu.com/p/2639549bedc8" target="_blank" rel="noopener">https://www.jianshu.com/p/2639549bedc8</a></p>
-<p>redis-cli -p 6379 –stat</p>
-<ul>
-<li>Setup in nodejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const session = require(&apos;express-session&apos;);</span><br><span class="line">const RedisStore = require(&apos;connect-redis&apos;)(session);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    store: new RedisStore(&#123;</span><br><span class="line">        host: &apos;localhost&apos;,</span><br><span class="line">        port: 6379,</span><br><span class="line">        ttl: 30 * 60 // valid in 30 minutes</span><br><span class="line">    &#125;),</span><br><span class="line">    secret: &apos;keyboard cat&apos;,</span><br><span class="line">    resave: false,</span><br><span class="line">    saveUninitialized: false</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    if (req.session.key) &#123;</span><br><span class="line">        res.redirect(&apos;/index&apos;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        res.redirect(&apos;/login&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.post(&apos;/login&apos;,function(req, res)&#123;</span><br><span class="line">    // when user login set the key to redis</span><br><span class="line">    req.session.key = req.body.email;</span><br><span class="line">    res.end(&apos;done&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p><a href="https://github.com/tj/connect-redis" target="_blank" rel="noopener">https://github.com/tj/connect-redis</a><br><a href="https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/" target="_blank" rel="noopener">https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/</a></p>
-<p>SET (Setting a Key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET foo &quot;Hello World&quot;</span><br><span class="line">OK // setting a key</span><br></pre></td></tr></table></figure>
-
-<p>GET (Getting a Key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br></pre></td></tr></table></figure>
-
-<p>DEL (Deleting a Key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo </span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br><span class="line">127.0.0.1:6379&gt; DEL foo</span><br><span class="line">(integer) 1 // key just got deleted</span><br><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">(nil) // since key is deleted therefore, result is nil.</span><br></pre></td></tr></table></figure>
-
-<p>SETEX (Setting a key with an expiry)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SETEX foo 40 &quot;I said, Hello World!&quot;</span><br><span class="line">OK // key has been set with 40 seconds as expiration</span><br></pre></td></tr></table></figure>
-
-<p>TTL (Total Time left for a key that has a timeout)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; TTL foo</span><br><span class="line">(integer) 36 // 36 seconds left to timeout</span><br></pre></td></tr></table></figure>
-
-<p>PERSIST (Removing the timeout from key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PERSIST foo</span><br><span class="line">(integer) 1 // turning the key from volatile to persistent (key won&apos;t expire)</span><br></pre></td></tr></table></figure>
-
-<p>RENAME (Renaming the current existing key)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RENAME foo bar</span><br><span class="line">OK // renaming the key &apos;foo&apos; as bar</span><br></pre></td></tr></table></figure>
-
-<p>FLUSHALL (Flushing everything so far saved)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; flushall</span><br><span class="line">OK // just got flushed</span><br></pre></td></tr></table></figure>
-
-<p>dump redis data<br><a href="https://github.com/sripathikrishnan/redis-rdb-tools" target="_blank" rel="noopener">https://github.com/sripathikrishnan/redis-rdb-tools</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">查找所有key</span><br><span class="line">keys *</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 keys &apos;subject_id*&apos; &gt; keys.txt</span><br><span class="line"></span><br><span class="line">dump data to /data/dump.rdb</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 bgsave</span><br><span class="line"></span><br><span class="line">要先把dump.rdb從redis container中複製出來</span><br><span class="line">pip install rdbtools python-lzf</span><br><span class="line"></span><br><span class="line">Memory Report</span><br><span class="line">rdb -c memory dump.rdb &gt; memory.csv</span><br><span class="line"></span><br><span class="line">data</span><br><span class="line">rdb --command json dump.rdb &gt; data.txt</span><br><span class="line">rdb --command justkeyvals --key &quot;user.*&quot; dump.rdb &gt; data.txt</span><br></pre></td></tr></table></figure>
-<ul>
-<li>設定、查詢 live time<br>redis&gt; keys *<br>1) key1<br>2) key2<br>redis&gt; EXPIRE key1 10086<br>(integer) 1<br>redis&gt; TTL key1<br>(integer) 10084</li>
-</ul>
-<p><a href="https://tachingchen.com/tw/blog/redis-data-persistence/" target="_blank" rel="noopener">https://tachingchen.com/tw/blog/redis-data-persistence/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;yes&quot;</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET stop-writes-on-bgsave-error no</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;no&quot;</span><br></pre></td></tr></table></figure>
-
-<p>app.pool = redis.ConnectionPool(host=app.config[‘REDIS_HOST’] , port=app.config[‘REDIS_PORT’] , decode_responses=True)<br>app.gredis = redis.Redis(connection_pool=app.pool)<br>app.gredis.config_set(“stop-writes-on-bgsave-error”, “no”)</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1319,7 +1288,7 @@ C-a d // 脫離（detach）目前的 screen ，並放到背景執行（不管開
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

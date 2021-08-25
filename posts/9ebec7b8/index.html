@@ -30,7 +30,7 @@
 <meta property="og:description" content="設定 figure resolutionplt.figure(figsize=(10, 10), dpi=160)=&amp;gt; resolution is 1600x1600  隱藏軸標籤和座標軸ax = plt.gca()ax.axes.xaxis.set_visible(False)ax.axes.yaxis.set_visible(False)  隱藏座標軸ax = plt.gca()ax.">
 <meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;9ebec7b8&#x2F;image_01.png">
-<meta property="og:updated_time" content="2021-08-10T04:00:49.271Z">
+<meta property="og:updated_time" content="2021-08-24T06:40:03.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;9ebec7b8&#x2F;image_01.png">
 
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:49" itemprop="dateModified" datetime="2021-08-10T12:00:49+08:00">2021-08-10</time>
+                <time title="修改時間：2021-08-24 14:40:03" itemprop="dateModified" datetime="2021-08-24T14:40:03+08:00">2021-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,7 +268,10 @@
 </li>
 </ul>
 <ol>
-<li><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></li>
+<li><p><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></p>
+</li>
+<li><p>在大量使用 plt.plot and plt.savefig 時，會遇到以下 error<br><code>Fail to allocate bitmap</code><br>即使有執行 plt.close() 也無效，且固定產生 369 張圖後，會 failed</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&quot;Agg&quot;)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>
@@ -365,7 +368,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

@@ -183,6 +183,169 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a072fa7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/a072fa7/" class="post-title-link" itemprop="url">zip/unzip</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-18 17:13:14" itemprop="dateCreated datePublished" datetime="2020-02-18T17:13:14+08:00">2020-02-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>zipfile<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"></span><br><span class="line">OUTPUT_FLODER = <span class="string">'output'</span></span><br><span class="line">INPUT_ZIP_FILE = <span class="string">'input.zip'</span></span><br><span class="line">OUTPUT_ZIP_FILE = <span class="string">'output.zip'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unzip</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">if</span> os.path.exists(INPUT_ZIP_FILE):</span><br><span class="line">        os.makedirs(OUTPUT_FLODER, exist_ok=<span class="literal">True</span>)</span><br><span class="line">        zf = zipfile.ZipFile(INPUT_ZIP_FILE)</span><br><span class="line">        zf.extractall(OUTPUT_FLODER)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zip</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#zf = zipfile.ZipFile(OUTPUT_ZIP_FILE, mode='w')#just zip and no compression</span></span><br><span class="line">    zf = zipfile.ZipFile(OUTPUT_ZIP_FILE, mode=<span class="string">'w'</span>, compression=zipfile.ZIP_DEFLATED)</span><br><span class="line">    os.chdir(<span class="string">'output'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> root, dir, files <span class="keyword">in</span> os.walk(<span class="string">"."</span>):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            fullpath = os.path.join(root, file)</span><br><span class="line">            zf.write(fullpath, arcname=file)</span><br><span class="line">    zf.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    unzip()</span><br><span class="line">    zip()</span><br></pre></td></tr></table></figure></li>
+<li>tarfile<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> tarfile</span><br><span class="line"></span><br><span class="line">tar = tarfile.open(<span class="string">'/app/logs.tar'</span>, <span class="string">'w'</span>)</span><br><span class="line"><span class="keyword">for</span> root, dir, files <span class="keyword">in</span> os.walk(<span class="string">'/app/logs/'</span>):</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        fullpath = os.path.join(root, file)</span><br><span class="line">        tar.add(fullpath, arcname=file)</span><br><span class="line">tar.close()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/6826a2b4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/6826a2b4/" class="post-title-link" itemprop="url">Happytime - rtsp stream server</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-15 11:28:15" itemprop="dateCreated datePublished" datetime="2020-02-15T11:28:15+08:00">2020-02-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Happytime/" itemprop="url" rel="index"><span itemprop="name">Happytime</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Download-link"><a href="#Download-link" class="headerlink" title="Download link"></a>Download link</h5><p><a href="http://www.happytimesoft.com/download.html" target="_blank" rel="noopener">http://www.happytimesoft.com/download.html</a></p>
+<h5 id="on-linux"><a href="#on-linux" class="headerlink" title="on linux"></a>on linux</h5><ul>
+<li>RTSP Server for linux<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ tar xzf happytime-rtsp-server.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> happytime-rtsp-server/</span><br><span class="line">$ ./start.sh</span><br><span class="line">$ ./stop.sh</span><br></pre></td></tr></table></figure></li>
+<li>config.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">config</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">serverip</span>&gt;</span>192.168.56.6<span class="tag">&lt;/<span class="name">serverip</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">serverport</span>&gt;</span>8554<span class="tag">&lt;/<span class="name">serverport</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">output</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span><span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">video</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">codec</span>&gt;</span>H264<span class="tag">&lt;/<span class="name">codec</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">width</span>&gt;</span>1280<span class="tag">&lt;/<span class="name">width</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">height</span>&gt;</span>720<span class="tag">&lt;/<span class="name">height</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">framerate</span>&gt;</span>15<span class="tag">&lt;/<span class="name">framerate</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">bitrate</span>&gt;</span><span class="tag">&lt;/<span class="name">bitrate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">output</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fcb954dd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -861,209 +1024,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d96b0415/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/d96b0415/" class="post-title-link" itemprop="url">GitLab 建置CI/CD流程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-12-02 15:34:12" itemprop="dateCreated datePublished" datetime="2019-12-02T15:34:12+08:00">2019-12-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/GitLab/" itemprop="url" rel="index"><span itemprop="name">GitLab</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="建立gitlab-runner"><a href="#建立gitlab-runner" class="headerlink" title="建立gitlab-runner"></a>建立gitlab-runner</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gitlab-runner:</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-runner:latest</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">gitlab-runner</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/timezone:/etc/timezone:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/localtime:/etc/localtime:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/run/docker.sock:/var/run/docker.sock</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker-software/gitlab-runner/config:/etc/gitlab-runner</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="註冊runner"><a href="#註冊runner" class="headerlink" title="註冊runner"></a>註冊runner</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab-runner gitlab-runner register</span><br><span class="line">Runtime platform                                    arch=amd64 os=linux pid=165 revision=577f813d version=12.5.0</span><br><span class="line">Running <span class="keyword">in</span> system-mode.                            </span><br><span class="line">                                                   </span><br><span class="line">Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com/):</span><br><span class="line">http://192.168.56.5/</span><br><span class="line">Please enter the gitlab-ci token <span class="keyword">for</span> this runner:</span><br><span class="line">zS9KDv5_puTCKS32UbyM</span><br><span class="line">Please enter the gitlab-ci description <span class="keyword">for</span> this runner:</span><br><span class="line">[c420481843b4]: <span class="built_in">test</span>-runner</span><br><span class="line">Please enter the gitlab-ci tags <span class="keyword">for</span> this runner (comma separated):</span><br><span class="line">docker</span><br><span class="line">Registering runner... succeeded                     runner=zS9KDv5_</span><br><span class="line">Please enter the executor: shell, ssh, virtualbox, docker-ssh+machine, kubernetes, custom, docker-ssh, parallels, docker, docker+machine:</span><br><span class="line">docker</span><br><span class="line">Please enter the default Docker image (e.g. ruby:2.6): <span class="comment">#當.gitlab-ci.yml沒有指定image時，預設要用哪個docker image</span></span><br><span class="line">docker:19.03.5</span><br><span class="line">Runner registered successfully. Feel free to start it, but <span class="keyword">if</span> it<span class="string">'s running already the config should be automatically reloaded!</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>Please enter the gitlab-ci coordinator URL<br>輸入gitlab網站的URL</li>
-<li>Please enter the gitlab-ci token for this runner<br>在gitlab CI/CD settings中，Specific/Shared Runners的identification</li>
-<li>Please enter the gitlab-ci description for this runner<br>指定runner的名稱</li>
-<li>Please enter the gitlab-ci tags for this runner<br>指定此runner的tag，在.gitlab-ci.yml中，必須指定對應的tag，才能使用此runner</li>
-</ol>
-<h4 id="docker-image-release-page"><a href="#docker-image-release-page" class="headerlink" title="docker image release page"></a>docker image release page</h4><p><a href="https://github.com/docker/docker-ce/releases" target="_blank" rel="noopener">https://github.com/docker/docker-ce/releases</a></p>
-<h4 id="完成之後，config-toml內容如下"><a href="#完成之後，config-toml內容如下" class="headerlink" title="完成之後，config.toml內容如下"></a>完成之後，config.toml內容如下</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ cat /opt/docker-software/gitlab-runner/config/config.toml</span><br><span class="line">concurrent = 1</span><br><span class="line">check_interval = 0</span><br><span class="line"></span><br><span class="line">[session_server]</span><br><span class="line">  session_timeout = 1800</span><br><span class="line"></span><br><span class="line">[[runners]]</span><br><span class="line">  name = <span class="string">"test-runner"</span></span><br><span class="line">  url = <span class="string">"http://192.168.56.5/"</span></span><br><span class="line">  token = <span class="string">"zS9KDv5_puTCKS32UbyM"</span></span><br><span class="line">  executor = <span class="string">"docker"</span></span><br><span class="line">  [runners.custom_build_dir]</span><br><span class="line">  [runners.docker]</span><br><span class="line">    tls_verify = <span class="literal">false</span></span><br><span class="line">    image = <span class="string">"docker:19.03.5"</span></span><br><span class="line">    privileged = <span class="literal">false</span></span><br><span class="line">    disable_entrypoint_overwrite = <span class="literal">false</span></span><br><span class="line">    oom_kill_disable = <span class="literal">false</span></span><br><span class="line">    disable_cache = <span class="literal">false</span></span><br><span class="line">    volumes = [<span class="string">"/cache"</span>]</span><br><span class="line">    shm_size = 0</span><br><span class="line">  [runners.cache]</span><br><span class="line">    [runners.cache.s3]</span><br><span class="line">    [runners.cache.gcs]</span><br></pre></td></tr></table></figure>
-
-<h4 id="remove-Runner"><a href="#remove-Runner" class="headerlink" title="remove Runner"></a>remove Runner</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it gitlab-runner gitlab-runner unregister --all-runners</span><br><span class="line">$ docker <span class="built_in">exec</span> -it gitlab-runner gitlab-runner unregister -n <span class="built_in">test</span>-runner</span><br></pre></td></tr></table></figure>
-
-<h4 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h4><ol>
-<li><p>Cannot connect to the Docker daemon at tcp://docker:2375. Is the docker daemon running?<br><code>method 1</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ vim .gitlab-ci.yml</span><br><span class="line">variables:</span><br><span class="line">  DOCKER_TLS_CERTDIR: &quot;&quot;</span><br></pre></td></tr></table></figure>
-<p><code>method 2</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ vim config.toml</span><br><span class="line">[[runners]]</span><br><span class="line">  environment = [&quot;DOCKER_TLS_CERTDIR=&quot;]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?<br>執行docker:dind，gitlab-runner config.toml中的privileged要設定為true，否則會有error</p>
-</li>
-<li><p>docker image download failed</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Step 1/13 : FROM 10.36.94.120:50000/kaluta:1.0.0</span><br><span class="line">Get https://10.36.94.120:50000/v2/: http: server gave HTTP response to HTTPS client</span><br></pre></td></tr></table></figure>
-<p>在gitlab-runner config.toml中的volume要加入/etc/docker/daemon.json的設定<br>volumes = [“/cache”, “/etc/docker/daemon.json:/etc/docker/daemon.json”]</p>
-</li>
-<li><p>/bin/sh: eval: line 87: docker-compose: not found</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vim .gitlab-ci.yml</span><br><span class="line">build:</span><br><span class="line">  stage: build</span><br><span class="line">  before_script:</span><br><span class="line">    - apk add --update libffi-dev openssl-dev py-pip python python-dev build-base</span><br><span class="line">    - pip install docker-compose</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="final-config-toml"><a href="#final-config-toml" class="headerlink" title="final config.toml"></a>final config.toml</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ cat /opt/docker-software/gitlab-runner/config/config.toml</span><br><span class="line">concurrent = 1</span><br><span class="line">check_interval = 0</span><br><span class="line"></span><br><span class="line">[session_server]</span><br><span class="line">  session_timeout = 1800</span><br><span class="line"></span><br><span class="line">[[runners]]</span><br><span class="line">  name = <span class="string">"test-runner"</span></span><br><span class="line">  url = <span class="string">"http://192.168.56.5/"</span></span><br><span class="line">  token = <span class="string">"zS9KDv5_puTCKS32UbyM"</span></span><br><span class="line">  executor = <span class="string">"docker"</span></span><br><span class="line">  [runners.custom_build_dir]</span><br><span class="line">  [runners.docker]</span><br><span class="line">    tls_verify = <span class="literal">false</span></span><br><span class="line">    image = <span class="string">"docker:19.03.5"</span></span><br><span class="line">    privileged = <span class="literal">true</span></span><br><span class="line">    disable_entrypoint_overwrite = <span class="literal">false</span></span><br><span class="line">    oom_kill_disable = <span class="literal">false</span></span><br><span class="line">    disable_cache = <span class="literal">false</span></span><br><span class="line">    volumes = [<span class="string">"/cache"</span>, <span class="string">"/etc/docker/daemon.json:/etc/docker/daemon.json"</span>]</span><br><span class="line">    shm_size = 0</span><br><span class="line">  [runners.cache]</span><br><span class="line">    [runners.cache.s3]</span><br><span class="line">    [runners.cache.gcs]</span><br></pre></td></tr></table></figure>
-
-<h4 id="建立Base-image"><a href="#建立Base-image" class="headerlink" title="建立Base image"></a>建立Base image</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM docker:19.03.5</span><br><span class="line"></span><br><span class="line">ADD daemon.json /etc/docker/daemon.json</span><br><span class="line">RUN apk add --update libffi-dev openssl-dev py-pip python python-dev build-base rsync git xz sshpass openssh-client &amp;&amp; \</span><br><span class="line">    pip install docker-compose</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>在.gitlab-ci.yml中可以直接使用這個base image <code>image: 10.36.94.120:50000/docker:19.03.5</code>，這樣可以省略安裝package的步驟</li>
-<li>在config.toml中可以不用設定volumes: “/etc/docker/daemon.json:/etc/docker/daemon.json”</li>
-</ol>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><ol>
-<li>GitLab 的 build 都是在 Docker 上執行的，因此一開始會需要定義 image 名稱，而它將會成為下面執行 build 的環境</li>
-<li>artifacts 會把裡面編譯或程式的產出物存放起來，提供介面給其他需要的人使用</li>
-<li>dependencies 設定意思是指，test job 要取用 build job 的 artifacts，每個 job 都是獨立的 container ，互不相關，因此要靠這些設定來傳遞 artifacts</li>
-<li>image 和 service 雖然有全域定義，但也能 job 各自定義</li>
-<li>services:<ul>
-<li>docker:dind<br>用 docker run 啟動 docker:dind 並把上面定義的 image 起的容器連結至 docker:dind</li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cb549ab5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/cb549ab5/" class="post-title-link" itemprop="url">docker-compose.yml for GitLab</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-12-02 11:05:17" itemprop="dateCreated datePublished" datetime="2019-12-02T11:05:17+08:00">2019-12-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:34:14" itemprop="dateModified" datetime="2020-06-22T09:34:14+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/GitLab/" itemprop="url" rel="index"><span itemprop="name">GitLab</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span> </span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">  <span class="attr">gitlab:</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">gitlab/gitlab-ce:latest</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="number">192.168</span><span class="number">.56</span><span class="number">.5</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">gitlab</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/timezone:/etc/timezone:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/etc/localtime:/etc/localtime:ro</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker-software/gitlab/config:/etc/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker-software/gitlab/logs:/var/log/gitlab</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/opt/docker-software/gitlab/data:/var/opt/gitlab</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">443</span><span class="string">:443</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">22</span><span class="string">:22</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1132,7 +1092,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

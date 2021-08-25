@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="ubuntu版本lsb_release -a  pwd &#x2F;&#x2F; 看目前所在目錄的路徑  mount  mount -t smbfs -o username=”nick.cheng”,password=”123456” &#x2F;&#x2F;172.16.66.24&#x2F;public &#x2F;mnt&#x2F;sda1  umount &#x2F;mnt&#x2F;nick   mount -t smbfs -o -I 172.16.66.24 -N ‘&#x2F;">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2021-08-13T10:11:46.967Z">
+<meta property="og:updated_time" content="2021-08-25T10:11:18.738Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/78a715c/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-13 18:11:46" itemprop="dateModified" datetime="2021-08-13T18:11:46+08:00">2021-08-13</time>
+                <time title="修改時間：2021-08-25 18:11:18" itemprop="dateModified" datetime="2021-08-25T18:11:18+08:00">2021-08-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,7 +281,7 @@ $ date</code></pre><ol start="4">
 <p>  grep “CURRENT HEAP” 2315.log // 在檔案2315.log中搜尋字串CURRENT HEAP<br>  grep ‘&lt;Cached&gt;‘ 2315.log   // 在檔案2315.log中限定搜尋字串Cached</p>
 <p>  ps aux|grep server|grep -v grep | awk ‘{print $2}’|xargs kill -9</p>
 <p>  -r: current目錄下的所有子目錄都會search<br>  -i: 不區分大小寫<br>  -n: 列出line number<br>  -w: 精準單詞比對<br>  rpm -qa | grep faca | while read line ; do echo “$line” ; done</p>
-<p>  grep -rin “test$” * // 搜尋以 test 為句尾的</p>
+<p>  grep -rin “test$” * // 搜尋以 test 為句尾的<br>  grep -v ‘grep’ 去除搜尋結果中有 ‘grep’ 字眼的<br>  因為下了 grep 指令，process中除了會有 ‘xxx’，還會有一個 ‘grep xxx’</p>
 </li>
 <li><p>line number in vi<br>  To display line numbers along the left side of a window, type any one of the following:</p>
 <pre><code>:set number</code></pre><p>  or</p>
@@ -517,7 +517,7 @@ C-a d // 脫離（detach）目前的 screen ，並放到背景執行（不管開
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

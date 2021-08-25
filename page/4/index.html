@@ -183,6 +183,191 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/12e6bda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/12e6bda/" class="post-title-link" itemprop="url">Deploy VM via kubevirt</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-09-08 17:03:31" itemprop="dateCreated datePublished" datetime="2020-09-08T17:03:31+08:00">2020-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>Reference<br><a href="https://github.com/open-ness/edgecontroller" target="_blank" rel="noopener">https://github.com/open-ness/edgecontroller</a></li>
+<li>建立 pv<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat persistentLocalVolume.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv0</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol0/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv1</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol1/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f persistentLocalVolume.yaml </span></span><br><span class="line">persistentvolume/kv-pv0 created</span><br><span class="line">persistentvolume/kv-pv1 created</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># k get pv</span></span><br><span class="line">NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                         STORAGECLASS    REASON   AGE</span><br><span class="line">kv-pv0                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br><span class="line">kv-pv1                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br></pre></td></tr></table></figure></li>
+<li>上傳 vm image，建立 dv<ul>
+<li>vm 宣告的 size 必須小於 pv 宣告的大小 (15Gi)</li>
+<li>透過 cdi-uploadproxy 上傳 image<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl get svc -n cdi</span></span><br><span class="line">NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">cdi-api           ClusterIP   10.105.96.139   &lt;none&gt;        443/TCP   27h</span><br><span class="line">cdi-uploadproxy   ClusterIP   10.106.44.64    &lt;none&gt;        443/TCP   27h</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt image-upload dv centos-dv --image-path=/home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 --insecure --size=15Gi --storage-class=local-storage --uploadproxy-url=https://10.106.44.64:443</span></span><br><span class="line">DataVolume default/centos-dv created</span><br><span class="line">Waiting <span class="keyword">for</span> PVC centos-dv upload pod to be ready...</span><br><span class="line">Pod now ready</span><br><span class="line">Uploading data to https://10.106.44.64:443</span><br><span class="line"></span><br><span class="line"> 898.75 MiB / 898.75 MiB [=====================================================================================================================================================================================================================================] 100.00% 2m19s</span><br><span class="line"></span><br><span class="line">Uploading data completed successfully, waiting <span class="keyword">for</span> processing to complete, you can hit ctrl-c without interrupting the progress</span><br><span class="line">Processing completed successfully</span><br><span class="line">Uploading /home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 completed successfully</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get dv</span></span><br><span class="line">NAME        PHASE         PROGRESS   AGE</span><br><span class="line">centos-dv   UploadReady              2m24s</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>安裝 vm<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">apiVersion: kubevirt.io/v1alpha3</span><br><span class="line">kind: VirtualMachine</span><br><span class="line">metadata:</span><br><span class="line">  name: centos-vm</span><br><span class="line">spec:</span><br><span class="line">  running: <span class="literal">false</span></span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        kubevirt.io/domain: centos-vm</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">        devices:</span><br><span class="line">          disks:</span><br><span class="line">          - disk:</span><br><span class="line">              bus: virtio</span><br><span class="line">            name: rootfs</span><br><span class="line">          interfaces:</span><br><span class="line">          - name: default</span><br><span class="line">            bridge: &#123;&#125;</span><br><span class="line">        resources:</span><br><span class="line">          requests:</span><br><span class="line">            memory: 4096M</span><br><span class="line">      networks:</span><br><span class="line">      - name: default</span><br><span class="line">        pod: &#123;&#125;</span><br><span class="line">      volumes:</span><br><span class="line">        - name: rootfs</span><br><span class="line">          persistentVolumeClaim:</span><br><span class="line">            claimName: centos-dv</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f statefullVM.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt start centos-vm</span></span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vm</span></span><br><span class="line">NAME        AGE   RUNNING   VOLUME</span><br><span class="line">centos-vm   29s   <span class="literal">true</span>      </span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vmi</span></span><br><span class="line">NAME        AGE   PHASE     IP            NODENAME</span><br><span class="line">centos-vm   20s   Running   10.244.0.78   openness</span><br></pre></td></tr></table></figure></li>
+<li>vm shell<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl virt console centos-vm</span></span><br><span class="line">[root@openness user]<span class="comment"># ssh 10.244.0.78</span></span><br></pre></td></tr></table></figure></li>
+<li>建立 service for cdi-uploadproxy<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line"> name: cdi-uploadproxy-nodeport</span><br><span class="line"> namespace: cdi</span><br><span class="line"> labels:</span><br><span class="line">   cdi.kubevirt.io: <span class="string">"cdi-uploadproxy"</span></span><br><span class="line">spec:</span><br><span class="line"> <span class="built_in">type</span>: NodePort</span><br><span class="line"> ports:</span><br><span class="line">   - port: 443</span><br><span class="line">     targetPort: 8443</span><br><span class="line">     nodePort: 31001</span><br><span class="line">     protocol: TCP</span><br><span class="line"> selector:</span><br><span class="line">   cdi.kubevirt.io: cdi-uploadproxy</span><br></pre></td></tr></table></figure></li>
+<li>設定 vm 使用 dedicated CPU<ul>
+<li>dedicatedCpuPlacement 設定 vm 使用 dedicated CPU</li>
+<li>isolateEmulatorThread 設定 qemu 也執行在 dedicated CPU<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">...</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">          dedicatedCpuPlacement: <span class="literal">true</span></span><br><span class="line">          isolateEmulatorThread: <span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>設定了 dedicated CPU後，觀察 pod 的 description，可以發現有 cpumanager=true<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl describe pod virt-launcher-centos-vm-r9qxw</span></span><br><span class="line">...</span><br><span class="line">Node-Selectors:    cpumanager=<span class="literal">true</span></span><br><span class="line">                   kubevirt.io/schedulable=<span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li>edge node 預設不會有 cpumanager 的 label，在啟動 vmi 時會有以下錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Events:</span><br><span class="line">  Type     Reason            Age        From               Message</span><br><span class="line">  ----     ------            ----       ----               -------</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br></pre></td></tr></table></figure></li>
+<li>新增 node 的 label<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl label nodes openness cpumanager=true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/21b02114/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/21b02114/" class="post-title-link" itemprop="url">vmx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-09-07 08:48:32" itemprop="dateCreated datePublished" datetime="2020-09-07T08:48:32+08:00">2020-09-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>檢查 cpu 是否支持虛擬化<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lscpu | grep vmx</span><br><span class="line">Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc eagerfpu pni pclmulqdq vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single tpr_shadow flexpriority fsgsbase avx2 invpcid rdseed clflushopt md_clear flush_l1d</span><br></pre></td></tr></table></figure></li>
+<li>確認 kvm 是否加載<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep kvm</span><br><span class="line">kvm_intel             188768  0 </span><br><span class="line">kvm                   649506  1 kvm_intel</span><br><span class="line">irqbypass              13503  2 kvm,vfio_pci</span><br><span class="line">$  ll /dev/kvm</span><br><span class="line">crw-rw-rw-. 1 root root 10, 232 Sep  6 20:42 /dev/kvm</span><br></pre></td></tr></table></figure></li>
+<li>resources on Kubernetes for OpenNESS<br>如果 vm 不支援 VT-x，allocatable 的 devices.kubevirt.io/kvm 數量會顯示 “0”<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get node -o yaml</span><br><span class="line">...</span><br><span class="line">  status:</span><br><span class="line">    allocatable:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">    capacity:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li>Settings of VirtualBox<ul>
+<li>VirtualBox的版本必須更新到 6.1 以上</li>
+<li>預設 “啟用 Nested VT-x/AMD-V(V)” 的選項是反灰，不能選擇的<br><img src="/posts/21b02114/virtualbox_01.JPG" alt></li>
+<li>使用指令去設定<br><code>VBoxManage.exe modifyvm vm-name --nested-hw-virt on</code></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/606eb6c7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,177 +1157,6 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9782a6cf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9782a6cf/" class="post-title-link" itemprop="url">gin cors</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-29 17:30:17" itemprop="dateCreated datePublished" datetime="2020-07-29T17:30:17+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>project/Middlewares/Cors.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Middlewares</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Cors</span><span class="params">()</span> <span class="title">gin</span>.<span class="title">HandlerFunc</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        method := c.Request.Method</span><br><span class="line">        origin := c.Request.Header.Get(<span class="string">"Origin"</span>)</span><br><span class="line">        <span class="keyword">if</span> origin != <span class="string">""</span> &#123;</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Origin"</span>, origin)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"POST, GET, OPTIONS, PUT, DELETE, UPDATE"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Origin, X-Requested-With, Content-Type, Accept, Authorization"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Expose-Headers"</span>, <span class="string">"Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Cache-Control, Content-Language, Content-Type"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"false"</span>)</span><br><span class="line">            c.Set(<span class="string">"content-type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">            c.AbortWithStatus(http.StatusNoContent)</span><br><span class="line">        &#125;</span><br><span class="line">        c.Next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>project/main.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"project/Middlewares"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.Use(Middlewares.Cors())</span><br><span class="line"></span><br><span class="line">    r.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        c.String(http.StatusOK, <span class="string">"Hello World!"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    r.Run(<span class="string">":8888"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7f85b3c1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7f85b3c1/" class="post-title-link" itemprop="url">new and make</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-29 08:51:18" itemprop="dateCreated datePublished" datetime="2020-07-29T08:51:18+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>new<ul>
-<li>返回指標，指向分配給宣告變數的記憶體空間</li>
-<li>會初始化宣告的變數, 如 string 會賦值為 “”，number 會賦值為 0</li>
-<li>對於 channel, map, slice 等等, 會賦值為 nil<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p := <span class="built_in">new</span>(<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v <span class="keyword">int</span></span><br><span class="line">p := &amp;v</span><br><span class="line"></span><br><span class="line">person := <span class="built_in">new</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">person[<span class="string">"name"</span>] = <span class="string">"John"</span> <span class="comment">// invalid operation: people["name"] (type *map[string]interface &#123;&#125; does not support indexing)</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>make<ul>
-<li>不會返回指標</li>
-<li>用來初始化數據結構，包含 channel, map, slice, etc.<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, <span class="number">10</span>)</span><br><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1211,7 +1225,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">153</span>
+          <span class="site-state-item-count">155</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
