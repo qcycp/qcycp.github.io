@@ -33,10 +33,21 @@ root     171684 171450  0 22:51 pts/2    00:00:00 grep --color=auto ptp4l\|phc2s
 ip a
 ip link show
 ip route add 192.168.99.0/24 via 192.168.82.100
+
+echo 2 > /sys/class/net/enp97s0f0/device/sriov_numvfs
+/opt/dpdk-19.11/usetools/dpdk-devbind.py --status-dev -net
+/opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.0
+/opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.1
+/opt/dpdk-19.11/usertools/dpdk-devbind.py -u 0000:61:02.0
+/opt/dpdk-19.11/usertools/dpdk-devbind.py -u 0000:61:02.1
 ip link set enp97s0f0 vf 0 vlan 2
 ip link set enp97s0f0 vf 1 vlan 1
 ip link set enp97s0f0 vf 0 mac 00:11:22:33:44:66
 ip link set enp97s0f0 vf 1 mac 00:11:22:33:44:66
+echo add 1,2 > /sys/class/net/enp97s0f0/device/sriov/2/vlan_mirror
+ifconfig enp97s2f2 up
+ifconfig enp97s2f2 9000
+tcpdump -i enp97s2f2 -w ecpri.pcap
 
 [root@si_bbu app]# ip link show enp216s0f1
 15: enp216s0f1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT qlen 1000
@@ -109,13 +120,7 @@ phc2sys -s enp134s0f0 -w -m -n 24
 ptp4l -i enp134s0f0 -m -s -f ptp4l-unicast.conf
 phc2sys -s enp134s0f0 -w -m -n 44
 
-echo 2 > /sys/class/net/enp97s0f0/device/sriov_numvfs
-/opt/dpdk-19.11/usetools/dpdk-devbind.py --status-dev -net
-/opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.0
-/opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.1
-/opt/dpdk-19.11/usertools/dpdk-devbind.py -u 0000:61:02.0
-/opt/dpdk-19.11/usertools/dpdk-devbind.py -u 0000:61:02.1
-
+echo 
 /opt/dpdk-19.11/usertools/test-bbdev.py -c validation -n 64 -b 1 -i -v ./test_vectors/ldpc_dec_v7813.data
 
 update-alternatives --remove bbu_cli /home/faca/BBU/bbu_cli
