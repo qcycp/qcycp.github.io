@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b57b0f6a/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d597c8d0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/b57b0f6a/" class="post-title-link" itemprop="url">Example for video.js</a>
+            <a href="/posts/d597c8d0/" class="post-title-link" itemprop="url">kubernetes Notes</a>
         </h2>
 
         <div class="post-meta">
@@ -207,14 +207,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-05-04 14:06:04" itemprop="dateCreated datePublished" datetime="2020-05-04T14:06:04+08:00">2020-05-04</time>
+              <time title="創建時間：2020-08-07 14:25:14" itemprop="dateCreated datePublished" datetime="2020-08-07T14:25:14+08:00">2020-08-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,7 +222,11 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
                 </span>
             </span>
 
@@ -237,301 +241,43 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>使用video.js在瀏覽器上播放影片<br><a href="https://videojs.com/" target="_blank" rel="noopener">https://videojs.com/</a></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>VideoJS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://vjs.zencdn.net/7.3.0/video-js.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://vjs.zencdn.net/7.3.0/video.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.video-js</span> <span class="selector-class">.vjs-time-control</span>&#123;<span class="attribute">display</span>:block;&#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.video-js</span> <span class="selector-class">.vjs-remaining-time</span>&#123;<span class="attribute">display</span>:none;&#125;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"my-video"</span> <span class="attr">class</span>=<span class="string">"video-js vjs-big-play-centered"</span>&gt;</span><span class="tag">&lt;<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> player = videojs(<span class="string">'my-video'</span>,&#123;</span></span><br><span class="line"><span class="actionscript">            sources:[&#123; src: <span class="string">"http://192.168.56.3:8081/mv.mp4"</span>&#125;],</span></span><br><span class="line">            playbackRates: [0.5, 1, 2, 4],</span><br><span class="line"><span class="actionscript">            loop:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            muted:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            width:<span class="string">"1280"</span>,</span></span><br><span class="line"><span class="actionscript">            height:<span class="string">"720"</span>,</span></span><br><span class="line"><span class="actionscript">            controls:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            autoplay: <span class="literal">true</span></span></span><br><span class="line">        &#125;);</span><br><span class="line"><span class="actionscript">        player.on(<span class="string">"playing"</span>,()=&gt;&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'playing'</span>);</span></span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dbaaf77f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/dbaaf77f/" class="post-title-link" itemprop="url">Setup a File Server Quickly</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-30 10:00:37" itemprop="dateCreated datePublished" datetime="2020-04-30T10:00:37+08:00">2020-04-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>透過nodejs，在ubuntu中快速建立一個File server</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nodejs</span><br><span class="line">$ sudo apt install npm</span><br><span class="line">$ sudo npm install http-server -g</span><br><span class="line">$ http-server</span><br><span class="line">Starting up http-server, serving ./</span><br><span class="line">Available on:</span><br><span class="line">  http://127.0.0.1:8080</span><br><span class="line">  http://10.0.2.15:8080</span><br><span class="line">  http://192.168.96.4:8080</span><br><span class="line">Hit CTRL-C to stop the server</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b9c5d30/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b9c5d30/" class="post-title-link" itemprop="url">RTSP Player on Web Page</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-29 11:40:29" itemprop="dateCreated datePublished" datetime="2020-04-29T11:40:29+08:00">2020-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>git source: <a href="https://github.com/qcycp/SampleCode/tree/master/HTML_RTSP_Player" target="_blank" rel="noopener">https://github.com/qcycp/SampleCode/tree/master/HTML_RTSP_Player</a></li>
-<li>reference: <a href="https://my.oschina.net/chengpengvb/blog/1832469?p=4" target="_blank" rel="noopener">https://my.oschina.net/chengpengvb/blog/1832469?p=4</a></li>
-</ul>
-<p>包含三個部份</p>
-<ol>
-<li><p>NodeJS: contains a http server to receive content from ffmpeg and send out these data via websocket<br><code>$ node websocket.js secret 8081 8082</code></p>
-</li>
-<li><p>FFmpeg: decode rtsp streaming and encode to mpeg1, then send to a http streaming<br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -r 20 -q 0 -f mpegts -codec:v mpeg1video -codec:a mp2 -s 1280x720 http://127.0.0.1:8081/secret/rtsp</code></p>
-</li>
-<li><p>JSMpeg: receive video content via websocket and do MPEG1 video &amp; MP2 audio decode in JavaScript</p>
-</li>
+          <p><img src="/posts/d597c8d0/image_01.jpg" alt></p>
+<h3 id="四大元件"><a href="#四大元件" class="headerlink" title="四大元件"></a>四大元件</h3><ol>
+<li>Pod</li>
+<li>Worker Node</li>
+<li>Master Node</li>
+<li>Cluster</li>
 </ol>
+<h5 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h5><ul>
+<li>Kubernetes 中執行的最小基本單元</li>
+<li>一個 Pod 內可以包含一個或多個 container</li>
+<li>同一個 Pod 中的 containers 共享相同的資源、檔案系統，並共享相同的 network namespace，可以透過 localhost 互相溝通</li>
+</ul>
+<h5 id="Worker-Node"><a href="#Worker-Node" class="headerlink" title="Worker Node"></a>Worker Node</h5><ul>
+<li>Kubernetes 中執行的最小硬體單元</li>
+<li>一個 Worker Node 至小會對應到一個 VM，或是一個虛擬的機器集合</li>
+<li>一個 Worker Node 內包含三個元件<ul>
+<li>kubelet: 該 Node 的管理員，負責管理該 Node 上的所有 Pods 的狀態並負責與 Master 溝通</li>
+<li>kube-proxy : 該 Node 的傳訊員，負責更新 Node 的 iptables，讓其他 Node 的物件可以得知該 Node 上所有 Pods 的最新狀態</li>
+<li>Container Runtime: 該 Node 真正負責容器執行的程式，以 Docker 容器為例，其對應的 Container Runtime 就是 Docker Engine</li>
+</ul>
+</li>
+</ul>
+<h5 id="Master-Node"><a href="#Master-Node" class="headerlink" title="Master Node"></a>Master Node</h5><p>負責管理 Kubernetes 系統中，所有的 Pods 跟 Worker Node，包含四個部分</p>
 <ul>
-<li><p>FFmpeg</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-rtsp_transport tcp: receive rtsp streaming input via tcp</span><br><span class="line">-i rtsp://10.60.6.28:8554/CH001.sdp: rtsp streaming input</span><br><span class="line">-r 20: set output frame rate, MPEG-1/2 does not support 15/1 fps</span><br><span class="line">-q 0: use fixed quality scale</span><br><span class="line">-f mpegts: set force output format</span><br><span class="line">-codec:v mpeg1video: set output video codec</span><br><span class="line">-codec:a mp2:  set output audio codec</span><br><span class="line">-s 1280x720: set output frame size</span><br></pre></td></tr></table></figure>
+<li><p>kube-apiserver<br>管理整個 Kubernetes 所需 API 的接口（Endpoint），例如從 Command Line 下 kubectl 指令就會把指令送到這裏<br>負責 Node 之間的溝通橋樑，每個 Node 彼此不能直接溝通，必須要透過 apiserver 轉介<br>負責 Kubernetes 中的請求的身份認證與授權</p>
 </li>
-<li><p>JSMpeg</p>
+<li><p>etcd<br>用來存放 Kubernetes Cluster 的資料作為備份，當 Master 因為某些原因而故障時，我們可以透過 etcd 幫我們還原 Kubernetes 的狀態</p>
 </li>
-</ul>
-<ol>
-<li><a href="https://github.com/phoboslab/jsmpeg" target="_blank" rel="noopener">https://github.com/phoboslab/jsmpeg</a></li>
-<li>MPEG1 Video &amp; MP2 Audio Decoder in JavaScript<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"video"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jsmpeg.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'video'</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> url = <span class="string">'ws://127.0.0.1:8082/rtsp'</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> player = <span class="keyword">new</span> JSMpeg.Player(url, &#123;canvas: canvas&#125;);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2ffce39e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/2ffce39e/" class="post-title-link" itemprop="url">FFmpeg 常用指令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-28 16:46:00" itemprop="dateCreated datePublished" datetime="2020-04-28T16:46:00+08:00">2020-04-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>show video information<br><code>$ ffprobe -show_format -i input.mp4</code></p>
+<li><p>kube-scheduler<br>整個 Kubernetes 的 Pods 調度員，scheduler 會監視新建立但還沒有被指定要跑在哪個 Node 上的 Pod，並根據每個 Node 上面資源規定、硬體限制等條件去協調出一個最適合放置的 Node 讓該 Pod 跑</p>
 </li>
-<li><p>play local video<br><code>$ ffplay input.mp4</code></p>
-</li>
-<li><p>play rtsp streaming<br><code>$ ffplay rtsp://10.60.6.28:8554/CH001.sdp</code><br><code>$ ffplay -rtsp_transport tcp rtsp://10.60.6.28:8554/CH001.sdp</code></p>
-</li>
-<li><p>speed up the video by 2x<br><code>$ ffmpeg -i input.mp4 -filter:v &quot;setpts=PTS/2&quot; output.mp4</code><br>Note that: if original fps is 30 and play by 2x speed up, we can set fps to 60 to prevent frame loss<br><code>$ ffmpeg -i input.mp4 -r 60 -filter:v &quot;setpts=PTS/2&quot; output.mp4</code></p>
-</li>
-<li><p>slow down the video by 1/2x<br><code>$ ffmpeg -i input.mp4 -filter:v &quot;setpts=PTS*2&quot; output.mp4</code></p>
-</li>
-<li><p>modify the frame rate to 15<br><code>$ ffmpeg -i input.mp4 -r 15 output.mp4</code></p>
-</li>
-<li><p>modify the frame size to 1920x1080<br><code>$ ffmpeg -i input.mp4 -s 1920x1080 output.mp4</code></p>
-</li>
-<li><p>record rtsp streaming to file without video and audio decode/encode<br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -acodec copy -vcodec copy output.mp4</code><br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -codec copy output.mp4</code></p>
-</li>
-<li><p>cut the video from 00:00:10 to 00:00:35<br><code>$ ffmpeg -i input.mp4 -ss 00:00:10 -t 00:00:25 output.mp4</code><br>You can do the following operation(change all frames to key frame) at first to do precise cutting<br><code>$ ffmpeg -i output.mp4 -strict -2  -qscale 0 -intra keyoutput.mp4</code></p>
-</li>
-<li><p>concate two video file<br><code>$ ffmpeg -f concat -safe 0 -i list.txt -c copy concat.mp4</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat list.txt</span><br><span class="line">file part1.mp4</span><br><span class="line">file part2.mp4</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>capture screenshot at 00:00:10<br><code>$ ffmpeg -i input.mp4 -ss 00:00:10 -vframes 1 screenshot.jpg</code></p>
-</li>
-<li><p>capture 20 screenshots from 00:00:42 by 10 images per second<br><code>$ ffmpeg -i abc.mp4 -ss 00:00:42 -r 10 -vframes 20 %d.jpg</code></p>
-</li>
-<li><p>translate between video and images<br><code>$ ffmpeg -i output.mp4 image%d.jpg</code><br><code>$ ffmpeg -f image2 -i image%d.jpg output.mp4</code></p>
-</li>
-<li><p>flip and rotate video<br><code>$ ffmpeg -i input.mp4 -vf hflip output.mp4</code><br><code>$ ffmpeg -i input.mp4 -vf vflip output.mp4</code><br><code>$ ffmpeg -i input.mp4 -vf transpose=1 output.mp4</code></p>
-</li>
-<li><p>extract audio<br><code>$ ffmpeg -i input.mp4 -acodec copy -vn out.aac</code></p>
-</li>
-<li><p>extract video<br><code>$ ffmpeg -i input.mp4 -vcodec copy -an out.h264</code></p>
-</li>
-<li><p>merge audo and video<br><code>$ ffmpeg -i out.h264 -i out.aac -vcodec copy -acodec copy out.mp4</code></p>
-</li>
-<li><p>crop video<br>crop format: crop=out_w:out_h:x:y<br>if x, y are missing, crop the video base on center<br>if x, y are set to be 0, 0, crop the video base on left top corner<br><code>$ ffmpeg -i input.mp4 -vf crop=in_w-400:in_h-200 -c:v libx264 -c:a copy -video_size 1280x720 output.mp4</code></p>
-</li>
-<li><p>以下寫法相同</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-codec:v</span><br><span class="line">-c:v</span><br><span class="line">-vcodec</span><br><span class="line"></span><br><span class="line">-frames:v</span><br><span class="line">-vframes</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>note</p>
+<li><p>kube-controller-manager<br>負責管理並運行 Kubernetes controller 的組件，簡單來說 controller 就是 Kubernetes 裡一群負責監視 Cluster 狀態的 Process，例如：Node Controller、Replication Controller<br>這些 Process 會在 Cluster 與預期狀態（desire state）不符時嘗試更新現有狀態（current state）。例如：現在要多開一台機器以應付突然增加的流量，那我的預期狀態就會更新成 N+1，現有狀態為 N，這時相對應的 controller 就會想辦法多開一台機器<br>controller-manager 的監視與嘗試更新也都需要透過訪問 kube-apiserver 達成</p>
 </li>
 </ul>
-<p>-crf is parameter for x264, 0 代表無損壓縮<br>-re: Read input at native frame rate. Mainly used to simulate a grab device. i.e. if you wanted to stream a video file, then you would want to use this, otherwise it might stream it too fast.</p>
+<h5 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h5><p>Kubernetes 中多個 Node 與 Master 的集合，基本上可以想成在同一個環境裡所有 Node 集合在一起的單位<br>通常一個 Cluster 中會有多個 Master 作為備援</p>
+<h5 id="Install-Pod"><a href="#Install-Pod" class="headerlink" title="Install Pod"></a>Install Pod</h5><p>當使用者要部署一個新的 Pod 到 Kubernetes Cluster 時，使用者要先透過 User Command（kubectl）輸入建立 Pod 的對應指令<br>此時指令會經過一層確認使用者身份的認證後，傳遞到 Master Node 中的 API Server，API Server 會把指令備份到 etcd<br>接下來 controller-manager 會從 API Server 收到需要創建一個新的 Pod 的訊息，並檢查如果資源許可，就會建立一個新的 Pod<br>最後 Scheduler 在定期訪問 API Server 時，會詢問 controller-manager 是否有建置新的 Pod，如果發現新建立的 Pod 時，Scheduler 就會負責把 Pod 配送到最適合的一個 Node 上面</p>
 <ul>
-<li><p>轉流<br>ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -q 0 -f mpegts -codec:v mpeg1video -s 1280x720 <a href="http://192.168.56.3:8081/secret/live" target="_blank" rel="noopener">http://192.168.56.3:8081/secret/live</a></p>
-</li>
-<li><p>推流<br>ffmpeg -re -i input.mp4 -q 0 -f mpegts -codec:v mpeg1video -s 1280x720 <a href="http://192.168.56.3:8081/secret/live" target="_blank" rel="noopener">http://192.168.56.3:8081/secret/live</a></p>
-</li>
+<li>Reference<br><a href="https://medium.com/@C.W.Hu/kubernetes-basic-concept-tutorial-e033e3504ec0" target="_blank" rel="noopener">https://medium.com/@C.W.Hu/kubernetes-basic-concept-tutorial-e033e3504ec0</a></li>
 </ul>
 
       
@@ -552,7 +298,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7bd7c7e8/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9782a6cf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -566,7 +312,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/7bd7c7e8/" class="post-title-link" itemprop="url">Execute MySQL Commands in shell script</a>
+            <a href="/posts/9782a6cf/" class="post-title-link" itemprop="url">gin cors</a>
         </h2>
 
         <div class="post-meta">
@@ -576,251 +322,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-04-23 16:55:45" itemprop="dateCreated datePublished" datetime="2020-04-23T16:55:45+08:00">2020-04-23</time>
+              <time title="創建時間：2020-07-29 17:30:17" itemprop="dateCreated datePublished" datetime="2020-07-29T17:30:17+08:00">2020-07-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 10000)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    mysql --user=root --password=1234 db_name -e <span class="string">"INSERT INTO table_name (id, date) VALUES (<span class="variable">$i</span>, <span class="variable">$(date +%s)</span>);"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fa21d003/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/fa21d003/" class="post-title-link" itemprop="url">uuid Generator in Linux</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-23 14:29:20" itemprop="dateCreated datePublished" datetime="2020-04-23T14:29:20+08:00">2020-04-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>透過系統中的uuid檔案，生成UUID</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">371a8e69-d35c-4eb1-bc3c-36accca6a6a0</span><br><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">0c1f3448-a089-4f4a-aaca-a7dc817f6cea</span><br><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">8fff67aa-093d-441d-ae57-277ae5fb1bde</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ca10b1f5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ca10b1f5/" class="post-title-link" itemprop="url">Crontab in Docker</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-15 11:30:40" itemprop="dateCreated datePublished" datetime="2020-04-15T11:30:40+08:00">2020-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="手動執行cron-task，並查看目前系統中執行的cron-task"><a href="#手動執行cron-task，並查看目前系統中執行的cron-task" class="headerlink" title="手動執行cron task，並查看目前系統中執行的cron task"></a>手動執行cron task，並查看目前系統中執行的cron task</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker cp cron-task container:/etc/cron.d/</span><br><span class="line">root@847d0eb77dfe:/<span class="comment"># cd /etc/cron.d/</span></span><br><span class="line">root@847d0eb77dfe:/etc/cron.d<span class="comment"># crontab cron-task</span></span><br><span class="line">root@847d0eb77dfe:/etc/cron.d<span class="comment"># cd /var/spool/cron/crontabs/</span></span><br><span class="line">root@847d0eb77dfe:/var/spool/cron/crontabs<span class="comment"># cat root</span></span><br><span class="line"><span class="comment"># DO NOT EDIT THIS FILE - edit the master and reinstall.</span></span><br><span class="line"><span class="comment"># (parse-log-cron installed on Wed May  1 14:55:42 2019)</span></span><br><span class="line"><span class="comment"># (Cron version -- $Id: crontab.c,v 2.13 1994/01/17 03:20:37 vixie Exp $)</span></span><br><span class="line">00 * * * * run-one /usr/bin/python3.6 /app.py</span><br></pre></td></tr></table></figure>
-
-<h4 id="在Dockerfile中設定cron-task"><a href="#在Dockerfile中設定cron-task" class="headerlink" title="在Dockerfile中設定cron task"></a>在Dockerfile中設定cron task</h4><ol>
-<li><p>create cron-task</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 * * * * run-one /usr/bin/python3.6 /app.py</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>in Dockerfile</p>
-</li>
-</ol>
-<ul>
-<li>apt-get install cron run-one</li>
-<li>add cron tasks script<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">    apt-get install --no-install-recommends -y cron run-one &amp;&amp; \</span><br><span class="line">ADD cron_task /etc/cron.d/cron-task</span><br><span class="line">RUN chmod 0644 /etc/cron.d/cron-task &amp;&amp; \</span><br><span class="line">    crontab /etc/cron.d/cron-task</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="3">
-<li>in supervisord.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:cron]</span><br><span class="line"><span class="built_in">command</span>=/usr/sbin/cron -f</span><br><span class="line"></span><br><span class="line">stdout_logfile_maxbytes = 0</span><br><span class="line">stdout_logfile = /dev/stdout</span><br><span class="line">stderr_logfile_maxbytes = 0</span><br><span class="line">stderr_logfile = /dev/stderr</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dd240c9a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/dd240c9a/" class="post-title-link" itemprop="url">shell script Notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-15 10:56:34" itemprop="dateCreated datePublished" datetime="2020-04-15T10:56:34+08:00">2020-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:51:52" itemprop="dateModified" datetime="2021-06-08T13:51:52+08:00">2021-06-08</time>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -832,7 +341,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a>
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
                 </span>
             </span>
 
@@ -848,73 +357,10 @@
 
       
           <ul>
-<li>get the folder where the shell script is<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIR=`dirname $0`</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>project/Middlewares/Cors.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Middlewares</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Cors</span><span class="params">()</span> <span class="title">gin</span>.<span class="title">HandlerFunc</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        method := c.Request.Method</span><br><span class="line">        origin := c.Request.Header.Get(<span class="string">"Origin"</span>)</span><br><span class="line">        <span class="keyword">if</span> origin != <span class="string">""</span> &#123;</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Origin"</span>, origin)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"POST, GET, OPTIONS, PUT, DELETE, UPDATE"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Origin, X-Requested-With, Content-Type, Accept, Authorization"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Expose-Headers"</span>, <span class="string">"Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Cache-Control, Content-Language, Content-Type"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"false"</span>)</span><br><span class="line">            c.Set(<span class="string">"content-type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">            c.AbortWithStatus(http.StatusNoContent)</span><br><span class="line">        &#125;</span><br><span class="line">        c.Next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>project/main.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"project/Middlewares"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.Use(Middlewares.Cors())</span><br><span class="line"></span><br><span class="line">    r.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        c.String(http.StatusOK, <span class="string">"Hello World!"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    r.Run(<span class="string">":8888"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p><a href="https://www.tutorialspoint.com/unix/shell_scripting.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/shell_scripting.htm</a><br>!   This is logical negation. This inverts a true condition into false and vice versa. [ ! false ] is true.<br>-o  This is logical OR. If one of the operands is true, then the condition becomes true. [ $a -lt 20 -o $b -gt 100 ] is true.<br>-a  This is logical AND. If both the operands are true, then the condition becomes true otherwise false. [ $a -lt 20 -a $b -gt 100 ] is false.<br>-z  Checks if the given string operand size is zero; if it is zero length, then it returns true. [ -z $a ] is not true.<br>-n  Checks if the given string operand size is non-zero; if it is nonzero length, then it returns true. [ -n $a ] is not false.<br>=   Checks if the value of two operands are equal or not; if yes, then the condition becomes true. [ $a = $b ] is not true.<br>!=  Checks if the value of two operands are equal or not; if values are not equal then the condition becomes true. [ $a != $b ] is true.<br>-f file Checks if file is an ordinary file as opposed to a directory or special file; if yes, then the condition becomes true. [ -f $file ] is true.<br>-d file Checks if file is a directory; if yes, then the condition becomes true. [ -d $file ] is not true.</p>
-<ul>
-<li><p>check symbolic link</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">lrwxrwxrwx. 1 root root 22 Dec 31 16:26 bbu_cli -&gt; /home/user/bbu_cli</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -L bbu_cli ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"This is a symbolic link"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>除了stdout，把所有output也導一份到test.log去<br>set -x: 把執行的command也印出來</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">NOW=$(date +<span class="string">"%Y-%m-%d-%H:%M:%S"</span>)</span><br><span class="line"><span class="built_in">exec</span> &amp;&gt; &gt;(tee <span class="built_in">test</span>-<span class="variable">$NOW</span>.<span class="built_in">log</span>)</span><br><span class="line"><span class="built_in">set</span> -x</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字串處理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result=$(echo $msg | grep xxx)</span><br><span class="line">if [ -z &quot;$result&quot; ]; then</span><br><span class="line">    echo &quot;msg中找不到xxx內容&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果script中有多個block commands利用&amp;進行背景執行，透過wait可以不退出script，直到直到執行Ctrl+C，並且，透過trap signal可以將所有背景執行的command也終止</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">trap</span> <span class="string">"exit"</span> INT TERM ERR</span><br><span class="line"><span class="built_in">trap</span> <span class="string">"kill 0"</span> EXIT</span><br><span class="line"></span><br><span class="line">tail -F test.log &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>echo -n 不換行輸出</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> -n <span class="string">"123"</span></span><br><span class="line"><span class="variable">$echo</span> <span class="string">"456"</span></span><br><span class="line"></span><br><span class="line">output: </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>echo -e 處理特殊字符<br>若字符串中出現字符，則特别加以處理，不會將它當成一般文字輸出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\a 發出警告聲；</span><br><span class="line">\b 删除前一个字符；</span><br><span class="line">\c 最後不加上换行符號；</span><br><span class="line">\f 换行但光标仍舊停留在原来的位置；</span><br><span class="line">\n 换行且光标移至行首；</span><br><span class="line">\r 光标移至行首，但不换行；</span><br><span class="line">\t 插入tab；</span><br><span class="line">\v 与\f相同；</span><br><span class="line">\\ 插入\字符；</span><br><span class="line">\nnn 插入nnn（八进制）所代表的ASCII字符；</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>大小寫轉換</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAME=&quot;NaMe&quot;</span><br><span class="line">echo $&#123;NAME^&#125; =&gt; Name</span><br><span class="line">echo $&#123;NAME^^&#125; =&gt; NAME</span><br><span class="line">echo $&#123;NAME,&#125; =&gt; naMe</span><br><span class="line">echo $&#123;NAME,,&#125; =&gt; name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>stdin/stdout/stderr<br>0: stdin<br>1: stdout<br>2: stderr</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; /dev/null 2&gt;&amp;1 =&gt; stdout 跟 stderr 都丟掉</span><br><span class="line">2&gt;&amp;1 =&gt; 把 stderr 導到 stdout</span><br><span class="line">&gt; 等同於 1&gt;</span><br><span class="line">&amp;&gt; file =&gt; 把 stdout 跟 stderr 都導向 file</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h1 id="Close-STDOUT-file-descriptor"><a href="#Close-STDOUT-file-descriptor" class="headerlink" title="Close STDOUT file descriptor"></a>Close STDOUT file descriptor</h1><p>exec 1&lt;&amp;-</p>
-<h1 id="Close-STDERR-FD"><a href="#Close-STDERR-FD" class="headerlink" title="Close STDERR FD"></a>Close STDERR FD</h1><p>exec 2&lt;&amp;-</p>
-<h1 id="Open-STDOUT-as-LOG-FILE-file-for-read-and-write"><a href="#Open-STDOUT-as-LOG-FILE-file-for-read-and-write" class="headerlink" title="Open STDOUT as $LOG_FILE file for read and write."></a>Open STDOUT as $LOG_FILE file for read and write.</h1><p>exec 1&lt;&gt;$LOG_FILE</p>
-<h1 id="Redirect-STDERR-to-STDOUT"><a href="#Redirect-STDERR-to-STDOUT" class="headerlink" title="Redirect STDERR to STDOUT"></a>Redirect STDERR to STDOUT</h1><p>exec 2&gt;&amp;1</p>
-<h1 id="for-lines-in-command-result"><a href="#for-lines-in-command-result" class="headerlink" title="for lines in command result"></a>for lines in command result</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --display java | while read line ; do</span><br><span class="line">    echo $line</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h1 id="delete-specific-cron-job"><a href="#delete-specific-cron-job" class="headerlink" title="delete specific cron job"></a>delete specific cron job</h1><p>保留 “job command” 以外的 cron jobs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l 2&gt;/dev/null | grep -v &apos;job command&apos; | crontab -</span><br></pre></td></tr></table></figure>
-
-<h1 id="dynamic-variable"><a href="#dynamic-variable" class="headerlink" title="dynamic variable"></a>dynamic variable</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">id=0</span><br><span class="line">A_0=1</span><br><span class="line">A_1=2</span><br><span class="line"></span><br><span class="line">target=A_$&#123;id&#125;</span><br><span class="line">echo $&#123;!target&#125; #1</span><br></pre></td></tr></table></figure>
-<h1 id="filename-and-extension"><a href="#filename-and-extension" class="headerlink" title="filename and extension"></a>filename and extension</h1><p>filename=$(basename – “$fullfile”)<br>extension=”${filename##<em>.}”<br>filename=”${filename%.</em>}”</p>
-<p><a href="https://blog.csdn.net/toopoo/article/details/105409383" target="_blank" rel="noopener">https://blog.csdn.net/toopoo/article/details/105409383</a><br>將導向檔案的log，加上時間戳記</p>
-<ul>
-<li><p>Process Uptime<br>ps -p <process_id> -o etime</process_id></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; ps -p 1 -o etime</span><br><span class="line">ELAPSED</span><br><span class="line">21:51</span><br><span class="line">&gt;&gt; ps -p 1 -o etime=</span><br><span class="line">03:24:30</span><br><span class="line">&gt;&gt; ps -p 1 -o etimes=</span><br><span class="line">12270</span><br></pre></td></tr></table></figure></li>
-<li><p>string<br>${string:index:length}<br>test=123<br>${test:0:1} //1<br>${test:1:1} //2<br>${test:2:1} //3</p>
-</li>
-<li><p>isdigit<br>if [[ $value =~ ^[0-9]+$ ]];then<br>echo $value is a digit<br>fi<br>if [[ ! $value =~ ^[0-9]+$ ]];then<br>echo $value is not a digit<br>fi<br>if [[ $value =~ ^-?[0-9]+$ ]];then<br>echo $value is a digit<br>fi<br>The ^ indicates the beginning of the input pattern<br>The - is a literal “-“<br>The ? means “0 or 1 of the preceding (-)”<br>The + means “1 or more of the preceding ([0-9])”<br>The $ indicates the end of the input pattern</p>
-</li>
-<li><p>return value of function</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">&#123;</span><br><span class="line">    a=<span class="variable">$1</span></span><br><span class="line">    b=<span class="variable">$2</span></span><br><span class="line">    <span class="built_in">echo</span> `expr <span class="variable">$a</span> \* 2 + <span class="variable">$b</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ret=$(foo 1 2)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$ret</span> <span class="comment"># 4</span></span><br></pre></td></tr></table></figure></li>
-<li><p>array</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">array 宣告</span><br><span class="line">declare -a array</span><br><span class="line"></span><br><span class="line">建立 array with items</span><br><span class="line">array=( item1 item2 item3 )</span><br><span class="line"></span><br><span class="line">for index in $&#123;!array[@]&#125;; do</span><br><span class="line">    echo $((index+1))/$&#123;#array[@]&#125;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 1/3</span><br><span class="line">// 2/3</span><br><span class="line">// 3/3</span><br><span class="line"></span><br><span class="line">array+=(item4)</span><br><span class="line"></span><br><span class="line">for i in $&#123;array[@]&#125;; do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line">// item1</span><br><span class="line">// item2</span><br><span class="line">// item3</span><br><span class="line">// item4</span><br></pre></td></tr></table></figure></li>
-<li><p>check item in an array</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array=(1 2 3)</span><br><span class="line">value=3</span><br><span class="line">if [[ &quot;$&#123;array[@]&#125;&quot; =~ &quot;$value&quot; ]]; then</span><br><span class="line">  echo &quot;found $value in the array&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li><p>check item is a list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=&quot;a ab abc&quot;</span><br><span class="line">value=bc</span><br><span class="line">if [[ $list =~ (^|[[:space:]])&quot;$value&quot;($|[[:space:]]) ]]; then</span><br><span class="line">  echo &quot;found $value in the list&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li><p>array difference</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">array_diff()</span><br><span class="line">&#123;</span><br><span class="line">    eval local ARR1=\(\&quot;\$&#123;$2[@]&#125;\&quot;\)</span><br><span class="line">    eval local ARR2=\(\&quot;\$&#123;$3[@]&#125;\&quot;\)</span><br><span class="line">    local IFS=$&apos;\n&apos;</span><br><span class="line">    mapfile -t $1 &lt; &lt;(comm -23 &lt;(echo &quot;$&#123;ARR1[*]&#125;&quot; | sort) &lt;(echo &quot;$&#123;ARR2[*]&#125;&quot; | sort))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array1=(1 2)</span><br><span class="line">array2=(2 3 4)</span><br><span class="line"></span><br><span class="line">array_diff RESULT array1 array2</span><br><span class="line">echo &quot;$&#123;RESULT[@]&#125;&quot; // 1</span><br><span class="line"></span><br><span class="line">array_diff RESULT array2 array1</span><br><span class="line">echo &quot;$&#123;RESULT[@]&#125;&quot; // 3 4</span><br></pre></td></tr></table></figure></li>
-<li><p>color<br>Text Style<br>Code | Description</p>
-</li>
-</ul>
-<p>—–|——-<br>0 | Reset/Normal<br>1 | Bold text<br>2 | Faint text<br>3 | Italics<br>4 | Underlined text</p>
-<p>Color | Foreground | Background<br>Black | 30 | 40<br>Red | 31 | 41<br>Green | 32 | 42<br>Yellow | 33 | 43<br>Blue | 34 | 44<br>Magenta | 35 | 45<br>Cyan | 36 | 46<br>Light Gray | 37 | 47<br>Gray | 90 | 100<br>Light Red | 91 | 101<br>Light Green 92 | 102<br>Light Yellow | 93 | 103<br>Light Blue | 94 | 104<br>Light Magenta | 95 | 105<br>Light Cyan | 96 | 106<br>White | 97 | 107</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">RED=&apos;\033[0;31m&apos;</span><br><span class="line">BOLD=&apos;\033[1m&apos;</span><br><span class="line">BOLD_RED=&apos;\033[1;31m&apos;</span><br><span class="line">NC=&apos;\033[0m&apos;</span><br><span class="line"></span><br><span class="line">echo -e $&#123;RED&#125;RED$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD&#125;BOLD$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD_RED&#125;BOLD_RED$&#123;NC&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -933,7 +379,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f9c9d078/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7f85b3c1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -947,7 +393,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/f9c9d078/" class="post-title-link" itemprop="url">jq</a>
+            <a href="/posts/7f85b3c1/" class="post-title-link" itemprop="url">new and make</a>
         </h2>
 
         <div class="post-meta">
@@ -957,14 +403,419 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-04-15 10:28:55" itemprop="dateCreated datePublished" datetime="2020-04-15T10:28:55+08:00">2020-04-15</time>
+              <time title="創建時間：2020-07-29 08:51:18" itemprop="dateCreated datePublished" datetime="2020-07-29T08:51:18+08:00">2020-07-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>new<ul>
+<li>返回指標，指向分配給宣告變數的記憶體空間</li>
+<li>會初始化宣告的變數, 如 string 會賦值為 “”，number 會賦值為 0</li>
+<li>對於 channel, map, slice 等等, 會賦值為 nil<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p := <span class="built_in">new</span>(<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v <span class="keyword">int</span></span><br><span class="line">p := &amp;v</span><br><span class="line"></span><br><span class="line">person := <span class="built_in">new</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">person[<span class="string">"name"</span>] = <span class="string">"John"</span> <span class="comment">// invalid operation: people["name"] (type *map[string]interface &#123;&#125; does not support indexing)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>make<ul>
+<li>不會返回指標</li>
+<li>用來初始化數據結構，包含 channel, map, slice, etc.<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, <span class="number">10</span>)</span><br><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2c493017/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2c493017/" class="post-title-link" itemprop="url">Package exec</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-28 17:30:32" itemprop="dateCreated datePublished" datetime="2020-07-28T17:30:32+08:00">2020-07-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>import<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"os/exec"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>func (*Cmd) Output<br><code>Output</code> runs the command and returns its standard output.<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line">out, err := cmd.Output()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                      </span><br><span class="line">fmt.Printf(<span class="string">"output: %s\n"</span>, <span class="keyword">string</span>(out))</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">output:</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>func (c *Cmd) CombinedOutput() ([]byte, error)<br><code>CombinedOutput</code> runs the command and returns its combined standard output and standard error.<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line">out, err := cmd.CombinedOutput()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                      </span><br><span class="line">fmt.Printf(<span class="string">"output: %s\n"</span>, <span class="keyword">string</span>(out))</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">output: cat: text: No such file or directory</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>func (*Cmd) Run<br><code>Run</code> starts the specified command and waits for it to complete.<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"sleep"</span>, <span class="string">"1"</span>)</span><br><span class="line">fmt.Println(<span class="string">"Running command and waiting for it to finish..."</span>)</span><br><span class="line">err := cmd.Run()</span><br><span class="line">fmt.Printf(<span class="string">"Command finished with error: %v\n"</span>, err)</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Running command and waiting for it to finish...</span><br><span class="line">Command finished with error: &lt;nil&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>func (c *Cmd) Start() error<br><code>Start</code> starts the specified command but does not wait for it to complete.</li>
+<li>func (c *Cmd) Wait() error<br><code>Wait</code> waits for the command to exit and waits for any copying to stdin or copying from stdout or stderr to complete.<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"sleep"</span>, <span class="string">"5"</span>)</span><br><span class="line">err := cmd.Start()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(<span class="string">"Waiting for command to finish..."</span>)</span><br><span class="line">err = cmd.Wait()</span><br><span class="line">fmt.Printf(<span class="string">"Command finished with error: %v"</span>, err)</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go run main.go </span><br><span class="line">Waiting for command to finish...</span><br><span class="line">Command finished with error: &lt;nil&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>func (*Cmd) StdoutPipe<br><code>StdoutPipe</code> returns a pipe that will be connected to the command’s standard output when the command starts.<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">    Age  <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line">cmd := exec.Command(<span class="string">"echo"</span>, <span class="string">"-n"</span>, <span class="string">`&#123;"Name": "Bob", "Age": 32&#125;`</span>)</span><br><span class="line">stdout, err := cmd.StdoutPipe()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := cmd.Start(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := json.NewDecoder(stdout).Decode(&amp;person); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := cmd.Wait(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line">fmt.Printf(<span class="string">"%s is %d years old\n"</span>, person.Name, person.Age)</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bob is 32 years old</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>將 stdout 和 stderr 分開處理<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line"><span class="keyword">var</span> stdout, stderr bytes.Buffer</span><br><span class="line">cmd.Stdout = &amp;stdout</span><br><span class="line">cmd.Stderr = &amp;stderr</span><br><span class="line">err := cmd.Run()    </span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;     </span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                   </span><br><span class="line">outStr, errStr := <span class="keyword">string</span>(stdout.Bytes()), <span class="keyword">string</span>(stderr.Bytes())</span><br><span class="line">fmt.Printf(<span class="string">"out: %s\nerr: %s\n"</span>, outStr, errStr)</span><br></pre></td></tr></table></figure></li>
+<li>output<ul>
+<li>success<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">out: </span><br><span class="line">err: cat: text: No such file or directory</span><br></pre></td></tr></table></figure></li>
+<li>fail<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">out: test</span><br><span class="line">err:</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>處理 stdin<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"tr"</span>, <span class="string">"a-z"</span>, <span class="string">"A-Z"</span>)</span><br><span class="line">cmd.Stdin = strings.NewReader(<span class="string">"some input"</span>)</span><br><span class="line"><span class="keyword">var</span> out bytes.Buffer</span><br><span class="line">cmd.Stdout = &amp;out</span><br><span class="line">err := cmd.Run()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"in all caps: %q\n"</span>, out.String())</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in all caps: &quot;SOME INPUT&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>設定 Timeout<ul>
+<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctx, cancel := context.WithTimeout(context.Background(), <span class="number">100</span>*time.Millisecond)</span><br><span class="line"><span class="keyword">defer</span> cancel()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err := exec.CommandContext(ctx, <span class="string">"sleep"</span>, <span class="string">"5"</span>).Run(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// This will fail after 100 milliseconds. The 5 second sleep will be interrupted.</span></span><br><span class="line">    fmt.Println(<span class="string">"TIMEOUT"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Reference<br><a href="https://golang.org/pkg/os/exec/" target="_blank" rel="noopener">https://golang.org/pkg/os/exec/</a><br><a href="https://colobu.com/2017/06/19/advanced-command-execution-in-Go-with-os-exec/" target="_blank" rel="noopener">https://colobu.com/2017/06/19/advanced-command-execution-in-Go-with-os-exec/</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d8b7f59e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/d8b7f59e/" class="post-title-link" itemprop="url">struct, map, and json</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-23 14:19:48" itemprop="dateCreated datePublished" datetime="2020-07-23T14:19:48+08:00">2020-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>struct<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"encoding/json"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name   <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，使用 age 代替 Age</span></span><br><span class="line">    Age    <span class="keyword">int</span>    <span class="string">`json:"age"`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，忽略此欄位</span></span><br><span class="line">    Gender <span class="keyword">string</span> <span class="string">`json:"-"`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，若此欄位為空，則忽略 (若int: 0 string: ""，則也會被忽略)</span></span><br><span class="line">    Phone  <span class="keyword">string</span> <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    data := Person &#123;</span><br><span class="line">        Name: <span class="string">"John"</span>,</span><br><span class="line">        Age: <span class="number">30</span>,</span><br><span class="line">        Gender: <span class="string">"male"</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fmt.Println(data)</span><br><span class="line">    <span class="comment">//&#123;John 30 male &#125;</span></span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"%+v\n"</span>, data)</span><br><span class="line">    <span class="comment">//&#123;Name:John Age:30 Gender:male Phone:&#125;</span></span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"%#v\n"</span>, data)</span><br><span class="line">    <span class="comment">//main.Person&#123;Name:"John", Age:30, Gender:"male", Phone:""&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>宣告<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">p1 := &amp;Person&#123;&#125;</span><br><span class="line">p1.Name = <span class="string">"John"</span></span><br><span class="line">p1.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(*p1) <span class="comment">//&#123;John 20&#125;</span></span><br><span class="line"></span><br><span class="line">p2 := <span class="built_in">new</span>(Person)</span><br><span class="line">p2.Name = <span class="string">"John"</span></span><br><span class="line">p2.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(*p2) <span class="comment">//&#123;John 20&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p3 Person</span><br><span class="line">p3.Name = <span class="string">"John"</span></span><br><span class="line">p3.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(p3) <span class="comment">//&#123;John 20&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Call by pointer<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(p *Person)</span></span> &#123;</span><br><span class="line">    p.Name = <span class="string">"Bob"</span></span><br><span class="line">&#125;</span><br><span class="line">modify(p1)</span><br><span class="line">fmt.Println(*p1) <span class="comment">//&#123;Bob 20&#125;</span></span><br><span class="line"></span><br><span class="line">modify(p2)</span><br><span class="line">fmt.Println(*p2) <span class="comment">//&#123;Bob 20&#125;</span></span><br><span class="line"></span><br><span class="line">modify(&amp;p3)</span><br><span class="line">fmt.Println(p3) <span class="comment">//&#123;Bob 20&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>Append data into struct array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    john := Person&#123;Name:<span class="string">"John"</span>,Age:<span class="number">20</span>&#125;</span><br><span class="line">    mary := Person&#123;Name:<span class="string">"Mary"</span>,Age:<span class="number">25</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> People []Person</span><br><span class="line">    People = <span class="built_in">append</span>(People, john)</span><br><span class="line">    People = <span class="built_in">append</span>(People, mary)</span><br><span class="line">    fmt.Println(People) <span class="comment">//[&#123;John 20&#125; &#123;Mary 25&#125;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Access data in the struct array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dump</span><span class="params">(People []Person)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> id, person := <span class="keyword">range</span> People &#123;</span><br><span class="line">        <span class="comment">//可以用person，也可以用People[id]來存取資料</span></span><br><span class="line">        <span class="comment">//0: Name: John, Age: 20</span></span><br><span class="line">        <span class="comment">//1: Name: Mary, Age: 25</span></span><br><span class="line">        fmt.Printf(<span class="string">"%d: Name: %s, Age: %d\n"</span>, id, person.Name, People[id].Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Delete elements in a array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> id, person := <span class="keyword">range</span> People &#123;</span><br><span class="line">    <span class="keyword">if</span> person.Name == <span class="string">"John"</span> &#123;</span><br><span class="line">        People = <span class="built_in">append</span>(People[:id], People[id+<span class="number">1</span>:]...)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>序列化 struct to json string<ul>
+<li>func Marshal(v interface{}) ([]byte, error)<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data_json, _ := json.MarshalIndent(data, <span class="string">""</span>, <span class="string">"  "</span>)</span><br><span class="line">fmt.Println(<span class="keyword">string</span>(data_json))</span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//  "Name": "John",</span></span><br><span class="line"><span class="comment">//  "age": 30</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>func NewEncoder(w io.Writer) *Encoder</li>
+<li>func (enc *Encoder) Encode(v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> err := json.NewEncoder(os.Stdout).Encode(&amp;data); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Println(err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//stdout: &#123;"Name":"John","age":30&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>反序列化 json string to struct<ul>
+<li>func Unmarshal(data []byte, v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data := []<span class="keyword">byte</span>(<span class="string">`&#123;"name" : "John" , "age" : 30&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> person Person</span><br><span class="line">json.Unmarshal(data, &amp;person)</span><br><span class="line">fmt.Println(person) <span class="comment">//&#123;John 30&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>func NewDecoder(r io.Reader) *Decoder</li>
+<li>func (dec *Decoder) Decode(v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="string">`&#123;"name" : "John" , "age" : 30&#125;`</span></span><br><span class="line"><span class="keyword">var</span> person Person</span><br><span class="line"><span class="keyword">if</span> err := json.NewDecoder(strings.NewReader(data)).Decode(&amp;person); err == <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Println(person) <span class="comment">//&#123;John 30&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>pointer items in struct<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Enabled <span class="keyword">int</span></span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    Enabled <span class="keyword">int</span></span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Services <span class="keyword">struct</span> &#123;</span><br><span class="line">    A *A <span class="string">`json:",omitempty"`</span></span><br><span class="line">    B *B <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contents := []<span class="keyword">byte</span>(<span class="string">`&#123;"A":&#123;"Enabled":1,"Name":"test"&#125;,"B":&#123;"Enabled":0,"Name":"test"&#125;&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data Services </span><br><span class="line">json.Unmarshal(contents, &amp;data)</span><br><span class="line"><span class="keyword">if</span> data.A.Enabled == <span class="number">0</span> &#123; </span><br><span class="line">    data.A = <span class="literal">nil</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> data.B.Enabled == <span class="number">0</span> &#123; </span><br><span class="line">    data.B = <span class="literal">nil</span> </span><br><span class="line">&#125;</span><br><span class="line">data_json, _ := json.Marshal(data)</span><br><span class="line">fmt.Println(<span class="keyword">string</span>(data_json)) <span class="comment">//&#123;"A":&#123;"Enabled":1,"Name":"test"&#125;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>map<ul>
+<li>如果有一串資料 {“Name”: “John”, “Gender”: “Male”}，可以使用 map 來儲存<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">data[<span class="string">"Name"</span>] = <span class="string">"John"</span></span><br><span class="line">data[<span class="string">"Gender"</span>] = <span class="string">"Male"</span></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Gender:Male Name:John]</span></span><br></pre></td></tr></table></figure></li>
+<li>如果資料中有多種不同的型別 {“Name”: “John”, “Gender”: “Male”, “Age”: 20}，可以藉由 interface{} 來處理<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">data[<span class="string">"Name"</span>] = <span class="string">"John"</span></span><br><span class="line">data[<span class="string">"Gender"</span>] = <span class="string">"Male"</span></span><br><span class="line">data[<span class="string">"Age"</span>] = <span class="number">20</span></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Age:20 Gender:Male Name:John]</span></span><br></pre></td></tr></table></figure></li>
+<li>多層取值<ul>
+<li>存取已知的 key<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data_json := []<span class="keyword">byte</span>(<span class="string">`&#123;"Name": "John", "Age": 20, "Friend": &#123;"Name": "Mary", "Age": 25&#125;&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">json.Unmarshal(data_json, &amp;data)</span><br><span class="line"></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Age:20 Friend:map[Age:25 Name:Mary] Name:John]</span></span><br><span class="line">friend := data[<span class="string">"Friend"</span>].(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">fmt.Println(friend) <span class="comment">//map[Age:25 Name:Mary]</span></span><br><span class="line">fmt.Println(<span class="string">"friend: "</span> + friend[<span class="string">"Name"</span>].(<span class="keyword">string</span>)) <span class="comment">//friend: Mary</span></span><br></pre></td></tr></table></figure></li>
+<li>列舉所有內容<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">data_json := []<span class="keyword">byte</span>(<span class="string">`&#123;"Name": "John", "Age": 20, "BestFriend": &#123;"Name": "Mary", "Age": 25&#125;, "Friends": ["Mark", "Mike"]&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">json.Unmarshal(data_json, &amp;data)</span><br><span class="line">m := data.(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">    rt := reflect.TypeOf(v)</span><br><span class="line">    <span class="keyword">if</span> rt.Kind() == reflect.Slice &#123;</span><br><span class="line">        n := v.([]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">        <span class="keyword">for</span> i, u := <span class="keyword">range</span> n &#123; </span><br><span class="line">            fmt.Println(k, i, u)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> rt.Kind() == reflect.Map &#123;</span><br><span class="line">        n := v.(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">        <span class="keyword">for</span> i, u := <span class="keyword">range</span> n &#123; </span><br><span class="line">            fmt.Println(k, i, u)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fmt.Println(k ,v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Name John</span><br><span class="line">Age 20</span><br><span class="line">BestFriend Name Mary</span><br><span class="line">BestFriend Age 25</span><br><span class="line">Friends 0 Mark</span><br><span class="line">Friends 1 Mike</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/812d43/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/812d43/" class="post-title-link" itemprop="url">Periodic Task</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-22 16:42:40" itemprop="dateCreated datePublished" datetime="2020-07-22T16:42:40+08:00">2020-07-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>General goroutine<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="literal">true</span> &#123;</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">        time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
+<li>time.Ticker<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ticker *time.Ticker</span><br><span class="line">ticker = time.NewTicker(<span class="number">1</span> * time.Second)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">range</span> ticker.C &#123;</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">ticker.Stop()</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8b2c5d13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/8b2c5d13/" class="post-title-link" itemprop="url">sshpass</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-22 16:13:27" itemprop="dateCreated datePublished" datetime="2020-07-22T16:13:27+08:00">2020-07-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -987,15 +838,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>使用curl執行webapi，可以把結果拋給jq，格式化json的內容</p>
-<p><code>sudo apt install jq</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'&#123; "name":"John", "age":31, "city":"New York" &#125;'</span> | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="string">"age"</span>: 31,</span><br><span class="line">  <span class="string">"city"</span>: <span class="string">"New York"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <p><code>export SSH_PASSWORD=1234</code><br><code>export REMOTE_SERVER=user@192.168.56.3</code></p>
+<ul>
+<li><p>執行遠端的 shell command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER COMMAND</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER ls</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>執行遠端需要 root 權限的 shell command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -t $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -T $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -tt $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>執行遠端 docker command</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer mysql -uroot -p1234 -e &apos;show databases&apos;&quot;</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER docker exec mycontainer &quot;mysql -uroot -p1234 -e &apos;show databases&apos;&quot;</span><br><span class="line"></span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER docker exec mycontainer ls -al</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer ls -al&quot;</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer sh -c &apos;ls -al&apos;&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>遠端執行 sftp 動作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SFTP_PASSWORD sftp -oBatchMode=no -ostricthostkeychecking=no -b - $ACCOUNT@$ADDRESS &lt;&lt; !</span><br><span class="line">ls</span><br><span class="line">cd /folder</span><br><span class="line">get file</span><br><span class="line">bye</span><br><span class="line">!</span><br></pre></td></tr></table></figure></li>
+</ul>
 
-<p>sample 1</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq .data</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"token"</span>: <span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq .data.token</span><br><span class="line"><span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq -r .data.token</span><br><span class="line">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><br></pre></td></tr></table></figure>
-
-<p>sample 2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X GET http://localhost/api/data</span><br><span class="line">&#123;<span class="string">"code"</span>:0,<span class="string">"data"</span>:[&#123;<span class="string">"Location"</span>:<span class="string">"4F"</span>,<span class="string">"URL"</span>:<span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,<span class="string">"status"</span>:null&#125;]&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,</span><br><span class="line">  <span class="string">"data"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">      <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">      <span class="string">"status"</span>: null</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">    <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">    <span class="string">"status"</span>: null</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data[0]</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">  <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">  <span class="string">"status"</span>: null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data[0].URL</span><br><span class="line"><span class="string">"rtsp://localhost:8888/CH001.sdp"</span></span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq -r .data[0].URL</span><br><span class="line">rtsp://localhost:8888/CH001.sdp</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1014,7 +870,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eb6b61c0/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f3b1b78/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1028,7 +884,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/eb6b61c0/" class="post-title-link" itemprop="url">chkdsk</a>
+            <a href="/posts/f3b1b78/" class="post-title-link" itemprop="url">File Upload Operation</a>
         </h2>
 
         <div class="post-meta">
@@ -1038,14 +894,14 @@
               </span>
               <span class="post-meta-item-text">發表於</span>
 
-              <time title="創建時間：2020-04-15 10:21:07" itemprop="dateCreated datePublished" datetime="2020-04-15T10:21:07+08:00">2020-04-15</time>
+              <time title="創建時間：2020-07-21 08:52:35" itemprop="dateCreated datePublished" datetime="2020-07-21T08:52:35+08:00">2020-07-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1053,7 +909,11 @@
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
                 </span>
             </span>
 
@@ -1068,10 +928,179 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>當隨身碟出現以下錯誤時，可以透過chkdsk來修復<br><img src="/posts/eb6b61c0/error.jpg" alt></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/f</span><br><span class="line">修復硬碟上的錯誤。必須鎖定硬碟。如果 chkdsk 無法鎖定磁碟區</span><br><span class="line">則會顯示一條訊息，詢問您是否希望在下次重新啟動電腦時檢查該驅動器</span><br><span class="line">/v</span><br><span class="line">當檢查硬碟時，顯示所有目錄中每個文件的名稱</span><br><span class="line">/r</span><br><span class="line">找到壞軌區並恢復可讀取的信息。必須鎖定硬碟</span><br><span class="line">/x</span><br><span class="line">僅在 NTFS 上使用。如果必要，首先強制卸載磁碟區</span><br><span class="line">該磁碟槽的所有打開指令&amp;檔案都無效。/x 還包含了/f 的功能</span><br><span class="line">/i</span><br><span class="line">僅隨 NTFS 使用。對索引項執行充分檢查，降低運行 chkdsk 的所用時間量</span><br><span class="line">/c</span><br><span class="line">僅隨 NTFS 使用。跳過文件夾結構中的週期檢查，減少運行 chkdsk 所需的時間量</span><br><span class="line">/l[:size]</span><br><span class="line">僅隨 NTFS 使用。將日誌文件的大小更改為由用戶輸入的大小</span><br><span class="line">如果省略該參數，則 /l 會顯示當前日誌文件的大小</span><br><span class="line">/?</span><br><span class="line">在命令提示符顯示幫助。</span><br></pre></td></tr></table></figure>
+          <ul>
+<li>server<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">upload</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    code := <span class="number">200</span></span><br><span class="line">    res := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line">    param1 := c.PostForm(<span class="string">"param1"</span>)</span><br><span class="line">    param2 := c.PostForm(<span class="string">"param2"</span>)</span><br><span class="line"></span><br><span class="line">    file, err := c.FormFile(<span class="string">"file"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        code = <span class="number">401</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res[<span class="string">"param1"</span>] = param1</span><br><span class="line">    res[<span class="string">"param2"</span>] = param2</span><br><span class="line">    res[<span class="string">"filename"</span>] = file.Filename</span><br><span class="line">    res[<span class="string">"filesize"</span>] = file.Size</span><br><span class="line"></span><br><span class="line">    c.JSON(http.StatusOK, gin.H &#123;</span><br><span class="line">        <span class="string">"code"</span>:  code,</span><br><span class="line">        <span class="string">"data"</span>: res,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.POST(<span class="string">"/upload"</span>, upload)</span><br><span class="line">    r.Run(<span class="string">":8888"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>client<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"bytes"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io"</span></span><br><span class="line">    <span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"mime/multipart"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">    <span class="string">"path/filepath"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newfileUploadRequest</span><span class="params">(uri <span class="keyword">string</span>, params <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>, paramName, path <span class="keyword">string</span>)</span> <span class="params">(*http.Request, error)</span></span> &#123;</span><br><span class="line">    file, err := os.Open(path)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> file.Close()</span><br><span class="line"></span><br><span class="line">    body := &amp;bytes.Buffer&#123;&#125;</span><br><span class="line">    writer := multipart.NewWriter(body)</span><br><span class="line">    part, err := writer.CreateFormFile(paramName, filepath.Base(path))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    _, err = io.Copy(part, file)</span><br><span class="line">    <span class="comment">//we can also use string to fill the file content</span></span><br><span class="line">    <span class="comment">//part.Write([]byte("content_in_a_file"))</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> key, val := <span class="keyword">range</span> params &#123;</span><br><span class="line">        _ = writer.WriteField(key, val)</span><br><span class="line">    &#125;</span><br><span class="line">    err = writer.Close()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    req, err := http.NewRequest(<span class="string">"POST"</span>, uri, body)</span><br><span class="line">    req.Header.Set(<span class="string">"Content-Type"</span>, writer.FormDataContentType())</span><br><span class="line">    <span class="keyword">return</span> req, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    payload := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">        <span class="string">"param1"</span>: <span class="string">"test1"</span>,</span><br><span class="line">        <span class="string">"param2"</span>: <span class="string">"test2"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    url := <span class="string">"http://192.168.56.3:8888/upload"</span></span><br><span class="line">    request, err := newfileUploadRequest(url, payload, <span class="string">"file"</span>, <span class="string">"/home/user/test.txt"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    client := &amp;http.Client&#123;&#125;</span><br><span class="line">    resp, err := client.Do(request)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">        body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Fatal(err)</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>output<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</span><br><span class="line">  <span class="attr">"data"</span>: &#123;</span><br><span class="line">    <span class="attr">"filename"</span>: <span class="string">"test.txt"</span>,</span><br><span class="line">    <span class="attr">"filesize"</span>: <span class="number">684</span>,</span><br><span class="line">    <span class="attr">"param1"</span>: <span class="string">"test1"</span>,</span><br><span class="line">    <span class="attr">"param2"</span>: <span class="string">"test2"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
-<p><img src="/posts/eb6b61c0/chkdsk.png" alt></p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b401a0da/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b401a0da/" class="post-title-link" itemprop="url">nsenter</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-20 09:04:24" itemprop="dateCreated datePublished" datetime="2020-07-20T09:04:24+08:00">2020-07-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>nsenter 可以用來進入 target process 所在的 Namespace 中執行命令。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ nsenter -h</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line"> nsenter [options] [&lt;program&gt; [&lt;argument&gt;...]]</span><br><span class="line"></span><br><span class="line">Run a program with namespaces of other processes.</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"> -a, --all              enter all namespaces</span><br><span class="line"> -t, --target &lt;pid&gt;     target process to get namespaces from</span><br><span class="line"> -m, --mount[=&lt;file&gt;]   enter mount namespace</span><br><span class="line"> -u, --uts[=&lt;file&gt;]     enter UTS namespace (hostname etc)</span><br><span class="line"> -i, --ipc[=&lt;file&gt;]     enter System V IPC namespace</span><br><span class="line"> -n, --net[=&lt;file&gt;]     enter network namespace</span><br><span class="line"> -p, --pid[=&lt;file&gt;]     enter pid namespace</span><br><span class="line"> -C, --cgroup[=&lt;file&gt;]  enter cgroup namespace</span><br><span class="line"> -U, --user[=&lt;file&gt;]    enter user namespace</span><br><span class="line"> -S, --setuid &lt;uid&gt;     <span class="built_in">set</span> uid <span class="keyword">in</span> entered namespace</span><br><span class="line"> -G, --setgid &lt;gid&gt;     <span class="built_in">set</span> gid <span class="keyword">in</span> entered namespace</span><br><span class="line">     --preserve-credentials <span class="keyword">do</span> not touch uids or gids</span><br><span class="line"> -r, --root[=&lt;dir&gt;]     <span class="built_in">set</span> the root directory</span><br><span class="line"> -w, --wd[=&lt;dir&gt;]       <span class="built_in">set</span> the working directory</span><br><span class="line"> -F, --no-fork          <span class="keyword">do</span> not fork before executing &lt;program&gt;</span><br><span class="line"> -Z, --follow-context   <span class="built_in">set</span> SELinux context according to --target PID</span><br><span class="line"></span><br><span class="line"> -h, --<span class="built_in">help</span>             display this <span class="built_in">help</span></span><br><span class="line"> -V, --version          display version</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 host 中，下指令到 container 內<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ PID=$(docker inspect --format &#123;&#123;.State.Pid&#125;&#125; my_container)</span><br><span class="line">$ sudo nsenter -m -u -i -n -t <span class="variable">$PID</span> ls</span><br><span class="line">app  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  requirements.txt  root  run  sbin  srv  sys  tmp  usr  var</span><br></pre></td></tr></table></figure></li>
+<li>在 container 中，下指令到 host<br>必須先允許 container 存取 host namespace 的權限</li>
+</ol>
+<ul>
+<li>透過 docker run 指令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --privileged --pid=host ...</span><br></pre></td></tr></table></figure></li>
+<li>透過 docker compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privileged: true</span><br><span class="line">pid: &quot;host&quot;</span><br></pre></td></tr></table></figure></li>
+<li>container 中，在 host 執行的 process 為 <code>PID=1</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it my_container bash</span><br><span class="line">root@5185b2a94319:~<span class="comment"># nsenter -m -u -i -n -t 1 ls</span></span><br><span class="line">bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swap.img  sys  tmp  usr  var  vmlinuz  vmlinuz.old</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b1b1ed69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b1b1ed69/" class="post-title-link" itemprop="url">subprocess</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-07-17 15:54:48" itemprop="dateCreated datePublished" datetime="2020-07-17T15:54:48+08:00">2020-07-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>run<br>was added in Python 3.5<br>execute a command and wait until it finishes<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res = subprocess.run([<span class="string">"cat"</span>, <span class="string">"/etc/hostname"</span>], stdout=subprocess.PIPE)</span><br><span class="line">hostname = res.stdout.decode(<span class="string">"utf-8"</span>).strip()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>call<br>ret=subprocess.call(‘cat /etc/machine-id’, shell=True, stdout=open(‘/dev/null’,’w’), stderr=subprocess.STDOUT)</p>
+<p>popen<br>you can continue doing your stuff while the process finishes and then just repeatedly call subprocess.communicate yourself to pass and receive data to your process.</p>
 
       
     </div>
@@ -1090,7 +1119,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1155,7 +1184,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

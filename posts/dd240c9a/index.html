@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="get the folder where the shell script is1DIR=&#96;dirname $0&#96;    https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;unix&#x2F;shell_scripting.htm!   This is logical negation. This inverts a true condition into false and vice ver">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2021-06-08T05:51:52.760Z">
+<meta property="og:updated_time" content="2021-08-25T11:39:23.301Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/dd240c9a/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:51:52" itemprop="dateModified" datetime="2021-06-08T13:51:52+08:00">2021-06-08</time>
+                <time title="修改時間：2021-08-25 19:39:23" itemprop="dateModified" datetime="2021-08-25T19:39:23+08:00">2021-08-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,6 +313,12 @@
 <p>—–|——-<br>0 | Reset/Normal<br>1 | Bold text<br>2 | Faint text<br>3 | Italics<br>4 | Underlined text</p>
 <p>Color | Foreground | Background<br>Black | 30 | 40<br>Red | 31 | 41<br>Green | 32 | 42<br>Yellow | 33 | 43<br>Blue | 34 | 44<br>Magenta | 35 | 45<br>Cyan | 36 | 46<br>Light Gray | 37 | 47<br>Gray | 90 | 100<br>Light Red | 91 | 101<br>Light Green 92 | 102<br>Light Yellow | 93 | 103<br>Light Blue | 94 | 104<br>Light Magenta | 95 | 105<br>Light Cyan | 96 | 106<br>White | 97 | 107</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">RED=&apos;\033[0;31m&apos;</span><br><span class="line">BOLD=&apos;\033[1m&apos;</span><br><span class="line">BOLD_RED=&apos;\033[1;31m&apos;</span><br><span class="line">NC=&apos;\033[0m&apos;</span><br><span class="line"></span><br><span class="line">echo -e $&#123;RED&#125;RED$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD&#125;BOLD$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD_RED&#125;BOLD_RED$&#123;NC&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在shell script中，某些指令出錯<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Run something like: [[ $ABC =~ regexp ]] #&gt; [[: not found</span><br><span class="line">start_service.sh: source: not found</span><br></pre></td></tr></table></figure>
+因為 Image 中 sh 並非 bash，而是 dash<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/sh #&gt; /bin/sh -&gt; dash</span><br></pre></td></tr></table></figure>
+將 sh 改指向 sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rm /bin/sh</span><br><span class="line">$ ln -s /bin/bash /bin/sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
     
@@ -408,7 +414,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

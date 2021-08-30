@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a7a9482c/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/29bb5527/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/a7a9482c/" class="post-title-link" itemprop="url">python socket server</a>
+            <a href="/posts/29bb5527/" class="post-title-link" itemprop="url">android_setup_opencv</a>
         </h2>
 
         <div class="post-meta">
@@ -208,65 +208,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-08-25 18:12:47 / 修改時間：18:13:17" itemprop="dateCreated datePublished" datetime="2021-08-25T18:12:47+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">serv.bind((<span class="string">'0.0.0.0'</span>, <span class="number">9527</span>))</span><br><span class="line">serv.listen()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn, addr = serv.accept()</span><br><span class="line">    print(<span class="string">'Client from'</span>, addr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = conn.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data: <span class="keyword">break</span></span><br><span class="line">        conn.send(data)</span><br><span class="line"></span><br><span class="line">    conn.close()</span><br><span class="line">    print(<span class="string">'Client disconnected'</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b080c008/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b080c008/" class="post-title-link" itemprop="url">split pcap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-20 16:57:43 / 修改時間：16:59:18" itemprop="dateCreated datePublished" datetime="2021-08-20T16:57:43+08:00">2021-08-20</time>
+              <time title="創建時間：2021-08-26 10:27:36 / 修改時間：10:28:23" itemprop="dateCreated datePublished" datetime="2021-08-26T10:27:36+08:00">2021-08-26</time>
             </span>
 
           
@@ -281,12 +223,23 @@
 
       
           <ol>
-<li><p>使用 wireshark 提供的程式<br>editcap.exe -c frame_size old_file new_files</p>
-</li>
-<li><p>使用 tcpdump<br>tcpdump -r old_file -w new_files -c frame_size</p>
-</li>
+<li>download opencv sdk for Android<br><a href="https://opencv.org/releases/" target="_blank" rel="noopener">https://opencv.org/releases/</a></li>
 </ol>
-
+<p><a href="https://blog.csdn.net/userhu2012/article/details/89522851" target="_blank" rel="noopener">https://blog.csdn.net/userhu2012/article/details/89522851</a></p>
+<p><img src="/posts/29bb5527/image_01.png" alt></p>
+<p><img src="/posts/29bb5527/image_02.png" alt></p>
+<p>File -&gt; New -&gt; Import Module…<br><img src="/posts/29bb5527/image_03.png" alt></p>
+<p><img src="/posts/29bb5527/image_04.png" alt></p>
+<p>File -&gt; Project Structure… -&gt; app -&gt; Dependencies -&gt; choose :openCVLibrary411</p>
+<p>modify openCVLibrary411 build.gradle</p>
+<ol>
+<li>apply plugin: ‘com.android.application’ to apply plugin: ‘com.android.library’</li>
+<li>remove defaultConfig: applicationId “org.opencv”</li>
+<li>add minSdkVersion and targetSdkVersion in defaultConfig</li>
+</ol>
+<p>copy opencv-4.1.1-android-sdk\OpenCV-android-sdk\sdk\native\libs to FacePad\app\src\main\jniLibs</p>
+<p>add config in app:build.gradle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        jniLibs.srcDirs = [&apos;src/main/jniLibs&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -305,7 +258,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4ccc247a/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/21332ed/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -319,7 +272,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/4ccc247a/" class="post-title-link" itemprop="url">vf mirror</a>
+            <a href="/posts/21332ed/" class="post-title-link" itemprop="url">android_looper_handler_thread</a>
         </h2>
 
         <div class="post-meta">
@@ -330,7 +283,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-08-20 14:58:46 / 修改時間：16:39:40" itemprop="dateCreated datePublished" datetime="2021-08-20T14:58:46+08:00">2021-08-20</time>
+              <time title="創建時間：2021-08-26 10:26:25 / 修改時間：10:26:33" itemprop="dateCreated datePublished" datetime="2021-08-26T10:26:25+08:00">2021-08-26</time>
             </span>
 
           
@@ -344,24 +297,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包"><a href="#使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包" class="headerlink" title="使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包"></a>使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包</h4><p>假設網卡 interface 為 enp97s0f0</p>
-<ol>
-<li>先建立 3 個 vf for enp97s0f0<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> 3 &gt; /sys/class/net/enp97s0f0/device/sriov_numvfs</span></span><br></pre></td></tr></table></figure></li>
-<li>bind dpdk driver<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.0</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py --status-dev net</span></span><br><span class="line"></span><br><span class="line">Network devices using DPDK-compatible driver</span><br><span class="line">============================================</span><br><span class="line">0000:61:02.0 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br><span class="line">0000:61:02.1 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br></pre></td></tr></table></figure></li>
-<li>設定 vlan/mac for vf 0, 1 used for CU-plane (vf 0 for uplane and vf 1 for cplane)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 vlan 2</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 vlan 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link show enp97s0f0</span></span><br><span class="line">1: enp97s0f0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 28:c1:3c:95:6f:9c brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    vf 0 MAC 00:11:22:33:44:66, vlan 2, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 1 MAC 00:11:22:33:44:66, vlan 1, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 2 MAC 00:00:00:00:00:00, spoof checking on, link-state auto, trust off</span><br></pre></td></tr></table></figure></li>
-<li>建立 vlan_mirror<ul>
-<li>add 1, 2 是 vf 0/1 設定的 vlan id</li>
-<li>sriov/2 是指 vf 2</li>
-<li>enp97s2f2 是 vf 2 的 interface (可以用 ifconfig 查詢)</li>
-<li>vf 2 的 mtu size 必須要設大，否則無法側錄到 uplane<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo add 1,2 &gt; /sys/class/net/enp97s0f0/device/sriov/2/vlan_mirror</span><br><span class="line">$ ifconfig enp97s2f2 mtu 9000</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>錄製封包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump -i enp97s2f2 -w ecpri.pcap</span><br></pre></td></tr></table></figure></li>
+          <h1 id="Looper-Handler-Thread"><a href="#Looper-Handler-Thread" class="headerlink" title="Looper/Handler/Thread"></a>Looper/Handler/Thread</h1><ol>
+<li>Android的系統中，透過Looper、Handler來implement消息循環機制</li>
+<li>每一條thread都可以有自己的一個Looper，也只能有一個</li>
+<li>By default, thread是不沒有配置Looper的</li>
+<li>Looper.prepare(): 創建一個Looper給thread</li>
+<li>Looper.loop(): 進入message loop</li>
+<li>create Handler時可以指定一個Looper，若沒有特別指定，預設會是當前thread的Looper</li>
+<li>Looper負責message queue跟message loop的管理</li>
+<li>Handler主要是<br>  a. 送message到Looper的message queue去 // 透過mHandler.sendMessage(msg)<br>  b. 處理Looper中，排程到的message // 透過handler中override的handleMessage function</li>
+<li>Looper.myLooper(): 用來取得當前thread的Looper</li>
+<li>Looper.getMainLooper(): 用來取得當前process的main thread的Looper</li>
 </ol>
-<ul>
-<li>Reference<br><a href="https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html" target="_blank" rel="noopener">https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html</a></li>
-</ul>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創建一條thread，並配置Looper</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">     <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          Looper.prepare();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                    ...</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          Looper.loop();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -380,7 +328,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/85f67f4e/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/6d1dbee1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -394,7 +342,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/85f67f4e/" class="post-title-link" itemprop="url">ssh Tunnel</a>
+            <a href="/posts/6d1dbee1/" class="post-title-link" itemprop="url">build_apk_by_command</a>
         </h2>
 
         <div class="post-meta">
@@ -405,7 +353,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-07-06 08:47:07 / 修改時間：09:08:17" itemprop="dateCreated datePublished" datetime="2021-07-06T08:47:07+08:00">2021-07-06</time>
+              <time title="創建時間：2021-08-26 10:25:40 / 修改時間：10:26:01" itemprop="dateCreated datePublished" datetime="2021-08-26T10:25:40+08:00">2021-08-26</time>
             </span>
 
           
@@ -419,17 +367,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>Command<br><code>ssh -N -L 9999:192.168.56.102:8080 user@192.168.56.11</code><br><code>ssh -N -L 0.0.0.0:9999:192.168.56.102:8080 user@192.168.56.11</code><br><img src="/posts/85f67f4e/image01.png" alt></li>
-</ul>
-<ol>
-<li>proxy server: <a href="mailto:user@192.168.56.11" target="_blank" rel="noopener">user@192.168.56.11</a></li>
-<li>remote server application: 192.168.56.102:8080</li>
-<li>on local PC: You can access 192.168.56.102:8080 via <a href="mailto:user@192.168.56.11" target="_blank" rel="noopener">user@192.168.56.11</a> on localhost <a href="http://localhost:9999" target="_blank" rel="noopener">http://localhost:9999</a></li>
-</ol>
-<ul>
-<li>reference<br><a href="https://blog.rex-tsou.com/2017/10/%E5%88%A9%E7%94%A8-ssh-tunnel-%E5%81%9A%E8%B7%B3%E6%9D%BFaka.-%E7%BF%BB%E7%89%86/" target="_blank" rel="noopener">https://blog.rex-tsou.com/2017/10/%E5%88%A9%E7%94%A8-ssh-tunnel-%E5%81%9A%E8%B7%B3%E6%9D%BFaka.-%E7%BF%BB%E7%89%86/</a></li>
-</ul>
+          <p>D:\work\perobot\FaceRecognizeApk&gt; gradlew build</p>
 
       
     </div>
@@ -449,7 +387,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/10ad64df/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7bb0d15b/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -463,460 +401,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/10ad64df/" class="post-title-link" itemprop="url">Fluent Terminal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-30 16:31:57" itemprop="dateCreated datePublished" datetime="2021-06-30T16:31:57+08:00">2021-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:29" itemprop="dateModified" datetime="2021-08-10T12:00:29+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/FluentTerminal/" itemprop="url" rel="index"><span itemprop="name">FluentTerminal</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Using Python on Fluent Terminal - CMD</li>
-</ul>
-<ol>
-<li>手動設定 Path for Python<br><img src="/posts/10ad64df/image01.png" alt></li>
-<li>使用 virtualenv 的方式<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\User\python&gt; venv\Scripts\activate.bat</span><br><span class="line"></span><br><span class="line">(venv) C:\Users\User\python&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>Using Python on Fluent Terminal - Power Shell</li>
-</ul>
-<ol>
-<li>手動設定 Path for Python</li>
-<li>使用 virtualenv 的方式<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User\python&gt; venv\Scripts\activate.ps1</span><br><span class="line">(venv) PS C:\Users\User\python&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li><p>整合 cmder<br><img src="/posts/10ad64df/image03.png" alt></p>
-</li>
-<li><p>Trouble Shooting</p>
-</li>
-</ul>
-<ol>
-<li>Power Shell 預設不能執行某些命令<br><img src="/posts/10ad64df/image02.png" alt><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User\python&gt; Get-ExecutionPolicy</span><br><span class="line">Restricted</span><br></pre></td></tr></table></figure>
-要將值改成 RemoteSigned<br>以系統管理員身分執行 Power Shell<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; Set-ExecutionPolicy RemoteSigned</span><br><span class="line"></span><br><span class="line">執行原則變更</span><br><span class="line">執行原則有助於防範您不信任的指令碼。如果變更執行原則，可能會使您接觸到 about_Execution_Policies 說明主題 (網址為</span><br><span class="line">https:/go.microsoft.com/fwlink/?LinkID=135170) 中所述的安全性風險。您要變更執行原則嗎?</span><br><span class="line">[Y] 是(Y)  [A] 全部皆是(A)  [N] 否(N)  [L] 全部皆否(L)  [S] 暫停(S)  [?] 說明 (預設值為 &quot;N&quot;): y</span><br><span class="line">PS C:\Windows\system32&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2a024bae/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/2a024bae/" class="post-title-link" itemprop="url">python note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 19:28:19" itemprop="dateCreated datePublished" datetime="2021-06-24T19:28:19+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 11:59:38" itemprop="dateModified" datetime="2021-08-10T11:59:38+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>dec to hex string，若少於 2 位數，補 0<br>hex =’{:02x}’.format(A)</p>
-</li>
-<li><p>dec to bin string，若少於 16 位數，補 0<br>bin =’{:016b}’.format(B)</p>
-</li>
-<li><p>bin string to 2’sc</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two2dec</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> s[<span class="number">0</span>] == <span class="string">'1'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> * (int(<span class="string">''</span>.join(<span class="string">'1'</span> <span class="keyword">if</span> x == <span class="string">'0'</span> <span class="keyword">else</span> <span class="string">'0'</span> <span class="keyword">for</span> x <span class="keyword">in</span> s), <span class="number">2</span>) + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> int(s, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/db30bcc7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/db30bcc7/" class="post-title-link" itemprop="url">matlab note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 17:59:39" itemprop="dateCreated datePublished" datetime="2021-06-24T17:59:39+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:46" itemprop="dateModified" datetime="2021-08-10T12:00:46+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Matlab/" itemprop="url" rel="index"><span itemprop="name">Matlab</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.mathworks.com/help/matlab/matlab_prog/matlab-operators-and-special-characters.html" target="_blank" rel="noopener">https://www.mathworks.com/help/matlab/matlab_prog/matlab-operators-and-special-characters.html</a><br><code>.&#39;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A=[1 2]</span><br><span class="line">A=A.&apos;</span><br><span class="line">[output]</span><br><span class="line">A =</span><br><span class="line">   1   2</span><br><span class="line"></span><br><span class="line">A =</span><br><span class="line">   1</span><br><span class="line">   2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9ebec7b8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9ebec7b8/" class="post-title-link" itemprop="url">matplotlib note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 15:45:11" itemprop="dateCreated datePublished" datetime="2021-06-24T15:45:11+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-24 14:40:03" itemprop="dateModified" datetime="2021-08-24T14:40:03+08:00">2021-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>設定 figure resolution<br><code>plt.figure(figsize=(10, 10), dpi=160)</code><br>=&gt; resolution is 1600x1600</p>
-</li>
-<li><p>隱藏軸標籤和座標軸<br>ax = plt.gca()<br>ax.axes.xaxis.set_visible(False)<br>ax.axes.yaxis.set_visible(False)</p>
-</li>
-<li><p>隱藏座標軸<br>ax = plt.gca()<br>ax.axes.xaxis.set_ticks([])<br>ax.axes.yaxis.set_ticks([])</p>
-</li>
-<li><p>隱藏軸標籤<br>ax = plt.gca()<br>ax.axes.xaxis.set_ticklabels([])<br>ax.axes.yaxis.set_ticklabels([])</p>
-</li>
-<li><p>將坐標軸的刻度用科學計數標記</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca()</span><br><span class="line">ax.ticklabel_format(style=&apos;sci&apos;, scilimits=(0, 0), axis=&apos;y&apos;)</span><br><span class="line">ax.yaxis.major.formatter._useMathText = True</span><br></pre></td></tr></table></figure>
-<p>scilimits=(-1,2) 表示對 10^-1 ~ 10^2 範圍之外的數值進行科學計數轉換，範圍內的不換</p>
-</li>
-<li><p>waveform</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">fs=<span class="number">4000</span></span><br><span class="line">Ts=<span class="number">1</span>/fs</span><br><span class="line">f0=<span class="number">10</span></span><br><span class="line">A=math.sqrt(<span class="number">2</span>)</span><br><span class="line">N=<span class="number">1024</span></span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">0</span>,N<span class="number">-1</span>,<span class="number">10</span>)   <span class="comment"># start,stop,step</span></span><br><span class="line">y = A*np.sin(<span class="number">2</span>*np.pi*f0*Ts*x)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show() <span class="comment"># show the image</span></span><br></pre></td></tr></table></figure>
-<p><img src="/posts/9ebec7b8/image_01.png" alt></p>
-</li>
-<li><p>Trouble Shooting</p>
-</li>
-</ul>
-<ol>
-<li><p><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></p>
-</li>
-<li><p>在大量使用 plt.plot and plt.savefig 時，會遇到以下 error<br><code>Fail to allocate bitmap</code><br>即使有執行 plt.close() 也無效，且固定產生 369 張圖後，會 failed</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&quot;Agg&quot;)</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/e729699d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/e729699d/" class="post-title-link" itemprop="url">Access ssh without input password</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-17 14:47:42" itemprop="dateCreated datePublished" datetime="2021-06-17T14:47:42+08:00">2021-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-24 15:53:30" itemprop="dateModified" datetime="2021-06-24T15:53:30+08:00">2021-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 windown 下使用 ssh/scp 時，不需要輸入密碼</p>
-<ol>
-<li><p>generate key in windows</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\User&gt;ssh-keygen -t rsa</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (C:\Users\User/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in C:\Users\User/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in C:\Users\User/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:u7s0Cq8ljGfhuNonSa7CwLAxvyk9ebR8FFIitHGbeHk user@DESKTOP-A88C5KQ</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">| .o .            |</span><br><span class="line">|  .=.+.          |</span><br><span class="line">|  o.=oE          |</span><br><span class="line">|+  ....          |</span><br><span class="line">|o=  .. .S        |</span><br><span class="line">|o.o=...  .       |</span><br><span class="line">|o+oBBo. +        |</span><br><span class="line">|ooX+==.o o       |</span><br><span class="line">|++o=.oo +o       |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>將 id_rsa.pub 內容複製進 linux ~/.ssh/authorized_keys</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User&gt; cat .ssh/id_rsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFTdfNrQFk+pnyFUpYlI9DjxcqgYhwaK1kPwKULW6qthMZ1331a/cczktzYGiRVDRa6AEdAAMdINi3Vw2tmfxAYOYGQA0GvRExTDQo+txWJlC6ZTQqrXgnDDldI9yDtlkOGFcUfvW6G/VVS0qdM1W5yN3hGHtGjccpsn/zal4dWFRuYv/b4iSLbcxtJG5tV5yEwqCA0da2QdT8NabKtcEi0D7N7V+ZWemlEnYZtGKHjAb25Lbk26wYFDHakCL1k75CloGPXoSp0M9smXLQ0d8MBbCJssQdMhQS4EHaeoihpHYB6dX66+wDPXvVv4gZOPpexOo64es9Uuz7RD5YxYIdlDFsH4LgJGUm7pC4BI1T618xlicc83VF7f2ElR5hSUROMWYld+MDlqAn4nftQyInzCXQsyAyRdq1mzbRKa7UvGiCmEdKUl+pj25+RjScTb7IWTqXXUCATcPmtg11B7AznnS5RkhvigXHGUH03X1HBHUtnI78frI+1/R6tjuesps= user@DESKTOP-A88C5KQ</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>.ssh 資料夾的權限必須是 0700</li>
-<li>authorized_keys 檔案的權限必須是 0600</li>
-<li>兩台機器 A、B 要溝通，在 A 上建立 public key and private key，然後將 public key 給 B，如此便能進行加密溝通</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/608487bc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/608487bc/" class="post-title-link" itemprop="url">network</a>
+            <a href="/posts/7bb0d15b/" class="post-title-link" itemprop="url">android_anr</a>
         </h2>
 
         <div class="post-meta">
@@ -927,7 +412,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2021-04-15 09:13:19 / 修改時間：09:34:55" itemprop="dateCreated datePublished" datetime="2021-04-15T09:13:19+08:00">2021-04-15</time>
+              <time title="創建時間：2021-08-26 10:24:50 / 修改時間：10:25:07" itemprop="dateCreated datePublished" datetime="2021-08-26T10:24:50+08:00">2021-08-26</time>
             </span>
 
           
@@ -941,12 +426,363 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Layer 1，實體層（Physical Layer）<br>通常可以透過檢查網路孔上的燈號，判斷是否正常</p>
-<p>Layer 2，資料連結層（Data Link Layer）<br>在區網內部主要是透過Media Access Control(MAC) 達到資料轉送跟交換<br>電腦或任何網路設備開機時，只要第一次發出封包，就會被對連交換器記下所屬的 MAC，內網內其他的設備要跟其溝通時，最終會先找到 MAC 才開始進行溝通、傳送</p>
-<p>ping 過 172.18.73.132 之後，就可以看到本機端會發現 172.18.73.132 的 MAC，並記錄下來<br>$ ping 172.18.73.132<br>$ arp -a</p>
-<p>介面: 172.18.73.168 — 0x14<br>  網際網路網址          實體位址               類型<br>  172.18.73.132         28-c1-3c-8f-c8-51     動態<br>  172.18.73.254         9c-4e-20-bf-a1-ca     動態<br>  172.18.73.255         ff-ff-ff-ff-ff-ff     靜態</p>
-<p>Layer 3，網路層（Network Layer）<br>Layer 4，傳輸層（Transport Layer）<br>Layer 5，會議層（Session Layer）<br>Layer 6，展示層（Presentation Layer）<br>Layer 7，應用層（Application Layer）</p>
+          <p>ui线程阻塞5秒，广播阻塞10秒，service阻塞20秒都会产生anr异常</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9cde5900/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/9cde5900/" class="post-title-link" itemprop="url">Android_base64_image_on_ImageView</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:24:11 / 修改時間：10:24:17" itemprop="dateCreated datePublished" datetime="2021-08-26T10:24:11+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.util.Base64;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"></span><br><span class="line">ImageView img = findViewById(R.id.img);</span><br><span class="line"><span class="keyword">byte</span>[] bytes = Base64.decode(base64_img, Base64.DEFAULT);</span><br><span class="line">img.setImageBitmap(BitmapFactory.decodeByteArray(bytes, <span class="number">0</span>, bytes.length));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/508d484e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/508d484e/" class="post-title-link" itemprop="url">andriod_AppManager</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:23:52 / 修改時間：10:23:55" itemprop="dateCreated datePublished" datetime="2021-08-26T10:23:52+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://github.com/imtianx/AndroidLearningNotes/blob/master/android-tools/AppManager.java" target="_blank" rel="noopener">AndroidLearningNotes/AppManager.java at master · imtianx/AndroidLearningNotes · GitHub</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.foxconn.rtspplayer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Stack&lt;Activity&gt; activityStack;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AppManager instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AppManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AppManager <span class="title">getAppManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> AppManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            activityStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        activityStack.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Activity <span class="title">currentActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> activityStack.lastElement();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Activity activity = activityStack.lastElement();</span><br><span class="line">        finishActivity(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; !activity.isFinishing()) &#123;</span><br><span class="line">            activityStack.remove(activity);</span><br><span class="line">            activity.finish();</span><br><span class="line">            activity = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (activity.getClass().equals(cls)) &#123;</span><br><span class="line">                finishActivity(activity);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishAllActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = activityStack.size(); i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != activityStack.get(i)) &#123;</span><br><span class="line">                finishActivity(activityStack.get(i));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        activityStack.clear();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Activity <span class="title">getActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">for</span> (Activity activity : activityStack) &#123;</span><br><span class="line">                <span class="keyword">if</span> (activity.getClass().equals(cls)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> activity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Stack&lt;Activity&gt; <span class="title">getActivitys</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> activityStack;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AppExit</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            finishAllActivity();</span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getActivityCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = activityStack.size();</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (activityStack.contains(activity)) &#123;</span><br><span class="line">            activityStack.remove(activity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; !activity.isFinishing()) &#123;</span><br><span class="line">            activity.finish();</span><br><span class="line">            activity = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b35ea58e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b35ea58e/" class="post-title-link" itemprop="url">Android_ACTION_TIME_TICK</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:23:26 / 修改時間：10:23:33" itemprop="dateCreated datePublished" datetime="2021-08-26T10:23:26+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ACTION-TIME-TICK"><a href="#ACTION-TIME-TICK" class="headerlink" title="ACTION_TIME_TICK"></a>ACTION_TIME_TICK</h1><p>這個廣播動作是以每分鐘一次的形式發送。但你不能通過在manifest.xml裡静態註冊，只能在代碼里通過registerReceiver()方法動態註冊</p>
+<p><a href="https://www.jianshu.com/p/ca780d0a09c7" target="_blank" rel="noopener">Intent.ACTION_TIME_TICK - 简书</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.ActivityManager;</span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.IntentFilter;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"hh_MainActivity"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        filter.addAction(Intent.ACTION_TIME_TICK);</span><br><span class="line">        registerReceiver(receiver, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BroadcastReceiver receiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            <span class="keyword">if</span> (action.equals(Intent.ACTION_TIME_TICK)) &#123;</span><br><span class="line">                Log.d(TAG, <span class="string">"Receive Intent.ACTION_TIME_TICK intent"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isServiceRunning</span><span class="params">(Class&lt;?&gt; serviceClass)</span> </span>&#123;</span><br><span class="line">        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">        List&lt;ActivityManager.RunningServiceInfo&gt; serviceList = activityManager</span><br><span class="line">                .getRunningServices(Integer.MAX_VALUE);</span><br><span class="line">        <span class="keyword">if</span> (serviceList == <span class="keyword">null</span> || serviceList.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (ActivityManager.RunningServiceInfo info : serviceList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (info.service.getClassName().equals(serviceClass.getName()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b7885a43/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b7885a43/" class="post-title-link" itemprop="url">android_webview_destroy</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:22:42 / 修改時間：10:22:55" itemprop="dateCreated datePublished" datetime="2021-08-26T10:22:42+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>WebView造成記憶體泄露</p>
+<p>關於WebView的記憶體泄露，因為WebView在加載網頁後會長期占用記憶體而不能被釋放，因此我們在Activity銷毀後要調用它的destory()方法來銷毀它以釋放記憶體。<br>最終的解決方案是：在銷毀WebView之前需要先將WebView從父容器中移除，然後在銷毀WebView。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="comment">// 先從父控件中移除WebView</span></span><br><span class="line">    mWebViewContainer.removeView(mWebView);</span><br><span class="line">    mWebView.stopLoading();</span><br><span class="line">    mWebView.getSettings().setJavaEnabled(<span class="keyword">false</span>);</span><br><span class="line">    mWebView.clearHistory();</span><br><span class="line">    mWebView.removeAllViews();</span><br><span class="line">    mWebView.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/89b3b055/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/89b3b055/" class="post-title-link" itemprop="url">vimrc_fia</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:20:38 / 修改時間：10:20:58" itemprop="dateCreated datePublished" datetime="2021-08-26T10:20:38+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br></pre></td><td class="code"><pre><span class="line">&quot; Fisa-vim-config</span><br><span class="line">&quot; http://fisadev.github.io/fisa-vim-config/</span><br><span class="line">&quot; version: 8.3.1</span><br><span class="line"></span><br><span class="line">&quot; ============================================================================</span><br><span class="line">&quot; Vim-plug initialization</span><br><span class="line">&quot; Avoid modify this section, unless you are very sure of what you are doing</span><br><span class="line"></span><br><span class="line">let vim_plug_just_installed = 0</span><br><span class="line">let vim_plug_path = expand(&apos;~/.vim/autoload/plug.vim&apos;)</span><br><span class="line">if !filereadable(vim_plug_path)</span><br><span class="line">    echo &quot;Installing Vim-plug...&quot;</span><br><span class="line">    echo &quot;&quot;</span><br><span class="line">    silent !mkdir -p ~/.vim/autoload</span><br><span class="line">    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br><span class="line">    let vim_plug_just_installed = 1</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; manually load vim-plug the first time</span><br><span class="line">if vim_plug_just_installed</span><br><span class="line">    :execute &apos;source &apos;.fnameescape(vim_plug_path)</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; Obscure hacks done, you can now modify the rest of the .vimrc as you wish :)</span><br><span class="line"></span><br><span class="line">&quot; ============================================================================</span><br><span class="line">&quot; Active plugins</span><br><span class="line">&quot; You can disable or add new ones here:</span><br><span class="line"></span><br><span class="line">&quot; this needs to be here, so vim-plug knows we are declaring the plugins we</span><br><span class="line">&quot; want to use</span><br><span class="line">call plug#begin(&apos;~/.vim/plugged&apos;)</span><br><span class="line"></span><br><span class="line">&quot; Plugins from github repos:</span><br><span class="line"></span><br><span class="line">&quot; Override configs by directory </span><br><span class="line">Plug &apos;arielrossanigo/dir-configs-override.vim&apos;</span><br><span class="line">&quot; Better file browser</span><br><span class="line">Plug &apos;scrooloose/nerdtree&apos;</span><br><span class="line">&quot; Code commenter</span><br><span class="line">Plug &apos;scrooloose/nerdcommenter&apos;</span><br><span class="line">&quot; Class/module browser</span><br><span class="line">Plug &apos;majutsushi/tagbar&apos;</span><br><span class="line">&quot; Code and files fuzzy finder</span><br><span class="line">Plug &apos;ctrlpvim/ctrlp.vim&apos;</span><br><span class="line">&quot; Extension to ctrlp, for fuzzy command finder</span><br><span class="line">Plug &apos;fisadev/vim-ctrlp-cmdpalette&apos;</span><br><span class="line">&quot; Zen coding</span><br><span class="line">Plug &apos;mattn/emmet-vim&apos;</span><br><span class="line">&quot; Git integration</span><br><span class="line">Plug &apos;motemen/git-vim&apos;</span><br><span class="line">&quot; Tab list panel</span><br><span class="line">Plug &apos;kien/tabman.vim&apos;</span><br><span class="line">&quot; Airline</span><br><span class="line">Plug &apos;vim-airline/vim-airline&apos;</span><br><span class="line">Plug &apos;vim-airline/vim-airline-themes&apos;</span><br><span class="line">&quot; Terminal Vim with 256 colors colorscheme</span><br><span class="line">Plug &apos;fisadev/fisa-vim-colorscheme&apos;</span><br><span class="line">&quot; Consoles as buffers</span><br><span class="line">Plug &apos;rosenfeld/conque-term&apos;</span><br><span class="line">&quot; Pending tasks list</span><br><span class="line">Plug &apos;fisadev/FixedTaskList.vim&apos;</span><br><span class="line">&quot; Surround</span><br><span class="line">Plug &apos;tpope/vim-surround&apos;</span><br><span class="line">&quot; Autoclose</span><br><span class="line">Plug &apos;Townk/vim-autoclose&apos;</span><br><span class="line">&quot; Indent text object</span><br><span class="line">Plug &apos;michaeljsmith/vim-indent-object&apos;</span><br><span class="line">&quot; Indentation based movements</span><br><span class="line">Plug &apos;jeetsukumaran/vim-indentwise&apos;</span><br><span class="line">&quot; Python autocompletion, go to definition.</span><br><span class="line">Plug &apos;davidhalter/jedi-vim&apos;</span><br><span class="line">&quot; Better autocompletion</span><br><span class="line">Plug &apos;Shougo/neocomplcache.vim&apos;</span><br><span class="line">&quot; Snippets manager (SnipMate), dependencies, and snippets repo</span><br><span class="line">Plug &apos;MarcWeber/vim-addon-mw-utils&apos;</span><br><span class="line">Plug &apos;tomtom/tlib_vim&apos;</span><br><span class="line">Plug &apos;honza/vim-snippets&apos;</span><br><span class="line">Plug &apos;garbas/vim-snipmate&apos;</span><br><span class="line">&quot; Git/mercurial/others diff icons on the side of the file lines</span><br><span class="line">Plug &apos;mhinz/vim-signify&apos;</span><br><span class="line">&quot; Automatically sort python imports</span><br><span class="line">Plug &apos;fisadev/vim-isort&apos;</span><br><span class="line">&quot; Drag visual blocks arround</span><br><span class="line">Plug &apos;fisadev/dragvisuals.vim&apos;</span><br><span class="line">&quot; Window chooser</span><br><span class="line">Plug &apos;t9md/vim-choosewin&apos;</span><br><span class="line">&quot; Python and other languages code checker</span><br><span class="line">Plug &apos;scrooloose/syntastic&apos;</span><br><span class="line">&quot; Paint css colors with the real color</span><br><span class="line">Plug &apos;lilydjwg/colorizer&apos;</span><br><span class="line">&quot; Ack code search (requires ack installed in the system)</span><br><span class="line">Plug &apos;mileszs/ack.vim&apos;</span><br><span class="line">if has(&apos;python&apos;)</span><br><span class="line">    &quot; YAPF formatter for Python</span><br><span class="line">    Plug &apos;pignacio/vim-yapf-format&apos;</span><br><span class="line">endif</span><br><span class="line">&quot; Relative numbering of lines (0 is the current line)</span><br><span class="line">&quot; (disabled by default because is very intrusive and can&apos;t be easily toggled</span><br><span class="line">&quot; on/off. When the plugin is present, will always activate the relative </span><br><span class="line">&quot; numbering every time you go to normal mode. Author refuses to add a setting </span><br><span class="line">&quot; to avoid that)</span><br><span class="line">&quot; Plug &apos;myusuf3/numbers.vim&apos;</span><br><span class="line"></span><br><span class="line">&quot; Plugins from vim-scripts repos:</span><br><span class="line"></span><br><span class="line">&quot; Search results counter</span><br><span class="line">Plug &apos;vim-scripts/IndexedSearch&apos;</span><br><span class="line">&quot; XML/HTML tags navigation</span><br><span class="line">Plug &apos;vim-scripts/matchit.zip&apos;</span><br><span class="line">&quot; Gvim colorscheme</span><br><span class="line">Plug &apos;vim-scripts/Wombat&apos;</span><br><span class="line">&quot; Yank history navigation</span><br><span class="line">Plug &apos;vim-scripts/YankRing.vim&apos;</span><br><span class="line"></span><br><span class="line">&quot; Tell vim-plug we finished declaring plugins, so it can load them</span><br><span class="line">call plug#end()</span><br><span class="line"></span><br><span class="line">&quot; ============================================================================</span><br><span class="line">&quot; Install plugins the first time vim runs</span><br><span class="line"></span><br><span class="line">if vim_plug_just_installed</span><br><span class="line">    echo &quot;Installing Bundles, please ignore key map error messages&quot;</span><br><span class="line">    :PlugInstall</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; ============================================================================</span><br><span class="line">&quot; Vim settings and mappings</span><br><span class="line">&quot; You can edit them as you wish</span><br><span class="line"></span><br><span class="line">set ic</span><br><span class="line"></span><br><span class="line">&quot; no vi-compatible</span><br><span class="line">set nocompatible</span><br><span class="line"></span><br><span class="line">&quot; allow plugins by file type (required for plugins!)</span><br><span class="line">filetype plugin on</span><br><span class="line">filetype indent on</span><br><span class="line"></span><br><span class="line">&quot; tabs and spaces handling</span><br><span class="line">set expandtab</span><br><span class="line">set tabstop=4</span><br><span class="line">set softtabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line"></span><br><span class="line">&quot; tab length exceptions on some file types</span><br><span class="line">autocmd FileType html setlocal shiftwidth=4 tabstop=4 softtabstop=4</span><br><span class="line">autocmd FileType htmldjango setlocal shiftwidth=4 tabstop=4 softtabstop=4</span><br><span class="line">autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4</span><br><span class="line"></span><br><span class="line">&quot; always show status bar</span><br><span class="line">set ls=2</span><br><span class="line"></span><br><span class="line">&quot; incremental search</span><br><span class="line">set incsearch</span><br><span class="line">&quot; highlighted search results</span><br><span class="line">set hlsearch</span><br><span class="line"></span><br><span class="line">&quot; syntax highlight on</span><br><span class="line">syntax on</span><br><span class="line"></span><br><span class="line">&quot; show line numbers</span><br><span class="line">set nu</span><br><span class="line"></span><br><span class="line">&quot; tab navigation mappings</span><br><span class="line">map tn :tabn&lt;CR&gt;</span><br><span class="line">map tp :tabp&lt;CR&gt;</span><br><span class="line">map tm :tabm </span><br><span class="line">map tt :tabnew </span><br><span class="line">map ts :tab split&lt;CR&gt;</span><br><span class="line">map &lt;C-S-Right&gt; :tabn&lt;CR&gt;</span><br><span class="line">imap &lt;C-S-Right&gt; &lt;ESC&gt;:tabn&lt;CR&gt;</span><br><span class="line">map &lt;C-S-Left&gt; :tabp&lt;CR&gt;</span><br><span class="line">imap &lt;C-S-Left&gt; &lt;ESC&gt;:tabp&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; navigate windows with meta+arrows</span><br><span class="line">map &lt;M-Right&gt; &lt;c-w&gt;l</span><br><span class="line">map &lt;M-Left&gt; &lt;c-w&gt;h</span><br><span class="line">map &lt;M-Up&gt; &lt;c-w&gt;k</span><br><span class="line">map &lt;M-Down&gt; &lt;c-w&gt;j</span><br><span class="line">imap &lt;M-Right&gt; &lt;ESC&gt;&lt;c-w&gt;l</span><br><span class="line">imap &lt;M-Left&gt; &lt;ESC&gt;&lt;c-w&gt;h</span><br><span class="line">imap &lt;M-Up&gt; &lt;ESC&gt;&lt;c-w&gt;k</span><br><span class="line">imap &lt;M-Down&gt; &lt;ESC&gt;&lt;c-w&gt;j</span><br><span class="line"></span><br><span class="line">&quot; old autocomplete keyboard shortcut</span><br><span class="line">imap &lt;C-J&gt; &lt;C-X&gt;&lt;C-O&gt;</span><br><span class="line"></span><br><span class="line">&quot; Comment this line to enable autocompletion preview window</span><br><span class="line">&quot; (displays documentation related to the selected completion option)</span><br><span class="line">&quot; Disabled by default because preview makes the window flicker</span><br><span class="line">set completeopt-=preview</span><br><span class="line"></span><br><span class="line">&quot; save as sudo</span><br><span class="line">ca w!! w !sudo tee &quot;%&quot;</span><br><span class="line"></span><br><span class="line">&quot; simple recursive grep</span><br><span class="line">nmap ,r :Ack </span><br><span class="line">nmap ,wr :Ack &lt;cword&gt;&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; use 256 colors when possible</span><br><span class="line">if (&amp;term =~? &apos;mlterm\|xterm\|xterm-256\|screen-256&apos;) || has(&apos;nvim&apos;)</span><br><span class="line">    let &amp;t_Co = 256</span><br><span class="line">    colorscheme fisa</span><br><span class="line">else</span><br><span class="line">    colorscheme delek</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; colors for gvim</span><br><span class="line">if has(&apos;gui_running&apos;)</span><br><span class="line">    colorscheme wombat</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; when scrolling, keep cursor 3 lines away from screen border</span><br><span class="line">set scrolloff=3</span><br><span class="line"></span><br><span class="line">&quot; autocompletion of files and commands behaves like shell</span><br><span class="line">&quot; (complete only the common part, list the options that match)</span><br><span class="line">set wildmode=list:longest</span><br><span class="line"></span><br><span class="line">&quot; better backup, swap and undos storage</span><br><span class="line">set directory=~/.vim/dirs/tmp     &quot; directory to place swap files in</span><br><span class="line">set backup                        &quot; make backup files</span><br><span class="line">set backupdir=~/.vim/dirs/backups &quot; where to put backup files</span><br><span class="line">set undofile                      &quot; persistent undos - undo after you re-open the file</span><br><span class="line">set undodir=~/.vim/dirs/undos</span><br><span class="line">set viminfo+=n~/.vim/dirs/viminfo</span><br><span class="line">&quot; store yankring history file there too</span><br><span class="line">let g:yankring_history_dir = &apos;~/.vim/dirs/&apos;</span><br><span class="line"></span><br><span class="line">&quot; create needed directories if they don&apos;t exist</span><br><span class="line">if !isdirectory(&amp;backupdir)</span><br><span class="line">    call mkdir(&amp;backupdir, &quot;p&quot;)</span><br><span class="line">endif</span><br><span class="line">if !isdirectory(&amp;directory)</span><br><span class="line">    call mkdir(&amp;directory, &quot;p&quot;)</span><br><span class="line">endif</span><br><span class="line">if !isdirectory(&amp;undodir)</span><br><span class="line">    call mkdir(&amp;undodir, &quot;p&quot;)</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">&quot; ============================================================================</span><br><span class="line">&quot; Plugins settings and mappings</span><br><span class="line">&quot; Edit them as you wish.</span><br><span class="line"></span><br><span class="line">&quot; Tagbar ----------------------------- </span><br><span class="line"></span><br><span class="line">&quot; toggle tagbar display</span><br><span class="line">map &lt;F4&gt; :TagbarToggle&lt;CR&gt;</span><br><span class="line">&quot; autofocus on tagbar open</span><br><span class="line">let g:tagbar_autofocus = 1</span><br><span class="line"></span><br><span class="line">&quot; NERDTree ----------------------------- </span><br><span class="line"></span><br><span class="line">&quot; toggle nerdtree display</span><br><span class="line">map &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">&quot; open nerdtree with the current file selected</span><br><span class="line">nmap ,t :NERDTreeFind&lt;CR&gt;</span><br><span class="line">&quot; don;t show these file types</span><br><span class="line">let NERDTreeIgnore = [&apos;\.pyc$&apos;, &apos;\.pyo$&apos;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; Tasklist ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; show pending tasks list</span><br><span class="line">map &lt;F2&gt; :TaskList&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; CtrlP ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; file finder mapping</span><br><span class="line">let g:ctrlp_map = &apos;,e&apos;</span><br><span class="line">&quot; tags (symbols) in current file finder mapping</span><br><span class="line">nmap ,g :CtrlPBufTag&lt;CR&gt;</span><br><span class="line">&quot; tags (symbols) in all files finder mapping</span><br><span class="line">nmap ,G :CtrlPBufTagAll&lt;CR&gt;</span><br><span class="line">&quot; general code finder in all files mapping</span><br><span class="line">nmap ,f :CtrlPLine&lt;CR&gt;</span><br><span class="line">&quot; recent files finder mapping</span><br><span class="line">nmap ,m :CtrlPMRUFiles&lt;CR&gt;</span><br><span class="line">&quot; commands finder mapping</span><br><span class="line">nmap ,c :CtrlPCmdPalette&lt;CR&gt;</span><br><span class="line">&quot; to be able to call CtrlP with default search text</span><br><span class="line">function! CtrlPWithSearchText(search_text, ctrlp_command_end)</span><br><span class="line">    execute &apos;:CtrlP&apos; . a:ctrlp_command_end</span><br><span class="line">    call feedkeys(a:search_text)</span><br><span class="line">endfunction</span><br><span class="line">&quot; same as previous mappings, but calling with current word as default text</span><br><span class="line">nmap ,wg :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;BufTag&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,wG :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;BufTagAll&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,wf :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;Line&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,we :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,pe :call CtrlPWithSearchText(expand(&apos;&lt;cfile&gt;&apos;), &apos;&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,wm :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;MRUFiles&apos;)&lt;CR&gt;</span><br><span class="line">nmap ,wc :call CtrlPWithSearchText(expand(&apos;&lt;cword&gt;&apos;), &apos;CmdPalette&apos;)&lt;CR&gt;</span><br><span class="line">&quot; don&apos;t change working directory</span><br><span class="line">let g:ctrlp_working_path_mode = 0</span><br><span class="line">&quot; ignore these files and folders on file finder</span><br><span class="line">let g:ctrlp_custom_ignore = &#123;</span><br><span class="line">  \ &apos;dir&apos;:  &apos;\v[\/](\.git|\.hg|\.svn|node_modules)$&apos;,</span><br><span class="line">  \ &apos;file&apos;: &apos;\.pyc$\|\.pyo$&apos;,</span><br><span class="line">  \ &#125;</span><br><span class="line"></span><br><span class="line">&quot; Syntastic ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; show list of errors and warnings on the current file</span><br><span class="line">nmap &lt;leader&gt;e :Errors&lt;CR&gt;</span><br><span class="line">&quot; check also when just opened the file</span><br><span class="line">let g:syntastic_check_on_open = 1</span><br><span class="line">&quot; don&apos;t put icons on the sign column (it hides the vcs status icons of signify)</span><br><span class="line">let g:syntastic_enable_signs = 0</span><br><span class="line">&quot; custom icons (enable them if you use a patched font, and enable the previous </span><br><span class="line">&quot; setting)</span><br><span class="line">&quot;let g:syntastic_error_symbol = &apos;✗&apos;</span><br><span class="line">&quot;let g:syntastic_warning_symbol = &apos;⚠&apos;</span><br><span class="line">&quot;let g:syntastic_style_error_symbol = &apos;✗&apos;</span><br><span class="line">&quot;let g:syntastic_style_warning_symbol = &apos;⚠&apos;</span><br><span class="line"></span><br><span class="line">&quot; Jedi-vim ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; All these mappings work only for python code:</span><br><span class="line">&quot; Go to definition</span><br><span class="line">let g:jedi#goto_command = &apos;,d&apos;</span><br><span class="line">&quot; Find ocurrences</span><br><span class="line">let g:jedi#usages_command = &apos;,o&apos;</span><br><span class="line">&quot; Find assignments</span><br><span class="line">let g:jedi#goto_assignments_command = &apos;,a&apos;</span><br><span class="line">&quot; Go to definition in new tab</span><br><span class="line">nmap ,D :tab split&lt;CR&gt;:call jedi#goto()&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">&quot; NeoComplCache ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; most of them not documented because I&apos;m not sure how they work</span><br><span class="line">&quot; (docs aren&apos;t good, had to do a lot of trial and error to make </span><br><span class="line">&quot; it play nice)</span><br><span class="line">let g:neocomplcache_enable_at_startup = 1</span><br><span class="line">let g:neocomplcache_enable_ignore_case = 1</span><br><span class="line">let g:neocomplcache_enable_smart_case = 1</span><br><span class="line">let g:neocomplcache_enable_auto_select = 1</span><br><span class="line">let g:neocomplcache_enable_fuzzy_completion = 1</span><br><span class="line">let g:neocomplcache_enable_camel_case_completion = 1</span><br><span class="line">let g:neocomplcache_enable_underbar_completion = 1</span><br><span class="line">let g:neocomplcache_fuzzy_completion_start_length = 1</span><br><span class="line">let g:neocomplcache_auto_completion_start_length = 1</span><br><span class="line">let g:neocomplcache_manual_completion_start_length = 1</span><br><span class="line">let g:neocomplcache_min_keyword_length = 1</span><br><span class="line">let g:neocomplcache_min_syntax_length = 1</span><br><span class="line">&quot; complete with workds from any opened file</span><br><span class="line">let g:neocomplcache_same_filetype_lists = &#123;&#125;</span><br><span class="line">let g:neocomplcache_same_filetype_lists._ = &apos;_&apos;</span><br><span class="line"></span><br><span class="line">&quot; TabMan ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; mappings to toggle display, and to focus on it</span><br><span class="line">let g:tabman_toggle = &apos;tl&apos;</span><br><span class="line">let g:tabman_focus  = &apos;tf&apos;</span><br><span class="line"></span><br><span class="line">&quot; Autoclose ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; Fix to let ESC work as espected with Autoclose plugin</span><br><span class="line">let g:AutoClosePumvisible = &#123;&quot;ENTER&quot;: &quot;\&lt;C-Y&gt;&quot;, &quot;ESC&quot;: &quot;\&lt;ESC&gt;&quot;&#125;</span><br><span class="line"></span><br><span class="line">&quot; DragVisuals ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; mappings to move blocks in 4 directions</span><br><span class="line">vmap &lt;expr&gt; &lt;S-M-LEFT&gt; DVB_Drag(&apos;left&apos;)</span><br><span class="line">vmap &lt;expr&gt; &lt;S-M-RIGHT&gt; DVB_Drag(&apos;right&apos;)</span><br><span class="line">vmap &lt;expr&gt; &lt;S-M-DOWN&gt; DVB_Drag(&apos;down&apos;)</span><br><span class="line">vmap &lt;expr&gt; &lt;S-M-UP&gt; DVB_Drag(&apos;up&apos;)</span><br><span class="line">&quot; mapping to duplicate block</span><br><span class="line">vmap &lt;expr&gt; D DVB_Duplicate()</span><br><span class="line"></span><br><span class="line">&quot; Signify ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; this first setting decides in which order try to guess your current vcs</span><br><span class="line">&quot; UPDATE it to reflect your preferences, it will speed up opening files</span><br><span class="line">let g:signify_vcs_list = [ &apos;git&apos;, &apos;hg&apos; ]</span><br><span class="line">&quot; mappings to jump to changed blocks</span><br><span class="line">nmap &lt;leader&gt;sn &lt;plug&gt;(signify-next-hunk)</span><br><span class="line">nmap &lt;leader&gt;sp &lt;plug&gt;(signify-prev-hunk)</span><br><span class="line">&quot; nicer colors</span><br><span class="line">highlight DiffAdd           cterm=bold ctermbg=none ctermfg=119</span><br><span class="line">highlight DiffDelete        cterm=bold ctermbg=none ctermfg=167</span><br><span class="line">highlight DiffChange        cterm=bold ctermbg=none ctermfg=227</span><br><span class="line">highlight SignifySignAdd    cterm=bold ctermbg=237  ctermfg=119</span><br><span class="line">highlight SignifySignDelete cterm=bold ctermbg=237  ctermfg=167</span><br><span class="line">highlight SignifySignChange cterm=bold ctermbg=237  ctermfg=227</span><br><span class="line"></span><br><span class="line">&quot; Window Chooser ------------------------------</span><br><span class="line"></span><br><span class="line">&quot; mapping</span><br><span class="line">nmap  -  &lt;Plug&gt;(choosewin)</span><br><span class="line">&quot; show big letters</span><br><span class="line">let g:choosewin_overlay_enable = 1</span><br><span class="line"></span><br><span class="line">&quot; Airline ------------------------------</span><br><span class="line"></span><br><span class="line">let g:airline_powerline_fonts = 0</span><br><span class="line">let g:airline_theme = &apos;bubblegum&apos;</span><br><span class="line">let g:airline#extensions#whitespace#enabled = 0</span><br><span class="line"></span><br><span class="line">&quot; to use fancy symbols for airline, uncomment the following lines and use a</span><br><span class="line">&quot; patched font (more info on the README.rst)</span><br><span class="line">&quot;if !exists(&apos;g:airline_symbols&apos;)</span><br><span class="line">&quot;   let g:airline_symbols = &#123;&#125;</span><br><span class="line">&quot;endif</span><br><span class="line">&quot;let g:airline_left_sep = &apos;⮀&apos;</span><br><span class="line">&quot;let g:airline_left_alt_sep = &apos;⮁&apos;</span><br><span class="line">&quot;let g:airline_right_sep = &apos;⮂&apos;</span><br><span class="line">&quot;let g:airline_right_alt_sep = &apos;⮃&apos;</span><br><span class="line">&quot;let g:airline_symbols.branch = &apos;⭠&apos;</span><br><span class="line">&quot;let g:airline_symbols.readonly = &apos;⭤&apos;</span><br><span class="line">&quot;let g:airline_symbols.linenr = &apos;⭡&apos;</span><br><span class="line"></span><br><span class="line">&quot;set mouse=a</span><br><span class="line">&quot;set cursorline</span><br><span class="line">&quot;set cursorcolumn</span><br><span class="line">&quot;set number</span><br><span class="line">&quot;set hlsearch</span><br><span class="line">&quot;set incsearch</span><br><span class="line">&quot;set ic</span><br><span class="line">&quot;set nowrap</span><br><span class="line">&quot;hi Comment cterm=bold ctermfg=DarkCyan</span><br><span class="line">&quot;hi CursorLine cterm=none ctermbg=4 ctermfg=none</span><br><span class="line">&quot;hi CursorColumn cterm=none ctermbg=4 ctermfg=none</span><br><span class="line">&quot;set tabstop=4</span><br><span class="line">&quot;set shiftwidth=4</span><br><span class="line">&quot;set softtabstop=4</span><br><span class="line">&quot;set smarttab</span><br><span class="line">&quot;set expandtab</span><br><span class="line">&quot;set laststatus=2</span><br><span class="line">&quot;set statusline=%4*%&lt;\%m%&lt;[%f\%r%h%w]%=%l,%v\ \ \ \ \ \ \ \ %p%%</span><br><span class="line">&quot;nnoremap &lt;F2&gt; :&lt;C-U&gt;setlocal lcs=tab:&gt;-,trail:-,eol:$ list! list? &lt;CR&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7f23291e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/7f23291e/" class="post-title-link" itemprop="url">vimrc</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 10:19:33 / 修改時間：10:19:43" itemprop="dateCreated datePublished" datetime="2021-08-26T10:19:33+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="vimrc"><a href="#vimrc" class="headerlink" title=".vimrc"></a>.vimrc</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> number</span><br><span class="line"><span class="built_in">set</span> hlsearch</span><br><span class="line"><span class="built_in">set</span> autoindent</span><br><span class="line"><span class="built_in">set</span> smartindent</span><br><span class="line"><span class="built_in">set</span> ic</span><br><span class="line"><span class="built_in">set</span> nowrap</span><br><span class="line">hi Comment      term=bold               ctermfg=DarkCyan</span><br><span class="line"><span class="built_in">set</span> tabstop=4</span><br><span class="line"><span class="built_in">set</span> shiftwidth=4</span><br><span class="line"><span class="built_in">set</span> laststatus=2</span><br><span class="line"><span class="built_in">set</span> statusline=%4*%&lt;\%m%&lt;[%f\%r%h%w]%=%l,%v\ \ \ \ \ \ \ \ %p%%</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot; colorscheme torte</span><br><span class="line">set cursorline</span><br><span class="line">set cursorcolumn</span><br><span class="line">&quot; set t_Co=256</span><br><span class="line">set number</span><br><span class="line">set hlsearch</span><br><span class="line">set incsearch</span><br><span class="line">set ic</span><br><span class="line">set nowrap</span><br><span class="line">hi Comment cterm=bold ctermfg=DarkCyan</span><br><span class="line">&quot; hi LineNr cterm=bold ctermfg=Yellow</span><br><span class="line">hi CursorLine cterm=none ctermbg=4 ctermfg=none</span><br><span class="line">hi CursorColumn cterm=none ctermbg=4 ctermfg=none</span><br><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set softtabstop=4</span><br><span class="line">set smarttab</span><br><span class="line">set expandtab</span><br><span class="line">set laststatus=2</span><br><span class="line">set statusline=%4*%&lt;\%m%&lt;[%f\%r%h%w]%=%l,%v\ \ \ \ \ \ \ \ %p%%</span><br><span class="line">nnoremap &lt;F2&gt; :&lt;C-U&gt;setlocal lcs=tab:&gt;-,trail:-,eol:$ list! list? &lt;CR&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -964,7 +800,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1029,7 +865,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

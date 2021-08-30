@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/12e6bda/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69706db6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/12e6bda/" class="post-title-link" itemprop="url">Deploy VM via kubevirt</a>
+            <a href="/posts/69706db6/" class="post-title-link" itemprop="url">pyqt5_webview</a>
         </h2>
 
         <div class="post-meta">
@@ -206,28 +206,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-09-08 17:03:31" itemprop="dateCreated datePublished" datetime="2020-09-08T17:03:31+08:00">2020-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:55:24 / 修改時間：09:55:34" itemprop="dateCreated datePublished" datetime="2021-08-26T09:55:24+08:00">2021-08-26</time>
             </span>
 
           
@@ -241,26 +222,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>Reference<br><a href="https://github.com/open-ness/edgecontroller" target="_blank" rel="noopener">https://github.com/open-ness/edgecontroller</a></li>
-<li>建立 pv<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat persistentLocalVolume.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv0</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol0/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv1</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol1/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f persistentLocalVolume.yaml </span></span><br><span class="line">persistentvolume/kv-pv0 created</span><br><span class="line">persistentvolume/kv-pv1 created</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># k get pv</span></span><br><span class="line">NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                         STORAGECLASS    REASON   AGE</span><br><span class="line">kv-pv0                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br><span class="line">kv-pv1                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br></pre></td></tr></table></figure></li>
-<li>上傳 vm image，建立 dv<ul>
-<li>vm 宣告的 size 必須小於 pv 宣告的大小 (15Gi)</li>
-<li>透過 cdi-uploadproxy 上傳 image<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl get svc -n cdi</span></span><br><span class="line">NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">cdi-api           ClusterIP   10.105.96.139   &lt;none&gt;        443/TCP   27h</span><br><span class="line">cdi-uploadproxy   ClusterIP   10.106.44.64    &lt;none&gt;        443/TCP   27h</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt image-upload dv centos-dv --image-path=/home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 --insecure --size=15Gi --storage-class=local-storage --uploadproxy-url=https://10.106.44.64:443</span></span><br><span class="line">DataVolume default/centos-dv created</span><br><span class="line">Waiting <span class="keyword">for</span> PVC centos-dv upload pod to be ready...</span><br><span class="line">Pod now ready</span><br><span class="line">Uploading data to https://10.106.44.64:443</span><br><span class="line"></span><br><span class="line"> 898.75 MiB / 898.75 MiB [=====================================================================================================================================================================================================================================] 100.00% 2m19s</span><br><span class="line"></span><br><span class="line">Uploading data completed successfully, waiting <span class="keyword">for</span> processing to complete, you can hit ctrl-c without interrupting the progress</span><br><span class="line">Processing completed successfully</span><br><span class="line">Uploading /home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 completed successfully</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get dv</span></span><br><span class="line">NAME        PHASE         PROGRESS   AGE</span><br><span class="line">centos-dv   UploadReady              2m24s</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>安裝 vm<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">apiVersion: kubevirt.io/v1alpha3</span><br><span class="line">kind: VirtualMachine</span><br><span class="line">metadata:</span><br><span class="line">  name: centos-vm</span><br><span class="line">spec:</span><br><span class="line">  running: <span class="literal">false</span></span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        kubevirt.io/domain: centos-vm</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">        devices:</span><br><span class="line">          disks:</span><br><span class="line">          - disk:</span><br><span class="line">              bus: virtio</span><br><span class="line">            name: rootfs</span><br><span class="line">          interfaces:</span><br><span class="line">          - name: default</span><br><span class="line">            bridge: &#123;&#125;</span><br><span class="line">        resources:</span><br><span class="line">          requests:</span><br><span class="line">            memory: 4096M</span><br><span class="line">      networks:</span><br><span class="line">      - name: default</span><br><span class="line">        pod: &#123;&#125;</span><br><span class="line">      volumes:</span><br><span class="line">        - name: rootfs</span><br><span class="line">          persistentVolumeClaim:</span><br><span class="line">            claimName: centos-dv</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f statefullVM.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt start centos-vm</span></span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vm</span></span><br><span class="line">NAME        AGE   RUNNING   VOLUME</span><br><span class="line">centos-vm   29s   <span class="literal">true</span>      </span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vmi</span></span><br><span class="line">NAME        AGE   PHASE     IP            NODENAME</span><br><span class="line">centos-vm   20s   Running   10.244.0.78   openness</span><br></pre></td></tr></table></figure></li>
-<li>vm shell<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl virt console centos-vm</span></span><br><span class="line">[root@openness user]<span class="comment"># ssh 10.244.0.78</span></span><br></pre></td></tr></table></figure></li>
-<li>建立 service for cdi-uploadproxy<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line"> name: cdi-uploadproxy-nodeport</span><br><span class="line"> namespace: cdi</span><br><span class="line"> labels:</span><br><span class="line">   cdi.kubevirt.io: <span class="string">"cdi-uploadproxy"</span></span><br><span class="line">spec:</span><br><span class="line"> <span class="built_in">type</span>: NodePort</span><br><span class="line"> ports:</span><br><span class="line">   - port: 443</span><br><span class="line">     targetPort: 8443</span><br><span class="line">     nodePort: 31001</span><br><span class="line">     protocol: TCP</span><br><span class="line"> selector:</span><br><span class="line">   cdi.kubevirt.io: cdi-uploadproxy</span><br></pre></td></tr></table></figure></li>
-<li>設定 vm 使用 dedicated CPU<ul>
-<li>dedicatedCpuPlacement 設定 vm 使用 dedicated CPU</li>
-<li>isolateEmulatorThread 設定 qemu 也執行在 dedicated CPU<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">...</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">          dedicatedCpuPlacement: <span class="literal">true</span></span><br><span class="line">          isolateEmulatorThread: <span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>設定了 dedicated CPU後，觀察 pod 的 description，可以發現有 cpumanager=true<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl describe pod virt-launcher-centos-vm-r9qxw</span></span><br><span class="line">...</span><br><span class="line">Node-Selectors:    cpumanager=<span class="literal">true</span></span><br><span class="line">                   kubevirt.io/schedulable=<span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-<li>edge node 預設不會有 cpumanager 的 label，在啟動 vmi 時會有以下錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Events:</span><br><span class="line">  Type     Reason            Age        From               Message</span><br><span class="line">  ----     ------            ----       ----               -------</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br></pre></td></tr></table></figure></li>
-<li>新增 node 的 label<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl label nodes openness cpumanager=true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
+          <p>pip install PyQt5<br>pip install PyQtWebEngine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtWidgets import QApplication</span><br><span class="line">from PyQt5.QtCore import QUrl</span><br><span class="line">from PyQt5.QtWebEngineWidgets import QWebEngineView</span><br><span class="line"></span><br><span class="line">app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">web = QWebEngineView()</span><br><span class="line">web.load(QUrl(&quot;https://tw.yahoo.com&quot;))</span><br><span class="line">web.show()</span><br><span class="line"></span><br><span class="line">sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -280,7 +243,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/21b02114/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/1953e58/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -294,7 +257,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/21b02114/" class="post-title-link" itemprop="url">vmx</a>
+            <a href="/posts/1953e58/" class="post-title-link" itemprop="url">opencv_face_detection</a>
         </h2>
 
         <div class="post-meta">
@@ -303,28 +266,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-09-07 08:48:32" itemprop="dateCreated datePublished" datetime="2020-09-07T08:48:32+08:00">2020-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:54:21 / 修改時間：09:54:34" itemprop="dateCreated datePublished" datetime="2021-08-26T09:54:21+08:00">2021-08-26</time>
             </span>
 
           
@@ -338,17 +282,85 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li>檢查 cpu 是否支持虛擬化<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lscpu | grep vmx</span><br><span class="line">Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc eagerfpu pni pclmulqdq vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single tpr_shadow flexpriority fsgsbase avx2 invpcid rdseed clflushopt md_clear flush_l1d</span><br></pre></td></tr></table></figure></li>
-<li>確認 kvm 是否加載<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep kvm</span><br><span class="line">kvm_intel             188768  0 </span><br><span class="line">kvm                   649506  1 kvm_intel</span><br><span class="line">irqbypass              13503  2 kvm,vfio_pci</span><br><span class="line">$  ll /dev/kvm</span><br><span class="line">crw-rw-rw-. 1 root root 10, 232 Sep  6 20:42 /dev/kvm</span><br></pre></td></tr></table></figure></li>
-<li>resources on Kubernetes for OpenNESS<br>如果 vm 不支援 VT-x，allocatable 的 devices.kubevirt.io/kvm 數量會顯示 “0”<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get node -o yaml</span><br><span class="line">...</span><br><span class="line">  status:</span><br><span class="line">    allocatable:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">    capacity:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-<li>Settings of VirtualBox<ul>
-<li>VirtualBox的版本必須更新到 6.1 以上</li>
-<li>預設 “啟用 Nested VT-x/AMD-V(V)” 的選項是反灰，不能選擇的<br><img src="/posts/21b02114/virtualbox_01.JPG" alt></li>
-<li>使用指令去設定<br><code>VBoxManage.exe modifyvm vm-name --nested-hw-virt on</code></li>
-</ul>
-</li>
-</ol>
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">face_cascade = cv2.CascadeClassifier(<span class="string">'haarcascade_frontalface_default.xml'</span>)</span><br><span class="line">eye_cascade = cv2.CascadeClassifier(<span class="string">'haarcascade_eye.xml'</span>)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'img.jpg'</span>)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">faces = face_cascade.detectMultiScale(gray, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> (x,y,w,h) <span class="keyword">in</span> faces:</span><br><span class="line">    img = cv2.rectangle(img,(x,y),(x+w,y+h),(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),<span class="number">2</span>)</span><br><span class="line">    roi_gray = gray[y:y+h, x:x+w]</span><br><span class="line">    roi_color = img[y:y+h, x:x+w]</span><br><span class="line">    eyes = eye_cascade.detectMultiScale(roi_gray)</span><br><span class="line">    <span class="keyword">for</span> (ex,ey,ew,eh) <span class="keyword">in</span> eyes:</span><br><span class="line">        cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>),<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8b5f195/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/8b5f195/" class="post-title-link" itemprop="url">opencv</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:53:40 / 修改時間：10:01:54" itemprop="dateCreated datePublished" datetime="2021-08-26T09:53:40+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://blog.gtwang.org/programming/opencv-drawing-functions-tutorial/" target="_blank" rel="noopener">https://blog.gtwang.org/programming/opencv-drawing-functions-tutorial/</a></p>
+<h4 id="直線"><a href="#直線" class="headerlink" title="直線"></a>直線</h4><p>cv2.line(影像, 開始座標, 結束座標, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立一張 512x512 的 RGB 圖片（黑色）</span></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將圖片用淺灰色 (200, 200, 200) 填滿</span></span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上畫一條紅色的對角線，寬度為 5 px</span></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示圖片</span></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按下任意鍵則關閉所有視窗</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_01.png" alt></p>
+<h4 id="方框"><a href="#方框" class="headerlink" title="方框"></a>方框</h4><p>cv2.rectangle(影像, 頂點座標, 對向頂點座標, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上畫一個綠色方框，線條寬度為 2 px</span></span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 綠色實心方框</span></span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_02.png" alt></p>
+<h4 id="圓圈"><a href="#圓圈" class="headerlink" title="圓圈"></a>圓圈</h4><p>cv2.circle(影像, 圓心座標, 半徑, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 黃色圓圈，線條寬度為 3 px</span></span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 藍色實心圓圈</span></span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_03.png" alt></p>
+<h4 id="橢圓形"><a href="#橢圓形" class="headerlink" title="橢圓形"></a>橢圓形</h4><p>cv2.ellipse(影像, 中心座標, 軸長, 旋轉角度, 起始角度, 結束角度, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 傾斜 45 度的紫色橢圓形</span></span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">25</span>, <span class="number">55</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">360</span>, (<span class="number">205</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 傾斜 45 度的半個實心橢圓</span></span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">20</span>, <span class="number">50</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_04.png" alt></p>
+<h4 id="折線"><a href="#折線" class="headerlink" title="折線"></a>折線</h4><p>cv2.polylines(影像, 頂點座標, 封閉型, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">25</span>, <span class="number">55</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">360</span>, (<span class="number">205</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">20</span>, <span class="number">50</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定多邊形頂點座標</span></span><br><span class="line">pts = np.array([[<span class="number">170</span>, <span class="number">55</span>], [<span class="number">165</span>, <span class="number">75</span>], [<span class="number">220</span>, <span class="number">80</span>], [<span class="number">200</span>, <span class="number">60</span>]], np.int32)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將座標轉為 (頂點數量, 1, 2) 的陣列</span></span><br><span class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 繪製多邊形</span></span><br><span class="line">cv2.polylines(img, [pts], <span class="literal">True</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_05.png" alt></p>
+<h4 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h4><p>cv2.putText(影像, 文字, 座標, 字型, 大小, 顏色, 線條寬度, 線條種類)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">400</span>, <span class="number">400</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">90</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文字</span></span><br><span class="line">text = <span class="string">'Hello, OpenCV!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用各種字體</span></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">40</span>), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">80</span>), cv2.FONT_HERSHEY_PLAIN,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">120</span>), cv2.FONT_HERSHEY_DUPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">160</span>), cv2.FONT_HERSHEY_COMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">200</span>), cv2.FONT_HERSHEY_TRIPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">240</span>), cv2.FONT_HERSHEY_COMPLEX_SMALL,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">280</span>), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">320</span>), cv2.FONT_HERSHEY_SCRIPT_COMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_06.png" alt></p>
+<h4 id="使用-TTF-字型檔"><a href="#使用-TTF-字型檔" class="headerlink" title="使用 TTF 字型檔"></a>使用 TTF 字型檔</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont, ImageDraw, Image</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">450</span>, <span class="number">450</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將背景設定為大紅色</span></span><br><span class="line">img[:] = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文字</span></span><br><span class="line">text = <span class="string">'招財\n進寶'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定 TTF 字體檔</span></span><br><span class="line">fontPath = <span class="string">"./康熙字典體.ttf"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 載入字體</span></span><br><span class="line">font = ImageFont.truetype(fontPath, <span class="number">192</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 NumPy 陣列轉為 PIL 影像</span></span><br><span class="line">imgPil = Image.fromarray(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上加入文字</span></span><br><span class="line">draw = ImageDraw.Draw(imgPil)</span><br><span class="line">draw.text((<span class="number">30</span>, <span class="number">30</span>),  text, font = font, fill = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 PIL 影像轉回 NumPy 陣列</span></span><br><span class="line">img = np.array(imgPil)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_07.png" alt></p>
 
       
     </div>
@@ -368,7 +380,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/606eb6c7/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ad5ef208/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -382,7 +394,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/606eb6c7/" class="post-title-link" itemprop="url">update_go_version</a>
+            <a href="/posts/ad5ef208/" class="post-title-link" itemprop="url">python_print_class_variables</a>
         </h2>
 
         <div class="post-meta">
@@ -391,28 +403,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-08-31 10:25:51" itemprop="dateCreated datePublished" datetime="2020-08-31T10:25:51+08:00">2020-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/CentOS/" itemprop="url" rel="index"><span itemprop="name">CentOS</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:53:02 / 修改時間：09:53:06" itemprop="dateCreated datePublished" datetime="2021-08-26T09:53:02+08:00">2021-08-26</time>
             </span>
 
           
@@ -426,13 +419,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol start="0">
-<li>Information of go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ go version</span><br><span class="line">go version go1.12.13 linux/amd64</span><br><span class="line">$ echo $GOROOT</span><br><span class="line">/usr/local/go</span><br></pre></td></tr></table></figure></li>
-<li>Delete old version<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rm -rf $GOROOT</span><br></pre></td></tr></table></figure></li>
-<li>Download target go version<br><a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://golang.org/dl/go1.15.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure></li>
-<li>Install<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo tar -C /usr/local -xzf go1.15.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.legs = 2</span><br><span class="line">        self.name = &apos;Dog&apos;</span><br><span class="line">        self.color= &apos;Spotted&apos;</span><br><span class="line">        self.smell= &apos;Alot&apos;</span><br><span class="line">        self.age  = 10</span><br><span class="line">        self.kids = 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">an = Animal()</span><br><span class="line">attrs = vars(an)</span><br><span class="line">print(&apos;, &apos;.join(&quot;%s: %s&quot; % item for item in attrs.items()))</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -451,7 +438,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/195363fe/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4830199a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -465,7 +452,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/195363fe/" class="post-title-link" itemprop="url">Telemetry Aware Scheduler</a>
+            <a href="/posts/4830199a/" class="post-title-link" itemprop="url">python_period_jobs</a>
         </h2>
 
         <div class="post-meta">
@@ -474,28 +461,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-08-28 16:53:25" itemprop="dateCreated datePublished" datetime="2020-08-28T16:53:25+08:00">2020-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:49:14 / 修改時間：09:49:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:49:14+08:00">2021-08-26</time>
             </span>
 
           
@@ -509,52 +477,207 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>TAS 包含兩個 container<ul>
-<li>tasext<br>a TAS Scheduler Extender which is an extension to K8s scheduler</li>
-<li>tascont<br>a TAS Policy Controller which consumes TAS policies</li>
-</ul>
-</li>
-<li>Create a secret that allows contact with TAS<br>In a production cluster, these certs should be set up as per normal cluster security policy.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret tls extender-secret --cert /etc/kubernetes/pki/ca.crt --key /etc/kubernetes/pki/ca.key</span><br></pre></td></tr></table></figure>
-Error message in tasext<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 00:45:41 http: TLS handshake error from 10.0.2.15:35194: remote error: tls: unknown certificate authority\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T00:45:41.423020853Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Update the configuration of the core K8s scheduler to configure a cluster for TAS deployment<br>主要是在 <code>scheduler-extender-configmap.yaml</code> 更新 <code>tas-service ip</code><ul>
-<li>tas-service information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                       AGE</span><br><span class="line">tas-service                ClusterIP   10.104.110.87    &lt;none&gt;        9001/TCP                      23h</span><br></pre></td></tr></table></figure></li>
-<li>configure-scheduler.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MANIFEST_FILE=/etc/kubernetes/manifests/kube-scheduler.yaml</span><br><span class="line">CONFIG_MAP=scheduler-extender-configmap.yaml</span><br><span class="line">CLUSTER_ROLE=configmap-getter.yaml</span><br><span class="line"></span><br><span class="line">kubectl apply -f $CONFIG_MAP</span><br><span class="line">kubectl apply -f $CLUSTER_ROLE</span><br><span class="line">kubectl create clusterrolebinding scheduler-config-map --clusterrole=configmapgetter --user=system:kube-scheduler</span><br><span class="line"></span><br><span class="line">sed -i &apos;/^    - --policy-configmap/d&apos; $MANIFEST_FILE</span><br><span class="line">sed -i &apos;/^  dnsPolicy: ClusterFirstWithHostNet/d&apos; $MANIFEST_FILE</span><br><span class="line">sed -e &quot;/    - kube-scheduler/a\\</span><br><span class="line">    - --policy-configmap=scheduler-extender-policy\n    - --policy-configmap-namespace=kube-system&quot; $MANIFEST_FILE -i</span><br><span class="line">sed -e &quot;/spec/a\\</span><br><span class="line">  dnsPolicy: ClusterFirstWithHostNet&quot; $MANIFEST_FILE -i</span><br></pre></td></tr></table></figure></li>
-<li>configmap-getter.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRole</span><br><span class="line">metadata:</span><br><span class="line">  name: configmapgetter</span><br><span class="line">  namespace: kube-system </span><br><span class="line">rules:</span><br><span class="line">- apiGroups: [&quot;&quot;]</span><br><span class="line">  resources: [&quot;configmaps&quot;]</span><br><span class="line">  verbs: [&quot;get&quot;]</span><br></pre></td></tr></table></figure></li>
-<li>scheduler-extender-configmap.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: scheduler-extender-policy</span><br><span class="line">  namespace: kube-system</span><br><span class="line">data:</span><br><span class="line">  policy.cfg: |</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;kind&quot; : &quot;Policy&quot;,</span><br><span class="line">        &quot;apiVersion&quot; : &quot;v1&quot;,</span><br><span class="line">        &quot;extenders&quot; : [</span><br><span class="line">            &#123;</span><br><span class="line">              &quot;urlPrefix&quot;: &quot;https://10.104.110.87:9001&quot;,</span><br><span class="line">              &quot;apiVersion&quot;: &quot;v1&quot;,</span><br><span class="line">              &quot;prioritizeVerb&quot;: &quot;scheduler/prioritize&quot;,</span><br><span class="line">              &quot;filterVerb&quot;: &quot;scheduler/filter&quot;,</span><br><span class="line">              &quot;weight&quot;: 1,</span><br><span class="line">              &quot;enableHttps&quot;: true,</span><br><span class="line">              &quot;managedResources&quot;: [</span><br><span class="line">                   &#123;</span><br><span class="line">                     &quot;name&quot;: &quot;telemetry/scheduling&quot;,</span><br><span class="line">                     &quot;ignoredByScheduler&quot;: true</span><br><span class="line">                   &#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;ignorable&quot;: true</span><br><span class="line">          &#125;</span><br><span class="line">         ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>apply<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure-scheduler.sh</span><br><span class="line">configmap/scheduler-extender-policy configured</span><br><span class="line">clusterrole.rbac.authorization.k8s.io/configmapgetter unchanged</span><br><span class="line">Error from server (AlreadyExists): clusterrolebindings.rbac.authorization.k8s.io &quot;scheduler-config-map&quot; already exists</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Create TASPolicy<ul>
-<li>get available metric<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | jq .</span><br></pre></td></tr></table></figure></li>
-<li>get value of target metric<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1/nodes/*/memory_MemFree_bytes | jq .</span><br></pre></td></tr></table></figure></li>
-<li>policy.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: telemetry.intel.com/v1alpha1</span><br><span class="line">kind: TASPolicy</span><br><span class="line">metadata:</span><br><span class="line">  name: demo-policy</span><br><span class="line">  namespace: default</span><br><span class="line">spec:</span><br><span class="line">  strategies:</span><br><span class="line">    deschedule:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: LessThan</span><br><span class="line">        target: 10000000</span><br><span class="line">    dontschedule:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: LessThan</span><br><span class="line">        target: 1000000</span><br><span class="line">    scheduleonmetric:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: GreaterThan</span><br></pre></td></tr></table></figure></li>
-<li>log of adding a policy in tascont<br>會一直去 monitor memory_MemFree_bytes 的值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering scheduleonmetric from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856944522Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: scheduleonmetric demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856986479Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856995355Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering dontschedule from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857002389Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: dontschedule demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857008778Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857014218Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering deschedule from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857019374Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: deschedule demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857024892Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.85703006Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added policy, demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857034987Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:52 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:52.302196222Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:52 no metric memory_MemFree_bytes found\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:52.302220044Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:54 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:54.38687469Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:54 openness memory_MemFree_bytes = 194686976\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:54.3869245Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.303365136Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 openness memory_MemFree_bytes = 194686976\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.303406196Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>log of deleting a policy in tascont<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: deschedule from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865109714Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: scheduleonmetric from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865133184Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: dontschedule from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865155074Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 deletingpolicies/default/demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865158043Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Policy:  demo-policy  deleted\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865160837Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Linking a workload to a policy<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: demo-app</span><br><span class="line">  labels:</span><br><span class="line">    app: demo</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: demo</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: demo</span><br><span class="line">        telemetry-policy: demo-policy</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:latest</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            telemetry/scheduling: 1</span><br><span class="line">      affinity:</span><br><span class="line">        nodeAffinity:</span><br><span class="line">          requiredDuringSchedulingIgnoredDuringExecution:</span><br><span class="line">            nodeSelectorTerms:</span><br><span class="line">              - matchExpressions:</span><br><span class="line">                  - key: demo-policy</span><br><span class="line">                    operator: NotIn</span><br><span class="line">                    values:</span><br><span class="line">                      - violating</span><br></pre></td></tr></table></figure>
+          <p><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365109/" target="_blank" rel="noopener">https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365109/</a><br><a href="https://segmentfault.com/a/1190000011084828" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011084828</a><br><a href="http://slark.info/2017/09/07/%E4%BB%8Eapscheduler%E8%B0%88%E5%88%B0%E5%BB%B6%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86-%E4%B8%80/" target="_blank" rel="noopener">http://slark.info/2017/09/07/%E4%BB%8Eapscheduler%E8%B0%88%E5%88%B0%E5%BB%B6%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86-%E4%B8%80/</a></p>
+<p>pip install apscheduler</p>
 <ul>
-<li>log of adding a pod with demo-policy in tasext<ul>
-<li>允許部署<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 filter request recieved\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.323434954Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 openness memory_MemFree_bytes = 160436224\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.332601831Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 Filtered nodes for demo-policy : openness \n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.332642768Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>不允許部署<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 filter request recieved\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.429996533Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 openness memory_MemFree_bytes = 147173376\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.433672095Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 openness violating : memory_MemFree_bytes LessThan 5000000000\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.433697985Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p>Scheduler Type<br>BlockingScheduler：僅可用在當前你的程序之內，與當前的進行共享計算資源<br>BackgroundScheduler:　在後臺執行排程，不影響當前的系統計算執行<br>AsyncIOScheduler:　如果當前系統中使用了async module，則需要使用非同步的排程器<br>GeventScheduler:　如果使用了gevent，則需要使用該排程<br>TornadoScheduler:　如果使用了Tornado, 則使用當前的排程器<br>TwistedScheduler:Twister應用的排程器<br>QtScheduler:　Qt的排程器</p>
 </li>
-<li>不允許部署時，Events of the demo-app pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Events:</span><br><span class="line">  Type     Reason            Age        From               Message</span><br><span class="line">  ----     ------            ----       ----               -------</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 Node violates.</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Deploy and Configure Kubernetes Descheduler<ul>
-<li>Install descheduler<br>module requires Go 1.15<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/kubernetes-sigs/descheduler</span><br><span class="line">$ <span class="built_in">cd</span> descheduler</span><br><span class="line">$ make</span><br><span class="line">$ cp ./_output/bin/descheduler /usr/bin</span><br></pre></td></tr></table></figure></li>
-<li>Run the descheduler in order to stop the workloads on the offending nodes<ul>
-<li>descheduler-policy.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cat descheduler-policy.yaml</span><br><span class="line">apiVersion: <span class="string">"descheduler/v1alpha1"</span></span><br><span class="line">kind: <span class="string">"DeschedulerPolicy"</span></span><br><span class="line">strategies:</span><br><span class="line">  <span class="string">"RemovePodsViolatingNodeAffinity"</span>:</span><br><span class="line">    enabled: <span class="literal">true</span></span><br><span class="line">    params:</span><br><span class="line">      nodeAffinityType:</span><br><span class="line">        - <span class="string">"requiredDuringSchedulingIgnoredDuringExecution"</span></span><br></pre></td></tr></table></figure></li>
-<li>Apply<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ descheduler --logtostderr -v4 --kubeconfig=$HOME/.kube/config --policy-config-file=descheduler-policy.yaml</span><br></pre></td></tr></table></figure></li>
-<li>Error<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I0828 10:47:32.515718   29836 node.go:45] node lister returned empty list, now fetch directly</span><br><span class="line">I0828 10:47:32.531210   29836 descheduler.go:106] The cluster size is 0 or 1 meaning eviction causes service disruption or degradation. So aborting..</span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p>trigger组件<br>date: 只在某個時間點執行一次<br>interval: 每隔一段時間執行一次<br>cron: 使用同linux下crontab的方式</p>
 </li>
 </ul>
-</li>
-<li>Reference<br><a href="https://github.com/intel/telemetry-aware-scheduling" target="_blank" rel="noopener">https://github.com/intel/telemetry-aware-scheduling</a></li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">APScheduler==3.6.0</span><br><span class="line">pytz==2019.1</span><br><span class="line">six==1.12.0</span><br><span class="line">tzlocal==1.5.1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.background <span class="keyword">import</span> BackgroundScheduler</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_date_time</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"new work doing..."</span>)</span><br><span class="line">    time.sleep(random.randint(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">    print(time.strftime(<span class="string">"%A, %d. %B %Y %I:%M:%S %p"</span>))</span><br><span class="line"></span><br><span class="line">scheduler = BackgroundScheduler()</span><br><span class="line">scheduler.start()</span><br><span class="line"></span><br><span class="line">job = scheduler.add_job(func=print_date_time, trigger=<span class="string">"interval"</span>, seconds=<span class="number">5</span>)</span><br><span class="line">job.remove()</span><br><span class="line"></span><br><span class="line"><span class="comment">#import atexit</span></span><br><span class="line"><span class="comment"># Shut down the scheduler when exiting the app</span></span><br><span class="line"><span class="comment">#atexit.register(lambda: scheduler.shutdown())</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:49,797 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:44:49 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:49.798794097Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:49,799 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:49.801053894Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:44:54 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:54.79513305Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:54,811 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:44:54 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:54.813206541Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:59,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:59.795272865Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:03,796 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:03 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:03.798538219Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:04,812 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:04.813942546Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:09 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:09.833079458Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:10,828 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:10 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:10.829141668Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:14,797 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:14.798225389Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:19 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:19.797481515Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:23,800 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:23 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:23.801753502Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:24,791 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:24.791963078Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:29 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:29.810835667Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:34,792 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:34 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:34.792841708Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:34,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:34.793527943Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:39 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:39.799708141Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:42,803 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:42 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:42.803948426Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:44,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:44.793580805Z&quot;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/de31b74d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/de31b74d/" class="post-title-link" itemprop="url">python_pympler</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:48:21 / 修改時間：09:48:28" itemprop="dateCreated datePublished" datetime="2021-08-26T09:48:21+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://pypi.org/project/Pympler/" target="_blank" rel="noopener">https://pypi.org/project/Pympler/</a></p>
+<p><a href="https://stackoverflow.com/questions/47447270/how-to-find-the-largest-objects-in-memory" target="_blank" rel="noopener">https://stackoverflow.com/questions/47447270/how-to-find-the-largest-objects-in-memory</a><br><a href="https://pythonhosted.org/Pympler/muppy.html" target="_blank" rel="noopener">https://pythonhosted.org/Pympler/muppy.html</a><br><a href="https://buildmedia.readthedocs.org/media/pdf/pympler/latest/pympler.pdf" target="_blank" rel="noopener">https://buildmedia.readthedocs.org/media/pdf/pympler/latest/pympler.pdf</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pympler import summary, muppy</span><br><span class="line"></span><br><span class="line">def memory_summary1():</span><br><span class="line">    mem_summary = summary.summarize(muppy.get_objects())</span><br><span class="line">    rows = summary.format_(mem_summary)</span><br><span class="line">    return &apos;\n&apos;.join(rows)</span><br><span class="line"></span><br><span class="line">print(memory_summary1())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pympler import tracker</span><br><span class="line">from operator import itemgetter</span><br><span class="line"></span><br><span class="line">def memory_summary2():</span><br><span class="line">    mem = tracker.SummaryTracker()</span><br><span class="line">    for item in sorted(mem.create_summary(), reverse=True, key=itemgetter(2)):</span><br><span class="line">        print(&quot;%s&quot; % (item,))</span><br><span class="line"></span><br><span class="line">memory_summary2()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fbb05bc2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/fbb05bc2/" class="post-title-link" itemprop="url">psutil</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:46:32 / 修改時間：09:46:37" itemprop="dateCreated datePublished" datetime="2021-08-26T09:46:32+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://psutil.readthedocs.io/en/release-2.2.1" target="_blank" rel="noopener">psutil documentation</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"></span><br><span class="line"><span class="meta">@imfr_bp.route('/system/info', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">imfr_system_info</span><span class="params">()</span>:</span></span><br><span class="line">    ret = &#123;&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ret[<span class="string">'cpu_core'</span>] = psutil.cpu_count(logical=<span class="literal">True</span>)</span><br><span class="line">        ret[<span class="string">'cpu_usage'</span>] = psutil.cpu_percent()</span><br><span class="line">        ret[<span class="string">'mem_total'</span>] = float(psutil.virtual_memory().total/(<span class="number">1024.0</span>*<span class="number">1024</span>))</span><br><span class="line">        ret[<span class="string">'mem_available'</span>] = float(psutil.virtual_memory().available/(<span class="number">1024.0</span>*<span class="number">1024</span>))</span><br><span class="line"></span><br><span class="line">        ret[<span class="string">'imfr'</span>] = &#123;&#125;</span><br><span class="line">        pids = psutil.pids()</span><br><span class="line">        <span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">            process = psutil.Process(pid)</span><br><span class="line">            name = process.name()</span><br><span class="line">            <span class="keyword">if</span> name == <span class="string">'python3.6'</span>:</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'threads'</span>] = len(process.threads())</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'cpu_usage'</span>] = float(process.cpu_percent(interval=<span class="number">1</span>))</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'mem_usage'</span>] = float(process.memory_info().rss/(<span class="number">1024.0</span>*<span class="number">1024.0</span>))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logging.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_UNKNOWN)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> success_result(ret)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:$ curl -X GET http://192.168.56.3:5074/api/system/info</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"code"</span>: 0,</span><br><span class="line">	<span class="string">"data"</span>: &#123;</span><br><span class="line">		<span class="string">"cpu_core"</span>: 4,</span><br><span class="line">		<span class="string">"cpu_usage"</span>: 0.7,</span><br><span class="line">		<span class="string">"imfr"</span>: &#123;</span><br><span class="line">			<span class="string">"cpu_usage"</span>: 0.0,</span><br><span class="line">			<span class="string">"mem_usage"</span>: 61.76953125,</span><br><span class="line">			<span class="string">"threads"</span>: 5</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">"mem_available"</span>: 1270.5234375,</span><br><span class="line">		<span class="string">"mem_total"</span>: 1999.765625</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/333c708/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/333c708/" class="post-title-link" itemprop="url">diff_python2_python3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:45:51 / 修改時間：09:46:00" itemprop="dateCreated datePublished" datetime="2021-08-26T09:45:51+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ python3.5</span><br><span class="line">Python 3.5.2 (default, Nov 23 2017, 16:37:01)</span><br><span class="line">[GCC 5.4.0 20160609] on linux</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; abc = &#123;<span class="string">"1"</span>:<span class="string">"a"</span>, <span class="string">"2"</span>:<span class="string">"b"</span>&#125;</span><br><span class="line">&gt;&gt;&gt; aaa = abc.keys()</span><br><span class="line">&gt;&gt;&gt; aaa</span><br><span class="line">dict_keys([<span class="string">'2'</span>, <span class="string">'1'</span>])</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br><span class="line"></span><br><span class="line">user@vm-docker:~$ python2.7</span><br><span class="line">Python 2.7.12 (default, Dec  4 2017, 14:50:18)</span><br><span class="line">[GCC 5.4.0 20160609] on linux2</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; abc = &#123;<span class="string">"1"</span>:<span class="string">"a"</span>, <span class="string">"2"</span>:<span class="string">"b"</span>&#125;</span><br><span class="line">&gt;&gt;&gt; aaa = abc.keys()</span><br><span class="line">&gt;&gt;&gt; aaa</span><br><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>]</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br></pre></td></tr></table></figure>
+
+<p>from urllib import urlencode<br>=&gt;from urllib.parse import urlencode</p>
+<p>import urlparse<br>=&gt;from urllib.parse import urlparse</p>
+<p>from urllib import urlencode<br>=&gt;from urllib.parse import urlencode</p>
+<p>import BaseHTTPServer<br>=&gt;import http.server</p>
+<p>不要使用tesseract，會有錯誤<br>pip install pytesseract and import pytesseract</p>
+<p>try:<br>    import Queue<br>except ImportError:<br>    import queue as Queue</p>
 
       
     </div>
@@ -574,7 +697,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9c134f6f/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/16c8ee4f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -588,7 +711,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/9c134f6f/" class="post-title-link" itemprop="url">Deployment nginx on k8s</a>
+            <a href="/posts/16c8ee4f/" class="post-title-link" itemprop="url">objgraph</a>
         </h2>
 
         <div class="post-meta">
@@ -597,28 +720,9 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-08-14 18:10:43" itemprop="dateCreated datePublished" datetime="2020-08-14T18:10:43+08:00">2020-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:44:24 / 修改時間：09:44:55" itemprop="dateCreated datePublished" datetime="2021-08-26T09:44:24+08:00">2021-08-26</time>
             </span>
 
           
@@ -632,30 +736,13 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>create a namespace<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vim namespace.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Namespace</span><br><span class="line">metadata:</span><br><span class="line">  name: demo</span><br><span class="line">$ kubectl create -f namespace.yml</span><br></pre></td></tr></table></figure></li>
-<li>create a pod<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ vim pod.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx-label</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - containerPort: 80</span><br><span class="line">$ kubectl create -f pod.yml -n demo</span><br></pre></td></tr></table></figure></li>
-<li>create a deployment<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ cat deployment.yaml</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: nginx-label</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx-label</span><br><span class="line">    spec:</span><br><span class="line">      containers: </span><br><span class="line">        - name: nginx</span><br><span class="line">          image: nginx</span><br><span class="line">          ports:</span><br><span class="line">          - containerPort: 80</span><br><span class="line">$ kubectl create -f deployment.yml -n demo</span><br></pre></td></tr></table></figure></li>
-<li>create a service<ul>
-<li>selector 設定成 pod 的 label，代表 service 為這單一個 pod 提供封裝</li>
-<li>selector 設定為 deployment 的 label，代表 service 對這些 Replica Set 提供封裝以及 load balance<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ vim service.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-service</span><br><span class="line">spec:</span><br><span class="line">  <span class="built_in">type</span>: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - port: 9527</span><br><span class="line">    protocol: TCP</span><br><span class="line">    targetPort: 80</span><br><span class="line">  externalIPs:</span><br><span class="line">  - 10.60.6.49</span><br><span class="line">  selector: </span><br><span class="line">    app: nginx-label</span><br><span class="line">$ kubectl create -f service.yml -n demo</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>web page<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.60.6.49:9527</span><br></pre></td></tr></table></figure></li>
-<li>get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get pod -n=demo</span><br><span class="line">NAME                                READY   STATUS    RESTARTS   AGE</span><br><span class="line">nginx-deployment-58864f7df9-26tfx   1/1     Running   0          13m</span><br><span class="line">nginx-deployment-58864f7df9-dqcqv   1/1     Running   0          13m</span><br><span class="line">nginx-deployment-58864f7df9-sb9ks   1/1     Running   0          13m</span><br><span class="line">nginx-pod                           1/1     Running   0          13m</span><br><span class="line"></span><br><span class="line">$ kubectl get deployment -n=demo</span><br><span class="line">NAME               READY   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">nginx-deployment   3/3     3            3           13m</span><br><span class="line"></span><br><span class="line">$ kubectl get service -n=demo</span><br><span class="line">NAME            TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE</span><br><span class="line">nginx-service   NodePort   10.111.31.254   10.60.6.49    9527:31755/TCP   13m</span><br></pre></td></tr></table></figure></li>
-<li>直接將 pod 的 port forwarding 到 host<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl -n demo port-forward --address 0.0.0.0 pod/nginx-pod 9528:80</span><br></pre></td></tr></table></figure>
-<ul>
-<li>web page<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.60.6.49:9528</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>scenario<ul>
-<li>Pod + Service</li>
-<li>Deployment + Service</li>
-<li>Pod + Deployment + Service</li>
-</ul>
-</li>
-<li>Reference<br><a href="https://zhuanlan.zhihu.com/p/134637095" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/134637095</a><br><a href="https://phoenixnap.com/kb/kubectl-port-forward" target="_blank" rel="noopener">https://phoenixnap.com/kb/kubectl-port-forward</a><br><a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/</a></li>
-</ul>
+          <p><a href="https://pypi.org/project/graphviz/" target="_blank" rel="noopener">https://pypi.org/project/graphviz/</a><br><a href="https://pypi.org/project/objgraph/" target="_blank" rel="noopener">https://pypi.org/project/objgraph/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import objgraph</span><br><span class="line"></span><br><span class="line">for typ, n in objgraph.most_common_types(limit=None):</span><br><span class="line">    print(&apos;&#123;typ:30&#125; &#123;n:&gt;10&#125;&apos;.format(typ=typ, n=n))</span><br><span class="line"></span><br><span class="line">for info in objgraph.growth(limit=None):</span><br><span class="line">    print(&apos;+++ %s&apos;,  (info,))</span><br><span class="line"></span><br><span class="line">print(&quot;leaking_objects: %s&quot; % len(objgraph.get_leaking_objects()))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install objgraph</span><br><span class="line">apt-get install xdot</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> objgraph</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">"********************* objgraph.show_most_common_types() ************************"</span>)</span><br><span class="line">    objgraph.show_most_common_types()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    _list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">********************* objgraph.show_most_common_types() ************************</span></span><br><span class="line"><span class="string">function                   1969</span></span><br><span class="line"><span class="string">dict                       1153</span></span><br><span class="line"><span class="string">wrapper_descriptor         998</span></span><br><span class="line"><span class="string">tuple                      976</span></span><br><span class="line"><span class="string">weakref                    774</span></span><br><span class="line"><span class="string">method_descriptor          732</span></span><br><span class="line"><span class="string">builtin_function_or_method 693</span></span><br><span class="line"><span class="string">getset_descriptor          378</span></span><br><span class="line"><span class="string">set                        346</span></span><br><span class="line"><span class="string">list                       299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">function                       1969     +1969</span></span><br><span class="line"><span class="string">dict                           1081     +1081</span></span><br><span class="line"><span class="string">wrapper_descriptor              998      +998</span></span><br><span class="line"><span class="string">tuple                           861      +861</span></span><br><span class="line"><span class="string">weakref                         774      +774</span></span><br><span class="line"><span class="string">method_descriptor               732      +732</span></span><br><span class="line"><span class="string">builtin_function_or_method      693      +693</span></span><br><span class="line"><span class="string">getset_descriptor               378      +378</span></span><br><span class="line"><span class="string">set                             346      +346</span></span><br><span class="line"><span class="string">list                            299      +299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">list      300        +1</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -675,7 +762,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/61268ed9/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ffdb9082/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -689,7 +776,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/61268ed9/" class="post-title-link" itemprop="url">Kubernetes Commands</a>
+            <a href="/posts/ffdb9082/" class="post-title-link" itemprop="url">python_mysql_db_session</a>
         </h2>
 
         <div class="post-meta">
@@ -698,28 +785,9 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-08-14 15:32:53" itemprop="dateCreated datePublished" datetime="2020-08-14T15:32:53+08:00">2020-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:43:40 / 修改時間：09:43:43" itemprop="dateCreated datePublished" datetime="2021-08-26T09:43:40+08:00">2021-08-26</time>
             </span>
 
           
@@ -733,416 +801,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>sample yaml: web.yaml<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">19999</span></span><br></pre></td></tr></table></figure></li>
-<li>建立 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl apply -f web.yaml </span><br><span class="line">pod/web created</span><br></pre></td></tr></table></figure></li>
-<li>Get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl get pods</span><br><span class="line">NAME                            READY   STATUS    RESTARTS   AGE</span><br><span class="line">web                             1/1     Running   0          41s</span><br></pre></td></tr></table></figure></li>
-<li>刪除 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl delete pod web</span><br><span class="line">pod &quot;web&quot; deleted</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>kubectl create<br>It first deletes the resources and then creates it from the file provided.<br>kubectl apply<br>It directly updates in the current live source, only the attributes which are given in the file.</p>
-<p>kubectl get pods –show-labels</p>
-<p>kubectl exec -it web – /bin/bash</p>
-<p>当 Pod 包含多个容器时打开 shell<br>kubectl exec -it my-pod –container my-app – /bin/bash</p>
-<p>沒有 namespace 的元件，利用 <code>kubectl get pod</code> 查詢<br>有 namespace 的元件，要利用 <code>kubectl get pod --all-namespaces</code> 查詢</p>
-<p>kubectl get pod<br>kubectl get pod –all-namespaces<br>kubectl get pod -o wide –all-namespaces<br>kubectl get service<br>kubectl get svc<br>kubectl get namespace<br>kubectl get deployment</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4261b1b3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4261b1b3/" class="post-title-link" itemprop="url">NUMA</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-13 10:01:45" itemprop="dateCreated datePublished" datetime="2020-08-13T10:01:45+08:00">2020-08-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>Socket: 實體 CPU 的數量，一般 PC 只會有一個 CPU，伺服器等級的 Server 在硬體上才會有多個 CPUs</p>
-</li>
-<li><p>Core: CPU 裡獨立的一組程式執行的硬體單元</p>
-</li>
-<li><p>Thread: Core 裡邏輯的執行單元</p>
-</li>
-<li><p>Sample</p>
-<ul>
-<li>有 1 個 CPU，每個 CPU 上有 4 Core，每個 Core 有 1 個 Threads<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ lscpu</span><br><span class="line">Thread(s) per core:  1</span><br><span class="line">Core(s) per socket:  4</span><br><span class="line">Socket(s):           1</span><br><span class="line">NUMA node(s):        1</span><br><span class="line">NUMA node0 CPU(s):   0-3</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>使用 lstopo 套件來獲取資訊</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ sudo apt install hwloc</span><br><span class="line">user@ubuntu:~$ lstopo</span><br><span class="line">Machine (7977MB)</span><br><span class="line">  Package L#0</span><br><span class="line">    L3 L#0 (8192KB) + L2 L#0 (256KB) + L1d L#0 (32KB) + L1i L#0 (32KB) + Core L#0 + PU L#0 (P#0)</span><br><span class="line">    L3 L#1 (8192KB) + L2 L#1 (256KB) + L1d L#1 (32KB) + L1i L#1 (32KB) + Core L#1 + PU L#1 (P#1)</span><br><span class="line">    L3 L#2 (8192KB) + L2 L#2 (256KB) + L1d L#2 (32KB) + L1i L#2 (32KB) + Core L#2 + PU L#2 (P#2)</span><br><span class="line">    L3 L#3 (8192KB) + L2 L#3 (256KB) + L1d L#3 (32KB) + L1i L#3 (32KB) + Core L#3 + PU L#3 (P#3)</span><br><span class="line">  HostBridge L#0</span><br><span class="line">    PCI 80ee:beef</span><br><span class="line">      GPU L#0 &quot;controlD64&quot;</span><br><span class="line">      GPU L#1 &quot;card0&quot;</span><br><span class="line">    PCI 8086:100e</span><br><span class="line">      Net L#2 &quot;em1&quot;</span><br><span class="line">    PCI 8086:100e</span><br><span class="line">      Net L#3 &quot;em2&quot;</span><br><span class="line">    PCI 8086:2829</span><br><span class="line">      Block(Disk) L#4 &quot;sda&quot;</span><br><span class="line">      Block(Removable Media Device) L#5 &quot;sr0&quot;</span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ lstopo --of png &gt; server.png</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/4261b1b3/server.png" alt></p>
-</li>
-<li><p>使用 numactl 套件來獲取資訊</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ sudo apt install numactl</span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ numactl --hardware</span><br><span class="line">available: 1 nodes (0)</span><br><span class="line">node 0 cpus: 0 1 2 3</span><br><span class="line">node 0 size: 7976 MB</span><br><span class="line">node 0 free: 5907 MB</span><br><span class="line">node distances:</span><br><span class="line">node   0 </span><br><span class="line">  0:  10 </span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ numactl --show</span><br><span class="line">policy: default</span><br><span class="line">preferred node: current</span><br><span class="line">physcpubind: 0 1 2 3 </span><br><span class="line">cpubind: 0 </span><br><span class="line">nodebind: 0 </span><br><span class="line">membind: 0</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/e3a8a05c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/e3a8a05c/" class="post-title-link" itemprop="url">CPU Information</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-13 09:05:12" itemprop="dateCreated datePublished" datetime="2020-08-13T09:05:12+08:00">2020-08-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                8</span><br><span class="line">On-line CPU(s) list:   0-7</span><br><span class="line">Thread(s) per core:    1</span><br><span class="line">Core(s) per socket:    1</span><br><span class="line">Socket(s):             8</span><br><span class="line">NUMA node(s):          1</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 79</span><br><span class="line">Model name:            Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz</span><br><span class="line">Stepping:              1</span><br><span class="line">CPU MHz:               2195.109</span><br><span class="line">BogoMIPS:              4396.04</span><br><span class="line">Hypervisor vendor:     Xen</span><br><span class="line">Virtualization type:   full</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              256K</span><br><span class="line">L3 cache:              25600K</span><br><span class="line">NUMA node0 CPU(s):     0-7</span><br><span class="line">Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush acpi mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single pti intel_ppin fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt</span><br></pre></td></tr></table></figure>
-<h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><ul>
-<li>Get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ wmic</span><br><span class="line">wmic:root\cli&gt;cpu get Name</span><br><span class="line">Name</span><br><span class="line">Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz</span><br><span class="line"></span><br><span class="line">wmic:root\cli&gt;cpu get NumberOfCores</span><br><span class="line">NumberOfCores</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">wmic:root\cli&gt;cpu get NumberOfLogicalProcessors</span><br><span class="line">NumberOfLogicalProcessors</span><br><span class="line">8</span><br></pre></td></tr></table></figure></li>
-<li>有一個 CPU，CPU 上有 4 Cores，每個 Core 有兩個 Threads，所以邏輯上總共有 8 核可以使用<br>對應到 Socket, Core, Thread 的結果為<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    4</span><br><span class="line">Socket(s):             1</span><br></pre></td></tr></table></figure></li>
-<li>Get detail information of CPU<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wmic:root\cli&gt;cpu get</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/645e3264/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/645e3264/" class="post-title-link" itemprop="url">CentOS Notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-11 15:45:42" itemprop="dateCreated datePublished" datetime="2020-08-11T15:45:42+08:00">2020-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/CentOS/" itemprop="url" rel="index"><span itemprop="name">CentOS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>網路介片卡</li>
-</ul>
-<ol>
-<li>NAT</li>
-<li>「僅限主機」 介面卡</li>
-</ol>
-<ul>
-<li><p>設定 sudo 權限<br>錯誤訊息: user is not in the sudoers file.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[user@localhost ~]# su root</span><br><span class="line">[user@localhost ~]# vi /etc/sudoers</span><br><span class="line">+ user ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure></li>
-<li><p>設定網路<br>錯誤訊息: cannot find a valid baseurl for repo: base/7/x86_64</p>
-<ul>
-<li>原始設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[user@localhost ~]# ip addr</span><br><span class="line">1: lo:  &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">    inet6 ::1/128 scope host</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: enp0s3:  &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 08:00:27:2b:73:d4 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">3: enp0s8:  &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000</span><br><span class="line">    link/ether 08:00:27:c1:72:7d brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure></li>
-<li>修改 <code>ONBOOT=yes</code> 讓網卡在開機時生效<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[user@localhost ~]# sudo vi /etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br><span class="line">[user@localhost ~]# sudo vi /etc/sysconfig/network-scripts/ifcfg-enp0s8</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line">BOOTPROTO=dhcp</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=enp0s3</span><br><span class="line">UUID=baa08a94-1e59-4a41-aa4a-5ad463c51796</span><br><span class="line">DEVICE=enp0s3</span><br><span class="line">ONBOOT=no</span><br></pre></td></tr></table></figure></li>
-<li>重啟網路<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[user@localhost ~]# sudo service network restart</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>更新<br>sudo yum update</p>
-</li>
-<li><p>常用工具<br>sudo yum install openssh git net-tools</p>
-</li>
-<li><p>增加 root 磁區大小</p>
-</li>
-</ul>
-<ol>
-<li>先增加 vdi 配置的 disk 大小</li>
-<li>重新設定 root 磁區<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# fdisk /dev/sda</span><br><span class="line">Welcome to fdisk (util-linux 2.23.2).</span><br><span class="line"></span><br><span class="line">Changes will remain in memory only, until you decide to write them.</span><br><span class="line">Be careful before using the write command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Command (m for help): n</span><br><span class="line">Partition type:</span><br><span class="line">   p   primary (2 primary, 0 extended, 2 free)</span><br><span class="line">   e   extended</span><br><span class="line">Select (default p): p</span><br><span class="line">Partition number (3,4, default 3): 3</span><br><span class="line">First sector (209715200-629145599, default 209715200): 209715200</span><br><span class="line">Last sector, +sectors or +size&#123;K,M,G&#125; (209715200-629145599, default 629145599): 629145599</span><br><span class="line">Partition 3 of type Linux and of size 200 GiB is set</span><br><span class="line"></span><br><span class="line">Command (m for help): w</span><br><span class="line">The partition table has been altered!</span><br><span class="line"></span><br><span class="line">Calling ioctl() to re-read partition table.</span><br><span class="line"></span><br><span class="line">WARNING: Re-reading the partition table failed with error 16: Device or resource busy.</span><br><span class="line">The kernel still uses the old table. The new table will be used at</span><br><span class="line">the next reboot or after you run partprobe(8) or kpartx(8)</span><br><span class="line">Syncing disks.</span><br><span class="line"></span><br><span class="line">[root@centos ~]$ reboot</span><br><span class="line">[root@centos ~]$ df -h</span><br><span class="line">Filesystem               Size  Used Avail Use% Mounted on</span><br><span class="line">devtmpfs                 5.4G     0  5.4G   0% /dev</span><br><span class="line">tmpfs                    5.4G     0  5.4G   0% /dev/shm</span><br><span class="line">tmpfs                    5.4G  8.6M  5.4G   1% /run</span><br><span class="line">tmpfs                    5.4G     0  5.4G   0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/centos-root   50G   32G   19G  64% /</span><br><span class="line">/dev/sda1               1014M  220M  795M  22% /boot</span><br><span class="line">/dev/mapper/centos-home   45G  7.2G   37G  17% /home</span><br><span class="line">tmpfs                    1.1G     0  1.1G   0% /run/user/1000</span><br><span class="line">[root@centos ~]$</span><br><span class="line">[root@centos ~]# pvcreate /dev/sda3</span><br><span class="line">  Physical volume &quot;/dev/sda3&quot; successfully created.</span><br><span class="line">[root@centos ~]# vgextend centos /dev/sda3</span><br><span class="line">  Volume group &quot;centos&quot; successfully extended</span><br><span class="line">[root@centos ~]# lvextend /dev/mapper/centos-root /dev/sda3</span><br><span class="line">  Size of logical volume centos/root changed from 50.00 GiB (12800 extents) to &lt;250.00 GiB (63999 extents).</span><br><span class="line">  Logical volume centos/root successfully resized.</span><br><span class="line">[root@centos ~]# xfs_growfs /dev/mapper/centos-root</span><br><span class="line">meta-data=/dev/mapper/centos-root isize=512    agcount=4, agsize=3276800 blks</span><br><span class="line">         =                       sectsz=512   attr=2, projid32bit=1</span><br><span class="line">         =                       crc=1        finobt=0 spinodes=0</span><br><span class="line">data     =                       bsize=4096   blocks=13107200, imaxpct=25</span><br><span class="line">         =                       sunit=0      swidth=0 blks</span><br><span class="line">naming   =version 2              bsize=4096   ascii-ci=0 ftype=1</span><br><span class="line">log      =internal               bsize=4096   blocks=6400, version=2</span><br><span class="line">         =                       sectsz=512   sunit=0 blks, lazy-count=1</span><br><span class="line">realtime =none                   extsz=4096   blocks=0, rtextents=0</span><br><span class="line">data blocks changed from 13107200 to 65534976</span><br><span class="line">[root@centos ~]$</span><br><span class="line">[root@centos ~]$ df -h</span><br><span class="line">Filesystem               Size  Used Avail Use% Mounted on</span><br><span class="line">devtmpfs                 5.4G     0  5.4G   0% /dev</span><br><span class="line">tmpfs                    5.4G     0  5.4G   0% /dev/shm</span><br><span class="line">tmpfs                    5.4G   13M  5.4G   1% /run</span><br><span class="line">tmpfs                    5.4G     0  5.4G   0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/centos-root  250G   33G  218G  13% /</span><br><span class="line">/dev/sda1               1014M  220M  795M  22% /boot</span><br><span class="line">/dev/mapper/centos-home   45G  7.2G   37G  17% /home</span><br><span class="line">tmpfs                    1.1G     0  1.1G   0% /run/user/1000</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>Trouble shooting<br>在輸入指令時，系統有時會提示：<br>You have new mail in /var/spool/mail/root<br>這是因為在 cron 中執行的腳本有輸出導致的，cron 會把輸出內容發郵件給目前用戶<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*/2 * * * * /etc/test.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d597c8d0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/d597c8d0/" class="post-title-link" itemprop="url">kubernetes Notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-07 14:25:14" itemprop="dateCreated datePublished" datetime="2020-08-07T14:25:14+08:00">2020-08-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/posts/d597c8d0/image_01.jpg" alt></p>
-<h3 id="四大元件"><a href="#四大元件" class="headerlink" title="四大元件"></a>四大元件</h3><ol>
-<li>Pod</li>
-<li>Worker Node</li>
-<li>Master Node</li>
-<li>Cluster</li>
-</ol>
-<h5 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h5><ul>
-<li>Kubernetes 中執行的最小基本單元</li>
-<li>一個 Pod 內可以包含一個或多個 container</li>
-<li>同一個 Pod 中的 containers 共享相同的資源、檔案系統，並共享相同的 network namespace，可以透過 localhost 互相溝通</li>
-</ul>
-<h5 id="Worker-Node"><a href="#Worker-Node" class="headerlink" title="Worker Node"></a>Worker Node</h5><ul>
-<li>Kubernetes 中執行的最小硬體單元</li>
-<li>一個 Worker Node 至小會對應到一個 VM，或是一個虛擬的機器集合</li>
-<li>一個 Worker Node 內包含三個元件<ul>
-<li>kubelet: 該 Node 的管理員，負責管理該 Node 上的所有 Pods 的狀態並負責與 Master 溝通</li>
-<li>kube-proxy : 該 Node 的傳訊員，負責更新 Node 的 iptables，讓其他 Node 的物件可以得知該 Node 上所有 Pods 的最新狀態</li>
-<li>Container Runtime: 該 Node 真正負責容器執行的程式，以 Docker 容器為例，其對應的 Container Runtime 就是 Docker Engine</li>
-</ul>
-</li>
-</ul>
-<h5 id="Master-Node"><a href="#Master-Node" class="headerlink" title="Master Node"></a>Master Node</h5><p>負責管理 Kubernetes 系統中，所有的 Pods 跟 Worker Node，包含四個部分</p>
-<ul>
-<li><p>kube-apiserver<br>管理整個 Kubernetes 所需 API 的接口（Endpoint），例如從 Command Line 下 kubectl 指令就會把指令送到這裏<br>負責 Node 之間的溝通橋樑，每個 Node 彼此不能直接溝通，必須要透過 apiserver 轉介<br>負責 Kubernetes 中的請求的身份認證與授權</p>
-</li>
-<li><p>etcd<br>用來存放 Kubernetes Cluster 的資料作為備份，當 Master 因為某些原因而故障時，我們可以透過 etcd 幫我們還原 Kubernetes 的狀態</p>
-</li>
-<li><p>kube-scheduler<br>整個 Kubernetes 的 Pods 調度員，scheduler 會監視新建立但還沒有被指定要跑在哪個 Node 上的 Pod，並根據每個 Node 上面資源規定、硬體限制等條件去協調出一個最適合放置的 Node 讓該 Pod 跑</p>
-</li>
-<li><p>kube-controller-manager<br>負責管理並運行 Kubernetes controller 的組件，簡單來說 controller 就是 Kubernetes 裡一群負責監視 Cluster 狀態的 Process，例如：Node Controller、Replication Controller<br>這些 Process 會在 Cluster 與預期狀態（desire state）不符時嘗試更新現有狀態（current state）。例如：現在要多開一台機器以應付突然增加的流量，那我的預期狀態就會更新成 N+1，現有狀態為 N，這時相對應的 controller 就會想辦法多開一台機器<br>controller-manager 的監視與嘗試更新也都需要透過訪問 kube-apiserver 達成</p>
-</li>
-</ul>
-<h5 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h5><p>Kubernetes 中多個 Node 與 Master 的集合，基本上可以想成在同一個環境裡所有 Node 集合在一起的單位<br>通常一個 Cluster 中會有多個 Master 作為備援</p>
-<h5 id="Install-Pod"><a href="#Install-Pod" class="headerlink" title="Install Pod"></a>Install Pod</h5><p>當使用者要部署一個新的 Pod 到 Kubernetes Cluster 時，使用者要先透過 User Command（kubectl）輸入建立 Pod 的對應指令<br>此時指令會經過一層確認使用者身份的認證後，傳遞到 Master Node 中的 API Server，API Server 會把指令備份到 etcd<br>接下來 controller-manager 會從 API Server 收到需要創建一個新的 Pod 的訊息，並檢查如果資源許可，就會建立一個新的 Pod<br>最後 Scheduler 在定期訪問 API Server 時，會詢問 controller-manager 是否有建置新的 Pod，如果發現新建立的 Pod 時，Scheduler 就會負責把 Pod 配送到最適合的一個 Node 上面</p>
-<ul>
-<li>Reference<br><a href="https://medium.com/@C.W.Hu/kubernetes-basic-concept-tutorial-e033e3504ec0" target="_blank" rel="noopener">https://medium.com/@C.W.Hu/kubernetes-basic-concept-tutorial-e033e3504ec0</a></li>
-</ul>
-
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MySqlAlchemy(SQLAlchemy):</span><br><span class="line">    def apply_driver_hacks(self, app, info, options):</span><br><span class="line">        options.update(&#123;&quot;isolation_level&quot;: &quot;READ COMMITTED&quot;&#125;)</span><br><span class="line">        super(MySqlAlchemy, self).apply_driver_hacks(app, info, options)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1160,7 +819,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1225,7 +884,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9782a6cf/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ccf12b21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/9782a6cf/" class="post-title-link" itemprop="url">gin cors</a>
+            <a href="/posts/ccf12b21/" class="post-title-link" itemprop="url">python_multiprocessing_pool</a>
         </h2>
 
         <div class="post-meta">
@@ -206,28 +206,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-29 17:30:17" itemprop="dateCreated datePublished" datetime="2020-07-29T17:30:17+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:42:37 / 修改時間：09:42:46" itemprop="dateCreated datePublished" datetime="2021-08-26T09:42:37+08:00">2021-08-26</time>
             </span>
 
           
@@ -241,11 +222,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>project/Middlewares/Cors.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> Middlewares</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Cors</span><span class="params">()</span> <span class="title">gin</span>.<span class="title">HandlerFunc</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        method := c.Request.Method</span><br><span class="line">        origin := c.Request.Header.Get(<span class="string">"Origin"</span>)</span><br><span class="line">        <span class="keyword">if</span> origin != <span class="string">""</span> &#123;</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Origin"</span>, origin)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Methods"</span>, <span class="string">"POST, GET, OPTIONS, PUT, DELETE, UPDATE"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Origin, X-Requested-With, Content-Type, Accept, Authorization"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Expose-Headers"</span>, <span class="string">"Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Cache-Control, Content-Language, Content-Type"</span>)</span><br><span class="line">            c.Header(<span class="string">"Access-Control-Allow-Credentials"</span>, <span class="string">"false"</span>)</span><br><span class="line">            c.Set(<span class="string">"content-type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">            c.AbortWithStatus(http.StatusNoContent)</span><br><span class="line">        &#125;</span><br><span class="line">        c.Next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>project/main.go<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"project/Middlewares"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.Use(Middlewares.Cors())</span><br><span class="line"></span><br><span class="line">    r.GET(<span class="string">"/"</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        c.String(http.StatusOK, <span class="string">"Hello World!"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    r.Run(<span class="string">":8888"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def task(pid):</span><br><span class="line">    # do something</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    pool = multiprocessing.Pool()</span><br><span class="line">    cpus = multiprocessing.cpu_count()</span><br><span class="line">    results = []</span><br><span class="line"></span><br><span class="line">    for i in range(0, cpus):</span><br><span class="line">        result = pool.apply_async(task, args=(i,))</span><br><span class="line">        results.append(result)</span><br><span class="line"></span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line"></span><br><span class="line">    for result in results:</span><br><span class="line">        print(result.get())</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def init_worker(X):</span><br><span class="line">    # Using a dictionary is not strictly necessary. You can also</span><br><span class="line">    # use global variables.</span><br><span class="line">    var_dict[&apos;X&apos;] = X</span><br><span class="line"></span><br><span class="line">def run_ws2(args):</span><br><span class="line">    ws_client = WSClient(args.host, args.rtsp_url, args.source)</span><br><span class="line">    var_dict[args.source] = args.rtsp_url</span><br><span class="line">    ws_client.run()</span><br><span class="line"></span><br><span class="line">var_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line">with Pool(processes=len(settings), initializer=init_worker, initargs=(X)) as pool:</span><br><span class="line">    pool.map(run_ws, [setting for setting in settings])</span><br><span class="line"></span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool, Manager</span><br><span class="line">from multiprocessing.managers import BaseManager</span><br><span class="line"></span><br><span class="line">class SharedEventList(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.d = &#123;&#125;</span><br><span class="line">        self.d[&apos;hahaha&apos;] = list()</span><br><span class="line">        self.d[&apos;gogogo&apos;] = list()</span><br><span class="line"></span><br><span class="line">    def append(self, source, value):</span><br><span class="line">        self.d[source].append(value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    BaseManager.register(&apos;SharedEventList&apos;, SharedEventList)</span><br><span class="line">    manager = BaseManager()</span><br><span class="line">    manager.start()</span><br><span class="line">    event_list = manager.SharedEventList()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    pool = Pool(processes=4)</span><br><span class="line">    for i in range(4):</span><br><span class="line">        pool.apply_async(run_ws, args=(event_list,))</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -264,7 +245,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7f85b3c1/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a45c283d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -278,7 +259,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/7f85b3c1/" class="post-title-link" itemprop="url">new and make</a>
+            <a href="/posts/a45c283d/" class="post-title-link" itemprop="url">python_logging</a>
         </h2>
 
         <div class="post-meta">
@@ -287,28 +268,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-29 08:51:18" itemprop="dateCreated datePublished" datetime="2020-07-29T08:51:18+08:00">2020-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:40:32 / 修改時間：09:40:38" itemprop="dateCreated datePublished" datetime="2021-08-26T09:40:32+08:00">2021-08-26</time>
             </span>
 
           
@@ -322,20 +284,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>new<ul>
-<li>返回指標，指向分配給宣告變數的記憶體空間</li>
-<li>會初始化宣告的變數, 如 string 會賦值為 “”，number 會賦值為 0</li>
-<li>對於 channel, map, slice 等等, 會賦值為 nil<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">p := <span class="built_in">new</span>(<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> v <span class="keyword">int</span></span><br><span class="line">p := &amp;v</span><br><span class="line"></span><br><span class="line">person := <span class="built_in">new</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">person[<span class="string">"name"</span>] = <span class="string">"John"</span> <span class="comment">// invalid operation: people["name"] (type *map[string]interface &#123;&#125; does not support indexing)</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>make<ul>
-<li>不會返回指標</li>
-<li>用來初始化數據結構，包含 channel, map, slice, etc.<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">hash := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">bool</span>, <span class="number">10</span>)</span><br><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
+          <p><a href="https://www.blog.pythonlibrary.org/2014/02/11/python-how-to-create-rotating-logs/" target="_blank" rel="noopener">Python: How to Create Rotating Logs</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> RotatingFileHandler</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_logger</span><span class="params">(name)</span>:</span></span><br><span class="line">    formatter = logging.Formatter(<span class="string">'%(asctime)s - [%(filename)s:%(lineno)s] - %(levelname)s %(message)s '</span>)</span><br><span class="line">    logger = logging.getLogger(name)</span><br><span class="line">    logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line">    console = logging.StreamHandler()</span><br><span class="line">    console.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(console)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'/app/logs'</span>):</span><br><span class="line">        os.makedirs(<span class="string">'/app/logs'</span>)</span><br><span class="line"></span><br><span class="line">    file_handler = TimedRotatingFileHandler(<span class="string">'/app/logs/imfr.log'</span>, when=<span class="string">"d"</span>, interval=<span class="number">1</span>, backupCount=<span class="number">7</span>)</span><br><span class="line">    file_handler.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(file_handler)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> logger</span><br></pre></td></tr></table></figure>
 
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># set logging to file</span><br><span class="line">log_formatter = logging.Formatter(format_string)</span><br><span class="line">file_handler = logging.FileHandler(log_file_name, mode=&apos;w&apos;) # mode is file write mode, &apos;a&apos; to append</span><br><span class="line">file_handler.setFormatter(log_formatter)</span><br><span class="line"> </span><br><span class="line"># create child logger and set it to be a file handler</span><br><span class="line">logger = logging.getLogger() # or pass a string to give it a name</span><br><span class="line">logger.addHandler(file_handler)</span><br><span class="line">logger.setLevel(log_level)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -354,7 +307,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2c493017/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b44a52cd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -368,7 +321,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/2c493017/" class="post-title-link" itemprop="url">Package exec</a>
+            <a href="/posts/b44a52cd/" class="post-title-link" itemprop="url">interrupt_thread</a>
         </h2>
 
         <div class="post-meta">
@@ -377,28 +330,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-28 17:30:32" itemprop="dateCreated datePublished" datetime="2020-07-28T17:30:32+08:00">2020-07-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:39:40 / 修改時間：10:07:10" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:40+08:00">2021-08-26</time>
             </span>
 
           
@@ -412,55 +346,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>import<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"os/exec"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li>func (*Cmd) Output<br><code>Output</code> runs the command and returns its standard output.<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line">out, err := cmd.Output()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                      </span><br><span class="line">fmt.Printf(<span class="string">"output: %s\n"</span>, <span class="keyword">string</span>(out))</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">output:</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>func (c *Cmd) CombinedOutput() ([]byte, error)<br><code>CombinedOutput</code> runs the command and returns its combined standard output and standard error.<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line">out, err := cmd.CombinedOutput()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                      </span><br><span class="line">fmt.Printf(<span class="string">"output: %s\n"</span>, <span class="keyword">string</span>(out))</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">output: cat: text: No such file or directory</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>func (*Cmd) Run<br><code>Run</code> starts the specified command and waits for it to complete.<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"sleep"</span>, <span class="string">"1"</span>)</span><br><span class="line">fmt.Println(<span class="string">"Running command and waiting for it to finish..."</span>)</span><br><span class="line">err := cmd.Run()</span><br><span class="line">fmt.Printf(<span class="string">"Command finished with error: %v\n"</span>, err)</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Running command and waiting for it to finish...</span><br><span class="line">Command finished with error: &lt;nil&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>func (c *Cmd) Start() error<br><code>Start</code> starts the specified command but does not wait for it to complete.</li>
-<li>func (c *Cmd) Wait() error<br><code>Wait</code> waits for the command to exit and waits for any copying to stdin or copying from stdout or stderr to complete.<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"sleep"</span>, <span class="string">"5"</span>)</span><br><span class="line">err := cmd.Start()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(<span class="string">"Waiting for command to finish..."</span>)</span><br><span class="line">err = cmd.Wait()</span><br><span class="line">fmt.Printf(<span class="string">"Command finished with error: %v"</span>, err)</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go run main.go </span><br><span class="line">Waiting for command to finish...</span><br><span class="line">Command finished with error: &lt;nil&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>func (*Cmd) StdoutPipe<br><code>StdoutPipe</code> returns a pipe that will be connected to the command’s standard output when the command starts.<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">    Age  <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line">cmd := exec.Command(<span class="string">"echo"</span>, <span class="string">"-n"</span>, <span class="string">`&#123;"Name": "Bob", "Age": 32&#125;`</span>)</span><br><span class="line">stdout, err := cmd.StdoutPipe()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := cmd.Start(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := json.NewDecoder(stdout).Decode(&amp;person); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span> err := cmd.Wait(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;  </span><br><span class="line">fmt.Printf(<span class="string">"%s is %d years old\n"</span>, person.Name, person.Age)</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bob is 32 years old</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>將 stdout 和 stderr 分開處理<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"cat"</span>, <span class="string">"text"</span>)</span><br><span class="line"><span class="keyword">var</span> stdout, stderr bytes.Buffer</span><br><span class="line">cmd.Stdout = &amp;stdout</span><br><span class="line">cmd.Stderr = &amp;stderr</span><br><span class="line">err := cmd.Run()    </span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;     </span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;                   </span><br><span class="line">outStr, errStr := <span class="keyword">string</span>(stdout.Bytes()), <span class="keyword">string</span>(stderr.Bytes())</span><br><span class="line">fmt.Printf(<span class="string">"out: %s\nerr: %s\n"</span>, outStr, errStr)</span><br></pre></td></tr></table></figure></li>
-<li>output<ul>
-<li>success<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error: exit status 1</span><br><span class="line">out: </span><br><span class="line">err: cat: text: No such file or directory</span><br></pre></td></tr></table></figure></li>
-<li>fail<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">out: test</span><br><span class="line">err:</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>處理 stdin<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cmd := exec.Command(<span class="string">"tr"</span>, <span class="string">"a-z"</span>, <span class="string">"A-Z"</span>)</span><br><span class="line">cmd.Stdin = strings.NewReader(<span class="string">"some input"</span>)</span><br><span class="line"><span class="keyword">var</span> out bytes.Buffer</span><br><span class="line">cmd.Stdout = &amp;out</span><br><span class="line">err := cmd.Run()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"error: %s\n"</span>, err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Printf(<span class="string">"in all caps: %q\n"</span>, out.String())</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in all caps: &quot;SOME INPUT&quot;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>設定 Timeout<ul>
-<li>Example<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ctx, cancel := context.WithTimeout(context.Background(), <span class="number">100</span>*time.Millisecond)</span><br><span class="line"><span class="keyword">defer</span> cancel()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err := exec.CommandContext(ctx, <span class="string">"sleep"</span>, <span class="string">"5"</span>).Run(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// This will fail after 100 milliseconds. The 5 second sleep will be interrupted.</span></span><br><span class="line">    fmt.Println(<span class="string">"TIMEOUT"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Reference<br><a href="https://golang.org/pkg/os/exec/" target="_blank" rel="noopener">https://golang.org/pkg/os/exec/</a><br><a href="https://colobu.com/2017/06/19/advanced-command-execution-in-Go-with-os-exec/" target="_blank" rel="noopener">https://colobu.com/2017/06/19/advanced-command-execution-in-Go-with-os-exec/</a></li>
-</ul>
+          <p><a href="https://www.itread01.com/content/1546799768.html" target="_blank" rel="noopener">Python強制關閉執行緒</a><br><a href="http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python" target="_blank" rel="noopener">http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_async_raise</span><span class="params">(tid, exctype)</span>:</span></span><br><span class="line">    <span class="string">"""raises the exception, performs cleanup if needed"""</span></span><br><span class="line">    tid = ctypes.c_long(tid)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> inspect.isclass(exctype):</span><br><span class="line">        exctype = type(exctype)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"invalid thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res != <span class="number">1</span>:</span><br><span class="line">        <span class="comment"># """if it returns a number greater than one, you're in trouble,</span></span><br><span class="line">        <span class="comment"># and you should call it again with exc=NULL to revert the effect"""</span></span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stop_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    _async_raise(thread.ident, SystemExit)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"begin"</span>)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        print(<span class="string">"end"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    t = TestThread()</span><br><span class="line">    t.start()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    stop_thread(t)</span><br><span class="line">    print(<span class="string">"stoped"</span>)</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">terminate_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> thread.isAlive():</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    exc = ctypes.py_object(SystemExit)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(thread.ident), exc)</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"nonexistent thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res &gt; <span class="number">1</span>:</span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(thread.ident, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -479,7 +368,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d8b7f59e/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f22e58f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -493,7 +382,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/d8b7f59e/" class="post-title-link" itemprop="url">struct, map, and json</a>
+            <a href="/posts/f22e58f/" class="post-title-link" itemprop="url">image_url_to_opencv_image</a>
         </h2>
 
         <div class="post-meta">
@@ -502,28 +391,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-23 14:19:48" itemprop="dateCreated datePublished" datetime="2020-07-23T14:19:48+08:00">2020-07-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:39:00 / 修改時間：09:39:05" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:00+08:00">2021-08-26</time>
             </span>
 
           
@@ -537,39 +407,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>struct<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"encoding/json"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name   <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，使用 age 代替 Age</span></span><br><span class="line">    Age    <span class="keyword">int</span>    <span class="string">`json:"age"`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，忽略此欄位</span></span><br><span class="line">    Gender <span class="keyword">string</span> <span class="string">`json:"-"`</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//轉換成JSON時，若此欄位為空，則忽略 (若int: 0 string: ""，則也會被忽略)</span></span><br><span class="line">    Phone  <span class="keyword">string</span> <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    data := Person &#123;</span><br><span class="line">        Name: <span class="string">"John"</span>,</span><br><span class="line">        Age: <span class="number">30</span>,</span><br><span class="line">        Gender: <span class="string">"male"</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fmt.Println(data)</span><br><span class="line">    <span class="comment">//&#123;John 30 male &#125;</span></span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"%+v\n"</span>, data)</span><br><span class="line">    <span class="comment">//&#123;Name:John Age:30 Gender:male Phone:&#125;</span></span><br><span class="line"></span><br><span class="line">    fmt.Printf(<span class="string">"%#v\n"</span>, data)</span><br><span class="line">    <span class="comment">//main.Person&#123;Name:"John", Age:30, Gender:"male", Phone:""&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>宣告<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">p1 := &amp;Person&#123;&#125;</span><br><span class="line">p1.Name = <span class="string">"John"</span></span><br><span class="line">p1.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(*p1) <span class="comment">//&#123;John 20&#125;</span></span><br><span class="line"></span><br><span class="line">p2 := <span class="built_in">new</span>(Person)</span><br><span class="line">p2.Name = <span class="string">"John"</span></span><br><span class="line">p2.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(*p2) <span class="comment">//&#123;John 20&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p3 Person</span><br><span class="line">p3.Name = <span class="string">"John"</span></span><br><span class="line">p3.Age = <span class="number">20</span></span><br><span class="line">fmt.Println(p3) <span class="comment">//&#123;John 20&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>Call by pointer<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(p *Person)</span></span> &#123;</span><br><span class="line">    p.Name = <span class="string">"Bob"</span></span><br><span class="line">&#125;</span><br><span class="line">modify(p1)</span><br><span class="line">fmt.Println(*p1) <span class="comment">//&#123;Bob 20&#125;</span></span><br><span class="line"></span><br><span class="line">modify(p2)</span><br><span class="line">fmt.Println(*p2) <span class="comment">//&#123;Bob 20&#125;</span></span><br><span class="line"></span><br><span class="line">modify(&amp;p3)</span><br><span class="line">fmt.Println(p3) <span class="comment">//&#123;Bob 20&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>Append data into struct array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    john := Person&#123;Name:<span class="string">"John"</span>,Age:<span class="number">20</span>&#125;</span><br><span class="line">    mary := Person&#123;Name:<span class="string">"Mary"</span>,Age:<span class="number">25</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> People []Person</span><br><span class="line">    People = <span class="built_in">append</span>(People, john)</span><br><span class="line">    People = <span class="built_in">append</span>(People, mary)</span><br><span class="line">    fmt.Println(People) <span class="comment">//[&#123;John 20&#125; &#123;Mary 25&#125;]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Access data in the struct array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">dump</span><span class="params">(People []Person)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> id, person := <span class="keyword">range</span> People &#123;</span><br><span class="line">        <span class="comment">//可以用person，也可以用People[id]來存取資料</span></span><br><span class="line">        <span class="comment">//0: Name: John, Age: 20</span></span><br><span class="line">        <span class="comment">//1: Name: Mary, Age: 25</span></span><br><span class="line">        fmt.Printf(<span class="string">"%d: Name: %s, Age: %d\n"</span>, id, person.Name, People[id].Age)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Delete elements in a array<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> id, person := <span class="keyword">range</span> People &#123;</span><br><span class="line">    <span class="keyword">if</span> person.Name == <span class="string">"John"</span> &#123;</span><br><span class="line">        People = <span class="built_in">append</span>(People[:id], People[id+<span class="number">1</span>:]...)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>序列化 struct to json string<ul>
-<li>func Marshal(v interface{}) ([]byte, error)<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data_json, _ := json.MarshalIndent(data, <span class="string">""</span>, <span class="string">"  "</span>)</span><br><span class="line">fmt.Println(<span class="keyword">string</span>(data_json))</span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//  "Name": "John",</span></span><br><span class="line"><span class="comment">//  "age": 30</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>func NewEncoder(w io.Writer) *Encoder</li>
-<li>func (enc *Encoder) Encode(v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> err := json.NewEncoder(os.Stdout).Encode(&amp;data); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Println(err)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//stdout: &#123;"Name":"John","age":30&#125;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>反序列化 json string to struct<ul>
-<li>func Unmarshal(data []byte, v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data := []<span class="keyword">byte</span>(<span class="string">`&#123;"name" : "John" , "age" : 30&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> person Person</span><br><span class="line">json.Unmarshal(data, &amp;person)</span><br><span class="line">fmt.Println(person) <span class="comment">//&#123;John 30&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>func NewDecoder(r io.Reader) *Decoder</li>
-<li>func (dec *Decoder) Decode(v interface{}) error<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="string">`&#123;"name" : "John" , "age" : 30&#125;`</span></span><br><span class="line"><span class="keyword">var</span> person Person</span><br><span class="line"><span class="keyword">if</span> err := json.NewDecoder(strings.NewReader(data)).Decode(&amp;person); err == <span class="literal">nil</span> &#123;</span><br><span class="line">    fmt.Println(person) <span class="comment">//&#123;John 30&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>pointer items in struct<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Enabled <span class="keyword">int</span></span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> B <span class="keyword">struct</span> &#123;</span><br><span class="line">    Enabled <span class="keyword">int</span></span><br><span class="line">    Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Services <span class="keyword">struct</span> &#123;</span><br><span class="line">    A *A <span class="string">`json:",omitempty"`</span></span><br><span class="line">    B *B <span class="string">`json:",omitempty"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contents := []<span class="keyword">byte</span>(<span class="string">`&#123;"A":&#123;"Enabled":1,"Name":"test"&#125;,"B":&#123;"Enabled":0,"Name":"test"&#125;&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data Services </span><br><span class="line">json.Unmarshal(contents, &amp;data)</span><br><span class="line"><span class="keyword">if</span> data.A.Enabled == <span class="number">0</span> &#123; </span><br><span class="line">    data.A = <span class="literal">nil</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> data.B.Enabled == <span class="number">0</span> &#123; </span><br><span class="line">    data.B = <span class="literal">nil</span> </span><br><span class="line">&#125;</span><br><span class="line">data_json, _ := json.Marshal(data)</span><br><span class="line">fmt.Println(<span class="keyword">string</span>(data_json)) <span class="comment">//&#123;"A":&#123;"Enabled":1,"Name":"test"&#125;&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>map<ul>
-<li>如果有一串資料 {“Name”: “John”, “Gender”: “Male”}，可以使用 map 來儲存<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">data[<span class="string">"Name"</span>] = <span class="string">"John"</span></span><br><span class="line">data[<span class="string">"Gender"</span>] = <span class="string">"Male"</span></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Gender:Male Name:John]</span></span><br></pre></td></tr></table></figure></li>
-<li>如果資料中有多種不同的型別 {“Name”: “John”, “Gender”: “Male”, “Age”: 20}，可以藉由 interface{} 來處理<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">data[<span class="string">"Name"</span>] = <span class="string">"John"</span></span><br><span class="line">data[<span class="string">"Gender"</span>] = <span class="string">"Male"</span></span><br><span class="line">data[<span class="string">"Age"</span>] = <span class="number">20</span></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Age:20 Gender:Male Name:John]</span></span><br></pre></td></tr></table></figure></li>
-<li>多層取值<ul>
-<li>存取已知的 key<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">data_json := []<span class="keyword">byte</span>(<span class="string">`&#123;"Name": "John", "Age": 20, "Friend": &#123;"Name": "Mary", "Age": 25&#125;&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">json.Unmarshal(data_json, &amp;data)</span><br><span class="line"></span><br><span class="line">fmt.Println(data) <span class="comment">//map[Age:20 Friend:map[Age:25 Name:Mary] Name:John]</span></span><br><span class="line">friend := data[<span class="string">"Friend"</span>].(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">fmt.Println(friend) <span class="comment">//map[Age:25 Name:Mary]</span></span><br><span class="line">fmt.Println(<span class="string">"friend: "</span> + friend[<span class="string">"Name"</span>].(<span class="keyword">string</span>)) <span class="comment">//friend: Mary</span></span><br></pre></td></tr></table></figure></li>
-<li>列舉所有內容<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">data_json := []<span class="keyword">byte</span>(<span class="string">`&#123;"Name": "John", "Age": 20, "BestFriend": &#123;"Name": "Mary", "Age": 25&#125;, "Friends": ["Mark", "Mike"]&#125;`</span>)</span><br><span class="line"><span class="keyword">var</span> data <span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">json.Unmarshal(data_json, &amp;data)</span><br><span class="line">m := data.(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">    rt := reflect.TypeOf(v)</span><br><span class="line">    <span class="keyword">if</span> rt.Kind() == reflect.Slice &#123;</span><br><span class="line">        n := v.([]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">        <span class="keyword">for</span> i, u := <span class="keyword">range</span> n &#123; </span><br><span class="line">            fmt.Println(k, i, u)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> rt.Kind() == reflect.Map &#123;</span><br><span class="line">        n := v.(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">        <span class="keyword">for</span> i, u := <span class="keyword">range</span> n &#123; </span><br><span class="line">            fmt.Println(k, i, u)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fmt.Println(k ,v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Name John</span><br><span class="line">Age 20</span><br><span class="line">BestFriend Name Mary</span><br><span class="line">BestFriend Age 25</span><br><span class="line">Friends 0 Mark</span><br><span class="line">Friends 1 Mike</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+          <p>METHOD #1: OpenCV, NumPy, and urllib</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import urllib.request import urlopen</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">def url_to_image(url):</span><br><span class="line">	# download the image, convert it to a NumPy array, and then read</span><br><span class="line">	# it into OpenCV format</span><br><span class="line">	resp = urlopen(url)</span><br><span class="line">	image = np.asarray(bytearray(resp.read()), dtype=&quot;uint8&quot;)</span><br><span class="line">	image = cv2.imdecode(image, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">	# return the image</span><br><span class="line">	return image</span><br><span class="line"></span><br><span class="line"># initialize the list of image URLs to download</span><br><span class="line">urls = [</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/opencv_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/google_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2014/12/adrian_face_detection_sidebar.png&quot;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image URL and display it</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = url_to_image(url)</span><br><span class="line">	cv2.imshow(&quot;Image&quot;, image)</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
 
+<p>Method #2: scikit-image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from skimage import io</span><br><span class="line"> </span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image using scikit-image</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = io.imread(url)</span><br><span class="line">	cv2.imshow(&quot;Incorrect&quot;, image)</span><br><span class="line">	cv2.imshow(&quot;Correct&quot;, cv2.cvtColor(image, cv2.COLOR_BGR2RGB))</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -588,7 +430,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/812d43/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/33c9c691/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -602,7 +444,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/812d43/" class="post-title-link" itemprop="url">Periodic Task</a>
+            <a href="/posts/33c9c691/" class="post-title-link" itemprop="url">gevent_timeout</a>
         </h2>
 
         <div class="post-meta">
@@ -611,28 +453,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-22 16:42:40" itemprop="dateCreated datePublished" datetime="2020-07-22T16:42:40+08:00">2020-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:36:55 / 修改時間：09:36:59" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:55+08:00">2021-08-26</time>
             </span>
 
           
@@ -646,11 +469,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>General goroutine<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="literal">true</span> &#123;</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">        time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure></li>
-<li>time.Ticker<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ticker *time.Ticker</span><br><span class="line">ticker = time.NewTicker(<span class="number">1</span> * time.Second)</span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">range</span> ticker.C &#123;</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">ticker.Stop()</span><br></pre></td></tr></table></figure></li>
-</ul>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">import traceback</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    try:</span><br><span class="line">        with gevent.Timeout(1):</span><br><span class="line">            while True:</span><br><span class="line">                gevent.sleep(0.3)</span><br><span class="line">                print(&quot;do_something...&quot;)</span><br><span class="line">    except gevent.Timeout:</span><br><span class="line">        print(&quot;gevent.Timeout&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print(traceback.format_exc())</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(venv) user@vm-docker:~$ python app.py</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">gevent.Timeout</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -669,7 +490,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8b2c5d13/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9d8d8ccf/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -683,7 +504,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/8b2c5d13/" class="post-title-link" itemprop="url">sshpass</a>
+            <a href="/posts/9d8d8ccf/" class="post-title-link" itemprop="url">gevent_spawn</a>
         </h2>
 
         <div class="post-meta">
@@ -692,24 +513,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-22 16:13:27" itemprop="dateCreated datePublished" datetime="2020-07-22T16:13:27+08:00">2020-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:36:25 / 修改時間：09:36:30" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:25+08:00">2021-08-26</time>
             </span>
 
           
@@ -723,20 +529,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><code>export SSH_PASSWORD=1234</code><br><code>export REMOTE_SERVER=user@192.168.56.3</code></p>
-<ul>
-<li><p>執行遠端的 shell command</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER COMMAND</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER ls</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>執行遠端需要 root 權限的 shell command</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -t $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -T $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br><span class="line">echo $SSH_PASSWORD | sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no -tt $REMOTE_SERVER sudo -S &quot;apt update&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>執行遠端 docker command</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer mysql -uroot -p1234 -e &apos;show databases&apos;&quot;</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER docker exec mycontainer &quot;mysql -uroot -p1234 -e &apos;show databases&apos;&quot;</span><br><span class="line"></span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER docker exec mycontainer ls -al</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer ls -al&quot;</span><br><span class="line">sshpass -p $SSH_PASSWORD ssh -o stricthostkeychecking=no $REMOTE_SERVER &quot;docker exec mycontainer sh -c &apos;ls -al&apos;&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>遠端執行 sftp 動作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p $SFTP_PASSWORD sftp -oBatchMode=no -ostricthostkeychecking=no -b - $ACCOUNT@$ADDRESS &lt;&lt; !</span><br><span class="line">ls</span><br><span class="line">cd /folder</span><br><span class="line">get file</span><br><span class="line">bye</span><br><span class="line">!</span><br></pre></td></tr></table></figure></li>
-</ul>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spawns = []</span><br><span class="line">for i in range(GEVENT_NUM):</span><br><span class="line">    spawns.append(gevent.spawn(do_something, i))</span><br><span class="line">gevent.joinall(spawns)</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gevent.joinall([</span><br><span class="line">    gevent.spawn(foo, 1),</span><br><span class="line">    gevent.spawn(goo, 2)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -755,7 +550,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f3b1b78/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fbf3436c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -769,7 +564,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/f3b1b78/" class="post-title-link" itemprop="url">File Upload Operation</a>
+            <a href="/posts/fbf3436c/" class="post-title-link" itemprop="url">python_gevent</a>
         </h2>
 
         <div class="post-meta">
@@ -778,28 +573,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-21 08:52:35" itemprop="dateCreated datePublished" datetime="2020-07-21T08:52:35+08:00">2020-07-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:35:49 / 修改時間：09:35:52" itemprop="dateCreated datePublished" datetime="2021-08-26T09:35:49+08:00">2021-08-26</time>
             </span>
 
           
@@ -813,12 +589,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>server<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">upload</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">    code := <span class="number">200</span></span><br><span class="line">    res := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line">    param1 := c.PostForm(<span class="string">"param1"</span>)</span><br><span class="line">    param2 := c.PostForm(<span class="string">"param2"</span>)</span><br><span class="line"></span><br><span class="line">    file, err := c.FormFile(<span class="string">"file"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        code = <span class="number">401</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res[<span class="string">"param1"</span>] = param1</span><br><span class="line">    res[<span class="string">"param2"</span>] = param2</span><br><span class="line">    res[<span class="string">"filename"</span>] = file.Filename</span><br><span class="line">    res[<span class="string">"filesize"</span>] = file.Size</span><br><span class="line"></span><br><span class="line">    c.JSON(http.StatusOK, gin.H &#123;</span><br><span class="line">        <span class="string">"code"</span>:  code,</span><br><span class="line">        <span class="string">"data"</span>: res,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()</span><br><span class="line">    r.POST(<span class="string">"/upload"</span>, upload)</span><br><span class="line">    r.Run(<span class="string">":8888"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>client<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"bytes"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io"</span></span><br><span class="line">    <span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"log"</span></span><br><span class="line">    <span class="string">"mime/multipart"</span></span><br><span class="line">    <span class="string">"net/http"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">    <span class="string">"path/filepath"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newfileUploadRequest</span><span class="params">(uri <span class="keyword">string</span>, params <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>, paramName, path <span class="keyword">string</span>)</span> <span class="params">(*http.Request, error)</span></span> &#123;</span><br><span class="line">    file, err := os.Open(path)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> file.Close()</span><br><span class="line"></span><br><span class="line">    body := &amp;bytes.Buffer&#123;&#125;</span><br><span class="line">    writer := multipart.NewWriter(body)</span><br><span class="line">    part, err := writer.CreateFormFile(paramName, filepath.Base(path))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    _, err = io.Copy(part, file)</span><br><span class="line">    <span class="comment">//we can also use string to fill the file content</span></span><br><span class="line">    <span class="comment">//part.Write([]byte("content_in_a_file"))</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> key, val := <span class="keyword">range</span> params &#123;</span><br><span class="line">        _ = writer.WriteField(key, val)</span><br><span class="line">    &#125;</span><br><span class="line">    err = writer.Close()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    req, err := http.NewRequest(<span class="string">"POST"</span>, uri, body)</span><br><span class="line">    req.Header.Set(<span class="string">"Content-Type"</span>, writer.FormDataContentType())</span><br><span class="line">    <span class="keyword">return</span> req, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    payload := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">        <span class="string">"param1"</span>: <span class="string">"test1"</span>,</span><br><span class="line">        <span class="string">"param2"</span>: <span class="string">"test2"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    url := <span class="string">"http://192.168.56.3:8888/upload"</span></span><br><span class="line">    request, err := newfileUploadRequest(url, payload, <span class="string">"file"</span>, <span class="string">"/home/user/test.txt"</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125;</span><br><span class="line">    client := &amp;http.Client&#123;&#125;</span><br><span class="line">    resp, err := client.Do(request)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        log.Fatal(err)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">        body, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            log.Fatal(err)</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(<span class="keyword">string</span>(body))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>output<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"code"</span>: <span class="number">200</span>,</span><br><span class="line">  <span class="attr">"data"</span>: &#123;</span><br><span class="line">    <span class="attr">"filename"</span>: <span class="string">"test.txt"</span>,</span><br><span class="line">    <span class="attr">"filesize"</span>: <span class="number">684</span>,</span><br><span class="line">    <span class="attr">"param1"</span>: <span class="string">"test1"</span>,</span><br><span class="line">    <span class="attr">"param2"</span>: <span class="string">"test2"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br><span class="line">def foo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:41:48,231 - [main.py:174] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:49,233 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:50,235 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo).run()</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:38:31,008 - [main.py:174] - INFO mThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo).run()</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:39:38,280 - [main.py:174] - INFO mThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:38,281 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:39,296 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:43:04,408 - [main.py:174] - INFO mThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,410 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,411 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:175] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:182] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:06:19,773 - [main.py:174] - INFO mThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:29,785 - [main.py:166] - INFO gThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:34,791 - [main.py:170] - INFO fThread id main = 139665595115264</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:07:05,429 - [main.py:174] - INFO mThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:10,434 - [main.py:170] - INFO fThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:15,436 - [main.py:166] - INFO gThread id main = 140126333138688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:09:27,635 - [main.py:174] - INFO mThread id main = 140478560122120</span><br><span class="line">2019-07-18 10:09:32,636 - [main.py:171] - INFO fThread id main = 140478502363976</span><br><span class="line">2019-07-18 10:09:37,641 - [main.py:167] - INFO gThread id main = 140478502363720</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:08:53,700 - [main.py:174] - INFO mThread id main = 140337642030344</span><br><span class="line">2019-07-18 10:08:58,704 - [main.py:171] - INFO fThread id main = 140337584272200</span><br><span class="line">2019-07-18 10:09:03,704 - [main.py:167] - INFO gThread id main = 140337584271944</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -837,7 +627,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b401a0da/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69b994cd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -851,7 +641,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/b401a0da/" class="post-title-link" itemprop="url">nsenter</a>
+            <a href="/posts/69b994cd/" class="post-title-link" itemprop="url">flask_login</a>
         </h2>
 
         <div class="post-meta">
@@ -860,24 +650,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-07-20 09:04:24" itemprop="dateCreated datePublished" datetime="2020-07-20T09:04:24+08:00">2020-07-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
+              <time title="創建時間：2021-08-26 09:34:46 / 修改時間：09:34:56" itemprop="dateCreated datePublished" datetime="2021-08-26T09:34:46+08:00">2021-08-26</time>
             </span>
 
           
@@ -891,185 +666,129 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>nsenter 可以用來進入 target process 所在的 Namespace 中執行命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ nsenter -h</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line"> nsenter [options] [&lt;program&gt; [&lt;argument&gt;...]]</span><br><span class="line"></span><br><span class="line">Run a program with namespaces of other processes.</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"> -a, --all              enter all namespaces</span><br><span class="line"> -t, --target &lt;pid&gt;     target process to get namespaces from</span><br><span class="line"> -m, --mount[=&lt;file&gt;]   enter mount namespace</span><br><span class="line"> -u, --uts[=&lt;file&gt;]     enter UTS namespace (hostname etc)</span><br><span class="line"> -i, --ipc[=&lt;file&gt;]     enter System V IPC namespace</span><br><span class="line"> -n, --net[=&lt;file&gt;]     enter network namespace</span><br><span class="line"> -p, --pid[=&lt;file&gt;]     enter pid namespace</span><br><span class="line"> -C, --cgroup[=&lt;file&gt;]  enter cgroup namespace</span><br><span class="line"> -U, --user[=&lt;file&gt;]    enter user namespace</span><br><span class="line"> -S, --setuid &lt;uid&gt;     <span class="built_in">set</span> uid <span class="keyword">in</span> entered namespace</span><br><span class="line"> -G, --setgid &lt;gid&gt;     <span class="built_in">set</span> gid <span class="keyword">in</span> entered namespace</span><br><span class="line">     --preserve-credentials <span class="keyword">do</span> not touch uids or gids</span><br><span class="line"> -r, --root[=&lt;dir&gt;]     <span class="built_in">set</span> the root directory</span><br><span class="line"> -w, --wd[=&lt;dir&gt;]       <span class="built_in">set</span> the working directory</span><br><span class="line"> -F, --no-fork          <span class="keyword">do</span> not fork before executing &lt;program&gt;</span><br><span class="line"> -Z, --follow-context   <span class="built_in">set</span> SELinux context according to --target PID</span><br><span class="line"></span><br><span class="line"> -h, --<span class="built_in">help</span>             display this <span class="built_in">help</span></span><br><span class="line"> -V, --version          display version</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在 host 中，下指令到 container 內<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ PID=$(docker inspect --format &#123;&#123;.State.Pid&#125;&#125; my_container)</span><br><span class="line">$ sudo nsenter -m -u -i -n -t <span class="variable">$PID</span> ls</span><br><span class="line">app  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  requirements.txt  root  run  sbin  srv  sys  tmp  usr  var</span><br></pre></td></tr></table></figure></li>
-<li>在 container 中，下指令到 host<br>必須先允許 container 存取 host namespace 的權限</li>
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#declaration</span></span><br><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> LoginManager</span><br><span class="line">login_manager = LoginManager()</span><br><span class="line"></span><br><span class="line"><span class="comment">#init</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">login_manager.init_app(app)</span><br><span class="line"></span><br><span class="line"><span class="comment">#usage</span></span><br><span class="line"><span class="meta">@login_manager.user_loader</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_user</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="comment">#logger.info("load_user: id = " + id)</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> User.User.query.get(int(id))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/login', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    params = request.form <span class="keyword">or</span> request.get_json()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        username = params[<span class="string">'username'</span>]</span><br><span class="line">        password = params[<span class="string">'password'</span>]</span><br><span class="line">        remember = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_INVALID_PARAM)</span><br><span class="line"></span><br><span class="line">    user = User.query.filter_by(username=username).first()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_USER_NOT_EXIST)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> user.check_password(password):</span><br><span class="line">        login_user(user, remember=remember)</span><br><span class="line">        <span class="keyword">return</span> success_result()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_PASSWORD_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/logout')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span><span class="params">()</span>:</span></span><br><span class="line">    logout_user()</span><br><span class="line">    <span class="keyword">return</span> success_result()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eacf1c94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/eacf1c94/" class="post-title-link" itemprop="url">flask_doc</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:33:47 / 修改時間：09:33:51" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>pip install flask_docs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask_docs import ApiDoc</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 本地加载</span><br><span class="line"># app.config[&apos;API_DOC_CDN&apos;] = False</span><br><span class="line"></span><br><span class="line"># 禁用文档页面</span><br><span class="line"># app.config[&apos;API_DOC_ENABLE&apos;] = False</span><br><span class="line"></span><br><span class="line"># 需要显示文档的 Api</span><br><span class="line">app.config[&apos;API_DOC_MEMBER&apos;] = [&apos;api&apos;, &apos;platform&apos;]</span><br><span class="line"></span><br><span class="line"># 需要排除的 RESTful Api 文档</span><br><span class="line">app.config[&apos;RESTFUL_API_DOC_EXCLUDE&apos;] = []</span><br><span class="line"></span><br><span class="line">ApiDoc(app)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4b411f65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4b411f65/" class="post-title-link" itemprop="url">flask_background_task</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:33:03 / 修改時間：09:33:07" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:03+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>celery</li>
+<li>rq</li>
 </ol>
-<ul>
-<li>透過 docker run 指令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --privileged --pid=host ...</span><br></pre></td></tr></table></figure></li>
-<li>透過 docker compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privileged: true</span><br><span class="line">pid: &quot;host&quot;</span><br></pre></td></tr></table></figure></li>
-<li>container 中，在 host 執行的 process 為 <code>PID=1</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it my_container bash</span><br><span class="line">root@5185b2a94319:~<span class="comment"># nsenter -m -u -i -n -t 1 ls</span></span><br><span class="line">bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swap.img  sys  tmp  usr  var  vmlinuz  vmlinuz.old</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b1b1ed69/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b1b1ed69/" class="post-title-link" itemprop="url">subprocess</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-17 15:54:48" itemprop="dateCreated datePublished" datetime="2020-07-17T15:54:48+08:00">2020-07-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>run<br>was added in Python 3.5<br>execute a command and wait until it finishes<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res = subprocess.run([<span class="string">"cat"</span>, <span class="string">"/etc/hostname"</span>], stdout=subprocess.PIPE)</span><br><span class="line">hostname = res.stdout.decode(<span class="string">"utf-8"</span>).strip()</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>call<br>ret=subprocess.call(‘cat /etc/machine-id’, shell=True, stdout=open(‘/dev/null’,’w’), stderr=subprocess.STDOUT)</p>
-<p>popen<br>you can continue doing your stuff while the process finishes and then just repeatedly call subprocess.communicate yourself to pass and receive data to your process.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ca690ff5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ca690ff5/" class="post-title-link" itemprop="url">Encrypt with RSA and Base64</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-10 20:05:09" itemprop="dateCreated datePublished" datetime="2020-07-10T20:05:09+08:00">2020-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>RSA 是非對稱性加密算法</p>
-<ul>
-<li>import<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"crypto/rand"</span></span><br><span class="line">    <span class="string">"crypto/rsa"</span></span><br><span class="line">    <span class="string">"crypto/sha256"</span></span><br><span class="line">    <span class="string">"crypto/x509"</span></span><br><span class="line">    <span class="string">"encoding/base64"</span></span><br><span class="line">    <span class="string">"encoding/gob"</span></span><br><span class="line">    <span class="string">"encoding/pem"</span></span><br><span class="line">    <span class="string">"errors"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
-<li>生成公私鑰<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GenerateKeyPair</span><span class="params">(bits <span class="keyword">int</span>)</span> <span class="params">(*rsa.PrivateKey, *rsa.PublicKey, error)</span></span> &#123;</span><br><span class="line">    prikey, err := rsa.GenerateKey(rand.Reader, bits)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> prikey, &amp;prikey.PublicKey, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">privatekey, publickey, _ := GenerateKeyPair(<span class="number">2048</span>)</span><br><span class="line">fmt.Println(*privatekey) <span class="comment">// &#123;&#123;2003898272...5197615363 []&#125;&#125;</span></span><br><span class="line">fmt.Println(*publickey) <span class="comment">// &#123;2003898272...5007771639 65537&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>將密鑰存入檔案<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">saveGobKey</span><span class="params">(fileName <span class="keyword">string</span>, key <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    outFile, _ := os.Create(fileName)</span><br><span class="line">    <span class="keyword">defer</span> outFile.Close()</span><br><span class="line"></span><br><span class="line">    encoder := gob.NewEncoder(outFile)</span><br><span class="line">    err = encoder.Encode(key)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">savePEMPrivateKey</span><span class="params">(fileName <span class="keyword">string</span>, key *rsa.PrivateKey)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    outFile, _ := os.Create(fileName)</span><br><span class="line">    <span class="keyword">defer</span> outFile.Close()</span><br><span class="line"></span><br><span class="line">    derStream:= x509.MarshalPKCS1PrivateKey(key)</span><br><span class="line">    <span class="keyword">var</span> privateKey = &amp;pem.Block&#123;</span><br><span class="line">        Type: <span class="string">"PRIVATE KEY"</span>,</span><br><span class="line">        Bytes: derStream,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    err = pem.Encode(outFile, privateKey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">savePEMPublicKey</span><span class="params">(fileName <span class="keyword">string</span>, key *rsa.PublicKey)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    outFile, _ := os.Create(fileName)</span><br><span class="line">    <span class="keyword">defer</span> outFile.Close()</span><br><span class="line"></span><br><span class="line">    derPkix, _ := x509.MarshalPKIXPublicKey(key)</span><br><span class="line">    <span class="keyword">var</span> publicKey = &amp;pem.Block&#123;</span><br><span class="line">        Type: <span class="string">"PUBLIC KEY"</span>,</span><br><span class="line">        Bytes: derPkix,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    err = pem.Encode(outFile, publicKey)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//store key in binary format</span></span><br><span class="line">saveGobKey(<span class="string">"private.key"</span>, privatekey)</span><br><span class="line">saveGobKey(<span class="string">"public.key"</span>, publickey)</span><br><span class="line"></span><br><span class="line"><span class="comment">//store key in pem format</span></span><br><span class="line"><span class="comment">//-----BEGIN RSA PRIVATE KEY-----</span></span><br><span class="line"><span class="comment">//-----BEGIN PRIVATE KEY-----</span></span><br><span class="line"><span class="comment">//MIIEpQIBAAKCAQEAu/olT1++xi2cfQSF+DjgeEeiFurzhM2MtfTgdVeQngOmtfZh</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="comment">//23GiddwFvlm+Xbeu0bV8CVg+KLjMsD4UqSbZzqWXCDK/5vNE7fIeus8=</span></span><br><span class="line"><span class="comment">//-----END PRIVATE KEY-----</span></span><br><span class="line">savePEMPrivateKey(<span class="string">"private.pem"</span>, privatekey)</span><br><span class="line"></span><br><span class="line"><span class="comment">//-----BEGIN PUBLIC KEY-----</span></span><br><span class="line"><span class="comment">//MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu/olT1++xi2cfQSF+Djg</span></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"><span class="comment">//qwIDAQAB</span></span><br><span class="line"><span class="comment">//-----END PUBLIC KEY-----</span></span><br><span class="line">savePEMPublicKey(<span class="string">"public.pem"</span>, publickey)</span><br></pre></td></tr></table></figure></li>
-<li>加解密<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Encrypt</span><span class="params">(message <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, error)</span></span> &#123;</span><br><span class="line">    key, _ := LoadPEMPublicKey(<span class="string">"public.pem"</span>)</span><br><span class="line"></span><br><span class="line">    ciphertext, err := rsa.EncryptOAEP(sha256.New(), rand.Reader, key, []<span class="keyword">byte</span>(message), []<span class="keyword">byte</span>(<span class="string">""</span>))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> base64.StdEncoding.EncodeToString(ciphertext), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Decrypt</span><span class="params">(b64_message <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, error)</span></span> &#123;</span><br><span class="line">    key, _ := LoadPEMPrivateKey(<span class="string">"private.pem"</span>)</span><br><span class="line"></span><br><span class="line">    message, err := base64.StdEncoding.DecodeString(b64_message)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    plaintext, err := rsa.DecryptOAEP(sha256.New(), rand.Reader, key, message, []<span class="keyword">byte</span>(<span class="string">""</span>))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>(plaintext), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//go only support encrypt by public key and decrypt by private key</span></span><br><span class="line"><span class="comment">//because public key is available to everyone</span></span><br><span class="line">data := <span class="string">"I'm a genius"</span></span><br><span class="line">encrypt_data, _ := Encrypt(data)</span><br><span class="line">decrypt_data, _ := Decrypt(encrypt_data)</span><br><span class="line">fmt.Println(decrypt_data) <span class="comment">//I'm a genius</span></span><br></pre></td></tr></table></figure></li>
-</ul>
+<p><a href="https://myapollo.com.tw/2019/06/01/flask-celery/" target="_blank" rel="noopener">https://myapollo.com.tw/2019/06/01/flask-celery/</a></p>
+<p><a href="http://www.pythondoc.com/flask-celery/first.html" target="_blank" rel="noopener">http://www.pythondoc.com/flask-celery/first.html</a></p>
 
       
     </div>
@@ -1088,7 +807,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1153,7 +872,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

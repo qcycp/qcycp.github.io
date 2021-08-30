@@ -183,7 +183,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d7f0b4a8/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/996f0d2c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -197,567 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/d7f0b4a8/" class="post-title-link" itemprop="url">Encrypt with AES and Base64</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-09 11:32:35" itemprop="dateCreated datePublished" datetime="2020-07-09T11:32:35+08:00">2020-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>AES 是對稱性加密算法，AES key 長度可以設定為 16, 24, or 32 bytes，分別對應到 AES-128, AES-192, or AES-256</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"bytes"</span></span><br><span class="line">    <span class="string">"crypto/aes"</span></span><br><span class="line">    <span class="string">"crypto/cipher"</span></span><br><span class="line">    <span class="string">"crypto/rand"</span></span><br><span class="line">    <span class="string">"encoding/base64"</span></span><br><span class="line">    <span class="string">"errors"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"io"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Encrypt</span><span class="params">(key, text <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span> ,error)</span></span> &#123;</span><br><span class="line">    keyBytes := []<span class="keyword">byte</span>(key)</span><br><span class="line">    textBytes := []<span class="keyword">byte</span>(text)</span><br><span class="line"></span><br><span class="line">    block, err := aes.NewCipher(keyBytes)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(textBytes)%aes.BlockSize != <span class="number">0</span> &#123;</span><br><span class="line">        padding := aes.BlockSize - <span class="built_in">len</span>(textBytes)%aes.BlockSize</span><br><span class="line">        padText := bytes.Repeat([]<span class="keyword">byte</span>&#123;<span class="keyword">byte</span>(<span class="number">0</span>)&#125;, padding)</span><br><span class="line">        textBytes = <span class="built_in">append</span>(textBytes, padText...)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ciphertext := <span class="built_in">make</span>([]<span class="keyword">byte</span>, aes.BlockSize+<span class="built_in">len</span>(textBytes))</span><br><span class="line">    iv := ciphertext[:aes.BlockSize]</span><br><span class="line">    <span class="keyword">if</span> _, err := io.ReadFull(rand.Reader, iv); err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err</span><br><span class="line">    &#125;   </span><br><span class="line">    cfb := cipher.NewCFBEncrypter(block, iv) </span><br><span class="line">    cfb.XORKeyStream(ciphertext[aes.BlockSize:], textBytes)</span><br><span class="line">    <span class="keyword">return</span> base64.StdEncoding.EncodeToString(ciphertext), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Decrypt</span><span class="params">(key, b64 <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">string</span>, error)</span></span> &#123;</span><br><span class="line">    keyBytes := []<span class="keyword">byte</span>(key)</span><br><span class="line"></span><br><span class="line">    block, err := aes.NewCipher(keyBytes)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err </span><br><span class="line">    &#125;</span><br><span class="line">    text, err := base64.StdEncoding.DecodeString(b64)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, err </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(text) &lt; aes.BlockSize &#123;</span><br><span class="line">        <span class="built_in">panic</span>(<span class="string">"ciphertext too short"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, errors.New(<span class="string">"ciphertext to short"</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    iv := text[:aes.BlockSize]</span><br><span class="line">    text = text[aes.BlockSize:]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(text)%aes.BlockSize != <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>, errors.New(<span class="string">"ciphertext is not a multiple of the block size"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    cfb := cipher.NewCFBDecrypter(block, iv)</span><br><span class="line">    cfb.XORKeyStream(text, text)</span><br><span class="line">    text = bytes.TrimRight(text, <span class="string">"\x00"</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>(text), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    AESEncryptionKey := <span class="string">"ABCDEFGHIJKLMNOP"</span></span><br><span class="line">    data := <span class="string">"I'm a genius"</span></span><br><span class="line"></span><br><span class="line">    encrypt, _ := Encrypt(AESEncryptionKey, data)</span><br><span class="line">    fmt.Println(encrypt) <span class="comment">//n3ZLEui2m9egZaNN1HcqcRYa6gYdMZIf6s7uUQnwvmw=</span></span><br><span class="line"></span><br><span class="line">    decrypt, _ := Decrypt(AESEncryptionKey, encrypt)</span><br><span class="line">    fmt.Println(decrypt)<span class="comment">//I'm a genius</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d5617b5e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/d5617b5e/" class="post-title-link" itemprop="url">Golang notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-09 10:52:47" itemprop="dateCreated datePublished" datetime="2020-07-09T10:52:47+08:00">2020-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Go/" itemprop="url" rel="index"><span itemprop="name">Go</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>宣告byte variable<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">single := byte(&apos;A&apos;)</span><br><span class="line">array := []byte&#123;&apos;A&apos;, &apos;B&apos;, &apos;C&apos;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>package</li>
-</ul>
-<ol>
-<li>package main 是程式入口，其餘的 package name 必須和所在的資料夾同名</li>
-<li>同一個 package 內，互相調用的 variable or function，命名可以不分大小寫</li>
-<li>跨 package 調用時，被使用的 variable or function，命名必須大寫開頭</li>
-<li>編譯<br><code>go run a.go b.go</code><br><code>go run *.go</code><br><code>go build a.go b.go</code><br><code>go build .</code></li>
-<li>多層目錄<ul>
-<li>目錄結構<br>project<br>├── common<br>│   └── b.go<br>└── a.go</li>
-<li>初始化 module<br><code>user@user:~/project$ go mod init project</code><br>執行之後會產生 go.mod 檔案</li>
-<li>使用<br>在a.go中，<code>import (common &quot;project/common&quot;)</code><br>然後呼叫 <code>common.foo()</code></li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>初始化專案，當專案中有多個目錄結構時，需要建立 <code>go.mod</code> 來標示專案的根目錄，確保各個 module 在 import 時的相依性<br><code>$ go mod init project</code></li>
-<li>release / debug mode<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[GIN-debug] [WARNING] Running <span class="keyword">in</span> <span class="string">"debug"</span> mode. Switch to <span class="string">"release"</span> mode <span class="keyword">in</span> production.</span><br><span class="line"> - using env:   <span class="built_in">export</span> GIN_MODE=release</span><br><span class="line"> - using code:  gin.SetMode(gin.ReleaseMode)</span><br></pre></td></tr></table></figure></li>
-<li>Reference<br><a href="https://eddycjy.gitbook.io/golang/" target="_blank" rel="noopener">跟煎鱼学 Go</a><br><a href="https://ithelp.ithome.com.tw/articles/10205062" target="_blank" rel="noopener">學習Go</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/d3181d19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/d3181d19/" class="post-title-link" itemprop="url">加解密</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-08 17:02:45" itemprop="dateCreated datePublished" datetime="2020-07-08T17:02:45+08:00">2020-07-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>對稱式加密 (Symmetric Encryption)<ul>
-<li>加解密使用同一把 key</li>
-<li><font color="#FF0000">傳送方(A)與接收方(B)在溝通加密方式與傳送 key 的過程時，有可能被第三方(C)攔截</font><ul>
-<li>C 可以使用這把 key 來解密 A/B 傳送的訊息</li>
-<li>C 可以使用這把 key 來加密攻擊訊息</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>非對稱式加密 (Asymmetric Encryption)<ul>
-<li>加解密使用 pair key (public key + private key)<ul>
-<li>使用其中一把 key 加密，只能用另一把 key 解密</li>
-</ul>
-</li>
-<li>A 與 B 各自有兩把 key</li>
-<li>A 與 B 在溝通加密方式時，會將自己的 public key 傳給對方<ul>
-<li>A 會用 B 的 public key 加密訊息，B 再用自己的 private key 解密</li>
-<li>B 會用A 的 public key 加密訊息，A 再用自己的 private key 解密</li>
-</ul>
-</li>
-<li><font color="#FF0000">A 與 B 將 public key 傳給對方時，有可能被 C 攔截</font><ul>
-<li>C 可以使用 A/B 的 public key 來加密攻擊內容</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>非對稱式加密 + 數位簽章 (Digital Signature)<ul>
-<li>A 要傳訊息給 B<ul>
-<li>A 先用 B 的 public key 加密</li>
-<li>A 再用自己的 private key 加密<ul>
-<li><font color="#FF6600">A 的 private key 不會洩漏</font></li>
-</ul>
-</li>
-<li>B 收到訊息</li>
-<li>B 先用 A 的 public key 解密<ul>
-<li><font color="#FF6600">只有 A 發的訊息，在這裡才解的開</font></li>
-</ul>
-</li>
-<li>B 再用自己的 private key 解密<ul>
-<li><font color="#FF6600">就算 C 用 A 的 public key 解開了 A 傳送出來的訊息，也沒有 B 的 private key 繼續完全解密</font></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><font color="#FF0000">A 與 B 將 public key 傳給對方時，有可能被 C 攔截，然後 C 搞事情</font><ul>
-<li>C 攔截了 A/B 的 public key</li>
-<li>C 偽造了兩對 public key + private key(<font color="#0000FF">CApub+CApri</font>/<font color="#008000">CBpub+CBpri</font>)，再把 <font color="#0000FF">CApub</font>/<font color="#008000">CBpub</font> 分別傳給 B/A</li>
-<li>A 要傳訊息給 B<ul>
-<li>A 先用 <font color="#008000">CBpub</font> 加密</li>
-<li>A 再用自己的 private key 加密</li>
-<li>C 攔截到訊息後<ul>
-<li>C 先用 A 的 public key 解密</li>
-<li>C 再用 <font color="#008000">CBpri</font> 完全解密</li>
-<li>C 先用 B 的 public key 加密</li>
-<li>C 再用 <font color="#0000FF">CApri</font> 加密</li>
-</ul>
-</li>
-<li>B 收到訊息後<ul>
-<li>B 先用 <font color="#0000FF">CApub</font> 解密</li>
-<li>B 再用自己的 private key 解密</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>A/B 在交換 public key 後，透過具有公信力的第三方，再確認一次拿到的真的是對方的 public key</li>
-<li>AES (Advanced Encryption Standard)<ul>
-<li>對稱式加密算法</li>
-<li>allows 128, 192 or 256 bit (16, 24, 32 bytes) key length</li>
-</ul>
-</li>
-<li>AEC</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fd45e358/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/fd45e358/" class="post-title-link" itemprop="url">Locust - API Server Load Testing</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-01 14:56:53" itemprop="dateCreated datePublished" datetime="2020-07-01T14:56:53+08:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Locust/" itemprop="url" rel="index"><span itemprop="name">Locust</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>install<br><code>pip install locust</code></li>
-<li>locustfile.py<br><code>@task</code> decorator可以指定執行的比重，若不指定則預設所有任務為同比重<br>For example, subject_list指定task(1) and corporation_list指定task(2)，代表subject_list跟corporation_list執行比例是1:2<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> locust <span class="keyword">import</span> HttpUser, TaskSet, task</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebsiteTasks</span><span class="params">(TaskSet)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, parent)</span>:</span></span><br><span class="line">        super().__init__(parent=parent)</span><br><span class="line">        self.token = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_start</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.login()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">on_stop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(self)</span>:</span></span><br><span class="line">        response = self.client.post(<span class="string">"/api/auth/login"</span>, data=&#123;<span class="string">"username"</span>:<span class="string">"admin"</span>, <span class="string">"password"</span>:<span class="string">"123456"</span>&#125;)</span><br><span class="line">        res_json = response.json()</span><br><span class="line">        self.token = res_json[<span class="string">'data'</span>][<span class="string">'token'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">    @task</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subject_list</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.client.get(<span class="string">"/api/subject/list"</span>, headers=&#123;<span class="string">"Authorization"</span>: self.token&#125;)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @task</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">corporation_list</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.client.get(<span class="string">"/api/corporation/list"</span>, headers=&#123;<span class="string">"Authorization"</span>: self.token&#125;)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WebsiteUser</span><span class="params">(HttpUser)</span>:</span></span><br><span class="line">    tasks = [WebsiteTasks]</span><br><span class="line"></span><br><span class="line">    <span class="comment">#定義兩次任務間隔時間的隨機範圍 (1~2秒)</span></span><br><span class="line">    min_wait = <span class="number">1000</span></span><br><span class="line">    max_wait = <span class="number">2000</span></span><br></pre></td></tr></table></figure></li>
-<li>執行<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ locust -f locustfile.py -H http://192.168.56.3:18857</span><br><span class="line">[2020-07-01 15:13:10,675] user/WARNING/locust.main: System open file limit setting is not high enough for load testing, and the OS wouldnt allow locust to increase it by itself. See https://docs.locust.io/en/stable/installation.html#increasing-maximum-number-of-open-files-limit for more info.</span><br><span class="line">[2020-07-01 15:13:10,676] user/INFO/locust.main: Starting web interface at http://:8089</span><br><span class="line">[2020-07-01 15:13:10,684] user/INFO/locust.main: Starting Locust 1.1</span><br></pre></td></tr></table></figure></li>
-<li>網頁<br>輸入 User 數量及 Hatch rate（多少秒達到預期使用者數量），若是設定 5 個 user，hatch rate 為 5，代表有 5 秒時間可以 warm up 到 5 使用者<br><img src="/posts/fd45e358/image01.jpg" alt><br><img src="/posts/fd45e358/image02.jpg" alt><br><img src="/posts/fd45e358/image03.jpg" alt></li>
-<li>結果<br>terminal指令結束後，會有統計的資訊如下，也可以透過網頁中的Download Data，下載到這些數據<br><img src="/posts/fd45e358/image04.jpg" alt></li>
-<li>Todo<br>補上怎麼–no-web執行</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/258ef25c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/258ef25c/" class="post-title-link" itemprop="url">API notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-01 10:58:30" itemprop="dateCreated datePublished" datetime="2020-07-01T10:58:30+08:00">2020-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>同源政策（Same-origin policy）意思就是說如果你現在這個網站的跟你要呼叫的 API 的網站「不同源」的時候，瀏覽器一樣會幫你發 Request，也會得到 Response，但是會把 Response 給擋下來，不讓你的 JavaScript 拿到並且傳回錯誤。什麼是不同源呢？只要是 Domain 不一樣就是不同源，或者是一個用http一個用https也是不同源，端口號不一樣也是不同源。</p>
-<p>CORS 把 Request 分成兩種，一種是簡單請求（simple requests）。什麼是簡單請求呢？定義很多，但如果你沒有加任何自定義的 Header，而且又是 GET 的話，絕對是簡單請求；反之，如果你有加一些自定義的 Header，這個 Request 就絕對不是簡單請求。</p>
-<p>非簡單請求可能會帶有一些使用者資料，因此會先透過預檢請求（Preflight Request）去確認後續的請求能否送出，如果這個預檢請求沒有過的話，真的 Request 也就不會發送了，這就是預檢請求的目的。在開發者選項或是後台可以發現，一個非簡單請求會有兩個 Requests，第一個 Request 的 Method 會是 OPTIONS，第二個 Request才會是真正的動作。</p>
-<p>如果今天沒有預檢請求這個機制的話，使用者就可以在隨便一個 Domain 的網頁上面發送一個 DELETE 的 Request 給這個 API，瀏覽器的 CORS 機制，還是會幫你發送 Request，但只是 Response 被瀏覽器擋住而已。因此呢，儘管沒有 Response，但是 Server 端的確收到了這個 Request，因此就會把這筆資料給刪除。</p>
-<p>摘錄自 <a href="https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/" target="_blank" rel="noopener">https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8a005c5e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/8a005c5e/" class="post-title-link" itemprop="url">Kotlin notes</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-06-30 11:24:49" itemprop="dateCreated datePublished" datetime="2020-06-30T11:24:49+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:54:18" itemprop="dateModified" datetime="2021-06-08T13:54:18+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>var vs val<br>variables defined with var are mutable(Read and Write)<br>variables defined with val are immutable(Read only)</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/af8f76b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/af8f76b/" class="post-title-link" itemprop="url">Jaeger in Python</a>
+            <a href="/posts/996f0d2c/" class="post-title-link" itemprop="url">download_file</a>
         </h2>
 
         <div class="post-meta">
@@ -768,20 +208,426 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2020-06-22 08:36:55 / 修改時間：10:17:04" itemprop="dateCreated datePublished" datetime="2020-06-22T08:36:55+08:00">2020-06-22</time>
+              <time title="創建時間：2021-08-26 09:32:04 / 修改時間：09:32:09" itemprop="dateCreated datePublished" datetime="2021-08-26T09:32:04+08:00">2021-08-26</time>
             </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> send_file</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/download')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downloadFile</span> <span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#For windows you need to use drive name [ex: F:/example.pdf]</span></span><br><span class="line">    path = <span class="string">"/examples.pdf"</span></span><br><span class="line">    <span class="keyword">return</span> send_file(path, as_attachment=<span class="literal">True</span>, cache_timeout=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/5e5f185d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/5e5f185d/" class="post-title-link" itemprop="url">draw_frame</a>
+        </h2>
+
+        <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
+                <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:31:09 / 修改時間：09:31:28" itemprop="dateCreated datePublished" datetime="2021-08-26T09:31:09+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_track</span><span class="params">(ipcam_index, ipcam)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            frame, counter = ipcam.getframe()</span><br><span class="line">            <span class="keyword">if</span> frame <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                time.sleep(CONST.SLEEP_TIME_FRAME_DUPLICATED)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            resize_frame = cv2.resize(frame, (DataManager.imageWidth, DataManager.imageHeight))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> tid <span class="keyword">in</span> FaceTrackData.track_data[ipcam_index].track_list.copy():</span><br><span class="line">                tracked_position = FaceTrackData.track_data[ipcam_index].track_list[tid].tracker.get_position()</span><br><span class="line">                t_x = int(tracked_position.left())</span><br><span class="line">                t_y = int(tracked_position.top())</span><br><span class="line">                t_w = int(tracked_position.width())</span><br><span class="line">                t_h = int(tracked_position.height())</span><br><span class="line">                cv2.rectangle(resize_frame, (t_x, t_y),</span><br><span class="line">                                            (t_x + t_w , t_y + t_h),</span><br><span class="line">                                            (FaceTrackData.track_data[ipcam_index].track_list[tid].R, FaceTrackData.track_data[ipcam_index].track_list[tid].G, FaceTrackData.track_data[ipcam_index].track_list[tid].B), <span class="number">5</span>)</span><br><span class="line">            cv2.imshow(ipcam.location, resize_frame)</span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            logging.error(<span class="string">'draw_track failed ---&gt; \n%s'</span> % traceback.format_exc())</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3b817890/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3b817890/" class="post-title-link" itemprop="url">disable_cache_in_flask</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:30:28 / 修改時間：09:30:33" itemprop="dateCreated datePublished" datetime="2021-08-26T09:30:28+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://arusahni.net/blog/2014/03/flask-nocache.html" target="_blank" rel="noopener">Disabling caching in Flask</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from nocache import nocache</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/my_endpoint&apos;)</span><br><span class="line">@nocache</span><br><span class="line">def my_endpoint():</span><br><span class="line">    return render_template(...)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/c61afcbc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/c61afcbc/" class="post-title-link" itemprop="url">python_class</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:28:14 / 修改時間：09:28:19" itemprop="dateCreated datePublished" datetime="2021-08-26T09:28:14+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #&lt;__main__.MyClass object at 0x7f4dd1c2a470&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>str</strong>()用來定義傳回物件描述字串，通常用來描述的字串是對使用者友善的說明文字，如果對物件使用str()，所呼叫的就是<strong>str</strong>()。<br>如果要定義對開發人員較有意義的描述，例如傳回產生實例的類別名稱之類的，則可以定義<strong>repr</strong>()，如果對物件使用repr()，則所呼叫的就是<strong>repr</strong>()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">    #自定義當print MyClass instance object時，要返回什麼內容</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;a: &quot; + str(self.a) + &quot;, b: &quot; + str(self.b)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #a: 10, b: &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dc2bade1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/dc2bade1/" class="post-title-link" itemprop="url">install_dlib_on_windows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:27:21 / 修改時間：09:27:35" itemprop="dateCreated datePublished" datetime="2021-08-26T09:27:21+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Install dlib for python on windows</p>
+<p><a href="https://pypi.org/simple/dlib/" target="_blank" rel="noopener">Links for dlib</a></p>
+<p>pip install <a href="https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf" target="_blank" rel="noopener">https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf</a></p>
+<p>pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ba4ed96a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ba4ed96a/" class="post-title-link" itemprop="url">url_for</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:26:05 / 修改時間：09:26:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:26:05+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>自定義url_for的位址與port</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_url_for</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> current_app.test_request_context():</span><br><span class="line">        <span class="comment"># With the test request context of the app</span></span><br><span class="line">        kwargs[<span class="string">'_external'</span>] = <span class="literal">True</span>    <span class="comment"># Add the _external=True keyword argument to whatever else was passed</span></span><br><span class="line">        url = url_for(*args, **kwargs)    <span class="comment"># Get the URL</span></span><br><span class="line">        url = url.replace(<span class="string">'://localhost/'</span>, <span class="string">'://localhost:15074/'</span>)</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line"><span class="meta">@render_bp.route('/system/setting/engine', methods = ['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">system_setting_engine</span><span class="params">()</span>:</span></span><br><span class="line">        fields = [k <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line"></span><br><span class="line">        values = [request.form[k] <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line">        payload = dict(zip(fields, values))</span><br><span class="line"></span><br><span class="line">        <span class="comment">#print("payload",json.dumps(payload))</span></span><br><span class="line"></span><br><span class="line">        r = requests.put(HOST+<span class="string">'/config/engine'</span>, data = payload)</span><br><span class="line">        <span class="comment">#return redirect(url_for('render_bp.system_setting', _external=True))</span></span><br><span class="line">        <span class="keyword">return</span> redirect(my_url_for(<span class="string">'render_bp.system_setting'</span>, _external=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Reference<br><a href="https://github.com/pallets/flask/issues/824" target="_blank" rel="noopener">https://github.com/pallets/flask/issues/824</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f2123b71/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f2123b71/" class="post-title-link" itemprop="url">websocket_client</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:24:31 / 修改時間：09:24:32" itemprop="dateCreated datePublished" datetime="2021-08-26T09:24:31+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4d9192f8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4d9192f8/" class="post-title-link" itemprop="url">supervisor</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-25 19:32:48 / 修改時間：19:33:05" itemprop="dateCreated datePublished" datetime="2021-08-25T19:32:48+08:00">2021-08-25</time>
             </span>
 
           
@@ -796,11 +642,83 @@
 
       
           <ul>
-<li>package<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install jaeger-client flask-opentracing</span><br></pre></td></tr></table></figure></li>
-<li>example for multiprocess tracing<ul>
-<li>reference from <a href="https://github.com/jaegertracing/jaeger-client-python/issues/210" target="_blank" rel="noopener">https://github.com/jaegertracing/jaeger-client-python/issues/210</a> @ <a href="https://github.com/illogikus" target="_blank" rel="noopener">illogikus</a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> opentracing</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> jaeger_client <span class="keyword">import</span> Config</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pidprint</span><span class="params">(s)</span>:</span></span><br><span class="line">    print(<span class="string">"[%s] %s"</span> % (os.getpid(),s))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pidlog</span><span class="params">(s)</span>:</span></span><br><span class="line">    active = opentracing.tracer.scope_manager.active</span><br><span class="line">    pidprint(s)</span><br><span class="line">    active.span.log_kv(&#123;os.getpid(): s&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(x, context)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> opentracing.global_tracer().start_active_span(<span class="string">'span_%s'</span> % x, child_of=context):</span><br><span class="line">        pidlog(<span class="string">"Hello %s"</span> % x)</span><br><span class="line">        time.sleep(float(x)/<span class="number">10</span>)</span><br><span class="line">        pidlog(<span class="string">"Bye %s"</span> % x)</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_jaeger_config</span><span class="params">()</span>:</span></span><br><span class="line">    config = Config(</span><br><span class="line">        config=&#123;</span><br><span class="line">            <span class="string">'sampler'</span>: &#123;</span><br><span class="line">                <span class="string">'type'</span>: <span class="string">'const'</span>,</span><br><span class="line">                <span class="string">'param'</span>: <span class="number">1</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">'local_agent'</span>: &#123;</span><br><span class="line">                <span class="string">'reporting_host'</span>: <span class="string">'192.168.56.5'</span>,</span><br><span class="line">                <span class="string">'reporting_port'</span>: <span class="number">6831</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">'logging'</span>: <span class="literal">True</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        service_name=<span class="string">'my-service'</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_jaeger_tracer</span><span class="params">()</span>:</span></span><br><span class="line">    logging.getLogger(<span class="string">''</span>).handlers = []</span><br><span class="line">    logging.basicConfig(format=<span class="string">'%(message)s'</span>, level=logging.DEBUG)</span><br><span class="line">    <span class="keyword">return</span> get_jaeger_config().initialize_tracer()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subprocess_initializer</span><span class="params">()</span>:</span></span><br><span class="line">    config = get_jaeger_config()</span><br><span class="line">    Config._initialized = <span class="literal">False</span></span><br><span class="line">    config.initialize_tracer()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    tracer = init_jaeger_tracer()</span><br><span class="line">    pool = Pool(processes=<span class="number">4</span>, initializer=subprocess_initializer)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> opentracing.global_tracer().start_active_span(<span class="string">'master_span'</span>) <span class="keyword">as</span> scope:</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line">            pidprint(<span class="string">"Sending %s ..."</span> % x)</span><br><span class="line">            pool.apply_async(f,(x, scope.span.context))</span><br><span class="line"></span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line">    tracer.close()</span><br></pre></td></tr></table></figure>
-<img src="/posts/af8f76b/multiprocessing_tracing.jpg" alt></li>
+<li>Reference<br><a href="https://blog.51cto.com/lixcto/1539136" target="_blank" rel="noopener">https://blog.51cto.com/lixcto/1539136</a><br><a href="http://supervisord.org/configuration.html" target="_blank" rel="noopener">http://supervisord.org/configuration.html</a></li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status</span><br><span class="line">supervisorctl stop service</span><br><span class="line">supervisorctl restart service</span><br><span class="line">supervisorctl start service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@koala:~# supervisorctl status</span><br><span class="line">clean_upload_event               RUNNING   pid 1857, uptime 2 days, 20:51:06</span><br><span class="line">events_consumer                  RUNNING   pid 1859, uptime 2 days, 20:51:06</span><br><span class="line">koala_online                     RUNNING   pid 1861, uptime 2 days, 20:51:06</span><br><span class="line">koala_worker                     RUNNING   pid 1860, uptime 2 days, 20:51:06</span><br><span class="line">redis                            RUNNING   pid 1862, uptime 2 days, 20:51:06</span><br><span class="line">updater                          RUNNING   pid 1864, uptime 2 days, 20:51:06</span><br><span class="line">weather                          RUNNING   pid 1858, uptime 2 days, 20:51:06</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a477be03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/a477be03/" class="post-title-link" itemprop="url">nginx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-25 19:30:49 / 修改時間：19:36:59" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>$host 與 $http_host的區別在於當使用非80/443端口的時候，$http_host = $host:$port</p>
+<ul>
+<li><p>client_max_body_size<br>這個directive設定Nginx可以處理的最大request body大小。如果收到的請求大於指定的大小，那麼Nginx會回复HTTP 413錯誤（Request Entity too large）。如果web服務器提供大文件上傳的話，那麼設置好這個directive很重要。<br>Nginx默認為這個directive設定的值是1m</p>
+</li>
+<li><p>client_body_buffer_size<br>這個directive設定了request body的緩衝大小。如果body超過了緩衝的大小，那麼整個body或者部分body將被寫入一個臨時文件。如果Nginx被設置成使用文件緩衝而不使用內存緩衝，那麼這個dirctive就無效。 client_body_buffer_size在32位系統上默認是8k，在64位系統上默認是16k</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/a477be03/image_01.png" alt></p>
+<ul>
+<li><p>autoindex_exact_size關閉，讓檔案大小用人類可讀的方式呈現</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex_exact_size off;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/a477be03/image_02.png" alt><br><img src="/posts/a477be03/image_03.png" alt></p>
+</li>
+<li><p>Reference<br><a href="https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97" target="_blank" rel="noopener">https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97</a></p>
 </li>
 </ul>
 
@@ -822,7 +740,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/db4f4223/">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cd579093/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -836,7 +754,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/db4f4223/" class="post-title-link" itemprop="url">Jaeger in Android Java</a>
+            <a href="/posts/cd579093/" class="post-title-link" itemprop="url">linux logrotate</a>
         </h2>
 
         <div class="post-meta">
@@ -845,28 +763,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
+              
 
-              <time title="創建時間：2020-06-20 17:18:43" itemprop="dateCreated datePublished" datetime="2020-06-20T17:18:43+08:00">2020-06-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
+              <time title="創建時間：2021-08-25 19:28:55 / 修改時間：19:29:18" itemprop="dateCreated datePublished" datetime="2021-08-25T19:28:55+08:00">2021-08-25</time>
             </span>
 
           
@@ -880,222 +779,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li>package in gapp.radle<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;com.squareup.okhttp3:okhttp:4.7.2&apos;</span><br><span class="line"></span><br><span class="line">implementation group: &apos;io.opentracing&apos;, name: &apos;opentracing-api&apos;, version: &apos;0.33.0&apos;</span><br><span class="line">implementation group: &apos;io.jaegertracing&apos;, name: &apos;jaeger-client&apos;, version: &apos;1.2.0&apos;</span><br></pre></td></tr></table></figure></li>
-<li>Tracing main class<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.jaegertracing.Configuration;</span><br><span class="line"><span class="keyword">import</span> io.jaegertracing.Configuration.ReporterConfiguration;</span><br><span class="line"><span class="keyword">import</span> io.jaegertracing.Configuration.SamplerConfiguration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.jaegertracing.internal.JaegerTracer;</span><br><span class="line"><span class="keyword">import</span> io.jaegertracing.internal.samplers.ConstSampler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tracing</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer JAEGER_UDP_DEFAULT_PORT=<span class="number">6831</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> JaegerTracer tracer;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">terminate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        tracer.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(String service, String hostname)</span> </span>&#123;</span><br><span class="line">        SamplerConfiguration samplerConfig = SamplerConfiguration.fromEnv()</span><br><span class="line">                .withType(ConstSampler.TYPE)</span><br><span class="line">                .withParam(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        ReporterConfiguration reporterConfig;</span><br><span class="line"></span><br><span class="line">        reporterConfig = <span class="keyword">new</span> ReporterConfiguration()</span><br><span class="line">                .withSender(<span class="keyword">new</span> Configuration.SenderConfiguration()</span><br><span class="line">                        .withAgentHost(hostname)</span><br><span class="line">                        .withAgentPort(JAEGER_UDP_DEFAULT_PORT))</span><br><span class="line">                .withLogSpans(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        Configuration config = <span class="keyword">new</span> Configuration(service)</span><br><span class="line">                .withSampler(samplerConfig)</span><br><span class="line">                .withReporter(reporterConfig);</span><br><span class="line"></span><br><span class="line">        tracer = config.getTracer();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>http headers carrier<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RequestBuilderCarrier</span> <span class="keyword">implements</span> <span class="title">io</span>.<span class="title">opentracing</span>.<span class="title">propagation</span>.<span class="title">TextMap</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Request.Builder builder;</span><br><span class="line"></span><br><span class="line">    RequestBuilderCarrier(Request.Builder builder) &#123;</span><br><span class="line">        <span class="keyword">this</span>.builder = builder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iterator() &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"carrier is write-only"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(String key, String value)</span> </span>&#123;</span><br><span class="line">        builder.addHeader(key, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>MainActivity<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.opentracing.Span;</span><br><span class="line"><span class="keyword">import</span> io.opentracing.propagation.Format;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Call;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Callback;</span><br><span class="line"><span class="keyword">import</span> okhttp3.OkHttpClient;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Request;</span><br><span class="line"><span class="keyword">import</span> okhttp3.Response;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                Tracing.init(<span class="string">"TracingSample"</span>, <span class="string">"192.168.56.5"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">        doTracing();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Tracing.terminate();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">doTracing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Span span = Tracing.tracer.buildSpan(<span class="string">"api_request"</span>).start();</span><br><span class="line"></span><br><span class="line">        OkHttpClient client = <span class="keyword">new</span> OkHttpClient().newBuilder().build();</span><br><span class="line">        Request.Builder requestbuilder = <span class="keyword">new</span> Request.Builder();</span><br><span class="line">        Tracing.tracer.inject(</span><br><span class="line">                span.context(),</span><br><span class="line">                Format.Builtin.HTTP_HEADERS,</span><br><span class="line">                <span class="keyword">new</span> RequestBuilderCarrier(requestbuilder));</span><br><span class="line"></span><br><span class="line">        Request request = requestbuilder.url(<span class="string">"http://ip:port/api/"</span>).build();</span><br><span class="line">        Call call = client.newCall(request);</span><br><span class="line"></span><br><span class="line">        call.enqueue(<span class="keyword">new</span> Callback() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(Call call, Response response)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String result = response.body().string();</span><br><span class="line">                Log.d(<span class="string">"TEST"</span>, result);</span><br><span class="line">                span.finish();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailure</span><span class="params">(Call call, IOException e)</span> </span>&#123;</span><br><span class="line">                Log.d(<span class="string">"TEST"</span>, e.toString());</span><br><span class="line">                span.finish();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>use span simplily<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Span span = Tracing.tracer.buildSpan(&quot;do_something&quot;).start();</span><br><span class="line">span.finish();</span><br></pre></td></tr></table></figure></li>
-</ul>
+          <p><a href="https://linux.die.net/man/8/logrotate" target="_blank" rel="noopener">https://linux.die.net/man/8/logrotate</a></p>
+<p><a href="https://ihower.tw/blog/archives/3565" target="_blank" rel="noopener">https://ihower.tw/blog/archives/3565</a><br><a href="https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html" target="_blank" rel="noopener">https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html</a><br><a href="https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/" target="_blank" rel="noopener">https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/</a><br><a href="http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/" target="_blank" rel="noopener">http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/</a><br><a href="https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/" target="_blank" rel="noopener">https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f, --force</span><br><span class="line">-v, --verbose</span><br><span class="line"></span><br><span class="line">logrotate -fv /etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/logrotate/status</span><br><span class="line">/etc/logrotate.conf</span><br><span class="line">/etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/91c6bb0e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/91c6bb0e/" class="post-title-link" itemprop="url">Multiprocessing Pool in Python</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-06-19 10:15:19" itemprop="dateCreated datePublished" datetime="2020-06-19T10:15:19+08:00">2020-06-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(x)</span>:</span></span><br><span class="line">    print(<span class="string">"[%s] Hello %s"</span> % (os.getpid(), x))</span><br><span class="line">    time.sleep(random.uniform(<span class="number">0.5</span>, <span class="number">2</span>))</span><br><span class="line">    print(<span class="string">"[%s] Bye %s"</span> % (os.getpid(), x))</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(result)</span>:</span></span><br><span class="line">    print(<span class="string">"[%s] %s"</span> % (os.getpid(), result))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">subprocess_initializer</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"[%s] init"</span> % os.getpid())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    pool = Pool(processes=<span class="number">2</span>, initializer=subprocess_initializer)</span><br><span class="line">    print(<span class="string">"Before ..."</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        pool.apply_async(foo, (x,))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 因為map是block的，所以用result來接return value能直接有正確的結果</span></span><br><span class="line">    result = pool.map(foo, range(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># map_async可以使用callback function來處理結果</span></span><br><span class="line">    <span class="comment"># 也可以使用result.get()，get()會將main process block住，等待map_async執行完畢</span></span><br><span class="line">    result = pool.map_async(foo, range(<span class="number">3</span>), callback=bar)</span><br><span class="line">    print(result.get())</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"After ..."</span>)</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>class multiprocessing.pool.Pool([processes[, initializer[, initargs[, maxtasksperchild[, context]]]]])</p>
-<ul>
-<li>processes<br>The number of worker processes to use. If processes is None then the number returned by os.cpu_count() is used.</li>
-<li>initializer<br>each worker process will call initializer(*initargs) when it starts.</li>
-<li>maxtasksperchild<br>The number of tasks a worker process can complete before it will exit and be replaced with a fresh worker process, to enable unused resources to be freed. The default maxtasksperchild is None, which means worker processes will live as long as the pool.<br>當work process完成了一定數量的執行次數後，會自動重啟該work process</li>
-</ul>
-</li>
-<li><p>map(func, iterable[, chunksize])<br>main process會被block住，整個map指令完成之後才往下<br><code>chunksize</code>=1 by default，每次work process可以接收到的任務數量，當iterables很大時，將chunksize設定的越大，總執行效率越好，但耗費的記憶體越多</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before ...</span><br><span class="line">[25832] Hello 0</span><br><span class="line">[25833] Hello 1</span><br><span class="line">[25832] Bye 0</span><br><span class="line">[25832] Hello 2</span><br><span class="line">[25833] Bye 1</span><br><span class="line">[25832] Bye 2</span><br><span class="line">After ...</span><br></pre></td></tr></table></figure></li>
-<li><p>map_async(func, iterable[, chunksize[, callback[, error_callback]]])<br>main process不會被block住，且可以指定callback function</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before ...</span><br><span class="line">After ...</span><br><span class="line">[25851] Hello 0</span><br><span class="line">[25852] Hello 1</span><br><span class="line">[25851] Bye 0</span><br><span class="line">[25851] Hello 2</span><br><span class="line">[25852] Bye 1</span><br><span class="line">[25851] Bye 2</span><br></pre></td></tr></table></figure></li>
-<li><p>imap(func, iterable[, chunksize])<br>A lazier version of map(). <code>imap</code> returns an iterator and <code>map</code> returns a list.<br>假設參數為[1, 2, 3]，執行結果不論誰先完成，return value還是會按照[1, 2, 3]的順序</p>
-</li>
-<li><p>imap_unordered(func, iterable[, chunksize])<br>The same as imap() except that the ordering of the results from the returned iterator should be considered arbitrary.<br>假設參數為[1, 2, 3]，return value會根據執行完成的順序，e.g. [2, 1, 3]</p>
-</li>
-<li><p>starmap(func, iterable[, chunksize])</p>
-</li>
-<li><p>starmap_async(func, iterable[, chunksize[, callback[, error_callback]]])<br>效果相同於map，但是可傳入多個參數<br><code>pool.map(foo, [0, 1, 2, 4])</code><br><code>pool.starmap(foo, [(1, 2), (3, 4)])</code></p>
-</li>
-<li><p>apply(func[, args[, kwds]])<br>參數不同於map，因為每一個apply指令都是block的，所以0, 1, 2是循序執行的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before ...</span><br><span class="line">[26201] Hello 0</span><br><span class="line">[26201] Bye 0</span><br><span class="line">[26202] Hello 1</span><br><span class="line">[26202] Bye 1</span><br><span class="line">[26201] Hello 2</span><br><span class="line">[26201] Bye 2</span><br><span class="line">After ...</span><br></pre></td></tr></table></figure></li>
-<li><p>apply_async(func[, args[, kwds[, callback[, error_callback]]]])</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before ...</span><br><span class="line">After ...</span><br><span class="line">[29118] Hello 0</span><br><span class="line">[29119] Hello 1</span><br><span class="line">[29119] Bye 1</span><br><span class="line">[29119] Hello 2</span><br><span class="line">[29118] Bye 0</span><br><span class="line">[29119] Bye 2</span><br></pre></td></tr></table></figure></li>
-<li><p>close()<br>Prevents any more tasks from being submitted to the pool. Once all the tasks have been completed the worker processes will exit.</p>
-</li>
-<li><p>terminate()<br>Stops the worker processes immediately without completing outstanding work.</p>
-</li>
-<li><p>join()<br>Wait for the worker processes to exit. One must call close() or terminate() before using join().</p>
-</li>
-<li><p>callback function<br>由main process執行</p>
-</li>
-<li><p>Reference<br><a href="https://docs.python.org/3/library/multiprocessing.html" target="_blank" rel="noopener">https://docs.python.org/3/library/multiprocessing.html</a></p>
-</li>
-<li><p>ThreadPool vs Pool</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool</span><br><span class="line">ppool = Pool(workers)</span><br><span class="line"></span><br><span class="line">from multiprocessing.pool import ThreadPool</span><br><span class="line">tpool = ThreadPool(workers)</span><br></pre></td></tr></table></figure>
-<p>兩種pool的使用方式一模一樣，差異在於由thread or process實作<br>IO bound jobs -&gt; multiprocessing.pool.ThreadPool<br>CPU bound jobs -&gt; multiprocessing.Pool</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/18b7c14f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/18b7c14f/" class="post-title-link" itemprop="url">Jaeger in C++</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-06-16 17:59:15" itemprop="dateCreated datePublished" datetime="2020-06-16T17:59:15+08:00">2020-06-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-24 16:56:04" itemprop="dateModified" datetime="2020-06-24T16:56:04+08:00">2020-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Preparation<br>下載jaeger-client-cpp專案，並編譯<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/jaegertracing/jaeger-client-cpp.git</span><br><span class="line">$ <span class="built_in">cd</span> jaeger-client-cpp</span><br><span class="line">$ mkdir build</span><br><span class="line">$ cmake ..</span><br><span class="line">$ make</span><br></pre></td></tr></table></figure>
-<ul>
-<li>將所需的library跟header file，從下列地方取出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/home/user/jaeger-client-app/build</span><br><span class="line">/home/user/jaeger-client-app/src</span><br><span class="line">/home/user/.hunter/_Base/d45d77d/924bcec/3b7ee27/Install</span><br></pre></td></tr></table></figure></li>
-<li>library (並建立symbolic link)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">libjaegertracing.so -&gt; libjaegertracing.so.0*</span><br><span class="line">libjaegertracing.so.0 -&gt; libjaegertracing.so.0.6.1*</span><br><span class="line">libjaegertracing.so.0.6.1*</span><br><span class="line">libyaml-cpp.so -&gt; libyaml-cpp.so.0.6*</span><br><span class="line">libyaml-cpp.so.0.6 -&gt; libyaml-cpp.so.0.6.2*</span><br><span class="line">libyaml-cpp.so.0.6.2*</span><br></pre></td></tr></table></figure></li>
-<li>headers<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/home/user/jaeger-client-cpp/build/src/jaegertracing/Constants.h</span><br><span class="line">/home/user/jaeger-client-cpp/src/jaegertracing/*.h</span><br><span class="line">/home/user/jaeger-client-cpp/src/jaegertracing/*/*.h</span><br><span class="line">/home/user/jaeger-client-cpp/src/jaegertracing/*/*/*.h</span><br><span class="line">/home/user/.hunter/_Base/d45d77d/924bcec/3b7ee27/Install/include/yaml-cpp</span><br><span class="line">/home/user/.hunter/_Base/d45d77d/924bcec/3b7ee27/Install/include/opentracing</span><br><span class="line">/home/user/.hunter/_Base/d45d77d/924bcec/3b7ee27/Install/include/thrift</span><br><span class="line">/home/user/.hunter/_Base/d45d77d/924bcec/3b7ee27/Install/include/boost</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>compile<br><code>g++ -std=c++11 -L/home/user/jaeger/lib -I/home/user/jaeger/include App.cpp -o test -ljaegertracing -lyaml-cpp</code></li>
-<li>execute<br><code>LD_LIBRARY_PATH=/home/user/jaeger/lib ./test config.yml</code></li>
-<li>App.cpp<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;yaml-cpp/yaml.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jaegertracing/Tracer.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setUpTracer</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* configFilePath)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> configYAML = YAML::LoadFile(configFilePath);</span><br><span class="line">    <span class="keyword">auto</span> config = jaegertracing::Config::parse(configYAML);</span><br><span class="line">    <span class="keyword">auto</span> tracer = jaegertracing::Tracer::make(</span><br><span class="line">        <span class="string">"example-service"</span>, config, jaegertracing::logging::consoleLogger());</span><br><span class="line">    opentracing::Tracer::InitGlobal(</span><br><span class="line">        <span class="built_in">std</span>::static_pointer_cast&lt;opentracing::Tracer&gt;(tracer));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tracedSubroutine</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;opentracing::Span&gt;&amp; parentSpan)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> span = opentracing::Tracer::Global()-&gt;StartSpan(</span><br><span class="line">        <span class="string">"tracedSubroutine"</span>, &#123; opentracing::ChildOf(&amp;parentSpan-&gt;context()) &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tracedFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> span = opentracing::Tracer::Global()-&gt;StartSpan(<span class="string">"tracedFunction"</span>);</span><br><span class="line">    tracedSubroutine(span);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;  <span class="comment">// anonymous namespace</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (argc &lt; <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">"usage: "</span> &lt;&lt; argv[<span class="number">0</span>] &lt;&lt; <span class="string">" &lt;config-yaml-path&gt;\n"</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    setUpTracer(argv[<span class="number">1</span>]);</span><br><span class="line">    tracedFunction();</span><br><span class="line">    <span class="comment">// Not stricly necessary to close tracer, but might flush any buffered</span></span><br><span class="line">    <span class="comment">// spans. See more details in opentracing::Tracer::Close() documentation.</span></span><br><span class="line">    opentracing::Tracer::Global()-&gt;Close();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>inject and extract<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CustomCarrierWriter</span> :</span> opentracing::TextMapWriter &#123;</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">CustomCarrierWriter</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; data_)</span></span></span><br><span class="line">        : data&#123;data_&#125; &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// OpenTracing uses opentracing::expected for error handling.</span></span><br><span class="line">    opentracing::expected&lt;<span class="keyword">void</span>&gt; Set(</span><br><span class="line">        opentracing::string_view key,</span><br><span class="line">        opentracing::string_view value) <span class="keyword">const</span> override &#123;</span><br><span class="line">        <span class="comment">// for more background.</span></span><br><span class="line">        opentracing::expected&lt;<span class="keyword">void</span>&gt; result;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> was_successful = data.emplace(key, value);</span><br><span class="line">        <span class="keyword">if</span> (was_successful.second) &#123;</span><br><span class="line">        <span class="comment">// Use a default constructed opentracing::expected&lt;void&gt; to indicate success.</span></span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// `key` clashes with existing data, so the span context can't be encoded</span></span><br><span class="line">            <span class="comment">// successfully; set opentracing::expected&lt;void&gt; to an std::error_code.</span></span><br><span class="line">            <span class="keyword">return</span> opentracing::make_unexpected(</span><br><span class="line">                <span class="built_in">std</span>::make_error_code(<span class="built_in">std</span>::errc::not_supported));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt;&amp; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inject</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> span = opentracing::Tracer::Global()-&gt;StartSpan(<span class="string">"websocket event"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unordered_map</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>, <span class="built_in">std</span>::<span class="built_in">string</span>&gt; text_map;</span><br><span class="line">    <span class="function">CustomCarrierWriter <span class="title">carrier</span><span class="params">(text_map)</span></span>;</span><br><span class="line">    <span class="keyword">auto</span> err = opentracing::Tracer::Global()-&gt;Inject(span-&gt;context(), carrier);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; t : carrier.data)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"key: "</span> &lt;&lt; t.first &lt;&lt; <span class="string">", value: "</span> &lt;&lt; t.second &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">    span-&gt;Finish();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">extract</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>config.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">disabled: false</span><br><span class="line">reporter:</span><br><span class="line">    logSpans: true</span><br><span class="line">    localAgentHostPort: &quot;192.168.56.5:6831&quot;</span><br><span class="line">sampler:</span><br><span class="line">  type: const</span><br><span class="line">  param: 1</span><br></pre></td></tr></table></figure></li>
-<li>config by code<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> disabled = <span class="literal">false</span>;</span><br><span class="line">jaegertracing::samplers::Config sampler &#123;<span class="string">"const"</span>, <span class="number">1</span>, <span class="string">""</span>, <span class="number">0</span>, <span class="built_in">std</span>::chrono::seconds(<span class="number">0</span>)&#125;;</span><br><span class="line">jaegertracing::reporters::Config reporter &#123;<span class="number">0</span>, <span class="built_in">std</span>::chrono::seconds(<span class="number">0</span>), <span class="literal">true</span>, <span class="string">"192.168.56.5:6831"</span>, <span class="string">""</span>&#125;;</span><br><span class="line">jaegertracing::Config config &#123;disabled, sampler, reporter&#125;;</span><br></pre></td></tr></table></figure></li>
-</ul>
+<ol>
+<li>/etc/logrotate.d裡的設定優先權比logrotate.conf高</li>
+<li>logrotate.conf單純是一個script，需要被執行，無法主動執行</li>
+<li>因為/etc/cron.daily/logrotate設定，因此logrotate.conf被執行的最短周期是一天</li>
+</ol>
 
       
     </div>
@@ -1114,7 +808,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1179,7 +873,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">155</span>
+          <span class="site-state-item-count">216</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
