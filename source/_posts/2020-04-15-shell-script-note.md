@@ -295,3 +295,17 @@ echo -e ${RED}RED${NC}
 echo -e ${BOLD}BOLD${NC}
 echo -e ${BOLD_RED}BOLD_RED${NC}
 ```
+* 在shell script中，某些指令出錯
+```
+Run something like: [[ $ABC =~ regexp ]] #> [[: not found
+start_service.sh: source: not found
+```
+因為 Image 中 sh 並非 bash，而是 dash
+```
+ls -l /bin/sh #> /bin/sh -> dash
+```
+將 sh 改指向 sh
+```
+$ rm /bin/sh
+$ ln -s /bin/bash /bin/sh
+```

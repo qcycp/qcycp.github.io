@@ -166,6 +166,10 @@ fi
     tar -xzf test.tgz -C test
     tar -xjf test.tar.bz2 -C test
 
+    a.tar.gz.part00
+    a.tar.gz.part01
+    cat a.tar.gz.part* | tar -xz
+
 9. gdb
     g++ -g test.cpp -o test // compile
 

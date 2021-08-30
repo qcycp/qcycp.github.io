@@ -186,3 +186,10 @@ echo 2 > /sys/class/net/enp134s0f1/device/sriov_numvfs
 ./dpdk-devbind.py --status
 0000:86:0a.0 'XL710/X710 Virtual Function 154c' if=enp134s10 drv=i40evf unused= 
 0000:86:0a.1 'XL710/X710 Virtual Function 154c' if=enp134s10f1 drv=i40evf unused= 
+
+brctl addbr br_oam
+brctl addif eth1
+
+sftp ecs_scm@10.60.6.30
+
+ yum install bridge-utils
