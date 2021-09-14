@@ -183,6 +183,193 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f3d3ee5b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f3d3ee5b/" class="post-title-link" itemprop="url">BOM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-11 15:35:12" itemprop="dateCreated datePublished" datetime="2021-01-11T15:35:12+08:00">2021-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在文件的最前面，會有下列符號</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;U+FEFF&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在vim中，使用以下指令刪除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set nobomb</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b0e67c8c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b0e67c8c/" class="post-title-link" itemprop="url">ptp</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-05 15:28:22" itemprop="dateCreated datePublished" datetime="2021-01-05T15:28:22+08:00">2021-01-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-08-10 11:54:51" itemprop="dateModified" datetime="2021-08-10T11:54:51+08:00">2021-08-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>PTP (Precise Time Protocol)<br>Obtaining sub-100 nanosecond timing on a local area network requires an architecture that is fully IEEE-1588 compliant. The three main components are: a GPS Grandmaster clock, an Ethernet switch (transparent or boundary clock), and a PTP slave.<ul>
+<li>PTP 精準度較 NTP 好，NTP 只能精確到毫秒 (ms)，PTP 能精確到微秒 (us)</li>
+<li>NTP 協議較被廣泛用於 LAN 和 WAN 上的時間同步</li>
+</ul>
+</li>
+<li>確認網卡是否支援 PTP 功能<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># ethtool -T enp134s0f0</span><br><span class="line">Time stamping parameters for enp134s0f0:</span><br><span class="line">Capabilities:</span><br><span class="line">    hardware-transmit     (SOF_TIMESTAMPING_TX_HARDWARE)</span><br><span class="line">    software-transmit     (SOF_TIMESTAMPING_TX_SOFTWARE)</span><br><span class="line">    hardware-receive      (SOF_TIMESTAMPING_RX_HARDWARE)</span><br><span class="line">    software-receive      (SOF_TIMESTAMPING_RX_SOFTWARE)</span><br><span class="line">    software-system-clock (SOF_TIMESTAMPING_SOFTWARE)</span><br><span class="line">    hardware-raw-clock    (SOF_TIMESTAMPING_RAW_HARDWARE)</span><br><span class="line">PTP Hardware Clock: 1</span><br><span class="line">Hardware Transmit Timestamp Modes:</span><br><span class="line">    off                   (HWTSTAMP_TX_OFF)</span><br><span class="line">    on                    (HWTSTAMP_TX_ON)</span><br><span class="line">Hardware Receive Filter Modes:</span><br><span class="line">    none                  (HWTSTAMP_FILTER_NONE)</span><br><span class="line">    all                   (HWTSTAMP_FILTER_ALL)</span><br></pre></td></tr></table></figure></li>
+<li>使用 ptp4l 調整 PHC (PTP Hardware Clock) 時鐘，使用 phc2sys 調整系統時鐘</li>
+</ul>
+<ol>
+<li>使用 ptp4l 指令，將 NIC (enp134s0f0) 中的 PHC 做為 slave mode，同步為 master 的時間 (在 ptp4l.conf 中設定 master 來源)</li>
+<li>使用 phc2sys 指令，將 NIC (enp134s0f0) 中的 PHC 時間，同步到系統時間<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ptp4l -i enp134s0f0 -m -s -f ptp4l.conf</span><br><span class="line"> -i [dev]  interface device to use</span><br><span class="line"> -m        print messages to stdout</span><br><span class="line"> -s        slave only mode (master, by default)</span><br><span class="line"> -f [file] read configuration from &apos;file&apos;</span><br><span class="line"></span><br><span class="line"># phc2sys -s enp134s0f0 -w -m -n 44</span><br><span class="line"> -s [dev|name]  master clock</span><br><span class="line"> -w             wait for ptp4l</span><br><span class="line"> -m             print messages to stdout</span><br><span class="line"> -n [num]       domain number</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>Components</li>
+</ul>
+<ol>
+<li>GM (Grandmaster Clock): master 作為同步源頭</li>
+<li>OC (Ordinary Clock): 單一網路界面設備 (只有一個 PTP 通信埠)，可以是 master 或 slave</li>
+<li>BC (Boundary Clock): 多網路界面設備 (有一個以上 PTP 通信埠)，其中一個作為 PTP slave (master 是 GM)，其它則為 master (slave 為連接到 swtich 的眾多 network devices)</li>
+<li>TC (Transparent Clock): 多網路界面設備，如同一般 switch 或 router 轉送所有封包，但不作為 master 或 slave (所以 master 依舊為 GM，slave 為連接到 swtich 的眾多 network devices)，分為<br>a. end-to-end (端對端)：額外累算 event 封包停留 switch 時間，更新 correction 欄位<br>b. peer-to-peer (點對點)：只更新 Sync 和 Follow Up 的 correction 欄位，除了累算 event 封包停留時間，再減去 Link propagation delay</li>
+</ol>
+<ul>
+<li>Master/Slave<br>從通信關係上又把時鐘分為主時鐘和從時鐘，任何時鐘都能作為 Master clock 和 Slave clock，並且保證從時鐘與主時鐘時間同步<br>每個系統只有一個GMC，每個子網內只有一個主時鐘</li>
+</ul>
+<p>T1 透過 Sync 或 Follow Up 告知 Slave，如果 Sync 傳送時還不知道真正傳送時間，才用 Follow Up 送，稱為 2-Step<br>T1: Master 週期傳送 Sync 的時間<br>T2: Slave 接收 Sync 的時間<br>Slave 調整時間，讓 T2 和 T1 的變化速度一致，達到頻率同步。Drift = ((T2’-T2) - (T1’-T1))/(T1’-T1)</p>
+<p>E2E：頻率同步後<br>T3: Slave 傳送 Delay Request 的時間，Slave 只是紀錄 T3，Delay Request 並不含 T3 欄位<br>T4: Master 接收 Delay Request 的時間。T4 透過 Delay Response 告知 Slave<br>Delay = (T2 - T1 + T4 - T3)/2</p>
+<p>P2P：可用在頻率不同步時</p>
+<p>One way delay = (T2-T1 + T4-T3) / 2<br>Offset (phase offset) = Master to Slave difference – One way delay = ((T2-T1) - (T4-T3)) / 2</p>
+<p>s<br>主時鐘在t1時刻發送Sync消息：如果為1588 one-step機制，則Sync消息包含有發送時間；如果為1588 two-step機制，則Sync消息僅發送發送時間值的估計值，即t1的估計值，然後在Follow_Up消息中再發送精確的t1值</p>
+<p>2 Step下, sync msg在Transparent Clock中不必更新timestamp. 但是需要记住sync msg在device中停留多长时间(dwell time)供将来follow up用</p>
+<p>One-step clocks require hardware capable of on-the-fly correction field updates. Two-step clocks require that the software remember the dwell time of a sync message and match it to the corresponding follow up message.</p>
+<p>2-step master –&gt; 1-step transparent –&gt; slave<br>transparent clock会更新sync msg的correction filed, 不会处理follow up<br>最终slave都会把sync和follow up的时间戳相加.<br>1-step master –&gt; 2-step transparent –&gt; slave<br>transparent clock会根据sync msg而生成follow up msg</p>
+<ul>
+<li>Reference<br><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/1B2EBAC1BE7F4700A836C4AE040D5873" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/1B2EBAC1BE7F4700A836C4AE040D5873</a><br><a href="https://blog.meinbergglobal.com/2013/09/14/ieee-1588-accurate/" target="_blank" rel="noopener">https://blog.meinbergglobal.com/2013/09/14/ieee-1588-accurate/</a><br><a href="http://lirobo.blogspot.com/2020/10/precision-time-protocol.html" target="_blank" rel="noopener">http://lirobo.blogspot.com/2020/10/precision-time-protocol.html</a><br><a href="http://www.chronos.co.uk/files/pdfs/cal/TechnicalBrief-IEEE1588v2PTP.pdf" target="_blank" rel="noopener">http://www.chronos.co.uk/files/pdfs/cal/TechnicalBrief-IEEE1588v2PTP.pdf</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/11219203/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -914,153 +1101,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/c41c82d5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/c41c82d5/" class="post-title-link" itemprop="url">CPU-Pooler</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-17 17:03:03" itemprop="dateCreated datePublished" datetime="2020-09-17T17:03:03+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/bfe30151/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/bfe30151/" class="post-title-link" itemprop="url">cmk</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-17 17:02:55" itemprop="dateCreated datePublished" datetime="2020-09-17T17:02:55+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Reference<br><a href="https://github.com/intel/CPU-Manager-for-Kubernetes" target="_blank" rel="noopener">https://github.com/intel/CPU-Manager-for-Kubernetes</a></li>
-<li>reset/initial<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># rm -rf /etc/cmk  &lt;== 刪除舊的配置</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl taint nodes openness cmk-   &lt;== 刪除 Taint</span></span><br></pre></td></tr></table></figure></li>
-<li>設定 cmk<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-namespace.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-rbac-rules.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-serviceaccount.yaml</span></span><br></pre></td></tr></table></figure></li>
-<li>安裝 cmk<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># edit CPU-Manager-for-Kubernetes/resources/pods/cmk-cluster-init-pod.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    app: cmk-cluster-init-pod</span><br><span class="line">  name: cmk-cluster-init-pod</span><br><span class="line">  namespace: cmk-namespace</span><br><span class="line">spec:</span><br><span class="line">  serviceAccountName: cmk-serviceaccount</span><br><span class="line">  containers:</span><br><span class="line">  - args:</span><br><span class="line">      <span class="comment"># Change this value to pass different options to cluster-init.</span></span><br><span class="line">      - <span class="string">"/cmk/cmk.py cluster-init --all-host --saname=cmk-serviceaccount --namespace=cmk-namespace"</span></span><br><span class="line">    <span class="built_in">command</span>:</span><br><span class="line">    - <span class="string">"/bin/bash"</span></span><br><span class="line">    - <span class="string">"-c"</span></span><br><span class="line">    image: cmk:v1.4.1</span><br><span class="line">    name: cmk-cluster-init-pod</span><br><span class="line">  restartPolicy: Never</span><br><span class="line"></span><br><span class="line">kubectl apply -f CPU-Manager-for-Kubernetes/resources/pods/cmk-cluster-init-pod.yaml</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1129,7 +1169,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

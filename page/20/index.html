@@ -183,6 +183,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3932c779/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3932c779/" class="post-title-link" itemprop="url">dict Sorting</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-12-03 11:07:07" itemprop="dateCreated datePublished" datetime="2019-12-03T11:07:07+08:00">2019-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    d = &#123;<span class="number">2</span>: <span class="number">3</span>, <span class="number">1</span>: <span class="number">89</span>, <span class="number">4</span>: <span class="number">5</span>, <span class="number">3</span>: <span class="number">0</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#sort by key</span></span><br><span class="line">    od = OrderedDict(sorted(d.items(), key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])) <span class="comment"># od = OrderedDict([(1, 89), (2, 3), (3, 0), (4, 5)])</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#sort by value</span></span><br><span class="line">    od = OrderedDict(sorted(d.items(), key=<span class="keyword">lambda</span> t: t[<span class="number">1</span>])) <span class="comment"># od = OrderedDict([(3, 0), (2, 3), (4, 5), (1, 89)])</span></span><br><span class="line"></span><br><span class="line">    list = sorted(d.items()) <span class="comment"># list = [(1, 89), (2, 3), (3, 0), (4, 5)]</span></span><br><span class="line">                             <span class="comment"># items in list are tuple</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9452fe6b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/9452fe6b/" class="post-title-link" itemprop="url">qcow to vdi</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-12-03 10:23:28" itemprop="dateCreated datePublished" datetime="2019-12-03T10:23:28+08:00">2019-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install qemu-utils</span><br><span class="line">$ qemu-img convert -O vdi src.qcow2 dst.vdi</span><br><span class="line">$ qemu-img convert -O qcow2 src.vdi dst.qcow2</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/38a33950/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1007,207 +1157,6 @@ You will need to restart your Docker service before these changes will take effe
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7de9a293/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7de9a293/" class="post-title-link" itemprop="url">curl指令</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-11-11 20:42:15" itemprop="dateCreated datePublished" datetime="2019-11-11T20:42:15+08:00">2019-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/curl/" itemprop="url" rel="index"><span itemprop="name">curl</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h1><ul>
-<li><code>curl -X GET http://localhost:80/api/get</code></li>
-<li><code>curl -X GET &quot;http://localhost:80/api/get?param1=abc&amp;param2=123&quot;</code></li>
-</ul>
-<h1 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h1><ul>
-<li>form<ul>
-<li><code>curl -X POST -d &quot;username=admin&amp;password=123456&quot; http://localhost:80/auth/login</code></li>
-</ul>
-</li>
-<li>json<ul>
-<li><code>curl -H &quot;Content-Type:application/json&quot; -X POST -d &#39;{&quot;username&quot;: &quot;admin&quot;, &quot;password&quot;: &quot;123456&quot;}&#39; http://localhost:80/auth/login</code></li>
-</ul>
-</li>
-<li><code>curl -X POST -F &quot;image=@/home/user/test.jpg&quot; http://localhost:80/upload/image</code></li>
-<li><code>curl -X POST -F &quot;image=@/home/user/test.jpg&quot; -F &quot;token=123456&quot; http://localhost:80/upload/image</code></li>
-<li><code>curl -X POST -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;username&quot;: &quot;test&quot;, &quot;password&quot;:&quot;123456&quot;, &quot;list_data&quot;:[1, 2]}&#39; http://localhost:80/api/post</code></li>
-<li><code>curl -X POST --data-urlencode &#39;photo=&#39;&quot;$(base64 image.jpg)&quot;&#39;&#39; -d &quot;name=Nick&quot; http://localhost:80/upload/data</code></li>
-<li><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d @/home/user/data.json http://localhost:80/api/file/payload</code></li>
-</ul>
-<h1 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h1><ul>
-<li><code>curl -X PUT -d &quot;data=test&quot; http://localhost:80/api/put</code></li>
-</ul>
-<h1 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h1><ul>
-<li><code>curl -X DELETE http://localhost:80/api/delete</code></li>
-</ul>
-<h1 id="Download-file"><a href="#Download-file" class="headerlink" title="Download file"></a>Download file</h1><ul>
-<li><code>curl -X GET &quot;http://localhost:80/api/download/data&quot; --output file.ext</code></li>
-</ul>
-<h1 id="Show-headers"><a href="#Show-headers" class="headerlink" title="Show headers"></a>Show headers</h1><ul>
-<li><code>curl -i -X POST -d &#39;username=admin&amp;password=123456&#39; http://localhost:80/auth/login</code><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.10.3 (Ubuntu)</span><br><span class="line">Date: Mon, 03 Jun 2019 02:43:54 GMT</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: 1062</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Set-Cookie: session=3c8d8462-8590-435e-9227-485f96e4bec5; HttpOnly; Path=/</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,</span><br><span class="line">  <span class="string">"data"</span>: <span class="string">"..."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>Get further information from curl<ul>
-<li>simple mode<br><code>$ curl -w &#39;Total: %{time_total}s\n&#39; -o /dev/null -s http://ip:port/api/</code></li>
-<li>Create a new file, curl-format.txt, and paste in:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   time_namelookup:  %&#123;time_namelookup&#125;s\n</span><br><span class="line">      time_connect:  %&#123;time_connect&#125;s\n</span><br><span class="line">   time_appconnect:  %&#123;time_appconnect&#125;s\n</span><br><span class="line">  time_pretransfer:  %&#123;time_pretransfer&#125;s\n</span><br><span class="line">     time_redirect:  %&#123;time_redirect&#125;s\n</span><br><span class="line">time_starttransfer:  %&#123;time_starttransfer&#125;s\n</span><br><span class="line">                   ----------\n</span><br><span class="line">        time_total:  %&#123;time_total&#125;s\n</span><br></pre></td></tr></table></figure></li>
-<li>Make a request<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ curl -w &quot;@curl-format.txt&quot; -o /dev/null -s &quot;http://ip:port/api/&quot;</span><br><span class="line">-w &quot;@curl-format.txt&quot; tells cURL to use our format file</span><br><span class="line">-o /dev/null redirects the output of the request to /dev/null</span><br><span class="line">-s tells cURL not to show a progress meter</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/39e057a1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/39e057a1/" class="post-title-link" itemprop="url">jsonify v.s. json.dumps</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-11-11 17:22:22" itemprop="dateCreated datePublished" datetime="2019-11-11T17:22:22+08:00">2019-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>主要的差異在於response的Content-Type不同</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">  </span><br><span class="line"><span class="meta">@app.route('/test', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">"code"</span>: <span class="number">0</span>, <span class="string">"data"</span>: <span class="string">"test"</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ curl -i -X GET http://localhost:5000/<span class="built_in">test</span></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.4.6 (Ubuntu)</span><br><span class="line">Date: Mon, 11 Nov 2019 09:14:21 GMT</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Content-Length: 180</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"code"</span>:0,<span class="string">"data"</span>:<span class="string">"test"</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">  </span><br><span class="line"><span class="meta">@app.route('/test', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> json.dumps(&#123;<span class="string">"code"</span>: <span class="number">0</span>, <span class="string">"data"</span>: <span class="string">"test"</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ curl -i -X GET http://localhost:5000/<span class="built_in">test</span></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: nginx/1.4.6 (Ubuntu)</span><br><span class="line">Date: Mon, 11 Nov 2019 09:17:14 GMT</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">Content-Length: 198</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Access-Control-Allow-Origin: *</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">"code"</span>:0,<span class="string">"data"</span>:<span class="string">"test"</span>&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1276,7 +1225,7 @@ You will need to restart your Docker service before these changes will take effe
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

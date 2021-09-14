@@ -183,6 +183,178 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3c416c32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3c416c32/" class="post-title-link" itemprop="url">python_pytest_fixture</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:57:14 / 修改時間：09:57:17" itemprop="dateCreated datePublished" datetime="2021-08-26T09:57:14+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="pytest-Fixtures"><a href="#pytest-Fixtures" class="headerlink" title="pytest Fixtures"></a>pytest Fixtures</h1><p>fixture scope 有 function, module, session<br>預設是function</p>
+<ul>
+<li>function<br>每個 test 所使用的 fixture 都是不一樣的。如果以網路連線的 fixture 為例，每次執行測試都會重開一個網路連線</li>
+<li>module<br>同一個 module 裡的測試會用相同的 fixture。如果以網路連線 fixture 為例，相同 module 的測試都是共用同一個網路連線 fixture</li>
+<li>session<br>同一次測試裡的 fixture 都是一樣的。如果以網路連線 fixture 為例，所有測試都是使用同一個網路連線 fixture</li>
+</ul>
+<ul>
+<li>pytest 可以自動把 fixture 的名字帶到測試函數中，例如 20 個測試函數都需要同樣的 fixture 的話，就可以直接在測試函數寫上與該 fixture 同名的參數， pytest 就會自動幫忙代入 fixture</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture()</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"hello_world"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_h_in_hello_world</span><span class="params">(hello_world)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="string">"h"</span> <span class="keyword">in</span> hello_world</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_w_in_hello_world</span><span class="params">(hello_world)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="string">"w"</span> <span class="keyword">in</span> hello_world</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Parametrizing a fixture<br>有些時候可能 fixture 需要針對多種不同的參數進行測試，例如測試不同的 server ip/domain ，這時可以選擇 parametrizing a fixture ， pytest 就會自動幫忙針對不同的 fixture 參數執行測試，就不用額外多寫個測試了。</li>
+</ul>
+<p>以 test_action 為例子， pytest 自動以 start, stop 各自進行一次測試</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"></span><br><span class="line"><span class="meta">@pytest.fixture(scope='module', params=['start', 'stop'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">action</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> request.param</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_action</span><span class="params">(action)</span>:</span></span><br><span class="line">    <span class="keyword">assert</span> <span class="string">'pause'</span> == action</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$ py.test test_parametrizing_test.py</span><br><span class="line">================== <span class="built_in">test</span> session starts ==================</span><br><span class="line">platform linux2 -- Python 2.7.9, pytest-2.8.5, py-1.4.31, pluggy-0.3.1</span><br><span class="line">rootdir: /home/user/test_action.py, inifile:</span><br><span class="line">collected 2 items</span><br><span class="line">test_action.py FF</span><br><span class="line">======================= FAILURES ========================</span><br><span class="line">__________________ test_action[start] ___________________</span><br><span class="line">action = <span class="string">'start'</span></span><br><span class="line">    def test_action(action):</span><br><span class="line">&gt;       assert <span class="string">'pause'</span> == action</span><br><span class="line">E       assert <span class="string">'pause'</span> == <span class="string">'start'</span></span><br><span class="line">E         - pause</span><br><span class="line">E         + start</span><br><span class="line">test_action.py:8: AssertionError</span><br><span class="line">___________________ test_action[stop] ___________________</span><br><span class="line">action = <span class="string">'stop'</span></span><br><span class="line">    def test_action(action):</span><br><span class="line">&gt;       assert <span class="string">'pause'</span> == action</span><br><span class="line">E       assert <span class="string">'pause'</span> == <span class="string">'stop'</span></span><br><span class="line">E         - pause</span><br><span class="line">E         + stop</span><br><span class="line">test_action.py:8: AssertionError</span><br><span class="line">=============== 2 failed <span class="keyword">in</span> 0.02 seconds ================</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/1555af5b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1555af5b/" class="post-title-link" itemprop="url">python_pytest</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:56:11 / 修改時間：09:59:52" itemprop="dateCreated datePublished" datetime="2021-08-26T09:56:11+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://blog.csdn.net/liuchunming033/article/details/46501653" target="_blank" rel="noopener">https://blog.csdn.net/liuchunming033/article/details/46501653</a><br><a href="http://note.qidong.name/2018/01/pytest-fixture/" target="_blank" rel="noopener">http://note.qidong.name/2018/01/pytest-fixture/</a><br><a href="http://kuanghy.github.io/2018/05/08/pytest" target="_blank" rel="noopener">http://kuanghy.github.io/2018/05/08/pytest</a><br><a href="https://senarukana.github.io/2015/05/29/pytest-fixture/" target="_blank" rel="noopener">https://senarukana.github.io/2015/05/29/pytest-fixture/</a><br><a href="https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/" target="_blank" rel="noopener">https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/</a><br><a href="https://www.jianshu.com/p/36128049fefc" target="_blank" rel="noopener">https://www.jianshu.com/p/36128049fefc</a><br><a href="http://note.qidong.name/2018/02/pytest-mock/" target="_blank" rel="noopener">http://note.qidong.name/2018/02/pytest-mock/</a><br><a href="https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/" target="_blank" rel="noopener">https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/</a><br><a href="https://myapollo.com.tw/2017/10/27/pytest-coverage/" target="_blank" rel="noopener">https://myapollo.com.tw/2017/10/27/pytest-coverage/</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest</span><br><span class="line">pip install pytest-html</span><br><span class="line">pip install pytest-cov</span><br></pre></td></tr></table></figure>
+
+<p>會安裝下列相關的套件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">atomicwrites==1.3.0</span><br><span class="line">attrs==19.1.0</span><br><span class="line">coverage==4.5.3</span><br><span class="line">more-itertools==7.0.0</span><br><span class="line">pluggy==0.9.0</span><br><span class="line">py==1.8.0</span><br><span class="line">pytest==4.4.0</span><br><span class="line">pytest-cov==2.6.1</span><br><span class="line">pytest-html==1.20.0</span><br><span class="line">pytest-metadata==1.8.0</span><br><span class="line">six==1.12.0</span><br></pre></td></tr></table></figure>
+
+<p>command</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">execute commands under /<span class="built_in">test</span></span><br><span class="line">pytest <span class="comment">#run all tests velow current dir</span></span><br><span class="line">pytest test_xxx.py <span class="comment">#run tests in module file test_xxx.py</span></span><br><span class="line">pytest --html=log.html <span class="comment">#run tests and generate report log.html</span></span><br><span class="line">pytest --cov-report=html --cov=./ <span class="comment">#run tests and calculate the coverage for test files</span></span><br><span class="line">pytest test_xxx.py::TestClass::test_func <span class="comment"># test test_func in the TestClass in the test_xxx.py</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> session</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAuth</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_login</span><span class="params">(self)</span>:</span></span><br><span class="line">        s = session()</span><br><span class="line">        base_uri = <span class="string">'http://127.0.0.1:8857'</span></span><br><span class="line">        data =&#123;<span class="string">'username'</span>: <span class="string">'admin'</span>, <span class="string">'password'</span>: <span class="string">'123456'</span>&#125;</span><br><span class="line"></span><br><span class="line">        ret = s.post(base_uri + <span class="string">'/api/auth/login'</span>, data)</span><br><span class="line">        print(ret.content)</span><br><span class="line">        <span class="keyword">assert</span> ret.status_code == <span class="number">200</span></span><br><span class="line">        response = &#123;</span><br><span class="line">            <span class="string">'code'</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">'data'</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">'page'</span>: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ret_json = json.loads(ret.content)</span><br><span class="line">        <span class="keyword">assert</span> ret_json == response</span><br><span class="line">        <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
+<p>在根目錄下執行以下指令，輸出的結果會在coverage目錄裡<br><code>python -m pytest test --cov=. --cov-report html:coverage</code></p>
+<p>pytest #run all tests below current dir<br>pytest test_xxx.py #run tests in module file test_xxx.py<br>pytest –html=log.html #run tests and generate report log.html<br>pytest –cov-report=html –cov=./ #run tests and calculate the coverage for test files</p>
+<ul>
+<li>To run a specific test within a module:<br>pytest test_mod.py::test_func<br>pytest test_mod.py::TestClass::test_method</li>
+</ul>
+<p>python -m pytest -vv test –cov=. –cov-report html:coverage –html=./coverage/log.html<br>python -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html<br>docker exec -it hh_imfr bash -c “python3.6 -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html”</p>
+<p><a href="https://www.cnblogs.com/landhu/p/7462221.html" target="_blank" rel="noopener">https://www.cnblogs.com/landhu/p/7462221.html</a></p>
+<ol>
+<li>執行指定文件<br>pytest test_mod.py</li>
+<li>執行指定目錄下所有文件<br>pytest tests/</li>
+<li>執行指定module中的function<br>pytest test_mod.py::testfunc</li>
+<li>執行指定module中的class funtion<br>pytest testmod.py::testclass::test_method</li>
+</ol>
+<p>-vv 顯示詳細的信息<br>-s 捕獲輸出, 例如顯示 print 函數的輸出<br>-x 首次失敗後停止執行</p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html</p>
+<p>python3.6 -m pytest -vv -s test/test_WSGIServer.py –cov=. –cov-report html:coverage –html=./coverage/log.html</p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test/test_WSGIServer.py –cov=. –cov-report=html –cov-config=test/setup.cfg –html=coverage/log.html</p>
+<p><a href="https://pytest-cov.readthedocs.io/en/latest/config.html" target="_blank" rel="noopener">https://pytest-cov.readthedocs.io/en/latest/config.html</a><br><a href="https://myapollo.com.tw/2017/10/27/pytest-coverage/" target="_blank" rel="noopener">https://myapollo.com.tw/2017/10/27/pytest-coverage/</a><br><a href="https://coverage.readthedocs.io/en/latest/config.html" target="_blank" rel="noopener">Configuration reference</a></p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test –cov=. –cov-report=html –cov-config=test/setup.cfg –html=coverage/log.html</p>
+<p>python3.6 -m pytest -vv -s app/test/test_subject.py –cov=. –cov-config=app/test/setup.cfg –cov-report=html –html=coverage/log.html<br>python3.6 -m pytest -vv -s app/test/test_event.py –cov=. –cov-config=app/test/setup.cfg –cov-report=html –html=coverage/log.html</p>
+<h3 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h3><p>pytest 路徑問題</p>
+<p>在test file中，若是import project內的module，會發生ModuleNotFoundError<br><img src="/posts/1555af5b/image_01.png" alt></p>
+<ul>
+<li><p>法一<br>在project根目錄下，直接執行<br><code>python -m pytest app/test/test_auth.py</code><br><img src="/posts/1555af5b/image_02.png" alt></p>
+</li>
+<li><p>法二<br>設定PYTHONPATH<br><img src="/posts/1555af5b/image_03.png" alt></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69706db6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -693,129 +865,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/16c8ee4f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/16c8ee4f/" class="post-title-link" itemprop="url">objgraph</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:44:24 / 修改時間：09:44:55" itemprop="dateCreated datePublished" datetime="2021-08-26T09:44:24+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://pypi.org/project/graphviz/" target="_blank" rel="noopener">https://pypi.org/project/graphviz/</a><br><a href="https://pypi.org/project/objgraph/" target="_blank" rel="noopener">https://pypi.org/project/objgraph/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import objgraph</span><br><span class="line"></span><br><span class="line">for typ, n in objgraph.most_common_types(limit=None):</span><br><span class="line">    print(&apos;&#123;typ:30&#125; &#123;n:&gt;10&#125;&apos;.format(typ=typ, n=n))</span><br><span class="line"></span><br><span class="line">for info in objgraph.growth(limit=None):</span><br><span class="line">    print(&apos;+++ %s&apos;,  (info,))</span><br><span class="line"></span><br><span class="line">print(&quot;leaking_objects: %s&quot; % len(objgraph.get_leaking_objects()))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install objgraph</span><br><span class="line">apt-get install xdot</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> objgraph</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">"********************* objgraph.show_most_common_types() ************************"</span>)</span><br><span class="line">    objgraph.show_most_common_types()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    _list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">********************* objgraph.show_most_common_types() ************************</span></span><br><span class="line"><span class="string">function                   1969</span></span><br><span class="line"><span class="string">dict                       1153</span></span><br><span class="line"><span class="string">wrapper_descriptor         998</span></span><br><span class="line"><span class="string">tuple                      976</span></span><br><span class="line"><span class="string">weakref                    774</span></span><br><span class="line"><span class="string">method_descriptor          732</span></span><br><span class="line"><span class="string">builtin_function_or_method 693</span></span><br><span class="line"><span class="string">getset_descriptor          378</span></span><br><span class="line"><span class="string">set                        346</span></span><br><span class="line"><span class="string">list                       299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">function                       1969     +1969</span></span><br><span class="line"><span class="string">dict                           1081     +1081</span></span><br><span class="line"><span class="string">wrapper_descriptor              998      +998</span></span><br><span class="line"><span class="string">tuple                           861      +861</span></span><br><span class="line"><span class="string">weakref                         774      +774</span></span><br><span class="line"><span class="string">method_descriptor               732      +732</span></span><br><span class="line"><span class="string">builtin_function_or_method      693      +693</span></span><br><span class="line"><span class="string">getset_descriptor               378      +378</span></span><br><span class="line"><span class="string">set                             346      +346</span></span><br><span class="line"><span class="string">list                            299      +299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">list      300        +1</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ffdb9082/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ffdb9082/" class="post-title-link" itemprop="url">python_mysql_db_session</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:43:40 / 修改時間：09:43:43" itemprop="dateCreated datePublished" datetime="2021-08-26T09:43:40+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MySqlAlchemy(SQLAlchemy):</span><br><span class="line">    def apply_driver_hacks(self, app, info, options):</span><br><span class="line">        options.update(&#123;&quot;isolation_level&quot;: &quot;READ COMMITTED&quot;&#125;)</span><br><span class="line">        super(MySqlAlchemy, self).apply_driver_hacks(app, info, options)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -884,7 +933,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

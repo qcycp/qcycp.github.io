@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>supervisor_on_python3</title>
+      <link href="/posts/14029df0/"/>
+      <url>/posts/14029df0/</url>
+      
+        <content type="html"><![CDATA[<ul><li>Installed failed<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Downloading https://files.pythonhosted.org/packages/a6/41/65ad5bd66230b173eb4d0b8810230f3a9c59ef52ae066e540b6b99895db7/supervisor-3.1.3.tar.gz (391kB)</span><br><span class="line">  100% |████████████████████████████████| 399kB 6.5MB/s</span><br><span class="line">  Complete output from command python setup.py egg_info:</span><br><span class="line">  Supervisor requires Python 2.4 or later but does not work on any version of Python 3.  You are using version 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:06:47) [MSC v.1914 32 bit (Intel)].  Please install using a supported version.</span><br><span class="line"></span><br><span class="line">  ----------------------------------------</span><br></pre></td></tr></table></figure></li><li>supervisor link<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ pip install git+https://github.com/Supervisor/supervisor</span><br><span class="line">Collecting git+https://github.com/Supervisor/supervisor</span><br><span class="line">  Cloning https://github.com/Supervisor/supervisor to c:\users\831392\appdata\local\temp\pip-req-build-3qfkndwu</span><br><span class="line">Collecting meld3&gt;=1.0.0 (from supervisor==4.0.0.dev0)</span><br><span class="line">  Using cached https://files.pythonhosted.org/packages/b6/ae/e6d731e4b9661642c1b20591d8054855bb5b8281cbfa18f561c2edd783f7/meld3-1.0.2-py2.py3-none-any.whl</span><br><span class="line">Building wheels for collected packages: supervisor</span><br><span class="line">  Running setup.py bdist_wheel for supervisor ... done</span><br><span class="line">  Stored in directory: C:\Users\831392\AppData\Local\Temp\pip-ephem-wheel-cache-ei6ela8q\wheels\28\ee\fa\5e2a0ec95fba620ba05a13a46824ac019dc2fc76dffe6eed2c</span><br><span class="line">Successfully built supervisor</span><br><span class="line">Installing collected packages: meld3, supervisor</span><br><span class="line">Successfully installed meld3-1.0.2 supervisor-4.0.0.dev0</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>flask_shell</title>
+      <link href="/posts/8623ed20/"/>
+      <url>/posts/8623ed20/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ flask shell</span><br><span class="line">Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:06:47) [MSC v.1914 32 bit (Intel)] on win32</span><br><span class="line">App: app [production]</span><br><span class="line">Instance: C:\tmp\work\20180828_kangaroo\backend\kangaroo\instance</span><br><span class="line">&gt;&gt;&gt; from app.models.User import User</span><br><span class="line">&gt;&gt;&gt; admin = User(username=&apos;aptg_hq@perobot.com.tw&apos;)</span><br><span class="line">&gt;&gt;&gt; admin.password = &apos;123456&apos;</span><br><span class="line">&gt;&gt;&gt; from app.foundation import db</span><br><span class="line">&gt;&gt;&gt; db.session.add(admin)</span><br><span class="line">&gt;&gt;&gt; db.session.commit()</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>android_setup_opencv</title>
       <link href="/posts/29bb5527/"/>
       <url>/posts/29bb5527/</url>
@@ -736,7 +762,7 @@
       <link href="/posts/f2123b71/"/>
       <url>/posts/f2123b71/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gevent==1.4.0</span><br><span class="line">greenlet==0.4.15</span><br><span class="line">gunicorn==19.9.0</span><br><span class="line">six==1.12.0</span><br><span class="line">websocket==0.2.1</span><br><span class="line">websocket-client==0.55.0</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">port = <span class="number">5073</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(ws, message)</span>:</span></span><br><span class="line">    data = json.loads(message)</span><br><span class="line">    print(<span class="string">"receive message from server:"</span>)</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_error</span><span class="params">(ws, error)</span>:</span></span><br><span class="line">    print(error)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_close</span><span class="params">(ws)</span>:</span></span><br><span class="line">    print(<span class="string">"### closed ###"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_open</span><span class="params">(ws)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line">            ws.send(<span class="string">"Hello"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        ws.close()</span><br><span class="line">    thread = threading.Thread(target=job)</span><br><span class="line">    thread.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    websocket.enableTrace(<span class="literal">True</span>)</span><br><span class="line">    <span class="comment">#ws = websocket.create_connection("ws://localhost:" + str(port) + "/")</span></span><br><span class="line">    url = &#123;<span class="string">'rtsp'</span>: <span class="string">'E6-IN-01.mp4'</span>&#125;</span><br><span class="line">    ws = websocket.WebSocketApp(<span class="string">"ws://0.0.0.0:"</span> + str(port) + <span class="string">"?"</span> + urlencode(url),</span><br><span class="line">                              on_message = on_message,</span><br><span class="line">                              on_error = on_error,</span><br><span class="line">                              on_close = on_close)</span><br><span class="line">    ws.on_open = on_open</span><br><span class="line">    ws.run_forever()</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -3988,9 +4014,9 @@
       
         <tags>
             
-            <tag> OpenCV </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> OpenCV </tag>
             
         </tags>
       
@@ -4322,11 +4348,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> Python </tag>
             
             <tag> Ubuntu </tag>
-            
-            <tag> Linux </tag>
             
             <tag> Docker </tag>
             
@@ -4605,33 +4631,6 @@
     
     
     <entry>
-      <title>adb shell keyevent</title>
-      <link href="/posts/bd0ecf4c/"/>
-      <url>/posts/bd0ecf4c/</url>
-      
-        <content type="html"><![CDATA[<ul><li>發送keyevent<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell input keyevent 7    # for key &apos;0&apos;</span><br><span class="line">$ adb shell input keyevent 8    # for key &apos;1&apos;</span><br><span class="line">$ adb shell input keyevent 29    # for key &apos;A&apos;</span><br><span class="line">$ adb shell input keyevent 54    # for key &apos;B&apos;</span><br></pre></td></tr></table></figure></li><li>輸入字串<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell input text &quot;ANDROID&quot;</span><br></pre></td></tr></table></figure></li><li>Keycode 列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">00 -&gt;  &quot;KEYCODE_UNKNOWN&quot;</span><br><span class="line">01 -&gt;  &quot;KEYCODE_MENU&quot;</span><br><span class="line">02 -&gt;  &quot;KEYCODE_SOFT_RIGHT&quot;</span><br><span class="line">03 -&gt;  &quot;KEYCODE_HOME&quot;</span><br><span class="line">04 -&gt;  &quot;KEYCODE_BACK&quot;</span><br><span class="line">05 -&gt;  &quot;KEYCODE_CALL&quot;</span><br><span class="line">06 -&gt;  &quot;KEYCODE_ENDCALL&quot;</span><br><span class="line">07 -&gt;  &quot;KEYCODE_0&quot;</span><br><span class="line">08 -&gt;  &quot;KEYCODE_1&quot;</span><br><span class="line">09 -&gt;  &quot;KEYCODE_2&quot;</span><br><span class="line">10 -&gt;  &quot;KEYCODE_3&quot;</span><br><span class="line">11 -&gt;  &quot;KEYCODE_4&quot;</span><br><span class="line">12 -?  &quot;KEYCODE_5&quot;</span><br><span class="line">13 -&gt;  &quot;KEYCODE_6&quot;</span><br><span class="line">14 -&gt;  &quot;KEYCODE_7&quot;</span><br><span class="line">15 -&gt;  &quot;KEYCODE_8&quot;</span><br><span class="line">16 -&gt;  &quot;KEYCODE_9&quot;</span><br><span class="line">17 -&gt;  &quot;KEYCODE_STAR&quot;</span><br><span class="line">18 -&gt;  &quot;KEYCODE_POUND&quot;</span><br><span class="line">19 -&gt;  &quot;KEYCODE_DPAD_UP&quot;</span><br><span class="line">20 -&gt;  &quot;KEYCODE_DPAD_DOWN&quot;</span><br><span class="line">21 -&gt;  &quot;KEYCODE_DPAD_LEFT&quot;</span><br><span class="line">22 -&gt;  &quot;KEYCODE_DPAD_RIGHT&quot;</span><br><span class="line">23 -&gt;  &quot;KEYCODE_DPAD_CENTER&quot;</span><br><span class="line">24 -&gt;  &quot;KEYCODE_VOLUME_UP&quot;</span><br><span class="line">25 -&gt;  &quot;KEYCODE_VOLUME_DOWN&quot;</span><br><span class="line">26 -&gt;  &quot;KEYCODE_POWER&quot;</span><br><span class="line">27 -&gt;  &quot;KEYCODE_CAMERA&quot;</span><br><span class="line">28 -&gt;  &quot;KEYCODE_CLEAR&quot;</span><br><span class="line">29 -&gt;  &quot;KEYCODE_A&quot;</span><br><span class="line">30 -&gt;  &quot;KEYCODE_B&quot;</span><br><span class="line">31 -&gt;  &quot;KEYCODE_C&quot;</span><br><span class="line">32 -&gt;  &quot;KEYCODE_D&quot;</span><br><span class="line">33 -&gt;  &quot;KEYCODE_E&quot;</span><br><span class="line">34 -&gt;  &quot;KEYCODE_F&quot;</span><br><span class="line">35 -&gt;  &quot;KEYCODE_G&quot;</span><br><span class="line">36 -&gt;  &quot;KEYCODE_H&quot;</span><br><span class="line">37 -&gt;  &quot;KEYCODE_I&quot;</span><br><span class="line">38 -&gt;  &quot;KEYCODE_J&quot;</span><br><span class="line">39 -&gt;  &quot;KEYCODE_K&quot;</span><br><span class="line">40 -&gt;  &quot;KEYCODE_L&quot;</span><br><span class="line">41 -&gt;  &quot;KEYCODE_M&quot;</span><br><span class="line">42 -&gt;  &quot;KEYCODE_N&quot;</span><br><span class="line">43 -&gt;  &quot;KEYCODE_O&quot;</span><br><span class="line">44 -&gt;  &quot;KEYCODE_P&quot;</span><br><span class="line">45 -&gt;  &quot;KEYCODE_Q&quot;</span><br><span class="line">46 -&gt;  &quot;KEYCODE_R&quot;</span><br><span class="line">47 -&gt;  &quot;KEYCODE_S&quot;</span><br><span class="line">48 -&gt;  &quot;KEYCODE_T&quot;</span><br><span class="line">49 -&gt;  &quot;KEYCODE_U&quot;</span><br><span class="line">50 -&gt;  &quot;KEYCODE_V&quot;</span><br><span class="line">51 -&gt;  &quot;KEYCODE_W&quot;</span><br><span class="line">52 -&gt;  &quot;KEYCODE_X&quot;</span><br><span class="line">53 -&gt;  &quot;KEYCODE_Y&quot;</span><br><span class="line">54 -&gt;  &quot;KEYCODE_Z&quot;</span><br><span class="line">55 -&gt;  &quot;KEYCODE_COMMA&quot;</span><br><span class="line">56 -&gt;  &quot;KEYCODE_PERIOD&quot;</span><br><span class="line">57 -&gt;  &quot;KEYCODE_ALT_LEFT&quot;</span><br><span class="line">58 -&gt;  &quot;KEYCODE_ALT_RIGHT&quot;</span><br><span class="line">59 -&gt;  &quot;KEYCODE_SHIFT_LEFT&quot;</span><br><span class="line">60 -&gt;  &quot;KEYCODE_SHIFT_RIGHT&quot;</span><br><span class="line">61 -&gt;  &quot;KEYCODE_TAB&quot;</span><br><span class="line">62 -&gt;  &quot;KEYCODE_SPACE&quot;</span><br><span class="line">63 -&gt;  &quot;KEYCODE_SYM&quot;</span><br><span class="line">64 -&gt;  &quot;KEYCODE_EXPLORER&quot;</span><br><span class="line">65 -&gt;  &quot;KEYCODE_ENVELOPE&quot;</span><br><span class="line">66 -&gt;  &quot;KEYCODE_ENTER&quot;</span><br><span class="line">67 -&gt;  &quot;KEYCODE_DEL&quot;</span><br><span class="line">68 -&gt;  &quot;KEYCODE_GRAVE&quot;</span><br><span class="line">69 -&gt;  &quot;KEYCODE_MINUS&quot;</span><br><span class="line">70 -&gt;  &quot;KEYCODE_EQUALS&quot;</span><br><span class="line">71 -&gt;  &quot;KEYCODE_LEFT_BRACKET&quot;</span><br><span class="line">72 -&gt;  &quot;KEYCODE_RIGHT_BRACKET&quot;</span><br><span class="line">73 -&gt;  &quot;KEYCODE_BACKSLASH&quot;</span><br><span class="line">74 -&gt;  &quot;KEYCODE_SEMICOLON&quot;</span><br><span class="line">75 -&gt;  &quot;KEYCODE_APOSTROPHE&quot;</span><br><span class="line">76 -&gt;  &quot;KEYCODE_SLASH&quot;</span><br><span class="line">77 -&gt;  &quot;KEYCODE_AT&quot;</span><br><span class="line">78 -&gt;  &quot;KEYCODE_NUM&quot;</span><br><span class="line">79 -&gt;  &quot;KEYCODE_HEADSETHOOK&quot;</span><br><span class="line">80 -&gt;  &quot;KEYCODE_FOCUS&quot;</span><br><span class="line">81 -&gt;  &quot;KEYCODE_PLUS&quot;</span><br><span class="line">82 -&gt;  &quot;KEYCODE_MENU&quot;</span><br><span class="line">83 -&gt;  &quot;KEYCODE_NOTIFICATION&quot;</span><br><span class="line">84 -&gt;  &quot;KEYCODE_SEARCH&quot;</span><br><span class="line">85 -&gt;  &quot;TAG_LAST_KEYCODE&quot;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Android </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Android </tag>
-            
-            <tag> adb </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>adb commands</title>
       <link href="/posts/2da5a158/"/>
       <url>/posts/2da5a158/</url>
@@ -4684,31 +4683,6 @@
     
     
     <entry>
-      <title>Check Network Status</title>
-      <link href="/posts/27f80ae0/"/>
-      <url>/posts/27f80ae0/</url>
-      
-        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.net.ConnectivityManager;</span><br><span class="line"><span class="keyword">import</span> android.net.NetworkInfo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNetworkConnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">    <span class="keyword">if</span> (connManager != <span class="keyword">null</span>) &#123;</span><br><span class="line">        NetworkInfo mNetworkInfo = connManager.getActiveNetworkInfo();</span><br><span class="line">        <span class="keyword">if</span> (mNetworkInfo != <span class="keyword">null</span> &amp;&amp; mNetworkInfo.isConnected()) &#123;</span><br><span class="line">            <span class="keyword">return</span> mNetworkInfo.isAvailable();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> Android </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Android </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>get top activity</title>
       <link href="/posts/4089bb19/"/>
       <url>/posts/4089bb19/</url>
@@ -4734,11 +4708,38 @@
     
     
     <entry>
-      <title>連點</title>
-      <link href="/posts/d804cf8f/"/>
-      <url>/posts/d804cf8f/</url>
+      <title>adb shell keyevent</title>
+      <link href="/posts/bd0ecf4c/"/>
+      <url>/posts/bd0ecf4c/</url>
       
-        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要點幾下array就設多大</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">long</span>[] mHits = <span class="keyword">new</span> <span class="keyword">long</span>[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">System.arraycopy(mHits, <span class="number">1</span>, mHits, <span class="number">0</span>, mHits.length - <span class="number">1</span>);</span><br><span class="line">mHits[mHits.length - <span class="number">1</span>] = SystemClock.uptimeMillis();</span><br><span class="line"><span class="keyword">if</span> (mHits[<span class="number">0</span>] &gt; SystemClock.uptimeMillis() - <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">//do something...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<ul><li>發送keyevent<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell input keyevent 7    # for key &apos;0&apos;</span><br><span class="line">$ adb shell input keyevent 8    # for key &apos;1&apos;</span><br><span class="line">$ adb shell input keyevent 29    # for key &apos;A&apos;</span><br><span class="line">$ adb shell input keyevent 54    # for key &apos;B&apos;</span><br></pre></td></tr></table></figure></li><li>輸入字串<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ adb shell input text &quot;ANDROID&quot;</span><br></pre></td></tr></table></figure></li><li>Keycode 列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">00 -&gt;  &quot;KEYCODE_UNKNOWN&quot;</span><br><span class="line">01 -&gt;  &quot;KEYCODE_MENU&quot;</span><br><span class="line">02 -&gt;  &quot;KEYCODE_SOFT_RIGHT&quot;</span><br><span class="line">03 -&gt;  &quot;KEYCODE_HOME&quot;</span><br><span class="line">04 -&gt;  &quot;KEYCODE_BACK&quot;</span><br><span class="line">05 -&gt;  &quot;KEYCODE_CALL&quot;</span><br><span class="line">06 -&gt;  &quot;KEYCODE_ENDCALL&quot;</span><br><span class="line">07 -&gt;  &quot;KEYCODE_0&quot;</span><br><span class="line">08 -&gt;  &quot;KEYCODE_1&quot;</span><br><span class="line">09 -&gt;  &quot;KEYCODE_2&quot;</span><br><span class="line">10 -&gt;  &quot;KEYCODE_3&quot;</span><br><span class="line">11 -&gt;  &quot;KEYCODE_4&quot;</span><br><span class="line">12 -?  &quot;KEYCODE_5&quot;</span><br><span class="line">13 -&gt;  &quot;KEYCODE_6&quot;</span><br><span class="line">14 -&gt;  &quot;KEYCODE_7&quot;</span><br><span class="line">15 -&gt;  &quot;KEYCODE_8&quot;</span><br><span class="line">16 -&gt;  &quot;KEYCODE_9&quot;</span><br><span class="line">17 -&gt;  &quot;KEYCODE_STAR&quot;</span><br><span class="line">18 -&gt;  &quot;KEYCODE_POUND&quot;</span><br><span class="line">19 -&gt;  &quot;KEYCODE_DPAD_UP&quot;</span><br><span class="line">20 -&gt;  &quot;KEYCODE_DPAD_DOWN&quot;</span><br><span class="line">21 -&gt;  &quot;KEYCODE_DPAD_LEFT&quot;</span><br><span class="line">22 -&gt;  &quot;KEYCODE_DPAD_RIGHT&quot;</span><br><span class="line">23 -&gt;  &quot;KEYCODE_DPAD_CENTER&quot;</span><br><span class="line">24 -&gt;  &quot;KEYCODE_VOLUME_UP&quot;</span><br><span class="line">25 -&gt;  &quot;KEYCODE_VOLUME_DOWN&quot;</span><br><span class="line">26 -&gt;  &quot;KEYCODE_POWER&quot;</span><br><span class="line">27 -&gt;  &quot;KEYCODE_CAMERA&quot;</span><br><span class="line">28 -&gt;  &quot;KEYCODE_CLEAR&quot;</span><br><span class="line">29 -&gt;  &quot;KEYCODE_A&quot;</span><br><span class="line">30 -&gt;  &quot;KEYCODE_B&quot;</span><br><span class="line">31 -&gt;  &quot;KEYCODE_C&quot;</span><br><span class="line">32 -&gt;  &quot;KEYCODE_D&quot;</span><br><span class="line">33 -&gt;  &quot;KEYCODE_E&quot;</span><br><span class="line">34 -&gt;  &quot;KEYCODE_F&quot;</span><br><span class="line">35 -&gt;  &quot;KEYCODE_G&quot;</span><br><span class="line">36 -&gt;  &quot;KEYCODE_H&quot;</span><br><span class="line">37 -&gt;  &quot;KEYCODE_I&quot;</span><br><span class="line">38 -&gt;  &quot;KEYCODE_J&quot;</span><br><span class="line">39 -&gt;  &quot;KEYCODE_K&quot;</span><br><span class="line">40 -&gt;  &quot;KEYCODE_L&quot;</span><br><span class="line">41 -&gt;  &quot;KEYCODE_M&quot;</span><br><span class="line">42 -&gt;  &quot;KEYCODE_N&quot;</span><br><span class="line">43 -&gt;  &quot;KEYCODE_O&quot;</span><br><span class="line">44 -&gt;  &quot;KEYCODE_P&quot;</span><br><span class="line">45 -&gt;  &quot;KEYCODE_Q&quot;</span><br><span class="line">46 -&gt;  &quot;KEYCODE_R&quot;</span><br><span class="line">47 -&gt;  &quot;KEYCODE_S&quot;</span><br><span class="line">48 -&gt;  &quot;KEYCODE_T&quot;</span><br><span class="line">49 -&gt;  &quot;KEYCODE_U&quot;</span><br><span class="line">50 -&gt;  &quot;KEYCODE_V&quot;</span><br><span class="line">51 -&gt;  &quot;KEYCODE_W&quot;</span><br><span class="line">52 -&gt;  &quot;KEYCODE_X&quot;</span><br><span class="line">53 -&gt;  &quot;KEYCODE_Y&quot;</span><br><span class="line">54 -&gt;  &quot;KEYCODE_Z&quot;</span><br><span class="line">55 -&gt;  &quot;KEYCODE_COMMA&quot;</span><br><span class="line">56 -&gt;  &quot;KEYCODE_PERIOD&quot;</span><br><span class="line">57 -&gt;  &quot;KEYCODE_ALT_LEFT&quot;</span><br><span class="line">58 -&gt;  &quot;KEYCODE_ALT_RIGHT&quot;</span><br><span class="line">59 -&gt;  &quot;KEYCODE_SHIFT_LEFT&quot;</span><br><span class="line">60 -&gt;  &quot;KEYCODE_SHIFT_RIGHT&quot;</span><br><span class="line">61 -&gt;  &quot;KEYCODE_TAB&quot;</span><br><span class="line">62 -&gt;  &quot;KEYCODE_SPACE&quot;</span><br><span class="line">63 -&gt;  &quot;KEYCODE_SYM&quot;</span><br><span class="line">64 -&gt;  &quot;KEYCODE_EXPLORER&quot;</span><br><span class="line">65 -&gt;  &quot;KEYCODE_ENVELOPE&quot;</span><br><span class="line">66 -&gt;  &quot;KEYCODE_ENTER&quot;</span><br><span class="line">67 -&gt;  &quot;KEYCODE_DEL&quot;</span><br><span class="line">68 -&gt;  &quot;KEYCODE_GRAVE&quot;</span><br><span class="line">69 -&gt;  &quot;KEYCODE_MINUS&quot;</span><br><span class="line">70 -&gt;  &quot;KEYCODE_EQUALS&quot;</span><br><span class="line">71 -&gt;  &quot;KEYCODE_LEFT_BRACKET&quot;</span><br><span class="line">72 -&gt;  &quot;KEYCODE_RIGHT_BRACKET&quot;</span><br><span class="line">73 -&gt;  &quot;KEYCODE_BACKSLASH&quot;</span><br><span class="line">74 -&gt;  &quot;KEYCODE_SEMICOLON&quot;</span><br><span class="line">75 -&gt;  &quot;KEYCODE_APOSTROPHE&quot;</span><br><span class="line">76 -&gt;  &quot;KEYCODE_SLASH&quot;</span><br><span class="line">77 -&gt;  &quot;KEYCODE_AT&quot;</span><br><span class="line">78 -&gt;  &quot;KEYCODE_NUM&quot;</span><br><span class="line">79 -&gt;  &quot;KEYCODE_HEADSETHOOK&quot;</span><br><span class="line">80 -&gt;  &quot;KEYCODE_FOCUS&quot;</span><br><span class="line">81 -&gt;  &quot;KEYCODE_PLUS&quot;</span><br><span class="line">82 -&gt;  &quot;KEYCODE_MENU&quot;</span><br><span class="line">83 -&gt;  &quot;KEYCODE_NOTIFICATION&quot;</span><br><span class="line">84 -&gt;  &quot;KEYCODE_SEARCH&quot;</span><br><span class="line">85 -&gt;  &quot;TAG_LAST_KEYCODE&quot;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> adb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Check Network Status</title>
+      <link href="/posts/27f80ae0/"/>
+      <url>/posts/27f80ae0/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.net.ConnectivityManager;</span><br><span class="line"><span class="keyword">import</span> android.net.NetworkInfo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNetworkConnected</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">    <span class="keyword">if</span> (connManager != <span class="keyword">null</span>) &#123;</span><br><span class="line">        NetworkInfo mNetworkInfo = connManager.getActiveNetworkInfo();</span><br><span class="line">        <span class="keyword">if</span> (mNetworkInfo != <span class="keyword">null</span> &amp;&amp; mNetworkInfo.isConnected()) &#123;</span><br><span class="line">            <span class="keyword">return</span> mNetworkInfo.isAvailable();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -4784,11 +4785,11 @@
     
     
     <entry>
-      <title>sign apk</title>
-      <link href="/posts/765879ed/"/>
-      <url>/posts/765879ed/</url>
+      <title>連點</title>
+      <link href="/posts/d804cf8f/"/>
+      <url>/posts/d804cf8f/</url>
       
-        <content type="html"><![CDATA[<p>If an apk is set as android:sharedUserId=”android.uid.system” in the AndroidManifest.xml, it must be signed with platform key and then it is usable.</p><ol><li>Get signapk.jar in //prebuilts/sdk/tools/lib/</li><li>test-key: in //build/target/product/security/</li><li>release-key: in //vander/nvidia/security/cardhu/<br>The key should have password according to your project</li><li>zipalign can align apk to obtain better efficiency<br><code>zipalign.exe -f 4 input.apk output.apk</code></li><li>Use the following command to sign an apk under command line<br><code>java -jar signapk.jar platform.x509.pem platform.pk8 input.apk output.apk</code></li></ol>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要點幾下array就設多大</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">long</span>[] mHits = <span class="keyword">new</span> <span class="keyword">long</span>[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">System.arraycopy(mHits, <span class="number">1</span>, mHits, <span class="number">0</span>, mHits.length - <span class="number">1</span>);</span><br><span class="line">mHits[mHits.length - <span class="number">1</span>] = SystemClock.uptimeMillis();</span><br><span class="line"><span class="keyword">if</span> (mHits[<span class="number">0</span>] &gt; SystemClock.uptimeMillis() - <span class="number">2000</span>) &#123;</span><br><span class="line">    <span class="comment">//do something...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -4801,8 +4802,6 @@
         <tags>
             
             <tag> Android </tag>
-            
-            <tag> apk </tag>
             
         </tags>
       
@@ -4828,6 +4827,33 @@
         <tags>
             
             <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sign apk</title>
+      <link href="/posts/765879ed/"/>
+      <url>/posts/765879ed/</url>
+      
+        <content type="html"><![CDATA[<p>If an apk is set as android:sharedUserId=”android.uid.system” in the AndroidManifest.xml, it must be signed with platform key and then it is usable.</p><ol><li>Get signapk.jar in //prebuilts/sdk/tools/lib/</li><li>test-key: in //build/target/product/security/</li><li>release-key: in //vander/nvidia/security/cardhu/<br>The key should have password according to your project</li><li>zipalign can align apk to obtain better efficiency<br><code>zipalign.exe -f 4 input.apk output.apk</code></li><li>Use the following command to sign an apk under command line<br><code>java -jar signapk.jar platform.x509.pem platform.pk8 input.apk output.apk</code></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> apk </tag>
             
         </tags>
       

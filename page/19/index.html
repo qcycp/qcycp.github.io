@@ -183,6 +183,220 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/99132266/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/99132266/" class="post-title-link" itemprop="url">md5sum</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-27 16:47:32" itemprop="dateCreated datePublished" datetime="2020-02-27T16:47:32+08:00">2020-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-01-18 10:23:03" itemprop="dateModified" datetime="2021-01-18T10:23:03+08:00">2021-01-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/mk5/" itemprop="url" rel="index"><span itemprop="name">mk5</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>針對檔案製作 md5 checksum，可以用該 checksum 檢察該檔案是否是原先的檔案內容，避免在傳輸或上傳、下載的過程中，檔案有破損或被修改過<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file</span><br><span class="line">$ md5sum file &gt; file.md5sum</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file: OK</span><br></pre></td></tr></table></figure></li>
+<li>檔案內容被修改過<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file: FAILED</span><br><span class="line">md5sum: WARNING: 1 computed checksum did NOT match</span><br></pre></td></tr></table></figure></li>
+<li>每個檔案都可以產生一組唯一的checksum<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat file.md5sum</span><br><span class="line">09b91cdeb925bff08fda813dcb7f187a  file</span><br></pre></td></tr></table></figure></li>
+<li>對於要檢查的檔案，檔名不能做任何修改，且要跟file.md5sum的位置一致<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mv file file_2</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">md5sum: file: No such file or directory</span><br><span class="line">date.1: FAILED open or read</span><br><span class="line">md5sum: WARNING: 1 listed file could not be read</span><br></pre></td></tr></table></figure></li>
+<li>可以針對多個檔案製作 md5sum<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file_1</span><br><span class="line">$ date &gt; file_2</span><br><span class="line">$ md5sum file_1 file_2 &gt; file.md5sum</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file_1: OK</span><br><span class="line">file_2: OK</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/374b29bd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/374b29bd/" class="post-title-link" itemprop="url">Docker Notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-02-27 10:43:34" itemprop="dateCreated datePublished" datetime="2020-02-27T10:43:34+08:00">2020-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-01-04 16:22:04" itemprop="dateModified" datetime="2021-01-04T16:22:04+08:00">2021-01-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>How to keep docker container running<br>add following command at end of Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMD tail -f /dev/null</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>There is an experimental build flag –squash to summarize everything into one layer.<br>For example, <code>docker build --squash -t &lt;tag&gt; .</code></p>
+<ul>
+<li>How to enable experimental features in the daemon?<br>edit /etc/docker/daemon.json configuration file:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;experimental&quot;: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Check experimental status<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker version -f &apos;&#123;&#123;.Server.Experimental&#125;&#125;&apos;</span><br><span class="line">true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Container-data"><a href="#Container-data" class="headerlink" title="Container data"></a>Container data</h3><ul>
+<li>docker的資料會在HOST的/var/lib/docker目錄下</li>
+<li>每個container的資料會在/var/lib/docker/containers裡</li>
+<li>每個container的log會存在/var/lib/docker/containers/hash/hash-json.log<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker inspect --format=<span class="string">'&#123;&#123;.LogPath&#125;&#125;'</span> 847d0eb77dfe</span><br><span class="line">/var/lib/docker/containers/847d0eb77dfe7169a68bd7e6c7cf37f0b237689714a91c3debecb162e7c6eccf/847d0eb77dfe7169a68bd7e6c7cf37f0b237689714a91c3debecb162e7c6eccf-json.log</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Image-size-and-Dockerfile"><a href="#Image-size-and-Dockerfile" class="headerlink" title="Image size and Dockerfile"></a>Image size and Dockerfile</h3><p><a href="https://blog.replicated.com/refactoring-a-dockerfile-for-image-size/" target="_blank" rel="noopener">Refactoring a Dockerfile for image size</a></p>
+<ol>
+<li>每一個RUN指令都會產生一個Layer</li>
+<li>多個指令分成多個Layer來執行，比起多個指令在同一個Layer執行，所佔的空間要大</li>
+<li>install package跟remove package如果在不同Layer執行，image size並不會變小，必須要在同一個Layer內執行，remove package才能縮減image size</li>
+</ol>
+<h3 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h3><p><a href="https://docs.docker.com/engine/reference/commandline/docker/" target="_blank" rel="noopener">https://docs.docker.com/engine/reference/commandline/docker/</a></p>
+<ul>
+<li>display docker version and info<br><code>docker --version</code><br><code>docker version</code><br><code>docker info</code></li>
+<li>search docker image on docker-hub<br><code>docker search dlib</code></li>
+<li>list docker images<br><code>docker images</code></li>
+<li>list docker containers<br><code>docker ps -a</code></li>
+<li>build and run<br><code>docker build --no-cache -t myimage .</code><br><code>docker run -d -p 1337:80 myimage</code><br><code>docker run -d --restart=always --name mycontainer -e PYTHONUNBUFFERED=0 -p 1337:80 myimage</code><br><code>docker run -d --restart=always --name mycontainer -e REMOTE_HOST_IP=172.18.71.12:8857 -p 1337:80 myimage</code><br>可以使用update更新指令中的參數<br><code>docker update --restart=always myimage</code></li>
+<li>docker-compose<br><code>docker-compose up</code><br><code>docker-compose up -d</code><br><code>docker-compose up -d service_name</code><br><code>docker-compose down</code><br><code>docker-compose images</code><br><code>docker-compose restart -d service_name</code><br><code>docker-compose -f tmp_docker-compose_ci.yml up -d</code></li>
+<li>save docker image<br><code>docker save myimage &gt; myimage.tar</code><br><code>docker save -o myimage.tar myimage</code><br><code>docker save myimage | gzip &gt; myimage.tgz</code><br><code>docker export myimage | gzip &gt; myimage.tgz</code></li>
+<li>load docker image<br><code>docker load -i myimage.tar</code><br><code>gunzip -c myimage.tgz | docker load</code></li>
+<li>container operations<br><code>docker stop container_id</code><br><code>docker rm container_id</code><br><code>docker rm -f container_id</code><br><code>docker restart container_id</code></li>
+<li>image operations<br><code>docker tag source_image_name:tag target_image_name:tag</code><br><code>docker rmi target_image_name:tag</code><br><code>docker rmi image_id</code></li>
+<li>show logs<br><code>docker logs -f container_id</code></li>
+<li>bash operations<br><code>docker exec -it container_id bash</code><br><code>docker exec -i mysql /usr/bin/mysql -u root -p1234 &lt;&lt;&lt; &#39;use dbname;show tables;&#39;</code><br><code>docker exec -i mysql /usr/bin/mysql -u root -p1234 -e &#39;use dbname;show tables;&#39;</code><br><code>docker exec -it mycontainer ls</code><br><code>docker exec -it mycontainer sh -c &#39;ls&#39;</code></li>
+<li>copy file from/to container<br><code>docker cp nginx.conf mycontainer:/etc/nginx/conf.d/</code><br><code>docker cp mycontainer:/app/file /home/user/</code></li>
+<li>docker container stats<br><code>docker stats --no-stream</code><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker stats --no-stream</span><br><span class="line">CONTAINER ID        NAME                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS</span><br><span class="line">b753136fd716        mycontainer                37.76%              144.7MiB / 1.953GiB   7.24%               107MB / 2.05MB      7.64MB / 0B         31</span><br></pre></td></tr></table></figure></li>
+<li>get a shell on the host<br><code>$ docker run --privileged --pid=host -it alpine:3.8 nsenter -t 1 -m -u -n -i sh</code></li>
+<li>Links<br><a href="https://platform9.com/blog/container-namespaces-deep-dive-container-networking/" target="_blank" rel="noopener">Container Namespaces</a></li>
+<li>清理系統<ul>
+<li>刪除沒有 tag 的 image<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker image prune</span><br><span class="line">WARNING! This will remove all dangling images.</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span>? [y/N] y</span><br><span class="line">Total reclaimed space: 0B</span><br></pre></td></tr></table></figure></li>
+<li>刪除沒有 running container 參考到的 image<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ docker image prune --all</span><br><span class="line">WARNING! This will remove all images without at least one container associated to them.</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span>? [y/N] y</span><br><span class="line">Deleted Images:</span><br><span class="line">untagged: 10.36.94.120:50000/node:12.2.0-alpine</span><br><span class="line">untagged: 10.36.94.120:50000/node@sha256:44833e4939cae1d429eaf303db96df2a7676114822e50c77ddcb888fc40d2e55</span><br><span class="line">deleted: sha256:f391dabf9dce53bfc184823f18b7703db8dfead7f25e5b376865e690433bec78</span><br><span class="line">deleted: sha256:336cfdd902c9e424a9ddf5d12f844ea7657bb93fff1ac480f2f58d03a0d61712</span><br><span class="line">deleted: sha256:8e16b58e2279476d2b32eac06400116114fb9facbd8205409d2285e1bdcb7312</span><br><span class="line"></span><br><span class="line">Total reclaimed space: 3.704GB</span><br></pre></td></tr></table></figure></li>
+<li>刪除 image 及 container<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ docker system prune</span><br><span class="line">WARNING! This will remove:</span><br><span class="line">        - all stopped containers</span><br><span class="line">        - all networks not used by at least one container</span><br><span class="line">        - all dangling images</span><br><span class="line">        - all dangling build cache</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span>? [y/N] y</span><br><span class="line">Total reclaimed space: 0B</span><br><span class="line"></span><br><span class="line">$ docker system prune --all</span><br><span class="line">WARNING! This will remove:</span><br><span class="line">        - all stopped containers</span><br><span class="line">        - all networks not used by at least one container</span><br><span class="line">        - all images without at least one container associated to them</span><br><span class="line">        - all build cache</span><br><span class="line">Are you sure you want to <span class="built_in">continue</span>? [y/N] y</span><br><span class="line">Total reclaimed space: 0B</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Get information of docker system<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ docker system df</span><br><span class="line">TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE</span><br><span class="line">Images              5                   5                   2.023GB             0B (0%)</span><br><span class="line">Containers          5                   5                   3.54MB              0B (0%)</span><br><span class="line">Local Volumes       3                   1                   1.66GB              30.44MB (1%)</span><br><span class="line">Build Cache         0                   0                   0B                  0B</span><br></pre></td></tr></table></figure></li>
+<li>Reference<br><a href="https://peihsinsu.gitbooks.io/docker-note-book/content/dockerfile-env-vs-arg.html" target="_blank" rel="noopener">https://peihsinsu.gitbooks.io/docker-note-book/content/dockerfile-env-vs-arg.html</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b4afeaae/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -857,156 +1071,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3932c779/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/3932c779/" class="post-title-link" itemprop="url">dict Sorting</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-12-03 11:07:07" itemprop="dateCreated datePublished" datetime="2019-12-03T11:07:07+08:00">2019-12-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    d = &#123;<span class="number">2</span>: <span class="number">3</span>, <span class="number">1</span>: <span class="number">89</span>, <span class="number">4</span>: <span class="number">5</span>, <span class="number">3</span>: <span class="number">0</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#sort by key</span></span><br><span class="line">    od = OrderedDict(sorted(d.items(), key=<span class="keyword">lambda</span> t: t[<span class="number">0</span>])) <span class="comment"># od = OrderedDict([(1, 89), (2, 3), (3, 0), (4, 5)])</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#sort by value</span></span><br><span class="line">    od = OrderedDict(sorted(d.items(), key=<span class="keyword">lambda</span> t: t[<span class="number">1</span>])) <span class="comment"># od = OrderedDict([(3, 0), (2, 3), (4, 5), (1, 89)])</span></span><br><span class="line"></span><br><span class="line">    list = sorted(d.items()) <span class="comment"># list = [(1, 89), (2, 3), (3, 0), (4, 5)]</span></span><br><span class="line">                             <span class="comment"># items in list are tuple</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9452fe6b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9452fe6b/" class="post-title-link" itemprop="url">qcow to vdi</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2019-12-03 10:23:28" itemprop="dateCreated datePublished" datetime="2019-12-03T10:23:28+08:00">2019-12-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install qemu-utils</span><br><span class="line">$ qemu-img convert -O vdi src.qcow2 dst.vdi</span><br><span class="line">$ qemu-img convert -O qcow2 src.vdi dst.qcow2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1075,7 +1139,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

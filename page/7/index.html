@@ -183,6 +183,150 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a477be03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/a477be03/" class="post-title-link" itemprop="url">nginx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-25 19:30:49 / 修改時間：19:36:59" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>$host 與 $http_host的區別在於當使用非80/443端口的時候，$http_host = $host:$port</p>
+<ul>
+<li><p>client_max_body_size<br>這個directive設定Nginx可以處理的最大request body大小。如果收到的請求大於指定的大小，那麼Nginx會回复HTTP 413錯誤（Request Entity too large）。如果web服務器提供大文件上傳的話，那麼設置好這個directive很重要。<br>Nginx默認為這個directive設定的值是1m</p>
+</li>
+<li><p>client_body_buffer_size<br>這個directive設定了request body的緩衝大小。如果body超過了緩衝的大小，那麼整個body或者部分body將被寫入一個臨時文件。如果Nginx被設置成使用文件緩衝而不使用內存緩衝，那麼這個dirctive就無效。 client_body_buffer_size在32位系統上默認是8k，在64位系統上默認是16k</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/a477be03/image_01.png" alt></p>
+<ul>
+<li><p>autoindex_exact_size關閉，讓檔案大小用人類可讀的方式呈現</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex_exact_size off;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/a477be03/image_02.png" alt><br><img src="/posts/a477be03/image_03.png" alt></p>
+</li>
+<li><p>Reference<br><a href="https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97" target="_blank" rel="noopener">https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cd579093/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/cd579093/" class="post-title-link" itemprop="url">linux logrotate</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-25 19:28:55 / 修改時間：19:29:18" itemprop="dateCreated datePublished" datetime="2021-08-25T19:28:55+08:00">2021-08-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://linux.die.net/man/8/logrotate" target="_blank" rel="noopener">https://linux.die.net/man/8/logrotate</a></p>
+<p><a href="https://ihower.tw/blog/archives/3565" target="_blank" rel="noopener">https://ihower.tw/blog/archives/3565</a><br><a href="https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html" target="_blank" rel="noopener">https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html</a><br><a href="https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/" target="_blank" rel="noopener">https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/</a><br><a href="http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/" target="_blank" rel="noopener">http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/</a><br><a href="https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/" target="_blank" rel="noopener">https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f, --force</span><br><span class="line">-v, --verbose</span><br><span class="line"></span><br><span class="line">logrotate -fv /etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/logrotate/status</span><br><span class="line">/etc/logrotate.conf</span><br><span class="line">/etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>/etc/logrotate.d裡的設定優先權比logrotate.conf高</li>
+<li>logrotate.conf單純是一個script，需要被執行，無法主動執行</li>
+<li>因為/etc/cron.daily/logrotate設定，因此logrotate.conf被執行的最短周期是一天</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/df62d35a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -768,195 +912,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9ebec7b8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9ebec7b8/" class="post-title-link" itemprop="url">matplotlib note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 15:45:11" itemprop="dateCreated datePublished" datetime="2021-06-24T15:45:11+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-24 14:40:03" itemprop="dateModified" datetime="2021-08-24T14:40:03+08:00">2021-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>設定 figure resolution<br><code>plt.figure(figsize=(10, 10), dpi=160)</code><br>=&gt; resolution is 1600x1600</p>
-</li>
-<li><p>隱藏軸標籤和座標軸<br>ax = plt.gca()<br>ax.axes.xaxis.set_visible(False)<br>ax.axes.yaxis.set_visible(False)</p>
-</li>
-<li><p>隱藏座標軸<br>ax = plt.gca()<br>ax.axes.xaxis.set_ticks([])<br>ax.axes.yaxis.set_ticks([])</p>
-</li>
-<li><p>隱藏軸標籤<br>ax = plt.gca()<br>ax.axes.xaxis.set_ticklabels([])<br>ax.axes.yaxis.set_ticklabels([])</p>
-</li>
-<li><p>將坐標軸的刻度用科學計數標記</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.gca()</span><br><span class="line">ax.ticklabel_format(style=&apos;sci&apos;, scilimits=(0, 0), axis=&apos;y&apos;)</span><br><span class="line">ax.yaxis.major.formatter._useMathText = True</span><br></pre></td></tr></table></figure>
-<p>scilimits=(-1,2) 表示對 10^-1 ~ 10^2 範圍之外的數值進行科學計數轉換，範圍內的不換</p>
-</li>
-<li><p>waveform</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">fs=<span class="number">4000</span></span><br><span class="line">Ts=<span class="number">1</span>/fs</span><br><span class="line">f0=<span class="number">10</span></span><br><span class="line">A=math.sqrt(<span class="number">2</span>)</span><br><span class="line">N=<span class="number">1024</span></span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">0</span>,N<span class="number">-1</span>,<span class="number">10</span>)   <span class="comment"># start,stop,step</span></span><br><span class="line">y = A*np.sin(<span class="number">2</span>*np.pi*f0*Ts*x)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show() <span class="comment"># show the image</span></span><br></pre></td></tr></table></figure>
-<p><img src="/posts/9ebec7b8/image_01.png" alt></p>
-</li>
-<li><p>Trouble Shooting</p>
-</li>
-</ul>
-<ol>
-<li><p><code>OverflowError: Exceeded cell block limit (set &#39;agg.path.chunksize&#39; rcparam)</code><br>當要處理的數據太多，必須手動設定 chunksize<br><code>plt.rcParams[&#39;agg.path.chunksize&#39;] = 100000</code></p>
-</li>
-<li><p>在大量使用 plt.plot and plt.savefig 時，會遇到以下 error<br><code>Fail to allocate bitmap</code><br>即使有執行 plt.close() 也無效，且固定產生 369 張圖後，會 failed</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&quot;Agg&quot;)</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/e729699d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/e729699d/" class="post-title-link" itemprop="url">Access ssh without input password</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-17 14:47:42" itemprop="dateCreated datePublished" datetime="2021-06-17T14:47:42+08:00">2021-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-24 15:53:30" itemprop="dateModified" datetime="2021-06-24T15:53:30+08:00">2021-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在 windown 下使用 ssh/scp 時，不需要輸入密碼</p>
-<ol>
-<li><p>generate key in windows</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\User&gt;ssh-keygen -t rsa</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file in which to save the key (C:\Users\User/.ssh/id_rsa):</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in C:\Users\User/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in C:\Users\User/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:u7s0Cq8ljGfhuNonSa7CwLAxvyk9ebR8FFIitHGbeHk user@DESKTOP-A88C5KQ</span><br><span class="line">The key&apos;s randomart image is:</span><br><span class="line">+---[RSA 3072]----+</span><br><span class="line">| .o .            |</span><br><span class="line">|  .=.+.          |</span><br><span class="line">|  o.=oE          |</span><br><span class="line">|+  ....          |</span><br><span class="line">|o=  .. .S        |</span><br><span class="line">|o.o=...  .       |</span><br><span class="line">|o+oBBo. +        |</span><br><span class="line">|ooX+==.o o       |</span><br><span class="line">|++o=.oo +o       |</span><br><span class="line">+----[SHA256]-----+</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>將 id_rsa.pub 內容複製進 linux ~/.ssh/authorized_keys</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User&gt; cat .ssh/id_rsa.pub</span><br><span class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFTdfNrQFk+pnyFUpYlI9DjxcqgYhwaK1kPwKULW6qthMZ1331a/cczktzYGiRVDRa6AEdAAMdINi3Vw2tmfxAYOYGQA0GvRExTDQo+txWJlC6ZTQqrXgnDDldI9yDtlkOGFcUfvW6G/VVS0qdM1W5yN3hGHtGjccpsn/zal4dWFRuYv/b4iSLbcxtJG5tV5yEwqCA0da2QdT8NabKtcEi0D7N7V+ZWemlEnYZtGKHjAb25Lbk26wYFDHakCL1k75CloGPXoSp0M9smXLQ0d8MBbCJssQdMhQS4EHaeoihpHYB6dX66+wDPXvVv4gZOPpexOo64es9Uuz7RD5YxYIdlDFsH4LgJGUm7pC4BI1T618xlicc83VF7f2ElR5hSUROMWYld+MDlqAn4nftQyInzCXQsyAyRdq1mzbRKa7UvGiCmEdKUl+pj25+RjScTb7IWTqXXUCATcPmtg11B7AznnS5RkhvigXHGUH03X1HBHUtnI78frI+1/R6tjuesps= user@DESKTOP-A88C5KQ</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>.ssh 資料夾的權限必須是 0700</li>
-<li>authorized_keys 檔案的權限必須是 0600</li>
-<li>兩台機器 A、B 要溝通，在 A 上建立 public key and private key，然後將 public key 給 B，如此便能進行加密溝通</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1025,7 +980,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

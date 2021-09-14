@@ -183,6 +183,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eacf1c94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/eacf1c94/" class="post-title-link" itemprop="url">flask_doc</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:33:47 / 修改時間：09:33:51" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>pip install flask_docs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask_docs import ApiDoc</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 本地加载</span><br><span class="line"># app.config[&apos;API_DOC_CDN&apos;] = False</span><br><span class="line"></span><br><span class="line"># 禁用文档页面</span><br><span class="line"># app.config[&apos;API_DOC_ENABLE&apos;] = False</span><br><span class="line"></span><br><span class="line"># 需要显示文档的 Api</span><br><span class="line">app.config[&apos;API_DOC_MEMBER&apos;] = [&apos;api&apos;, &apos;platform&apos;]</span><br><span class="line"></span><br><span class="line"># 需要排除的 RESTful Api 文档</span><br><span class="line">app.config[&apos;RESTFUL_API_DOC_EXCLUDE&apos;] = []</span><br><span class="line"></span><br><span class="line">ApiDoc(app)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4b411f65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4b411f65/" class="post-title-link" itemprop="url">flask_background_task</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-08-26 09:33:03 / 修改時間：09:33:07" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:03+08:00">2021-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>celery</li>
+<li>rq</li>
+</ol>
+<p><a href="https://myapollo.com.tw/2019/06/01/flask-celery/" target="_blank" rel="noopener">https://myapollo.com.tw/2019/06/01/flask-celery/</a></p>
+<p><a href="http://www.pythondoc.com/flask-celery/first.html" target="_blank" rel="noopener">http://www.pythondoc.com/flask-celery/first.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/996f0d2c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -567,10 +690,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-08-26 09:24:31 / 修改時間：09:24:32" itemprop="dateCreated datePublished" datetime="2021-08-26T09:24:31+08:00">2021-08-26</time>
+              <time title="創建時間：2021-08-26 09:24:31" itemprop="dateCreated datePublished" datetime="2021-08-26T09:24:31+08:00">2021-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-08-30 10:47:08" itemprop="dateModified" datetime="2021-08-30T10:47:08+08:00">2021-08-30</time>
+              </span>
 
           
 
@@ -583,7 +712,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gevent==1.4.0</span><br><span class="line">greenlet==0.4.15</span><br><span class="line">gunicorn==19.9.0</span><br><span class="line">six==1.12.0</span><br><span class="line">websocket==0.2.1</span><br><span class="line">websocket-client==0.55.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">port = <span class="number">5073</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(ws, message)</span>:</span></span><br><span class="line">    data = json.loads(message)</span><br><span class="line">    print(<span class="string">"receive message from server:"</span>)</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_error</span><span class="params">(ws, error)</span>:</span></span><br><span class="line">    print(error)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_close</span><span class="params">(ws)</span>:</span></span><br><span class="line">    print(<span class="string">"### closed ###"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_open</span><span class="params">(ws)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line">            ws.send(<span class="string">"Hello"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        ws.close()</span><br><span class="line">    thread = threading.Thread(target=job)</span><br><span class="line">    thread.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    websocket.enableTrace(<span class="literal">True</span>)</span><br><span class="line">    <span class="comment">#ws = websocket.create_connection("ws://localhost:" + str(port) + "/")</span></span><br><span class="line">    url = &#123;<span class="string">'rtsp'</span>: <span class="string">'E6-IN-01.mp4'</span>&#125;</span><br><span class="line">    ws = websocket.WebSocketApp(<span class="string">"ws://0.0.0.0:"</span> + str(port) + <span class="string">"?"</span> + urlencode(url),</span><br><span class="line">                              on_message = on_message,</span><br><span class="line">                              on_error = on_error,</span><br><span class="line">                              on_close = on_close)</span><br><span class="line">    ws.on_open = on_open</span><br><span class="line">    ws.run_forever()</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -647,150 +778,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status</span><br><span class="line">supervisorctl stop service</span><br><span class="line">supervisorctl restart service</span><br><span class="line">supervisorctl start service</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@koala:~# supervisorctl status</span><br><span class="line">clean_upload_event               RUNNING   pid 1857, uptime 2 days, 20:51:06</span><br><span class="line">events_consumer                  RUNNING   pid 1859, uptime 2 days, 20:51:06</span><br><span class="line">koala_online                     RUNNING   pid 1861, uptime 2 days, 20:51:06</span><br><span class="line">koala_worker                     RUNNING   pid 1860, uptime 2 days, 20:51:06</span><br><span class="line">redis                            RUNNING   pid 1862, uptime 2 days, 20:51:06</span><br><span class="line">updater                          RUNNING   pid 1864, uptime 2 days, 20:51:06</span><br><span class="line">weather                          RUNNING   pid 1858, uptime 2 days, 20:51:06</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a477be03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/a477be03/" class="post-title-link" itemprop="url">nginx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 19:30:49 / 修改時間：19:36:59" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>$host 與 $http_host的區別在於當使用非80/443端口的時候，$http_host = $host:$port</p>
-<ul>
-<li><p>client_max_body_size<br>這個directive設定Nginx可以處理的最大request body大小。如果收到的請求大於指定的大小，那麼Nginx會回复HTTP 413錯誤（Request Entity too large）。如果web服務器提供大文件上傳的話，那麼設置好這個directive很重要。<br>Nginx默認為這個directive設定的值是1m</p>
-</li>
-<li><p>client_body_buffer_size<br>這個directive設定了request body的緩衝大小。如果body超過了緩衝的大小，那麼整個body或者部分body將被寫入一個臨時文件。如果Nginx被設置成使用文件緩衝而不使用內存緩衝，那麼這個dirctive就無效。 client_body_buffer_size在32位系統上默認是8k，在64位系統上默認是16k</p>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/a477be03/image_01.png" alt></p>
-<ul>
-<li><p>autoindex_exact_size關閉，讓檔案大小用人類可讀的方式呈現</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex_exact_size off;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/a477be03/image_02.png" alt><br><img src="/posts/a477be03/image_03.png" alt></p>
-</li>
-<li><p>Reference<br><a href="https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97" target="_blank" rel="noopener">https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cd579093/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/cd579093/" class="post-title-link" itemprop="url">linux logrotate</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 19:28:55 / 修改時間：19:29:18" itemprop="dateCreated datePublished" datetime="2021-08-25T19:28:55+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://linux.die.net/man/8/logrotate" target="_blank" rel="noopener">https://linux.die.net/man/8/logrotate</a></p>
-<p><a href="https://ihower.tw/blog/archives/3565" target="_blank" rel="noopener">https://ihower.tw/blog/archives/3565</a><br><a href="https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html" target="_blank" rel="noopener">https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html</a><br><a href="https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/" target="_blank" rel="noopener">https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/</a><br><a href="http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/" target="_blank" rel="noopener">http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/</a><br><a href="https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/" target="_blank" rel="noopener">https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f, --force</span><br><span class="line">-v, --verbose</span><br><span class="line"></span><br><span class="line">logrotate -fv /etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/logrotate/status</span><br><span class="line">/etc/logrotate.conf</span><br><span class="line">/etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>/etc/logrotate.d裡的設定優先權比logrotate.conf高</li>
-<li>logrotate.conf單純是一個script，需要被執行，無法主動執行</li>
-<li>因為/etc/cron.daily/logrotate設定，因此logrotate.conf被執行的最短周期是一天</li>
-</ol>
-
       
     </div>
 
@@ -873,7 +860,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">216</span>
+          <span class="site-state-item-count">218</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
