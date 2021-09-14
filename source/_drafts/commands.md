@@ -5,6 +5,11 @@ tags:
 ---
 * BBU 成功啟動後，跟 5GC 的連線狀態
 ```
+中心頻
+7800: 3352260
+7801: 3749700(100M)/3749160(30M)
+7901: 4849860
+
 $ netstat -anSlp
 Active Internet connections (servers and established)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
@@ -44,6 +49,8 @@ ip link set enp97s0f0 vf 0 vlan 2
 ip link set enp97s0f0 vf 1 vlan 1
 ip link set enp97s0f0 vf 0 mac 00:11:22:33:44:66
 ip link set enp97s0f0 vf 1 mac 00:11:22:33:44:66
+
+* 錄 eCPRI of cu-plane
 echo add 1,2 > /sys/class/net/enp97s0f0/device/sriov/2/vlan_mirror
 ifconfig enp97s2f2 up
 ifconfig enp97s2f2 9000
