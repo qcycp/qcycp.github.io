@@ -1,5 +1,6 @@
 ---
 title: link
+abbrlink: 36ac99f1
 tags:
 ---
 elasticsearch

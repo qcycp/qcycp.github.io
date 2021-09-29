@@ -1,5 +1,6 @@
 ---
 title: flask_shell
+abbrlink: 8623ed20
 date: 2021-08-31 11:54:08
 categories:
 tags:
