@@ -9,4 +9,4 @@ tags:
 editcap.exe -c frame_size old_file new_files
 
 2. 使用 tcpdump
-tcpdump -r old_file -w new_files -c frame_size
+tcpdump -r old_file -w new_files -C file_size(MB)

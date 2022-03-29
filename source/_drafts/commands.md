@@ -205,3 +205,14 @@ brctl addif eth1
 sftp ecs_scm@10.60.6.30
 
  yum install bridge-utils
+
+
+echo 1 > /sys/bus/pci/devices/0000:51:00.0/reset
+cd /a/users/dpengoria/dockerFiles/dpdk-19.11/usertools/
+./dpdk-devbind.py -u 0000:51:00.0
+./dpdk-devbind.py -b igb_uio 0000:51:00.0
+cd /a/users/dpengoria/dockerFiles/dpdk-19.11/app
+./test-bbdev/test-bbdev.py -c validation -n 64 -b 1 -i -v test-bbdev/test_vectors/ldpc_dec_v7813.data
+
+cd FlexRAN
+ ./misc/bbdev_config_service/config_bbdev ACC100 -c misc/bbdev_config_service/acc100/acc100_config_5g.cfg

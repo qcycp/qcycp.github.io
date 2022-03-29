@@ -76,3 +76,11 @@ exe = EXE(pyz,
           runtime_tmpdir=None,
           console=False , icon='D:\\FaceDetection\\data\\fd.ico')
 ```
+
+* Trouble Shooting
+![](image01.png)
+https://stackoverflow.com/questions/37815371/pyinstaller-failed-to-execute-script-pyi-rth-pkgres-and-missing-packages
+```
+pip uninstall pyinstaller
+pip install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+```
