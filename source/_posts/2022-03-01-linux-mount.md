@@ -32,6 +32,7 @@ sdb               8:16   1  58.9G  0 disk
 ```
 * mount
 ```
+[root@gnb ~]# mkdir /mnt/usb
 [root@gnb ~]# mount /dev/sdb1 /mnt/usb
 [root@gnb ~]# lsblk
 NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT

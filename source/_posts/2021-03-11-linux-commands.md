@@ -439,3 +439,6 @@ sudo dpkg-reconfigure tzdata
 top -p `pgrep -d "," monitor.sh`
 top -p pid
 ```
+
+50. replace
+:%s/target/replace/g => 將 target 全部取代成 replace

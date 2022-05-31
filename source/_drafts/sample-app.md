@@ -125,3 +125,37 @@ o-du 中的 compression mode，原本 hard code 是沒有壓縮的
          struct xran_prb_map* pRbMap;
          pRbMap = &startupConfiguration.PrbMapDl;
 ```
+#### TroubleShooting about antNum 不能設 1
+```
+in /opt/dpdk-20.11/lib/librte_mempool/rte_mempool.c
+  45 #define CACHE_FLUSHTHRESH_MULTIPLIER 1.5
+  46 #define CALC_CACHE_FLUSHTHRESH(c)       \
+  47         ((typeof(c))((c) * CACHE_FLUSHTHRESH_MULTIPLIER))
+
+ 817         /* asked cache too big */
+ 818         if (cache_size > RTE_MEMPOOL_CACHE_MAX_SIZE ||
+ 819             CALC_CACHE_FLUSHTHRESH(cache_size) > n) {
+ 820                 rte_errno = EINVAL;
+ 821                 return NULL;
+ 822         }
+
+lib/ethernet/ethernet.h:50:#define MBUF_CACHE 256
+n 指的是 nNumberOfBuffers = XRAN_N_FE_BUF_LEN*xran_max_antenna_nr*XRAN_NUM_OF_SYMBOL_PER_SLOT*xran_max_sections_per_slot*XRAN_MAX_FRAGMENT
+                         =  20*xran_max_antenna_nr*14*1*1
+```
+```
+in /xran/lib/src/xran_mem_mgr.c
+ 88     pXranCc->p_bufferPool[pXranCc->nBufferPoolIndex] = rte_pktmbuf_pool_create(pool_name, nNumberOfBuffers,
+ 89                                                                                MBUF_CACHE, 0, nAllocBufferSize, rte_socket_id());
+
+in /xran/app/src/app_io_fh_xran.c
+ 361         status = xran_bm_init(psBbuIo->nInstanceHandle[o_xu_id][i], &psBbuIo->nBufPoolIndex[o_xu_id][nSectorIndex[i]][eInterfaceType],
+ 362             XRAN_N_FE_BUF_LEN*xran_max_antenna_nr*XRAN_NUM_OF_SYMBOL_PER_SLOT*xran_max_sections_per_slot*XRAN_MAX_FRAGMENT, sizeof(struct xran_section_desc));
+
+當 antNum = 1, nNumberOfBuffers = 280
+當 antNum = 2, nNumberOfBuffers = 560
+當 antNum = 3, nNumberOfBuffers = 840
+當 antNum = 4, nNumberOfBuffers = 1120
+
+=> 所以當 antNum = 1, nNumberOfBuffers = 280 會造成 CALC_CACHE_FLUSHTHRESH(256) > 280
+```

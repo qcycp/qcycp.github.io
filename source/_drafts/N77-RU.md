@@ -3,6 +3,19 @@ title: N77_RU
 abbrlink: e019d11
 tags:
 ---
+```
+a. set SG Amplitude -32.7 dBm (- 2.3 cable loss - 35 = -70 dBm per RE), then get uplink demodulated I/Q rms = 15488
+b. set SG Amplitude -37.7 dBm (- 2.3 cable loss - 35 = -75 dBm per RE), then get uplink demodulated I/Q rms = 8724
+c. set SG Amplitude -42.7 dBm (- 2.3 cable loss - 35 = -80 dBm per RE), then get uplink demodulated I/Q rms = 4903
+
+20log(15488)=83.79991 => -70-83.79991=153.8
+20log(8724)=78.814 => -75-78.814=153.8
+20log(4903)=73.809 => -80-73.809=153.8
+=> scaler = -153.8
+
+suppose that now we have -85 dBm per RE
+=> 10^((-85 - (-153.8))/20) = 2754 rms
+```
 ## ENG mode
 * install eng
 ```

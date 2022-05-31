@@ -9,6 +9,8 @@ tags:
 3. 最好應該是要有一個 script ，透過 netconf client 去設定 RU
 4. 所有設定 OK ，要透過 M-plane replace /user-plane-configuration/tx-array-carriers/active 成 active Mode ,  此時才會帶起 ./init_rrh_config_enable_cuplane
 
+./set_oam_mode -e 192.167.27.49
+這樣就是手動指定oam IP
 
 # yangcli-pro
 

@@ -98,3 +98,19 @@ https://wenku.baidu.com/view/435615fed4d8d15abe234ed6.html?re=view
 https://www.ieee802.org/1/files/public/docs2012/new-tc-messenger-tc-ptp-forwarding-1112-v02.pdf
 https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/system_management/configuration/guide/b_Cisco_Nexus_9000_Series_NX-OS_System_Management_Configuration_Guide_7x/b_Cisco_Nexus_9000_Series_NX-OS_System_Management_Configuration_Guide_7x_chapter_0100.pdf
 https://www.juniper.net/documentation/us/en/software/junos/time-mgmt/topics/concept/ptp-over-ethernet-configuration-guidelines.html
+
+解析通訊元件：由基頻、中頻、射頻零組件讓你一次看懂手機晶片
+https://www.moneydj.com/kmdj/news/newsviewer.aspx?a=c5265d2c-eaab-4b3c-a58d-7a8630a46d24
+
+AM、FM差在哪？
+https://www.ettoday.net/dalemon/post/40410
+
+解析通訊技術：3G、4G、5G 背後的科學意義
+https://technews.tw/2015/10/06/3g%E3%80%814g%E3%80%815g-meaning/
+https://technews.tw/2015/10/12/3g%E3%80%814g%E3%80%815g-meaning-part-two/
+
+瞭解無線設計中的低雜訊和功率放大器基礎知識
+https://www.digikey.tw/zh/articles/understanding-the-basics-of-low-noise-and-power-amplifiers-in-wireless-designs
+
+ORAN专题系列-8：5G O-RAN 分体式小基站Option8硬件白盒化的参考架构
+https://blog.csdn.net/HiWangWenBing/article/details/106877671
