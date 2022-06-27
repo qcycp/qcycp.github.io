@@ -1,5 +1,6 @@
 ---
 title: gdb_coredump
+abbrlink: ed619d22
 date: 2022-05-31 21:00:48
 categories:
 tags:
@@ -74,4 +75,5 @@ Missing separate debuginfos, use: debuginfo-install glibc-2.17-324.el7_9.x86_64
 # backtrace
 ```
 (gdb) bt
+#0 0x00000000004004ce in main () at test.c:6
 ```

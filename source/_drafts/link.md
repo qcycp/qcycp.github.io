@@ -114,3 +114,99 @@ https://www.digikey.tw/zh/articles/understanding-the-basics-of-low-noise-and-pow
 
 ORAN专题系列-8：5G O-RAN 分体式小基站Option8硬件白盒化的参考架构
 https://blog.csdn.net/HiWangWenBing/article/details/106877671
+
+
+https://picture.iczhiku.com/resource/eetop/WyiTZGYWuSzzYXxb.pdf
+
+每日頭條 - 技術文章
+https://kknews.cc/code/
+
+Rust by Example
+https://doc.rust-lang.org/rust-by-example/index.html
+
+The Rust Programming Language
+https://doc.rust-lang.org/book/title-page.html
+
+教學網站
+https://www.runoob.com/
+
+5G NR - 参考信号(Reference Signal)学习笔记2 - Antenna Port(天线端口)的概念
+https://zhuanlan.zhihu.com/p/381267548
+
+O-RAN – Radio Unit (O-RU) Reference Architecture
+https://www.techplayon.com/o-ran-open-radio-unit-o-ru-reference-architecture/
+
+pf-bb-config
+https://github.com/intel/pf-bb-config/tree/v21.11
+
+5G/NR 隨機接入過程學習總結
+https://www.twblogs.net/a/5cee70b4bd9eee08f69baf2d
+
+SINR-Signal to Interference and Noise Ratio
+https://zhuanlan.zhihu.com/p/348082328
+
+5G NR调制阶数与EVM关系以及对系统SNR要求分析
+https://www.mwrf.net/tech/tm/2020/27492.html
+
+EVM和SNR的关系
+https://blog.csdn.net/qq_45644621/article/details/108006686
+
+NR/5G - Timing Advance
+https://blog.csdn.net/kakamilan/article/details/107167512
+https://www.firbug.com/a/202109/1067366.html
+
+What is DPD and CFR; how to improve the PA Efficiency in O-RAN Radio Unit (O-RU); Digi predistortion
+https://www.youtube.com/watch?v=wvWy-wm66Pw
+http://chenweixiang.github.io/2020/06/29/dpd.html
+http://chenweixiang.github.io/docs/Practical_Digital_Pre-Distortion_Techniques_for_PA_Linearization_in_3GPP_LTE.pdf
+https://www.litepoint.com/wp-content/uploads/2018/12/Adaptive-DPD-Tech-Specs-050917.pdf
+https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_application/application_notes/1ef99/1EF99_Iterative_Direct_DPD_1e.pdf
+https://blog.csdn.net/HiWangWenBing/article/details/112253225
+https://bbs.elecfans.com/jishu_2102255_1_1.html
+
+5G NR PDCCH
+https://blog.csdn.net/m0_45416816/article/details/99962825
+
+Exploring 5G — Synchronization signals
+https://medium.com/@anurag786/exploring-5g-synchronization-signals-26017112d578
+
+3GPP LTE TDD BTS Measurement
+https://dl.cdn-anritsu.com/en-us/test-measurement/files/Application-Notes/Application-Note/MG3700A_MS269xA_EF3100.pdf
+
+5G NR Sub-6 GHz Measurement Methods
+https://dl.cdn-anritsu.com/en-en/test-measurement/files/Application-Notes/Application-Note/ms2850a-5gnr-ef1200.pdf
+
+Bash 程式設計教學：開啟 TCP/UDP Socket 網路連線
+https://blog.gtwang.org/programming/bash-tutorial-open-tcp-udp-socket/
+
+Linux tee 同時螢幕標準輸出和輸出到檔案用法與範例
+https://shengyu7697.github.io/linux-tee/
+
+On the Phase Tracking Reference Signal (PT-RS) Design for 5G New Radio (NR)
+https://arxiv.org/ftp/arxiv/papers/1807/1807.07336.pdf
+
+5G New Radio: Introduction to the Physical Layer
+http://www.digitimes.com.tw/seminar/ni_20180627/5G.pdf
+
+如何用星座圖偵錯數位通訊系統
+http://alberthuang314.blogspot.com/2012/11/blog-post_7404.html
+
+5G
+https://so.csdn.net/so/search?spm=1001.2101.3001.4498&q=4G%265G%E4%B8%93%E9%A2%98-&t=&u=
+https://iot-book.github.io/2_%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/S1_%E4%BF%A1%E5%8F%B7%E7%9A%84%E5%8F%91%E9%80%81%E5%92%8C%E6%8E%A5%E6%94%B6/
+https://medium.com/@wild_melophile/5g-new-radio-physical-downlink-control-channel-nr-pdcch-6612979fb296
+https://platoco.pixnet.net/blog/post/362765979-%E3%80%90%E4%BF%A1%E8%99%9Fiq%E5%9C%96%E3%80%91fsk_ask_psk_qam-%E7%9A%84-iq-%E6%98%9F%E5%BA%A7%E5%9C%96
+
+无线通信中的SNR和SINR
+https://zhuanlan.zhihu.com/p/360454622
+https://kknews.cc/zh-tw/education/6r2qvqq.html
+https://baike.baidu.hk/item/SINR/5821731
+https://read01.com/zh-tw/4G2K43Q.html#.YqxwNqhByUl
+https://zhuanlan.zhihu.com/p/360454622
+https://kezeodsnx.pixnet.net/blog/post/37891509
+
+Communication - Impulse Response
+https://www.sharetechnote.com/html/Communication_ImpulseResponse.html
+
+OFDM 原理与标准——通信技术的演进
+http://www.wenqujingdian.com/Public/editor/attached/file/20180428/20180428085827_21477.pdf
