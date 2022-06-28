@@ -12,3 +12,5 @@ tags:
 進到C:\PycharmProjects\project_name\venv\Scripts內
 執行activete
 執行pip install TA_Lib‑0.4.17‑cp36‑cp36m‑win_amd64.whl
+
+[Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/)

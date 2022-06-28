@@ -487,3 +487,310 @@ link
 function callback in Asynctask
 ===
 [java - Android: pass function reference to AsyncTask - Stack Overflow](https://stackoverflow.com/questions/26202568/android-pass-function-reference-to-asynctask)
+
+hexo blog
+https://wangjiezhe.com/posts/2018-10-29-Hexo-NexT-2/
+https://ppundsh.github.io/posts/3e4b/
+https://magic-panda-engineer.github.io/Hexo/hexo-next-recent-article-area
+https://jerryc.me/
+http://ibruce.info/2013/11/22/hexo-your-blog/
+https://qiming.info/Hexo博客中加入代码块复制功能/
+
+https://hexo.io/plugins/index.html
+
+https://zhuanlan.zhihu.com/p/33616481
+http://wangwlj.com/
+https://allen-hsu.github.io/categories/
+http://chensd.com/archives/
+https://shengyu7697.github.io/blog/
+http://jianyee.cn/
+
+https://joryhe.github.io/archives/
+
+https://io-oi.me/tech/hexo-next-optimization/
+
+
+[你真的了解 WebSocket 吗?](http://python.jobbole.com/88207/)
+
+[mcache及其telnet命令使用详解](https://jony-hwong.iteye.com/blog/1174985)
+
+[Flask-Login 使用和进阶](https://www.centos.bz/2017/09/flask-login-使用和进阶/)
+
+[精读《REST, GraphQL, gRPC 如何选型》](https://zhuanlan.zhihu.com/p/44140864)
+
+[MyLogger.py](https://gist.github.com/huklee/cea20761dd05da7c39120084f52fcc7c)
+
+[构建高效的python requests长连接池](http://xiaorui.cc/2017/04/03/构建高效的python-requests长连接池/)
+
+[Python Requests](https://2.python-requests.org//zh_CN/latest/api.html)
+
+[再看 try、raise](https://openhome.cc/Gossip/Python/TryRaise.html)
+
+[MySQL指令大全](http://aa1218bb.pixnet.net/blog/post/12109430-mysql指令大全)
+
+[讓requests保持keep-alive ＆ 利用requests.get抓取資料](https://cutejaneii.wordpress.com/2018/06/13/python-23-讓requests保持keep-alive-＆-利用requests-get抓取資料/)
+
+[logging — Logging facility for Python](https://docs.python.org/3/library/logging.html#formatter-objects)
+
+[Python logging 教學](https://zwindr.blogspot.com/2016/08/python-logging.html)
+
+[Database Transaction第一話: ACID](http://karenten10-blog.logdown.com/posts/192629-database-transaction-1-acid)
+
+[Nginx 配置檔案 nginx.conf 詳解](https://codertw.com/程式語言/188639/)
+
+[nginx强制下载txt文件，nginx禁止浏览器直接打开txt文件](http://www.02405.com/soft/linux/1707.html)
+
+[Use Commit and Rollback to Manage MySQL Transactions in Python](https://pynative.com/python-mysql-transaction-management-using-commit-rollback/)
+
+[Nginx as reverse proxy for a flask app using Docker](https://dev.to/ishankhare07/nginx-as-reverse-proxy-for-a-flask-app-using-docker-3ajg)
+
+[Deploying Flask Apps Easily with Docker and Nginx](https://ianlondon.github.io/blog/deploy-flask-docker-nginx/)
+
+[Coverage.py](https://coverage.readthedocs.io/en/latest/config.html)
+
+[python pytest测试框架介绍二](https://www.cnblogs.com/landhu/p/7462221.html)
+
+[pytest自定义程序运行顺序](https://blog.csdn.net/baidu_37837739/article/details/84492509)
+
+[pytest](https://pytest-cov.readthedocs.io/en/latest/config.html)
+
+[Terminate multi process/thread in Python correctly and gracefully](https://cuyu.github.io/python/2016/08/15/Terminate-multiprocess-in-Python-correctly-and-gracefully)
+
+[UDP Communication](https://wiki.python.org/moin/UdpCommunication)
+
+[Python2 用 socket 建立 TCP Server / Client – 筆記](https://shazi.info/python2-用-socket-建立-tcp-server-client-筆記/)
+
+[User Datagram Client and Server](https://pymotw.com/2/socket/udp.html)
+
+[Is there a WebSocket client implemented for Python?](https://stackoverflow.com/questions/3142705/is-there-a-websocket-client-implemented-for-python)
+
+[Flask Test Client - GET / POST examples](https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/)
+
+[Python Web 入坑指南](https://python-web-guide.readthedocs.io/zh/latest/)
+
+[Python 算法与数据结构视频教程](https://python-data-structures-and-algorithms.readthedocs.io/zh/latest/)
+
+[Running MySQL server as foreground on Ubuntu with Dockerfile](http://www.inanzzz.com/index.php/post/w4i9/running-mysql-server-as-foreground-on-ubuntu-with-dockerfile)
+
+[The Flask Mega-Tutorial Part IV: Database](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database)
+
+[Tutorial - Track Down Memory Leaks](https://pythonhosted.org/Pympler/tutorials/muppy_tutorial.html)
+
+[淺談coroutine與gevent](http://blog.ez2learn.com/2010/07/17/talk-about-coroutine-and-gevent/)
+
+[Using gevent monkey patching with threading makes thread work serially
+](https://stackoverflow.com/questions/9192539/using-gevent-monkey-patching-with-threading-makes-thread-work-serially)
+
+[gevent.monkey – Make the standard library cooperative](http://www.gevent.org/api/gevent.monkey.html)
+
+[Evenlet的基础greenlet](https://fanchao01.github.io/blog/2015/12/14/openstack-eventlet/)
+
+[Flask-SocketIO eventlet cannot switch to a different thread
+](https://stackoverflow.com/questions/36385286/flask-socketio-eventlet-cannot-switch-to-a-different-thread)
+
+[“What Does It Take To Be A Python Expert?”](https://medium.com/@mozesr/pydata17-what-does-it-take-to-be-an-expert-at-python-198f19cd2b)
+
+
+[MySQL Log logrotate 设置](http://ezkuan.blogspot.com/2010/07/mysql-log-logrotate.html)
+
+[MySQL / MariaDB 用 logrotate 替 Log 記錄檔輪替](https://www.opencli.com/mysql/mysql-mariadb-logrotate)
+
+[centurylink/mysql](https://hub.docker.com/r/centurylink/mysql)
+
+[MySql優化之my.ini配置](https://www.itread01.com/p/1410596.html)
+
+[icon](https://icons8.com/icons/ios)
+
+apidoc
+https://github.com/cangmean/flask-apidoc
+https://github.com/kwkwc/flask-docs
+https://github.com/ipconfiger/flask-apidoc
+https://www.cnblogs.com/dyfblog/p/8745954.html
+https://pypi.org/project/flask-apidoc/
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/359941/
+https://blog.csdn.net/lynnyq/article/details/79254290
+https://segmentfault.com/a/1190000015653976
+https://www.jianshu.com/p/0a9d22cdb281
+https://github.com/cangmean/flask-apidoc
+https://github.com/viniciuschiele/flask-apidoc/tree/master/example
+http://apidocjs.com/
+https://easonwang01.gitbooks.io/class/restful-api-api.html
+https://www.itread01.com/content/1545649596.html
+https://huangwenchao.gitbooks.io/swagger/content/
+
+
+
+
+MySQL
+https://www.dbrnd.com/2016/02/mysql-script-to-identify-the-locks-and-blocking-transactions/
+https://openhome.cc/Gossip/HibernateGossip/IsolationLevel.html
+https://blog.gslin.org/archives/2015/09/18/5989/%E5%BE%9E%E9%A0%AD%E5%AD%B8%E4%B8%80%E6%AC%A1-isolation-level-%E7%9A%84-repeatable-read-%E8%88%87-serializable/
+https://juejin.im/post/58a9562a128fe1006cc68304
+http://hedengcheng.com/?p=844
+https://www.itread01.com/p/1207400.html
+https://stackoverflow.com/questions/36547173/error-code-1205-lock-wait-timeout-exceeded-try-restarting-transaction-on-de?rq=1
+http://www.ajopaul.com/2016/03/10/mysql-fix-for-error-code-1205-lock-wait-timeout-exceeded-try-restarting-transaction/
+https://www.itread01.com/p/1129945.html
+https://mool.pixnet.net/blog/post/25219480-mysql-processlist-%E4%B8%80%E5%A4%A7%E5%A0%86sleep-
+
+
+
+Flask
+http://polyglot.ninja/rest-api-best-practices-python-flask-tutorial/
+https://hackersandslackers.com/demystifying-flask-application-factory/
+https://www.reddit.com/r/Python/comments/bqmdre/flask_best_practices_a_repeatable_pattern_to/
+http://exploreflask.com/en/latest/organizing.html
+https://www.fullstackpython.com/flask.html
+https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-applications
+
+Kafka
+https://kafka-python.readthedocs.io/en/master/usage.html
+https://stackoverflow.com/questions/35218578/flask-pulling-the-live-stream-kafka-data-integrating-kafka-with-python-flask
+https://thatcoder.space/getting-started-with-kafka-and-node-js-with-example/
+https://kafka.apache.org/quickstart
+https://medium.com/@patelharshali136/apache-kafka-tutorial-kafka-for-beginners-a58140cef84f
+
+
+BigData
+https://docs.microsoft.com/zh-tw/azure/hdinsight/hadoop/apache-hadoop-introduction
+https://blog.tibame.com/?p=1752
+https://buzzorange.com/techorange/2013/06/04/7-myths-on-big-data-avoiding-bad-hadoop-and-cloud-analytics-decisions/
+https://jelvix.com/blog/top-5-big-data-frameworks
+https://blog.csdn.net/wsp_1138886114/article/details/82964639
+https://blog.csdn.net/ppp8300885/article/details/71078555
+
+[微服務架構 #4, 如何強化微服務的安全性? API Token / JWT 的應用](https://columns.chicken-house.net/2016/12/01/microservice7-apitoken/)
+
+[Flask设置返回json格式数据](https://www.polarxiong.com/archives/Flask设置返回json格式.html)
+
+[Docker Client](https://docker-py.readthedocs.io/en/stable/client.html)
+
+[Docker-client for python使用指南](https://www.jianshu.com/p/db6614a4894e)
+
+[docker/docker-py](https://github.com/docker/docker-py)
+
+[Python staticmethod 和classmethod](https://kknews.cc/zh-tw/news/j6ljo5l.html)
+
+
+http://www.wklken.me/posts/2015/03/03/python-base-datetime.html
+
+http://www.sqlitetutorial.net/sqlite-python/create-tables/
+
+http://tw.gitbook.net/sqlite/sqlite_python.html
+
+http://www.sqlitetutorial.net/sqlite-python/sqlite-python-select/
+
+https://docs.python.org/3/library/sqlite3.html
+
+https://docs.python.org/2/library/sqlite3.html
+
+https://blog.gtwang.org/linux/docker-commands-and-container-management-tutorial/
+
+http://danml.com/download.html
+
+https://www.jianshu.com/p/34dc252b5950
+
+https://anyisalin.github.io/2017/03/12/python-multithread/
+
+https://hackingthelibrary.org/posts/2018-02-09-code-coverage/
+
+https://testerhome.com/topics/10119
+
+https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/
+
+http://flask.pocoo.org/docs/1.0/testing/
+
+https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/
+
+https://hub.docker.com/r/jrandall/docker-ubuntu-python-pip/dockerfile
+
+https://hub.docker.com/r/sabbir1cse/ubuntu-python-pip-supervisor
+
+https://www.truemovie.com/tairelease2018.htm
+
+http://technology-sea.blogspot.com/2012/02/python-code-coverage.html
+
+http://codingpy.com/article/an-intro-to-coveragepy/
+
+https://www.zhihu.com/question/24590883
+
+
+
+python - cvs file handler
+https://kirin.idv.tw/python-csv-chinese-utf8/
+
+flask
+http://slides.skien.cc/flask-hacks-and-best-practices/#1
+[Awesome Flask](https://github.com/humiaozuzu/awesome-flask)
+
+[flaskbb](https://github.com/flaskbb/flaskbb)
+
+[SkyLines](https://github.com/skylines-project/skylines)
+
+[flaskblog](https://github.com/defshine/flaskblog)
+
+[overholt](https://github.com/mattupstate/overholt)
+
+[A team blog](https://github.com/laoqiu/pypress)
+
+[todo-backend-flask](https://github.com/Faerbit/todo-backend-flask)
+
+[flask-website](https://github.com/pallets/flask-website/tree/master/flask_website)
+
+[One Love](https://github.com/one-love/backend)
+
+[personal-backend](https://github.com/MycroftAI/personal-backend/tree/master/personal_mycroft_backend)
+
+
+https://kuanyui.github.io/2016/07/03/python-metaclass/
+
+
+
+multioe=rocessing
+manager
+
+https://woj.app/4619.html
+https://towardsdatascience.com/10x-faster-parallel-python-without-python-multiprocessing-e5017c93cce1
+http://xiaorui.cc/2016/01/17/python%E4%B8%8Bmultiprocessing%E5%92%8Cgevent%E7%9A%84%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8/
+https://my.oschina.net/visualgui823/blog/36987
+https://groups.google.com/forum/#!topic/gevent/Q5hBEGf2WL4
+https://stackoverflow.com/questions/3671666/sharing-a-complex-object-between-python-processes
+https://pymotw.com/2/multiprocessing/communication.html
+https://softlns.github.io/2015/11/28/python-gevent/
+https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/363107/
+http://mysql.taobao.org/monthly/2017/05/04/
+https://www.cnblogs.com/kerrycode/p/9075214.html
+https://www.itread01.com/articles/1476491713.html
+
+
+python
+https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html
+
+
+good blog
+===
+
+[ihower { blogging }](https://ihower.tw/blog/posts)
+
+[Slark coding and thinking](http://slark.info/archives/)
+
+[前端、後端、全端工程師 核心技能比一比](https://tw.alphacamp.co/blog/2018-07-20-18464)
+
+[後端工程師面試必看，我該準備什麼作品集？](https://tw.alphacamp.co/blog/backend-engineer-job-winning-portfolio)
+
+[01-Studio](https://blog.lycheng.xyz/)
+
+[搞企劃](https://blog.planism.com/)
+
+https://blog.niclin.tw/2019/08/26/how-to-be-a-bad-developer/
+
+https://www.ez2o.com/Blog/Post/Web-Design-9-Tools
+
+https://note.qidong.name/tags/
+
+https://medium.com/hulis-blog
+
+https://blog.frognew.com/
+
+[Max行銷誌](https://www.maxlist.xyz/)
+

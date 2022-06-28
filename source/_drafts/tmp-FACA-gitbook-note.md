@@ -1,0 +1,178 @@
+---
+title: tmp_FACA_gitbook_note
+tags:
+---
+1. webhook
+2. custom hooks
+   a. local hook
+   b. server hook
+      - for a repository
+      - for all repositories
+
+
+https://docs.gitlab.com/ee/administration/custom_hooks.html
+2a.
+cd project
+hook檔案在.git/hooks/
+
+2b.
+login to the server which setup gitlab
+10.36.94.101/faca/123456
+
+cd /var/opt/gitlab/git-data/repositories/SI/wrapper.git
+可以看到所有的prject中的default hooks均設定到同一個地方
+hooks ->   /opt/gitlab/embedded/service/gitlab-shell/hooks
+
+- for a repository
+在個別的project目錄下，建立custom_hooks目錄
+for linux based gitlab: /var/opt/gitlab/git-data/repositories/SI/kangaroo.git
+cd /var/opt/gitlab/git-data/repositories/@hashed/d4/73/d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35.git/
+mkdir custom_hooks
+建立hook files
+pre-receive
+post-receive
+update
+
+- for all repositories
+for linux based gitlab: /opt/gitlab/embedded/service/gitlab-shell/hooks/
+cd /opt/gitlab/embedded/service/gitaly-ruby/gitlab-shell/hooks
+修改
+pre-receive
+post-receive
+update
+
+remote: global pre-receive
+remote: local pre-receive
+remote: global update
+remote: local update
+remote: global post-receive
+remote: local post-receive
+
+
+  
+/opt/gitlab/embedded/service/gitlab-shell/hooks
+/opt/gitlab/embedded/service/gitlab-rails/doc/administration/custom_hooks.md
+/opt/gitlab/embedded/service/gitaly-ruby/gitlab-shell/hooks
+
+
+
+
+
+Backend project setup
+
+
+Testing setup
+
+
+gitlab hooks
+https://medium.com/sparkamplab/%E4%BD%BF%E7%94%A8-gitlab-issue-board-%E9%81%94%E6%88%90%E4%BB%BB%E5%8B%99%E8%88%87%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E8%A6%96%E8%A6%BA%E5%8C%96-%E4%B8%A6%E6%90%AD%E9%85%8D-webhook-%E6%89%93%E9%80%A0%E8%87%AA%E5%8B%95%E5%8C%96-kanban-5a05eab8603a
+
+
+client-side
+1. 安裝最新的git
+```bash
+$ git --version
+git version 2.7.4
+$ sudo add-apt-repository ppa:git-core/ppa
+$ sudo apt-get update
+$ sudo apt-get install git
+$ git --version
+git version 2.24.0
+$ git config core.hooksPath hooks
+```
+2. 在project root裡建立hooks folder
+3. 設定hooksPath
+```
+$ git config core.hooksPath hooks
+```
+
+--no-verify
+
+
+
+server-side pre-receive
+```
+#!/bin/bash
+
+echo "start pre-receive checking..."
+
+check_commits()
+{
+    local base=$1
+    local new=$2
+    local i=0
+
+    #filter merge request
+    #the number of "parent" is more than 1 if it is a merge request commit
+    local count=$(git cat-file -p $new | grep parent | wc -l)
+    if [ "$count" -eq 2 ] ; then
+        echo "merge request: $new"
+        exit 0
+    fi
+
+    if echo $base | grep -q '^0\+$' ; then
+        #local commit_ids=$(git rev-list $new)
+        local commit_ids=$new
+    else
+        local commit_ids=$(git rev-list $base..$new)
+    fi
+
+    for commit_id in $commit_ids ; do
+        i=$((i + 1))
+        echo -e "\ncommit: $commit_id is checking..."
+        local gitmessage=$(git rev-list --format=%B --max-count=1 $commit_id | sed '1d')
+
+        # normal message sample
+        #[What] add adminer tool
+        #[Why] It's more convinence to access database
+        #[How] Install and start server by docker-compose.yml
+
+        #[Test Result] Passed: 0, Failed: 0, Error: 0
+        #[Test Coverage] 87.54%
+
+        # revert message sample
+        #Revert "test commit"
+        #
+        #This reverts commit 7d9a8c59e01a86c614da9af632c2b4392bf91dff.
+
+        #skip checking revert commit
+        local revert=$(echo $gitmessage | grep "This reverts")
+        if [ -z "$revert" ] ; then
+
+            local messagecheck=$(echo $gitmessage | grep What | grep Why | grep How)
+            if [ -z "$messagecheck" ] ; then
+                echo "error: commit message does not contain What, Why, How"
+                exit 1
+            fi
+
+            local testingcheck=$(echo $gitmessage | grep "Test Result" | grep "Test Coverage")
+            if [ -z "$testingcheck" ] ; then
+                echo "error: unit test is not running locally before push to server"
+                exit 1
+            fi
+        fi
+        echo "done"
+    done
+}
+
+main()
+{
+    #Old object name stored in the ref. When you create a new ref, this equals 40 zeroes.
+    #New object name to be stored in the ref. When you delete a ref, this equals 40 zeroes.
+
+    while read old new ref ; do
+        if echo $new | grep -q '^0\+$' ; then
+            echo "delete operation"
+            exit 0
+        fi
+
+        check_commits $old $new
+    done
+}
+
+main
+```
+
+https://blog.chengweichen.com/2016/04/docker-gitlab-cigitlab-runner.html
+https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+
