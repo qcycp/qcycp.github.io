@@ -206,3 +206,8 @@ http://davytw.pixnet.net/blog/post/52335724-%E8%81%B7%E5%A0%B4%E5%B8%B8%E7%94%A8
 我很感激​​你對這件事情的理解…
 100. Please convey my thanks to all the staff involved, they certainly did an excellent job.
 請表達我的謝意給那些有關的同仁,他們真的干得很好…
+
+英文金句
+===
+
+I really don’t know how to tell you how to choose yourself, but I can walk you through the sequence that I went through. 

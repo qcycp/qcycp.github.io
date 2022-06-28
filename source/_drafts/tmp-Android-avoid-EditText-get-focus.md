@@ -29,3 +29,13 @@ EditText會取得focus，使得InputManager自動顯示
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true" >
 ```
+
+避免進入Activity後 EditText自動取得focus
+===
+在layout中，加入以下代碼在非EditText的欄位中
+就可以將focus設定在該元件上，而不會在EditText上了
+
+```xml
+android:focusable="true"
+android:focusableInTouchMode="true"
+```

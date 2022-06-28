@@ -12,3 +12,13 @@ git clone https://github.com/opencv/opencv.git
 
 2. download opencv extra module  
 [GitHub - opencv/opencv_contrib: Repository for OpenCV's extra modules](https://github.com/opencv/opencv_contrib)
+
+
+[[Android] Android Studio OPENCV 安裝步驟 @ Saioyan梟夜 :: 痞客邦 ::](http://kk665403.pixnet.net/blog/post/403248824-%5Bandroid%5D-android-studio-opencv-%E5%AE%89%E8%A3%9D%E6%AD%A5%E9%A9%9F)
+
+```java
+//load native library: libopencv_java3.so
+    static {
+        System.loadLibrary("opencv_java3");
+    }
+```

@@ -32,3 +32,23 @@ hh_imfr exited with code 1
 rm /usr/bin/python && \
 ln -s /usr/bin/python3.6 /usr/bin/python && \
 ```
+
+supervisor
+===
+進程管理工具
+可以用來設定要執行的程式
+
+Supervisord requires processes not to run as daemons
+Supervisor只能管理在前台運行的程序，所以如果應用程序有後台運行的選項，需要關閉
+
+配置 nodaemon=true
+將supervisor在前台運行，默認輸出扔给 docker
+默認为false，設定為false的會將supervisor在後台以守護進程運行
+
+
+http://supervisord.org/running.html
+http://liyangliang.me/posts/2015/06/using-supervisor/
+http://chenxiaoyu.org/2017/12/12/docker-supervisord-tips/
+https://www.restran.net/2015/10/04/supervisord-tutorial/
+http://blog.51cto.com/lixcto/1539136
+https://www.jianshu.com/p/2a48b2c987e0

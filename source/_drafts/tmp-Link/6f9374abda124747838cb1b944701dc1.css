@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Action_Man;
+	src: local('Action_Man'), url('../font/Action_Man.ttf');
+}
+
+@font-face {
+  font-family: 'SetoFont';
+  src: url('../font/SetoFont.ttf');
+}
+
+@font-face {
+  font-family: 'cwtexyen';
+  src: url('../font/cwTeXYen-zhonly.ttf');
+}
+
+.MarqueeBlock{
+	font-family: Action_Man, SetoFont;
+	font-size: 130px;
+    -webkit-text-stroke: 2px black;
+    color: white;
+    text-shadow:
+        5px 5px 0 #555,
+      -1px -1px 0 #555,  
+       1px -1px 0 #555,
+       -1px 1px 0 #555,
+        1px 1px 0 #555;
+	/*
+	color: #D50;
+	text-shadow: 2px 4px #FFF;
+	*/
+}
+
+ul.marquee {
+	/* required styles */
+	display: block;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	line-height: 1;
+	position: relative;
+	overflow: hidden;
+
+	/* optional styles for appearance */
+	width: 1080px;
+	height: 180px; /* height should be included to reserve visual space for the marquee */
+
+	/*
+	background-color: #f2f2ff;
+	border: 1px solid #08084d;
+	*/
+}
+
+ul.marquee li {
+	/* required styles */
+	position: absolute;
+	top: -999em;
+	left: 0;
+	display: block;
+	white-space: nowrap; /* keep all text on a single line */
+
+	/* optional styles for appearance */
+	/*font: 14px Arial, Helvetica, sans-serif;*/
+	padding: 3px 5px;
+}

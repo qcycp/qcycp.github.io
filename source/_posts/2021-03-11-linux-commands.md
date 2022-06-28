@@ -442,3 +442,16 @@ top -p pid
 
 50. replace
 :%s/target/replace/g => 將 target 全部取代成 replace
+
+51. service --status-all
+The output of service --status-all lists the state of services controlled by System V
+```
+* +: the service is running
+* -: the service is not running
+* ?: the service state cannot be determined (for some reason).
+```
+
+52. 設定service在開機後的的執行狀態
+$ update-rc.d redis-server enable
+$ update-rc.d redis-server disable
+$ update-rc.d redis-server defaults
