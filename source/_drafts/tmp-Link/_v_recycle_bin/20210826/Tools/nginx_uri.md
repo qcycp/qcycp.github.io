@@ -1,0 +1,46 @@
+會將/login rewrite 成/static/login.html
+```
+  root   /usr/share/nginx/html;
+  location /login {
+    rewrite '^/login$' /static/login.html;
+  }
+```
+
+會將/login導向/usr/share/nginx/html/static/login.html
+但這樣寫，會直接把login.html下載下來，而不是在browser中開啟
+```
+  location /login {
+      alias /usr/share/nginx/html/static/login.html;
+  }
+```
+
+會try下列三個路徑
+$uri => 嘗試/login => 失敗
+$uri/ => 嘗試/login/ => 因為index有設定，所以會導到 /login/index.html => 失敗
+/static/login.html => 成功
+最終會將/login開啟/static/login.html
+```
+  root   /usr/share/nginx/html;
+  location /login {
+    index index.html;
+    try_files $uri $uri/ /static/login.html;
+  }
+```
+
+如果没有指定root，nginx默認的root => /etc/nginx/html
+
+```
+location /login {
+  root   /usr/share/nginx/html;
+  index  index.html;
+}
+
+GET /login
+/usr/share/nginx/html/login is not found (2: No such file or directory)
+
+GET /login/
+/usr/share/nginx/html/login/index.html is not found (2: No such file or directory)
+```
+
+最後有斜線 => 指定目錄，然後會開啟index指定的預設檔案
+最後沒有斜線 => 指定檔案，所以會直接去開/login這個檔案

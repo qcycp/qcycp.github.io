@@ -1,0 +1,2 @@
+glocal variable，只要用不到了，一定要手動del，否則無法回收memory
+反之，function variable出了lifecycle就交由系統處理就好

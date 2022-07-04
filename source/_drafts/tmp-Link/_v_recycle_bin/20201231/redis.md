@@ -1,0 +1,178 @@
+redis
+===
+1. redis-client
+https://github.com/rgl/redis/downloads
+
+2. redis-server
+sudo apt-get install redis-server
+sudo apt-get purge --auto-remove redis-server
+
+3. Instruction
+* Start/Stop Redis server
+  $ sudo service redis-server start
+  $ sudo service redis-server restart
+  $ sudo service redis-server stop
+
+* Open Redis CLI tool
+  $ redis-cli
+  $ redis-cli -h redis15.localnet.org -p 6379 ping
+
+* Config
+  $ sudo vim /etc/redis/redis.conf
+  port：連結到Redis Server所通過的連接埠。預設為6379，如果有跟其他服務衝突到，應該要修改掉。
+  bind：連結到Redis Server所使用的網路介面。預設為127.0.0.1，也就是內部迴圈(lo)，僅本機可以直接連接。
+  requirepass：連結到此Redis Server所需的密碼。
+
+  修改bind設定
+  $ sudo vim /etc/redis/redis.conf
+  bind 127.0.0.1 => bind 0.0.0.0
+
+[How to configure Redis-Server on Bash on Ubuntu on Windows 10 (WSL) – Jessica Deen on Technet](https://blogs.technet.microsoft.com/jessicadeen/uncategorized/how-to-configure-redis-server-on-bash-on-ubuntu-on-windows-10-wsl/)
+
+* Commands
+```
+127.0.0.1:6379> set test 123
+OK
+127.0.0.1:6379> get test
+"123"
+127.0.0.1:6379> exists test
+(integer) 1
+127.0.0.1:6379> del test
+(integer) 1
+```
+
+https://redis.io/topics/rediscli
+https://www.itread01.com/content/1545205270.html
+https://pypi.org/project/redis/
+https://www.jianshu.com/p/2639549bedc8
+
+redis-cli -p 6379 --stat
+
+
+* Setup in nodejs
+```node
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+
+app.use(session({
+    store: new RedisStore({
+        host: 'localhost',
+        port: 6379,
+        ttl: 30 * 60 // valid in 30 minutes
+    }),
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.get('/', (req, res) => {
+    if (req.session.key) {
+        res.redirect('/index');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.post('/login',function(req, res){
+    // when user login set the key to redis
+    req.session.key = req.body.email;
+    res.end('done');
+});
+```
+
+https://github.com/tj/connect-redis
+https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/
+
+
+SET (Setting a Key)
+```
+127.0.0.1:6379> SET foo "Hello World"
+OK // setting a key
+```
+
+GET (Getting a Key)
+```
+127.0.0.1:6379> GET foo
+"Hello World" // getting a key
+```
+
+DEL (Deleting a Key)
+```
+127.0.0.1:6379> GET foo 
+"Hello World" // getting a key
+127.0.0.1:6379> DEL foo
+(integer) 1 // key just got deleted
+127.0.0.1:6379> GET foo
+(nil) // since key is deleted therefore, result is nil.
+```
+
+SETEX (Setting a key with an expiry)
+```
+127.0.0.1:6379> SETEX foo 40 "I said, Hello World!"
+OK // key has been set with 40 seconds as expiration
+```
+
+TTL (Total Time left for a key that has a timeout)
+```
+127.0.0.1:6379> TTL foo
+(integer) 36 // 36 seconds left to timeout
+```
+
+PERSIST (Removing the timeout from key)
+```
+127.0.0.1:6379> PERSIST foo
+(integer) 1 // turning the key from volatile to persistent (key won't expire)
+```
+
+RENAME (Renaming the current existing key)
+```
+127.0.0.1:6379> RENAME foo bar
+OK // renaming the key 'foo' as bar
+```
+
+FLUSHALL (Flushing everything so far saved)
+```
+127.0.0.1:6379> flushall
+OK // just got flushed
+```
+
+
+dump redis data
+https://github.com/sripathikrishnan/redis-rdb-tools
+```
+查找所有key
+keys *
+redis-cli -h 172.18.66.199 -p 16379 keys 'subject_id*' > keys.txt
+
+dump data to /data/dump.rdb
+redis-cli -h 172.18.66.199 -p 16379 bgsave
+
+要先把dump.rdb從redis container中複製出來
+pip install rdbtools python-lzf
+
+Memory Report
+rdb -c memory dump.rdb > memory.csv
+
+data
+rdb --command json dump.rdb > data.txt
+rdb --command justkeyvals --key "user.*" dump.rdb > data.txt
+```
+
+
+https://tachingchen.com/tw/blog/redis-data-persistence/
+
+```
+127.0.0.1:6379> config get "stop-writes-on-bgsave-error"
+1) "stop-writes-on-bgsave-error"
+2) "yes"
+127.0.0.1:6379> CONFIG SET stop-writes-on-bgsave-error no
+OK
+127.0.0.1:6379> config get "stop-writes-on-bgsave-error"
+1) "stop-writes-on-bgsave-error"
+2) "no"
+```
+
+
+app.pool = redis.ConnectionPool(host=app.config['REDIS_HOST'] , port=app.config['REDIS_PORT'] , decode_responses=True)
+app.gredis = redis.Redis(connection_pool=app.pool)
+app.gredis.config_set("stop-writes-on-bgsave-error", "no")

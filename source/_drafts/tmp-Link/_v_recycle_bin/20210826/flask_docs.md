@@ -1,0 +1,21 @@
+pip install flask_docs
+```
+from flask import Flask
+from flask_docs import ApiDoc
+
+app = Flask(__name__)
+
+# 本地加载
+# app.config['API_DOC_CDN'] = False
+
+# 禁用文档页面
+# app.config['API_DOC_ENABLE'] = False
+
+# 需要显示文档的 Api
+app.config['API_DOC_MEMBER'] = ['api', 'platform']
+
+# 需要排除的 RESTful Api 文档
+app.config['RESTFUL_API_DOC_EXCLUDE'] = []
+
+ApiDoc(app)
+```

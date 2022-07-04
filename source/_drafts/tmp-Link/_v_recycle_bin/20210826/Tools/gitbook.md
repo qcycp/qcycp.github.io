@@ -1,0 +1,44 @@
+```sh
+$ gitbook serve
+Live reload server started on port: 35729
+Press CTRL+C to quit ...
+
+info: 9 plugins are installed
+info: 7 explicitly listed
+info: loading plugin "search-pro"... OK
+info: loading plugin "splitter"... OK
+info: loading plugin "livereload"... OK
+info: loading plugin "highlight"... OK
+info: loading plugin "sharing"... OK
+info: loading plugin "fontsettings"... OK
+info: loading plugin "theme-default"... OK
+info: found 6 pages
+info: found 7 asset files
+info: >> generation finished with success in 1.7s !
+
+Starting server ...
+Serving book on http://localhost:4000
+Restart after change in file config\authorization.md
+
+Stopping server
+events.js:183
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Error watching file for changes: EPERM
+    at FSEvent.FSWatcher._handle.onchange (fs.js:1359:9)
+
+D:\HH\git\gitbook\IMFR_requirements
+$ npm install ws@3.3.2 --save-dev --save-exact
+npm WARN saveError ENOENT: no such file or directory, open 'D:\HH\git\gitbook\IMFR_requirements\package.json'
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN enoent ENOENT: no such file or directory, open 'D:\HH\git\gitbook\IMFR_requirements\package.json'
+npm WARN IMFR_requirements No description
+npm WARN IMFR_requirements No repository field.
+npm WARN IMFR_requirements No README data
+npm WARN IMFR_requirements No license field.
+
++ ws@3.3.2
+added 4 packages from 4 contributors and audited 8 packages in 2.071s
+found 0 vulnerabilities
+```

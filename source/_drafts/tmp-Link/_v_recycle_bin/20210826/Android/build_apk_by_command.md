@@ -1,0 +1,1 @@
+D:\work\perobot\FaceRecognizeApk> gradlew build
