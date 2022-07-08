@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Nexus_7
+abbrlink: 2684f3c4
 tags:
 ---
 Nexus 7 抓code、build code

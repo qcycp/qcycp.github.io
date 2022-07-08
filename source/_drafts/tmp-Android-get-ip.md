@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_ip
+abbrlink: 16faf7d3
 tags:
 ---
 Get IP address

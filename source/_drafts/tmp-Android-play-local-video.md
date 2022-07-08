@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_play_local_video
+abbrlink: '5e287267'
 tags:
 ---
 播放local media

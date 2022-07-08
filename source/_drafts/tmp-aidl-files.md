@@ -1,5 +1,6 @@
 ---
 title: tmp_aidl_files
+abbrlink: 4f368aa8
 tags:
 ---
 AIDL files in Android.mk

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_auto_key_mouse_event
+abbrlink: 7bde1749
 tags:
 ---
 Auto key\mouse event by Python

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_marqee
+abbrlink: 6da6acab
 tags:
 ---
 跑馬燈 - jquery.marquee

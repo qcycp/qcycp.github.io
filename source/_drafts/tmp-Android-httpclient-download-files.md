@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_httpclient_download_files
+abbrlink: 75d1b83f
 tags:
 ---
 HttpClient about download file

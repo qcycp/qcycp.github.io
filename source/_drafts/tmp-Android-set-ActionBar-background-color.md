@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_set_ActionBar_background_color
+abbrlink: 885d2d2a
 tags:
 ---
 Set background color of ActionBar

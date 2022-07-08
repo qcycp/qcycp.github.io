@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_LAMP
+abbrlink: 78c87d03
 tags:
 ---
 Ubuntu 快速安裝 LAMP Server ( Apache + MySQL + PHP5 )

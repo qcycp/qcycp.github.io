@@ -1,5 +1,6 @@
 ---
 title: tmp_windows_sleep_mode
+abbrlink: a9ca4467
 tags:
 ---
 Windows休眠功能

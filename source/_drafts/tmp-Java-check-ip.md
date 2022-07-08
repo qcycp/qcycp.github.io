@@ -1,5 +1,6 @@
 ---
 title: tmp_Java_check_ip
+abbrlink: 278c5258
 tags:
 ---
 Java 判斷輸入的字串是否為IP Address

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_paintview
+abbrlink: df29b16c
 tags:
 ---
 PaintView

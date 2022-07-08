@@ -1,5 +1,6 @@
 ---
 title: tmp_adb_usb.ini
+abbrlink: 3be54ca0
 tags:
 ---
 adb_usb.ini

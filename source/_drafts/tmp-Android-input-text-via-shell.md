@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_input_text_via_shell
+abbrlink: cab7a38e
 tags:
 ---
 input text via shell command

@@ -1,5 +1,6 @@
 ---
 title: tmp_JavaScript_callback
+abbrlink: 994072b6
 tags:
 ---
 JavaScript callback in Android

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_XMLHttpRequest
+abbrlink: a2a6d0fb
 tags:
 ---
 XMLHttpRequest: post send json object

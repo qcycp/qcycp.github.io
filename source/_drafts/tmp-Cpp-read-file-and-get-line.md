@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_read_file_and_get_line
+abbrlink: d3753acc
 tags:
 ---
 Read file and get line

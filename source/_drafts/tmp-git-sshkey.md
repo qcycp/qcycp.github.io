@@ -1,5 +1,6 @@
 ---
 title: tmp_git_sshkey
+abbrlink: 2250314a
 tags:
 ---
 1. GitLab: http://10.36.94.101  

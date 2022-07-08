@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_httpclient
+abbrlink: 6c434f39
 tags:
 ---
 HttpClient

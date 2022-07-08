@@ -1,5 +1,6 @@
 ---
 title: tmp_virtualbox_vdi_change_uudi
+abbrlink: c449be04
 tags:
 ---
 VirtualBox vdi change UUID

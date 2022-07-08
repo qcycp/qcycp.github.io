@@ -1,5 +1,6 @@
 ---
 title: tmp_python_selenium_for_stock_price
+abbrlink: a0780143
 tags:
 ---
 Python 爬蟲 單日股價

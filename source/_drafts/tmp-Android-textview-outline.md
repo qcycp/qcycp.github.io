@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_textview_outline
+abbrlink: 201d3914
 tags:
 ---
 How to outline a TextView?

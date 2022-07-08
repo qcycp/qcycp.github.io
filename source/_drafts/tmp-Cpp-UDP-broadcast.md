@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_UDP_broadcast
+abbrlink: 341a2c9a
 tags:
 ---
 Socket Programming - UDP Broadcast

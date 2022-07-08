@@ -1,5 +1,6 @@
 ---
 title: tmp_python_class_type
+abbrlink: 7578a888
 tags:
 ---
 python class的三種function

@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_remote_connection_to_mysql
+abbrlink: '69123319'
 tags:
 ---
 How to allow remote connection to mysql

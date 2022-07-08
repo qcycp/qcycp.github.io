@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_migrate_manager_db
+abbrlink: e296fc24
 tags:
 ---
 Flask-Migrate manager db

@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_ubuntu_JAVA_environment
+abbrlink: 986453cd
 tags:
 ---
 在ubuntu上安裝Java環境

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_compile_time_to_build.config
+abbrlink: f09c38c6
 tags:
 ---
 在build.config中寫入apk編譯的時間

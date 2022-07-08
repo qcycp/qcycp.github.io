@@ -1,5 +1,6 @@
 ---
 title: tmp_python_virtualenv
+abbrlink: d1dd11b2
 tags:
 ---
 `pip install virtualenv --user`  

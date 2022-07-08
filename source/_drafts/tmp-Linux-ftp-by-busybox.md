@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_ftp_by_busybox
+abbrlink: 7e916f5c
 tags:
 ---
 ftp by busybox

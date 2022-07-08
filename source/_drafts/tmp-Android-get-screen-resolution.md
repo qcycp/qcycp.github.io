@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_screen_resolution
+abbrlink: a21322ad
 tags:
 ---
 Get screen resolution

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_logging
+abbrlink: b410bd53
 tags:
 ---
 ```python

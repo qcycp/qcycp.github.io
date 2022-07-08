@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_keep_screen_on
+abbrlink: 3b82a58d
 tags:
 ---
 Keep screen on

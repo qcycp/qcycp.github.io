@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_localStorage_sessionStorage
+abbrlink: 1848bc5e
 tags:
 ---
 localStorage and sessionStorage

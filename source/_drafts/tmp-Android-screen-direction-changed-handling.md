@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_screen_direction_changed_handling
+abbrlink: 443f3ebe
 tags:
 ---
 橫豎屏切換時，Activity的處理

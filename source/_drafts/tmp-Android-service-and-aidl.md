@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_service_and_aidl
+abbrlink: f377a920
 tags:
 ---
 Android Service and AIDL

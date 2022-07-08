@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_javascript_get_html_form_data
+abbrlink: 21a24b3
 tags:
 ---
 javascript: get html form data

@@ -1,5 +1,6 @@
 ---
 title: tmp_Activity_lifecycle
+abbrlink: 8e0569f7
 tags:
 ---
 Activity lifecycle

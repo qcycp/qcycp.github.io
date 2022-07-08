@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_set_cookie
+abbrlink: 94d9c2a2
 tags:
 ---
 flask set_cookie

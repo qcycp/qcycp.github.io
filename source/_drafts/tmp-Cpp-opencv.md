@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_opencv
+abbrlink: e13f7021
 tags:
 ---
 opencv in c++

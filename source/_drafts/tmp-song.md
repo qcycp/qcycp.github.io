@@ -1,5 +1,6 @@
 ---
 title: tmp_song
+abbrlink: '4910940'
 tags:
 ---
 七里香 - 周杰倫

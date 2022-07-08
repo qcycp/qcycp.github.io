@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_ListView_location
+abbrlink: 8109f3f0
 tags:
 ---
 讓ListView記住上次滑動到的位置

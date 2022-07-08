@@ -1,5 +1,6 @@
 ---
 title: tmp_firefox_OS
+abbrlink: 364e5f69
 tags:
 ---
 firefox os note

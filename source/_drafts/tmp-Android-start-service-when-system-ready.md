@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_start_service_when_system_ready
+abbrlink: af61e22a
 tags:
 ---
 Start service when system ready

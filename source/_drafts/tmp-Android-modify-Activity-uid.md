@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_modify_Activity_uid
+abbrlink: 26bdc1fd
 tags:
 ---
 手動更改activity的uid

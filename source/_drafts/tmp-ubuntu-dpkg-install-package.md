@@ -1,5 +1,6 @@
 ---
 title: tmp_ubuntu_dpkg_install_package
+abbrlink: 78ac4c58
 tags:
 ---
 dpkg install package

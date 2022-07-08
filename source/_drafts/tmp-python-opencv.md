@@ -1,5 +1,6 @@
 ---
 title: tmp_python_opencv
+abbrlink: 3c16e598
 tags:
 ---
 opencv sample code

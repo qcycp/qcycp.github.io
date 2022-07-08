@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_canvasview
+abbrlink: 28ba3cad
 tags:
 ---
 CanvasView

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_fetch_data_from_json
+abbrlink: 9712b856
 tags:
 ---
 從json file中fetch data

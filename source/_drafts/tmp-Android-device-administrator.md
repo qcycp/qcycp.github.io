@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_device_administrator
+abbrlink: 176fb1c3
 tags:
 ---
 Android Device Adminstrator

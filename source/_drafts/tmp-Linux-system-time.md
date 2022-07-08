@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_system_time
+abbrlink: aed89aea
 tags:
 ---
 設定系統時間

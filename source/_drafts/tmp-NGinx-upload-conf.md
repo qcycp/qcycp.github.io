@@ -1,5 +1,6 @@
 ---
 title: tmp_NGinx_upload.conf
+abbrlink: d54f637d
 tags:
 ---
 upload.conf

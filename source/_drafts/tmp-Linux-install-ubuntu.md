@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_install_ubuntu
+abbrlink: 7223a2cd
 tags:
 ---
 第一次安裝ubuntu就上手

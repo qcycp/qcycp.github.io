@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_nerwork_checking
+abbrlink: d3f8e739
 tags:
 ---
 Android 判斷是否有網路連接

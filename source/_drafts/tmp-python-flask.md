@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask
+abbrlink: fb0affd0
 tags:
 ---
 flask

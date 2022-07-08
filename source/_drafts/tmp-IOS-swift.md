@@ -1,5 +1,6 @@
 ---
 title: tmp_IOS_swift
+abbrlink: 73c315c4
 tags:
 ---
 https://www.appcoda.com.tw/swift-optional/

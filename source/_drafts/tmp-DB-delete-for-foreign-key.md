@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_delete_for_foreign_key
+abbrlink: 2430a043
 tags:
 ---
 database on delete fot foreign key

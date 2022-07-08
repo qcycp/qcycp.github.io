@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_common_system_event
+abbrlink: 24b84cb3
 tags:
 ---
 Android 常用系統事件

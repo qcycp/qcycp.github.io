@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_GSON
+abbrlink: 820bba9a
 tags:
 ---
 GSON

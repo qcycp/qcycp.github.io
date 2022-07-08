@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_clear_application_data
+abbrlink: 62a62ce5
 tags:
 ---
 Clear Application Data

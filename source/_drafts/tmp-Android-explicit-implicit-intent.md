@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_explicit_implicit_intent
+abbrlink: 953acd37
 tags:
 ---
 explicit/implicit intent

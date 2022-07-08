@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_jquery_upload_file
+abbrlink: 45953fa6
 tags:
 ---
 Jquery upload file via form and webapi

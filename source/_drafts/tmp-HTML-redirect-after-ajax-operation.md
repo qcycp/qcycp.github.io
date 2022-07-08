@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_redirect_after_ajax_operation
+abbrlink: 99770a26
 tags:
 ---
 redirect after ajax GET/POST operation

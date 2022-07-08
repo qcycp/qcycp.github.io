@@ -1,5 +1,6 @@
 ---
 title: tmp_JAVA_queue
+abbrlink: d1e86152
 tags:
 ---
 Queue in Java

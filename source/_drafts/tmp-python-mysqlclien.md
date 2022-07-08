@@ -1,5 +1,6 @@
 ---
 title: tmp_python_mysqlclien
+abbrlink: 9b5abe2f
 tags:
 ---
 install mysqlclient on windows

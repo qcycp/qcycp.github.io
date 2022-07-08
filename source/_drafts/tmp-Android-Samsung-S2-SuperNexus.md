@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Samsung_S2_SuperNexus
+abbrlink: 7fe505a2
 tags:
 ---
 SuperNexus for samsung S2

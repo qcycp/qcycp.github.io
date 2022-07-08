@@ -1,5 +1,6 @@
 ---
 title: tmp_Java_reflection
+abbrlink: 500ab001
 tags:
 ---
 Java reflection

@@ -1,5 +1,6 @@
 ---
 title: tmp_ubuntu_quota
+abbrlink: 6c753de6
 tags:
 ---
 Install quota

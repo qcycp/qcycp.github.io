@@ -1,5 +1,6 @@
 ---
 title: tmp_radio_button_dynamically
+abbrlink: 5086929b
 tags:
 ---
 add radio button dynamically

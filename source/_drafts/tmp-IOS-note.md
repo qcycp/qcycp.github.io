@@ -1,5 +1,6 @@
 ---
 title: tmp_IOS_note
+abbrlink: c64a77f9
 tags:
 ---
 ios13才支援SwiftUI及SceneDelegate

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_memcache
+abbrlink: 6b3917ac
 tags:
 ---
 https://www.journaldev.com/16/memcached-telnet-commands-example

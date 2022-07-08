@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_open_close_wifi
+abbrlink: d62e61a3
 tags:
 ---
 Open/Close Wi-Fi

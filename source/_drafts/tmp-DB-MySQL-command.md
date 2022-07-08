@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_MySQL_command
+abbrlink: 2dc34d31
 tags:
 ---
 MySQL command

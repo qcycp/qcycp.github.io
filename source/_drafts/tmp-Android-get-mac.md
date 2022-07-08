@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_mac
+abbrlink: 4da52d3a
 tags:
 ---
 Get Mac Address

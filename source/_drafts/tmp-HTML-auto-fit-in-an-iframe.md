@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_auto_fit_in_an_iframe
+abbrlink: ae19e86b
 tags:
 ---
 Auto fit the width and height of an iframe

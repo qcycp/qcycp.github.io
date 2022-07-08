@@ -1,5 +1,6 @@
 ---
 title: tmp_python_url_decode_encode
+abbrlink: bd0a0213
 tags:
 ---
 Python url encode/decode

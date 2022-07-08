@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_include
+abbrlink: bc48919f
 tags:
 ---
 兩個文件互相include

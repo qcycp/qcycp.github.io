@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_httpclient_headers
+abbrlink: 7e8401b0
 tags:
 ---
 HttpClient get headers of request and response

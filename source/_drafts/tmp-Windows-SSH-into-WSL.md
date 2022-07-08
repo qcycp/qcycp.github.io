@@ -1,5 +1,6 @@
 ---
 title: tmp_Windows_SSH_into_WSL
+abbrlink: 537af1e
 tags:
 ---
 How to SSH into WSL

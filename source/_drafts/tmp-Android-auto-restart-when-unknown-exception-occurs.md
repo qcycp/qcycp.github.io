@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_auto_restart_when_unknown_exception_occurs
+abbrlink: be6dd30c
 tags:
 ---
 apk發生未捕捉的exception後，自動重啟

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_avatar_effect
+abbrlink: 4a9fd8a0
 tags:
 ---
 avatar effect

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_login
+abbrlink: 2e46807a
 tags:
 ---
 Flask-login

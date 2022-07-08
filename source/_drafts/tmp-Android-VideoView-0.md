@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_VideoView
+abbrlink: 4135c95e
 tags:
 ---
 VideoView example

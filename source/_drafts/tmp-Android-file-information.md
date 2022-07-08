@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_file_information
+abbrlink: b06aa47
 tags:
 ---
 Parse file to get target information using Java

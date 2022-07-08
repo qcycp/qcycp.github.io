@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_MySQL_connector
+abbrlink: 7f37d785
 tags:
 ---
 mysql connector c++

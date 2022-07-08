@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_ubuntu_Android_toolchain
+abbrlink: 1f8bbd84
 tags:
 ---
 安裝server上的android build code還境

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_text_shadow
+abbrlink: c6140ea2
 tags:
 ---
 Draw text with shadow on canvas

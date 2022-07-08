@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_kangaroo_note
+abbrlink: 73a6c299
 tags:
 ---
 curl -X POST -d "username=admin&password=123456" http://192.168.56.3:8857/api/auth/login

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_javascript_usage
+abbrlink: 30396cd0
 tags:
 ---
 javascript usage in the html file

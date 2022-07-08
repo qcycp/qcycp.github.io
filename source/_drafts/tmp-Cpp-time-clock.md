@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_time_clock
+abbrlink: 9154dd89
 tags:
 ---
 ```cpp

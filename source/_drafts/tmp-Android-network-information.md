@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_network_information
+abbrlink: f64791a9
 tags:
 ---
 Android Network Info

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_adapter_and_getview
+abbrlink: ba3704a4
 tags:
 ---
 避免adapter的getview執行太多次

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_fps_calculation
+abbrlink: 699f78d6
 tags:
 ---
 ```python

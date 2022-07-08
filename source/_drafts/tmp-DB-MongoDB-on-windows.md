@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_MongoDB_on_windows
+abbrlink: f4d9dd86
 tags:
 ---
 mongodb on windows

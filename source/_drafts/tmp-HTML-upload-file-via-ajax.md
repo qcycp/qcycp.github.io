@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_upload_file_via_ajax
+abbrlink: a3bcb7bf
 tags:
 ---
 upload file via ajax by using form data

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_jquery_animate
+abbrlink: 79dbdf4f
 tags:
 ---
 jQuery - animate()

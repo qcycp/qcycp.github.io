@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_fragment
+abbrlink: 5d153217
 tags:
 ---
 在fragment中執行onActivityResult的方法

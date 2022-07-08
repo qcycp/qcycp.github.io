@@ -1,5 +1,6 @@
 ---
 title: tmp_python_queue
+abbrlink: b2308e0a
 tags:
 ---
 python queue

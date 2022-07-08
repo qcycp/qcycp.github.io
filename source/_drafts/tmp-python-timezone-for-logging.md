@@ -1,5 +1,6 @@
 ---
 title: tmp_python_timezone_for_logging
+abbrlink: 46b03fbc
 tags:
 ---
 timezone for logging

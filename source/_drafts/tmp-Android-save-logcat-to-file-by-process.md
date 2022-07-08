@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_save_logcat_to_file_by_process
+abbrlink: 54dcae57
 tags:
 ---
 save logcat to file by process

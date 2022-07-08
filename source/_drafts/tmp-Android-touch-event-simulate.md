@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_touch_event_simulate
+abbrlink: 80e3a8e2
 tags:
 ---
 Simulate touch event on Android

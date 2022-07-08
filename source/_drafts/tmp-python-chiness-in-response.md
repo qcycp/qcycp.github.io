@@ -1,5 +1,6 @@
 ---
 title: tmp_python_chiness_in_response
+abbrlink: 140e2d25
 tags:
 ---
 Flask response json including 中文

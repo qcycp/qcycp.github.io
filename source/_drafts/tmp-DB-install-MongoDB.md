@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_install_MongoDB
+abbrlink: 54c44d38
 tags:
 ---
 Install MongoDB on Linux

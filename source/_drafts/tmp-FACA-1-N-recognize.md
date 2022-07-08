@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_1_N_recognize
+abbrlink: 6f1fb546
 tags:
 ---
 curl -F "file=@/home/user/avatar_01.png" -F topN=3 -X POST http://192.168.56.3:9090/recognize | jq

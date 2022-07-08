@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_file_download
+abbrlink: 271d7912
 tags:
 ---
 Download file using Asynctask

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_spinner
+abbrlink: '51529197'
 tags:
 ---
 Android spinner 仿 TextInputLayout

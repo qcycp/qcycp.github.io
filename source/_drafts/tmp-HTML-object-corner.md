@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_object_corner
+abbrlink: bede2f6
 tags:
 ---
 設定物件圓角

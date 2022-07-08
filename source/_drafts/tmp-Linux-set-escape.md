@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_set_escape
+abbrlink: 610a2bfa
 tags:
 ---
 發生錯誤後，停止shell script執行

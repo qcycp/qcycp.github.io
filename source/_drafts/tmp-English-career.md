@@ -1,5 +1,6 @@
 ---
 title: tmp_English_career
+abbrlink: c72a1d7e
 tags:
 ---
 職場常用英文100句

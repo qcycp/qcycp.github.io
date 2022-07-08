@@ -1,5 +1,6 @@
 ---
 title: tmp_English_excited_exciting
+abbrlink: 84a5555e
 tags:
 ---
 excited與exciting差別

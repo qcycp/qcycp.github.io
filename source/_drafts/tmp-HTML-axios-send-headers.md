@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_axios_send_headers
+abbrlink: '6861477'
 tags:
 ---
 Sending custom headers with axios

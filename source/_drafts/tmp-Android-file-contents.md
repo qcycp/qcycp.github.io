@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_file_contents
+abbrlink: ebfdea15
 tags:
 ---
 Get File Contents

@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_inheritance
+abbrlink: c9b90be8
 tags:
 ---
 C++ inheritance 繼承

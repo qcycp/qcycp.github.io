@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_url_checking
+abbrlink: bd486633
 tags:
 ---
 Check url is available or not

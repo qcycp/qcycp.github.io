@@ -1,5 +1,6 @@
 ---
 title: tmp_docker_nginx
+abbrlink: eda6db47
 tags:
 ---
 Docker - nginx

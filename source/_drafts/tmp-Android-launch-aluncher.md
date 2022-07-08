@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_launch_aluncher
+abbrlink: 21bff349
 tags:
 ---
 Android叫出Launcher的方式

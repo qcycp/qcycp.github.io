@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_imageview_move_scale_rotate
+abbrlink: cd08edc4
 tags:
 ---
 Move, scale, rotate ImageView

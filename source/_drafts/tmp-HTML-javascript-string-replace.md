@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_javascript_string_replace
+abbrlink: 3d9f5360
 tags:
 ---
 String replace all in javascript

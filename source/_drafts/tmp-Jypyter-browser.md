@@ -1,5 +1,6 @@
 ---
 title: tmp_Jypyter_browser
+abbrlink: fb0aba9a
 tags:
 ---
 設定Jypyter notebook的預設browser

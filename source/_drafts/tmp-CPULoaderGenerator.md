@@ -1,5 +1,6 @@
 ---
 title: tmp_CPULoaderGenerator
+abbrlink: 7e425eba
 tags:
 ---
 CPULoadGenerator

@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_fullscreen_background
+abbrlink: 27302a03
 tags:
 ---
 Fullscreen background by Progressive CSS3 Way

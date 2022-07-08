@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_build.gradle
+abbrlink: 9b6d666a
 tags:
 ---
 app/build.gradle

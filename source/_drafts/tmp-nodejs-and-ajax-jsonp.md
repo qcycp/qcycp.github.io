@@ -1,5 +1,6 @@
 ---
 title: tmp_nodejs_and_ajax_jsonp
+abbrlink: bbb91846
 tags:
 ---
 ajax jsonp + nodejs

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_onclick
+abbrlink: 1f37cd2f
 tags:
 ---
 連點 n 下

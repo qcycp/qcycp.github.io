@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_Settings
+abbrlink: 74d11c2f
 tags:
 ---
 get Settings

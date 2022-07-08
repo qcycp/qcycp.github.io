@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_reload_activity
+abbrlink: 565f0a24
 tags:
 ---
 Reload Activity

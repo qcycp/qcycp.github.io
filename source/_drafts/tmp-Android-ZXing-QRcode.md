@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_ZXing_QRcode
+abbrlink: 5341766c
 tags:
 ---
 利用 ZXing 生成 條碼 / QR code

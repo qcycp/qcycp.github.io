@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_add_layout_programmatically
+abbrlink: 7da01bf7
 tags:
 ---
 Add layout(view) programmatically

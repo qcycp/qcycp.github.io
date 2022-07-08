@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_key_event_simulate
+abbrlink: a0c52000
 tags:
 ---
 Simulate key event on Android

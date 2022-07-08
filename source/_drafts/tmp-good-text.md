@@ -1,5 +1,6 @@
 ---
 title: tmp_good_text
+abbrlink: a27bdbb
 tags:
 ---
 * 兩耳不聞窗外事 一心只讀聖賢書

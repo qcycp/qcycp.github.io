@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_hide_status_bar
+abbrlink: 62446aa6
 tags:
 ---
 Hide the Status Bar

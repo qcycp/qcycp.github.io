@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_div_empty_and_remove_via_jquery
+abbrlink: '6257e92'
 tags:
 ---
 div empty and remove via jquery

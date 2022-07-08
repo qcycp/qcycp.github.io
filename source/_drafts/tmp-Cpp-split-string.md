@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_split_string
+abbrlink: 16c97496
 tags:
 ---
 split string via c

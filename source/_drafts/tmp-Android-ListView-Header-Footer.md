@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_ListView_Header_Footer
+abbrlink: 449126fa
 tags:
 ---
 在ListView上加Header和Footer

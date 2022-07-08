@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_thread
+abbrlink: d8aacd37
 tags:
 ---
 thread in c++11

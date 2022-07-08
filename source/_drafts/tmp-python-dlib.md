@@ -1,5 +1,6 @@
 ---
 title: tmp_python_dlib
+abbrlink: d9b9a763
 tags:
 ---
 Install dlib for python on windows

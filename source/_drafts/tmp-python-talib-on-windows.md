@@ -1,5 +1,6 @@
 ---
 title: tmp_python_talib_on_windows
+abbrlink: 26b478a0
 tags:
 ---
 在windows安裝talib

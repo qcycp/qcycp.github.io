@@ -1,5 +1,6 @@
 ---
 title: tmp_telegram_bot
+abbrlink: 284ab795
 tags:
 ---
 @BotFather

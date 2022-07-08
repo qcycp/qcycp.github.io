@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_property
+abbrlink: 4c5ba8f5
 tags:
 ---
 Flask property

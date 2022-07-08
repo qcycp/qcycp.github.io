@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Runtime_exec
+abbrlink: 420048ca
 tags:
 ---
 Runtime.getRuntime().exec跟ProcessBuilder的用法

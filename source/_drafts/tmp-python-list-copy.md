@@ -1,5 +1,6 @@
 ---
 title: tmp_python_list_copy
+abbrlink: 61ddd20b
 tags:
 ---
 To avoid RuntimeError: dictionary changed size during iteration"

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_ffmpeg
+abbrlink: ab608da5
 tags:
 ---
 compile ffmpeg for android

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_read_write_files
+abbrlink: 4d49a56f
 tags:
 ---
 Read / Write file

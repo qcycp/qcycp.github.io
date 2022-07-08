@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_open_url_via_Activity
+abbrlink: febbe8cf
 tags:
 ---
 使用Activity開啟連結

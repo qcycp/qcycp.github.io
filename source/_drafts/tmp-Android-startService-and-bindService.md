@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_startService_and_bindService
+abbrlink: 9733ee28
 tags:
 ---
 startService和bindService

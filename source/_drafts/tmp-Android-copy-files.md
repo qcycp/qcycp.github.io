@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_copy_files
+abbrlink: e0ad8bdb
 tags:
 ---
 Android copy files

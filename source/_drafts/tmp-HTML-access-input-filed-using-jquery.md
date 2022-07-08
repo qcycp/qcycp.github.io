@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_access_input_filed_using_jquery
+abbrlink: 31cfa748
 tags:
 ---
 Access input field using jquery

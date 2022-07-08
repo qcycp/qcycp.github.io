@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_trident_note
+abbrlink: 81a0313a
 tags:
 ---
 * 啟動指令

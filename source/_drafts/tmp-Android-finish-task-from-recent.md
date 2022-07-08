@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_finish_task_from_recent
+abbrlink: bedeef2c
 tags:
 ---
 finish task and remove from recent apps

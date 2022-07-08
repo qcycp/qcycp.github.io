@@ -1,3 +1,6 @@
+---
+abbrlink: 77ec8124
+---
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
  *

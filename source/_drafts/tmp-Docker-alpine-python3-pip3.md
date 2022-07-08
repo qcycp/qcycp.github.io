@@ -1,5 +1,6 @@
 ---
 title: tmp_Docker_alpine_python3_pip3
+abbrlink: d51685ab
 tags:
 ---
 ```yml

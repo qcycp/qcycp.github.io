@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_screenshot
+abbrlink: adb05e4
 tags:
 ---
 How to programatically take a screenshot

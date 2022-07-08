@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Picasso
+abbrlink: f26d001f
 tags:
 ---
 Picasso

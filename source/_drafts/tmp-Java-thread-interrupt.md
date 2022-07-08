@@ -1,5 +1,6 @@
 ---
 title: tmp_Java_thread_interrupt
+abbrlink: 9cb8204d
 tags:
 ---
 Thread interrupt when sleeping

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_AlertDialog
+abbrlink: 2dd5c88
 tags:
 ---
 AlertDialog

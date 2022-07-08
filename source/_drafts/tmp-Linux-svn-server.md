@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_svn_server
+abbrlink: 66b91dd5
 tags:
 ---
 架設svn server

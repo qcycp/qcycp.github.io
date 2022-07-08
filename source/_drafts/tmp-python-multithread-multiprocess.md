@@ -1,5 +1,6 @@
 ---
 title: tmp_python_multithread_multiprocess
+abbrlink: 7c200051
 tags:
 ---
 http://violin-tao.blogspot.com/2017/05/python3_26.html

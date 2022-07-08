@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_file_access
+abbrlink: 844a449f
 tags:
 ---
 選擇檔案，讀取檔案內容

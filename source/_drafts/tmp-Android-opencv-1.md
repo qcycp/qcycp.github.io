@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_opencv
+abbrlink: 8c299fae
 tags:
 ---
 compile opencv for android

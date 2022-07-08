@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_external_storages
+abbrlink: ea5731c7
 tags:
 ---
 Get external storages manually

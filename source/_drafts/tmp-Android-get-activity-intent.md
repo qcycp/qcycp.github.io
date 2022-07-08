@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_activity_intent
+abbrlink: 8f7d08c9
 tags:
 ---
 getintent on onCreate for an Activity

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_pm
+abbrlink: cc3ccb3d
 tags:
 ---
 pm install apk

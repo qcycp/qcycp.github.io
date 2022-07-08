@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_get_value_from_another_frame
+abbrlink: ca656f96
 tags:
 ---
 Getting a value from another frame

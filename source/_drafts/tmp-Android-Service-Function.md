@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Service_Function
+abbrlink: dd55188d
 tags:
 ---
 如何調用service中的function

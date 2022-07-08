@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_avoid_EditText_get_focus
+abbrlink: 91b23c26
 tags:
 ---
 開啟Activity，避免EditText自動取得focus，軟體鍵盤跳出

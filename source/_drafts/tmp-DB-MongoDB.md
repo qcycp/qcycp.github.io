@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_MongoDB
+abbrlink: 5c59b39e
 tags:
 ---
 mongodb on linux

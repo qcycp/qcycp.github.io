@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_base64_image
+abbrlink: 9d30c6a9
 tags:
 ---
 Display base64 image by ImageView

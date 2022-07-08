@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_WebVIew_and_url
+abbrlink: da4be3e4
 tags:
 ---
 webview and html

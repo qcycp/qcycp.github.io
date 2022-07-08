@@ -1,5 +1,6 @@
 ---
 title: tmp_git_ip_changed
+abbrlink: 243651e
 tags:
 ---
 gitlab server的ip換了

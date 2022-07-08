@@ -1,5 +1,6 @@
 ---
 title: tmp_python_supervisor_log_file
+abbrlink: 487663c7
 tags:
 ---
 supervisor log file

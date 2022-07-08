@@ -1,5 +1,6 @@
 ---
 title: tmp_nodejs_swig_example
+abbrlink: 9b1889e5
 tags:
 ---
 swig example

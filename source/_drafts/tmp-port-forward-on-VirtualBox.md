@@ -1,5 +1,6 @@
 ---
 title: tmp_port_forward_on_VirtualBox
+abbrlink: 26c9dd53
 tags:
 ---
 port forwarding on VirtualBox

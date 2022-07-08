@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_SurfaceView
+abbrlink: 797c0a32
 tags:
 ---
 SurfaceView

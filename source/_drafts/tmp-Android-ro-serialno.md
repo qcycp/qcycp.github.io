@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_ro.serialno
+abbrlink: cc459d6b
 tags:
 ---
 Get ro.serialno property

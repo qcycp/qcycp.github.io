@@ -1,5 +1,6 @@
 ---
 title: tmp_git_command
+abbrlink: f23d10bb
 tags:
 ---
 git command

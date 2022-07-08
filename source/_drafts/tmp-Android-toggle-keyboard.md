@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_toggle_keyboard
+abbrlink: 4c0162e6
 tags:
 ---
 toggle soft keyboard

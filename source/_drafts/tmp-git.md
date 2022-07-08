@@ -1,5 +1,6 @@
 ---
 title: tmp_git
+abbrlink: f5527097
 tags:
 ---
 第一次用git上傳就上手

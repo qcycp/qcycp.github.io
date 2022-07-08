@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_jquery_note
+abbrlink: db1c10de
 tags:
 ---
 jQuery note

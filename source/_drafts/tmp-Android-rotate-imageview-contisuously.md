@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_rotate_imageview_contisuously
+abbrlink: b70ffca7
 tags:
 ---
 rotate an ImageView continuously

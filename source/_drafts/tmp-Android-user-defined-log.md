@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_user_defined_log
+abbrlink: f9548b10
 tags:
 ---
 User-defined Log instead of Android Log

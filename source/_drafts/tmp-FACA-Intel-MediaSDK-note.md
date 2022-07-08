@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_Intel_MediaSDK_note
+abbrlink: 15d7c4b0
 tags:
 ---
 1. cmake > 3.6

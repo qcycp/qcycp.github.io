@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_ubuntu_system_information
+abbrlink: bff6618e
 tags:
 ---
 ubuntu 查詢系統資訊

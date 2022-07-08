@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_transparen_activity
+abbrlink: 1be8136e
 tags:
 ---
 Transparent Activity

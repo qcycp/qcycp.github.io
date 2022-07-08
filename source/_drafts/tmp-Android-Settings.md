@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Settings
+abbrlink: 8a8be568
 tags:
 ---
 更改Settings/Display/Font size選項

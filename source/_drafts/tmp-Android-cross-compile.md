@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_cross_compile
+abbrlink: fbe660dd
 tags:
 ---
 在Android上執行程式 with cross compile on linux

@@ -1,5 +1,6 @@
 ---
 title: tmp_Shell_Script_user_input
+abbrlink: 593403bd
 tags:
 ---
 shell script - user input

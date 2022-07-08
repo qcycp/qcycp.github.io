@@ -1,5 +1,6 @@
 ---
 title: tmp_IOS_swift_note
+abbrlink: '7e316195'
 tags:
 ---
 1. 使用 let 来声明常量，使用 var 来声明变量。一个常量的值，在编译的时候，并不需要有明确的值，但是你只能为它赋值一次。

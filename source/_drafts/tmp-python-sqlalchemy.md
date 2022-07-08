@@ -1,5 +1,6 @@
 ---
 title: tmp_python_sqlalchemy
+abbrlink: 16d273d9
 tags:
 ---
 sqlalchemy

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_readwritelock
+abbrlink: '9e161065'
 tags:
 ---
 [readerwriterlock · PyPI](https://pypi.org/project/readerwriterlock/)

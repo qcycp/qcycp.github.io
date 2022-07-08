@@ -1,5 +1,6 @@
 ---
 title: tmp_Java_check_string_digit
+abbrlink: bd12ef52
 tags:
 ---
 判斷String是否為一串數字

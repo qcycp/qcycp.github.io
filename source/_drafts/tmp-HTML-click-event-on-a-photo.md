@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_click_event_on_a_photo
+abbrlink: 28d5fef5
 tags:
 ---
 click event on a photo

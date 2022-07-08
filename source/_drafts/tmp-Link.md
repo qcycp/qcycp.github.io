@@ -1,5 +1,6 @@
 ---
 title: tmp_Link
+abbrlink: a1e2d12e
 tags:
 ---
 20190319 link

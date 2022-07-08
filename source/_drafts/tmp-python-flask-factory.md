@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_factory
+abbrlink: 852a8182
 tags:
 ---
 Flask factory

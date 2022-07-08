@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_thumbnail
+abbrlink: e9aeb555
 tags:
 ---
 Bitmap about thumbnail

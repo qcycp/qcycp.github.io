@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Nexus_7_development
+abbrlink: c3ed2384
 tags:
 ---
 Nexus 7 燒錄方式

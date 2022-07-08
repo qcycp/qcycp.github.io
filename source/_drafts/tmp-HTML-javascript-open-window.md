@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_javascript_open_window
+abbrlink: 858eba72
 tags:
 ---
 開啟一個無工作列的乾淨視窗

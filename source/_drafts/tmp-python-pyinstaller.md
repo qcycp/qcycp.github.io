@@ -1,5 +1,6 @@
 ---
 title: tmp_python_pyinstaller
+abbrlink: 927af21d
 tags:
 ---
 PyInstaller

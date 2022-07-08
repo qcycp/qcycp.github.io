@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_file_command
+abbrlink: 8cb980ed
 tags:
 ---
 File Command on Android

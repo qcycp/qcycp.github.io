@@ -1,5 +1,6 @@
 ---
 title: tmp_DB_MongoDB_command
+abbrlink: 77783a2
 tags:
 ---
 MongoDB指令

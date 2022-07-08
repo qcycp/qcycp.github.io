@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_thread
+abbrlink: b5bc22b8
 tags:
 ---
 Android Thread

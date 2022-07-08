@@ -1,3 +1,6 @@
+---
+abbrlink: 60f6bee0
+---
 /*
  
 	Awkward Showcase - jQuery plugin 

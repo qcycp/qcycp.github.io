@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_modify_alertdialog_title_color
+abbrlink: cc8ca9c7
 tags:
 ---
 modify alertdialog title color

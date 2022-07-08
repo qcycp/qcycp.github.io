@@ -1,3 +1,6 @@
+---
+abbrlink: 53387c82
+---
 /*
  * Marquee jQuery Plug-in
  *

@@ -1,5 +1,6 @@
 ---
 title: tmp_git_submodule
+abbrlink: d555be90
 tags:
 ---
 git submodule

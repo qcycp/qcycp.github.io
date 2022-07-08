@@ -1,5 +1,6 @@
 ---
 title: tmp_Java_HttpClient
+abbrlink: 1635fbc9
 tags:
 ---
 HttpClient

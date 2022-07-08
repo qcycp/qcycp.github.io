@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_hide_APK
+abbrlink: 958ec294
 tags:
 ---
 不要在device adminstrator list中列出我們的apk

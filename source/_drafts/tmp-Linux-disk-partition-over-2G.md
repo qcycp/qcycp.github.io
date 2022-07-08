@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_disk_partition_over_2G
+abbrlink: efa39330
 tags:
 ---
 分割大於 2TB 的硬碟 - parted

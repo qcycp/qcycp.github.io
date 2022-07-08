@@ -1,3 +1,6 @@
+---
+abbrlink: 61ee177b
+---
 /**
  * jQuery Skitter Slideshow
  * @name jquery.skitter.js

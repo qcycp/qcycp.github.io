@@ -1,5 +1,6 @@
 ---
 title: tmp_nodejs_swig
+abbrlink: 78eb077b
 tags:
 ---
 swig使用方式

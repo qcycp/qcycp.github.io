@@ -1,5 +1,6 @@
 ---
 title: tmp_android_aosp
+abbrlink: '8080e920'
 tags:
 ---
 Android aosp download/build code

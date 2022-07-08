@@ -1,5 +1,6 @@
 ---
 title: tmp_Docker_volumes
+abbrlink: 1e7584ca
 tags:
 ---
 docker volumes

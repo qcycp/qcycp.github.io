@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_assets
+abbrlink: fd4d13b5
 tags:
 ---
 Android assets

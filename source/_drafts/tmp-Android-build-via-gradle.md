@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_build_via_gradle
+abbrlink: 7de99399
 tags:
 ---
 build apk by gradle

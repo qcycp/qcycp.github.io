@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_work_note_20220628
+abbrlink: 4c176462
 tags:
 ---
 RRH_DISABLE_USING_CAL_TABLES = YES

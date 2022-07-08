@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Asynctask
+abbrlink: c160f45c
 tags:
 ---
 Android Asynctask

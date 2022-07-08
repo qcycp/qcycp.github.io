@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_generate_UUID
+abbrlink: e9d99cda
 tags:
 ---
 Generate UUID

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_mouse_right_to_back
+abbrlink: e300d6d
 tags:
 ---
 滑鼠右鍵改為back

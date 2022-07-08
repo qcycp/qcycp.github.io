@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_chrono
+abbrlink: dba4bf85
 tags:
 ---
 chrono using in c++11

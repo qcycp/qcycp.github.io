@@ -1,5 +1,6 @@
 ---
 title: tmp_python_selenium_for_stock_monthly_gain
+abbrlink: ca1e4564
 tags:
 ---
 Python 爬蟲 月營收

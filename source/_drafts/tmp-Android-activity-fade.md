@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_activity_fade
+abbrlink: a7c642cd
 tags:
 ---
 Android切換Activity時的動畫

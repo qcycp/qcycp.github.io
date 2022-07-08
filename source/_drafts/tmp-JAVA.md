@@ -1,5 +1,6 @@
 ---
 title: tmp_JAVA
+abbrlink: 7ef3ec87
 tags:
 ---
 第一個Java程式

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Service_AIDL
+abbrlink: 19bf6da7
 tags:
 ---
 Service example including AIDL

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_marquee
+abbrlink: 22d38f36
 tags:
 ---
 Android Marquee

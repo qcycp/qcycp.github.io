@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_app_list
+abbrlink: '29040304'
 tags:
 ---
 get app list

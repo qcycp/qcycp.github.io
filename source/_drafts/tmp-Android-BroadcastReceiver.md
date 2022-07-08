@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_BroadcastReceiver
+abbrlink: '31836267'
 tags:
 ---
 BroadcasrtReceiver

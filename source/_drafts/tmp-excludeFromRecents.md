@@ -1,5 +1,6 @@
 ---
 title: tmp_excludeFromRecents
+abbrlink: 7a9bc548
 tags:
 ---
 Activity不要保留在recent list中

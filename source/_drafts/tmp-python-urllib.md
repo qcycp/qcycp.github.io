@@ -1,5 +1,6 @@
 ---
 title: tmp_python_urllib
+abbrlink: 7a223016
 tags:
 ---
 Python urllib

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_generate_thumbnail
+abbrlink: ba123be0
 tags:
 ---
 Generate thumbnail

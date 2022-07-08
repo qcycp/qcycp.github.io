@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_vim
+abbrlink: 8f113f1a
 tags:
 ---
 vim 常用指令

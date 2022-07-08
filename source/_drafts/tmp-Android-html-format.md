@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_html_format
+abbrlink: 48516f2a
 tags:
 ---
 Html format in Android

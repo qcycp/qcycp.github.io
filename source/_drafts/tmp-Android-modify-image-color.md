@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_modify_image_color
+abbrlink: '85122393'
 tags:
 ---
 更改image顏色 change the image color programmatically

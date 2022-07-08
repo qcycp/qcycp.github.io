@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_UDP_Socket
+abbrlink: 5ebbca62
 tags:
 ---
 Android udp socket

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_open_file_via_Activity
+abbrlink: 7e4c2d4e
 tags:
 ---
 使用Activity開啟檔案

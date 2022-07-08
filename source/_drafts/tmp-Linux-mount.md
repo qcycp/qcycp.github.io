@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_mount
+abbrlink: cbeab283
 tags:
 ---
 掛載硬碟

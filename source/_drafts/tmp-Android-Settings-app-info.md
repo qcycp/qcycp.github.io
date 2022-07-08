@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Settings_app_info
+abbrlink: f9d6d098
 tags:
 ---
 打開settings的app info頁面

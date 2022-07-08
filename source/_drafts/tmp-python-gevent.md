@@ -1,5 +1,6 @@
 ---
 title: tmp_python_gevent
+abbrlink: 6d1c77f6
 tags:
 ---
 Python gevent

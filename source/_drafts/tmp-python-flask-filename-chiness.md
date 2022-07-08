@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_filename_chiness
+abbrlink: 6e21fa39
 tags:
 ---
 flask_uploads cannot handle chinese filename or any other unicode character

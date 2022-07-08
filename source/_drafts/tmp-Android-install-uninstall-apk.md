@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_install_uninstall_apk
+abbrlink: 51fcfbdc
 tags:
 ---
 Install/Uninstall APK

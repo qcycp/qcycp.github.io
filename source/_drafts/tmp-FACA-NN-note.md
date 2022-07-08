@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_NN_note
+abbrlink: 106f54bd
 tags:
 ---
 http://10.120.111.164:8800/settings/resource_management#all

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_marquee_textview
+abbrlink: 899348db
 tags:
 ---
 Android Marquee TextView

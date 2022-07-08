@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_transform_a_large_image+to_thumbnail
+abbrlink: c9bf1882
 tags:
 ---
 Transfrom a large image to thumbnail

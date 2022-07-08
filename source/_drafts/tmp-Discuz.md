@@ -1,5 +1,6 @@
 ---
 title: tmp_Discuz
+abbrlink: 19a11175
 tags:
 ---
 安裝Discuz論壇

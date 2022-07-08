@@ -1,5 +1,6 @@
 ---
 title: tmp_python_threading
+abbrlink: 7d97a826
 tags:
 ---
 Python threading

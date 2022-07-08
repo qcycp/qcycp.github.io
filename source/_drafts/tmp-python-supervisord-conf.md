@@ -1,5 +1,6 @@
 ---
 title: tmp_python_supervisord.conf
+abbrlink: 3a64a58b
 tags:
 ---
 supervisord.conf of tiangolo/uwsgi-nginx-flask:python3.6

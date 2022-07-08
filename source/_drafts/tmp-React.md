@@ -1,5 +1,6 @@
 ---
 title: tmp_React
+abbrlink: f9eeed8
 tags:
 ---
 React

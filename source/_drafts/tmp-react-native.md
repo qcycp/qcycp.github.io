@@ -1,5 +1,6 @@
 ---
 title: tmp_react_native
+abbrlink: a3bd9f3b
 tags:
 ---
 react-native HelloWorld

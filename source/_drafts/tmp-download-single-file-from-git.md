@@ -1,5 +1,6 @@
 ---
 title: tmp_download_single_file_from_git
+abbrlink: 9b2c8b5c
 tags:
 ---
 Download single file from git

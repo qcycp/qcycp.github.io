@@ -1,5 +1,6 @@
 ---
 title: tmp_Linux_ubuntu_add_account
+abbrlink: 2939c853
 tags:
 ---
 ubuntu新增帳戶

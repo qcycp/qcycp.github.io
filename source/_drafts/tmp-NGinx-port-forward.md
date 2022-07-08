@@ -1,5 +1,6 @@
 ---
 title: tmp_NGinx_port_forward
+abbrlink: 2ae0fa41
 tags:
 ---
 NGinx forward websocket from 80 to websocket port

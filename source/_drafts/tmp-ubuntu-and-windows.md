@@ -1,5 +1,6 @@
 ---
 title: tmp_ubuntu_and_windows
+abbrlink: 31f9045c
 tags:
 ---
 建立windows跟virtualbox中ubuntu的溝通

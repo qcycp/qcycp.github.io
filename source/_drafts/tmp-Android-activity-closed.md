@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_activity_closed
+abbrlink: 92fd0be4
 tags:
 ---
 Close Activity manually

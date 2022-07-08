@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_rtsp
+abbrlink: ca6e8638
 tags:
 ---
 get rtsp frame using FFmpegFrameGrabber

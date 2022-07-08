@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_access_web_api_via_javascript_CORS
+abbrlink: 346eab5c
 tags:
 ---
 Access web api via javascript under cross-domain (CORS)

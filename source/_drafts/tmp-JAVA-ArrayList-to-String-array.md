@@ -1,5 +1,6 @@
 ---
 title: tmp_JAVA_ArrayList_to_String_array
+abbrlink: ed435dd3
 tags:
 ---
 Java ArrayList to String array

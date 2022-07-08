@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_no_ActionBar
+abbrlink: b9a97c02
 tags:
 ---
 no ActionBar

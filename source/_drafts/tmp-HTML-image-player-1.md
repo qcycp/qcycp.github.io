@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_image_player
+abbrlink: 6056a5c1
 tags:
 ---
 圖片輪播特效 - Skitter

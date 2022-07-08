@@ -1,5 +1,6 @@
 ---
 title: tmp_Docker_docker-compose.xml
+abbrlink: f0e51358
 tags:
 ---
 docker log設定

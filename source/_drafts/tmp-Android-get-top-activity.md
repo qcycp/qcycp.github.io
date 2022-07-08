@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_get_top_activity
+abbrlink: f2d3520a
 tags:
 ---
 get top activity

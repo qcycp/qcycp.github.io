@@ -1,5 +1,6 @@
 ---
 title: tmp_python_selenium
+abbrlink: e257631e
 tags:
 ---
 selenium

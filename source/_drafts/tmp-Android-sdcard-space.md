@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_sdcard_space
+abbrlink: 63d5fb59
 tags:
 ---
 Android 讀取SD card儲存空間大小

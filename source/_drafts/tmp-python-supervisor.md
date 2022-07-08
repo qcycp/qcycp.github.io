@@ -1,5 +1,6 @@
 ---
 title: tmp_python_supervisor
+abbrlink: 4a5a16
 tags:
 ---
 https://www.jianshu.com/p/8ce8fc7077ee  

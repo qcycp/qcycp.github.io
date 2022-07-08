@@ -1,5 +1,6 @@
 ---
 title: tmp_English_email
+abbrlink: fc401ab6
 tags:
 ---
 Email常用英文

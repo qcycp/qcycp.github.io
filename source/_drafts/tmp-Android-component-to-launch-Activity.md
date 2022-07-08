@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_component_to_launch_Activity
+abbrlink: 4e7af9f5
 tags:
 ---
 透過component帶出某activity

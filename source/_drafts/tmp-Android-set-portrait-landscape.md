@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_set_portrait_landscape
+abbrlink: '4295e713'
 tags:
 ---
 Set portrait and landscape mode programmatically in Activity

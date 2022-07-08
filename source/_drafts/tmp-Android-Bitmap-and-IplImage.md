@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Bitmap_and_IplImage
+abbrlink: 5a4b906f
 tags:
 ---
 Bitmap與IplImage互轉

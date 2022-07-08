@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_postDelayed
+abbrlink: ccc36531
 tags:
 ---
 Handler postDelayed

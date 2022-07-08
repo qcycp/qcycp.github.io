@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_rtsp_player
+abbrlink: dbd4658
 tags:
 ---
 RTSP player by VideoView

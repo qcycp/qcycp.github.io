@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_library
+abbrlink: 6d6565a8
 tags:
 ---
 靜態、動態函式庫

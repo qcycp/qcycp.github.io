@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_kangaroo_message
+abbrlink: c2aacd07
 tags:
 ---
 1. Message from nucleus to wrapper

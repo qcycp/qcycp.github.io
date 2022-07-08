@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_BroadcastReceiver_on_sdcard_event
+abbrlink: 8d360022
 tags:
 ---
 broadcast receiver - 監聽sd card事件

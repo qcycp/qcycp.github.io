@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_POST_and_GET
+abbrlink: d0e96e97
 tags:
 ---
 POST與GET的不同

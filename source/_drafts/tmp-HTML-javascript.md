@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_javascript
+abbrlink: 5f22a96
 tags:
 ---
 開啟網頁後 執行javascript的方法

@@ -1,5 +1,6 @@
 ---
 title: tmp_FACA_facepp_sync_event
+abbrlink: 2a84b7d3
 tags:
 ---
 pip install requests

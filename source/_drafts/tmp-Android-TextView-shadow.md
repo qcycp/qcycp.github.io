@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_TextView_shadow
+abbrlink: c40e0eff
 tags:
 ---
 TextView Shadow

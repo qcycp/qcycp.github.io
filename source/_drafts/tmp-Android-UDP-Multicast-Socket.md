@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_UDP_Multicast_Socket
+abbrlink: f8ec460e
 tags:
 ---
 UDP Multicast Socket

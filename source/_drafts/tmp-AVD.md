@@ -1,5 +1,6 @@
 ---
 title: tmp_AVD
+abbrlink: b7955055
 tags:
 ---
 新增/設定 Android Virtual Machine (AVD) 掛載我們自己編譯的android system

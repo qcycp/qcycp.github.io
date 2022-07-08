@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_take_screenshot
+abbrlink: 87f35547
 tags:
 ---
 Take screenshot within an apk

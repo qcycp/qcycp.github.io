@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_decode
+abbrlink: a1b8956d
 tags:
 ---
 Android中軟解碼和硬解碼

@@ -1,5 +1,6 @@
 ---
 title: tmp_python_flask_setter_getter
+abbrlink: 7eaddcf
 tags:
 ---
 Flask setter getter

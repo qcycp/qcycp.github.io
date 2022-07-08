@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_overridePendingTransition
+abbrlink: 5c1cef02
 tags:
 ---
 overridePendingTransition

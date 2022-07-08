@@ -1,5 +1,6 @@
 ---
 title: tmp_HTML_image_transparent
+abbrlink: 5446d8dd
 tags:
 ---
 設定圖片透明度

@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_hide_system_bar
+abbrlink: 719390df
 tags:
 ---
 Hide the System Bar

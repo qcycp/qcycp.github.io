@@ -1,5 +1,6 @@
 ---
 title: tmp_python_memcached_tool
+abbrlink: ecec5cd5
 tags:
 ---
 https://github.com/memcached/memcached/tree/master/scripts

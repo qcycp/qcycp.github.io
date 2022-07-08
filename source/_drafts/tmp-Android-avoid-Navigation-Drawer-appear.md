@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_avoid_Navigation_Drawer_appear
+abbrlink: a39d7d3a
 tags:
 ---
 禁止Navigation Drawer右滑出現

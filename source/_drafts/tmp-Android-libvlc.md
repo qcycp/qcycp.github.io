@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_libvlc
+abbrlink: 2ea2aa6
 tags:
 ---
 libvlc on Android for playing rtsp streaming

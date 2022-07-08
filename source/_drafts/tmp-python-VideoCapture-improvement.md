@@ -1,5 +1,6 @@
 ---
 title: tmp_python_VideoCapture_improvement
+abbrlink: e7e66c95
 tags:
 ---
 改善 VideoCapture 的影像延遲

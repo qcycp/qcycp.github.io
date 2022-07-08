@@ -1,5 +1,6 @@
 ---
 title: tmp_Cpp_malloc_memcpy
+abbrlink: 5d1e4888
 tags:
 ---
 malloc與memcpy

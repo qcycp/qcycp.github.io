@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_Activity_orientation
+abbrlink: 9ce4df66
 tags:
 ---
 Activity orientation

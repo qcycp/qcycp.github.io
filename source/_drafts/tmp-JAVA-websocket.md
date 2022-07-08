@@ -1,5 +1,6 @@
 ---
 title: tmp_JAVA_websocket
+abbrlink: 1a3af9fc
 tags:
 ---
 java-websocket

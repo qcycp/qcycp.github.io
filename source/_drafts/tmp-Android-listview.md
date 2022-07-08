@@ -1,5 +1,6 @@
 ---
 title: tmp_Android_listview
+abbrlink: 34ad09a2
 tags:
 ---
 common list view

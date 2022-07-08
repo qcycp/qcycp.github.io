@@ -1,5 +1,6 @@
 ---
 title: tmp_linux_enable_network
+abbrlink: 53a98173
 tags:
 ---
 enable network
