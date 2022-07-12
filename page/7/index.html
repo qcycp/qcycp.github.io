@@ -183,6 +183,608 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4b411f65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4b411f65/" class="post-title-link" itemprop="url">flask_background_task</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:33:03" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:03+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>celery</li>
+<li>rq</li>
+</ol>
+<p><a href="https://myapollo.com.tw/2019/06/01/flask-celery/" target="_blank" rel="noopener">https://myapollo.com.tw/2019/06/01/flask-celery/</a></p>
+<p><a href="http://www.pythondoc.com/flask-celery/first.html" target="_blank" rel="noopener">http://www.pythondoc.com/flask-celery/first.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/996f0d2c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/996f0d2c/" class="post-title-link" itemprop="url">download_file</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:32:04" itemprop="dateCreated datePublished" datetime="2021-08-26T09:32:04+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> send_file</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/download')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downloadFile</span> <span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#For windows you need to use drive name [ex: F:/example.pdf]</span></span><br><span class="line">    path = <span class="string">"/examples.pdf"</span></span><br><span class="line">    <span class="keyword">return</span> send_file(path, as_attachment=<span class="literal">True</span>, cache_timeout=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/5e5f185d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/5e5f185d/" class="post-title-link" itemprop="url">draw_frame</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:31:09" itemprop="dateCreated datePublished" datetime="2021-08-26T09:31:09+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_track</span><span class="params">(ipcam_index, ipcam)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            frame, counter = ipcam.getframe()</span><br><span class="line">            <span class="keyword">if</span> frame <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                time.sleep(CONST.SLEEP_TIME_FRAME_DUPLICATED)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            resize_frame = cv2.resize(frame, (DataManager.imageWidth, DataManager.imageHeight))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> tid <span class="keyword">in</span> FaceTrackData.track_data[ipcam_index].track_list.copy():</span><br><span class="line">                tracked_position = FaceTrackData.track_data[ipcam_index].track_list[tid].tracker.get_position()</span><br><span class="line">                t_x = int(tracked_position.left())</span><br><span class="line">                t_y = int(tracked_position.top())</span><br><span class="line">                t_w = int(tracked_position.width())</span><br><span class="line">                t_h = int(tracked_position.height())</span><br><span class="line">                cv2.rectangle(resize_frame, (t_x, t_y),</span><br><span class="line">                                            (t_x + t_w , t_y + t_h),</span><br><span class="line">                                            (FaceTrackData.track_data[ipcam_index].track_list[tid].R, FaceTrackData.track_data[ipcam_index].track_list[tid].G, FaceTrackData.track_data[ipcam_index].track_list[tid].B), <span class="number">5</span>)</span><br><span class="line">            cv2.imshow(ipcam.location, resize_frame)</span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            logging.error(<span class="string">'draw_track failed ---&gt; \n%s'</span> % traceback.format_exc())</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3b817890/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3b817890/" class="post-title-link" itemprop="url">disable_cache_in_flask</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:30:28" itemprop="dateCreated datePublished" datetime="2021-08-26T09:30:28+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://arusahni.net/blog/2014/03/flask-nocache.html" target="_blank" rel="noopener">Disabling caching in Flask</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from nocache import nocache</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/my_endpoint&apos;)</span><br><span class="line">@nocache</span><br><span class="line">def my_endpoint():</span><br><span class="line">    return render_template(...)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/c61afcbc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/c61afcbc/" class="post-title-link" itemprop="url">python_class</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:28:14" itemprop="dateCreated datePublished" datetime="2021-08-26T09:28:14+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #&lt;__main__.MyClass object at 0x7f4dd1c2a470&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>str</strong>()用來定義傳回物件描述字串，通常用來描述的字串是對使用者友善的說明文字，如果對物件使用str()，所呼叫的就是<strong>str</strong>()。<br>如果要定義對開發人員較有意義的描述，例如傳回產生實例的類別名稱之類的，則可以定義<strong>repr</strong>()，如果對物件使用repr()，則所呼叫的就是<strong>repr</strong>()。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">    #自定義當print MyClass instance object時，要返回什麼內容</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;a: &quot; + str(self.a) + &quot;, b: &quot; + str(self.b)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #a: 10, b: &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dc2bade1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/dc2bade1/" class="post-title-link" itemprop="url">install_dlib_on_windows</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:27:21" itemprop="dateCreated datePublished" datetime="2021-08-26T09:27:21+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Install dlib for python on windows</p>
+<p><a href="https://pypi.org/simple/dlib/" target="_blank" rel="noopener">Links for dlib</a></p>
+<p>pip install <a href="https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf" target="_blank" rel="noopener">https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf</a></p>
+<p>pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ba4ed96a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ba4ed96a/" class="post-title-link" itemprop="url">url_for</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:26:05" itemprop="dateCreated datePublished" datetime="2021-08-26T09:26:05+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>自定義url_for的位址與port</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_url_for</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> current_app.test_request_context():</span><br><span class="line">        <span class="comment"># With the test request context of the app</span></span><br><span class="line">        kwargs[<span class="string">'_external'</span>] = <span class="literal">True</span>    <span class="comment"># Add the _external=True keyword argument to whatever else was passed</span></span><br><span class="line">        url = url_for(*args, **kwargs)    <span class="comment"># Get the URL</span></span><br><span class="line">        url = url.replace(<span class="string">'://localhost/'</span>, <span class="string">'://localhost:15074/'</span>)</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line"><span class="meta">@render_bp.route('/system/setting/engine', methods = ['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">system_setting_engine</span><span class="params">()</span>:</span></span><br><span class="line">        fields = [k <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line"></span><br><span class="line">        values = [request.form[k] <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line">        payload = dict(zip(fields, values))</span><br><span class="line"></span><br><span class="line">        <span class="comment">#print("payload",json.dumps(payload))</span></span><br><span class="line"></span><br><span class="line">        r = requests.put(HOST+<span class="string">'/config/engine'</span>, data = payload)</span><br><span class="line">        <span class="comment">#return redirect(url_for('render_bp.system_setting', _external=True))</span></span><br><span class="line">        <span class="keyword">return</span> redirect(my_url_for(<span class="string">'render_bp.system_setting'</span>, _external=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Reference<br><a href="https://github.com/pallets/flask/issues/824" target="_blank" rel="noopener">https://github.com/pallets/flask/issues/824</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f2123b71/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f2123b71/" class="post-title-link" itemprop="url">websocket_client</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:24:31" itemprop="dateCreated datePublished" datetime="2021-08-26T09:24:31+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gevent==1.4.0</span><br><span class="line">greenlet==0.4.15</span><br><span class="line">gunicorn==19.9.0</span><br><span class="line">six==1.12.0</span><br><span class="line">websocket==0.2.1</span><br><span class="line">websocket-client==0.55.0</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">port = <span class="number">5073</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(ws, message)</span>:</span></span><br><span class="line">    data = json.loads(message)</span><br><span class="line">    print(<span class="string">"receive message from server:"</span>)</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_error</span><span class="params">(ws, error)</span>:</span></span><br><span class="line">    print(error)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_close</span><span class="params">(ws)</span>:</span></span><br><span class="line">    print(<span class="string">"### closed ###"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_open</span><span class="params">(ws)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line">            ws.send(<span class="string">"Hello"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        ws.close()</span><br><span class="line">    thread = threading.Thread(target=job)</span><br><span class="line">    thread.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    websocket.enableTrace(<span class="literal">True</span>)</span><br><span class="line">    <span class="comment">#ws = websocket.create_connection("ws://localhost:" + str(port) + "/")</span></span><br><span class="line">    url = &#123;<span class="string">'rtsp'</span>: <span class="string">'E6-IN-01.mp4'</span>&#125;</span><br><span class="line">    ws = websocket.WebSocketApp(<span class="string">"ws://0.0.0.0:"</span> + str(port) + <span class="string">"?"</span> + urlencode(url),</span><br><span class="line">                              on_message = on_message,</span><br><span class="line">                              on_error = on_error,</span><br><span class="line">                              on_close = on_close)</span><br><span class="line">    ws.on_open = on_open</span><br><span class="line">    ws.run_forever()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4d9192f8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4d9192f8/" class="post-title-link" itemprop="url">supervisor</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-25 19:32:48" itemprop="dateCreated datePublished" datetime="2021-08-25T19:32:48+08:00">2021-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>Reference<br><a href="https://blog.51cto.com/lixcto/1539136" target="_blank" rel="noopener">https://blog.51cto.com/lixcto/1539136</a><br><a href="http://supervisord.org/configuration.html" target="_blank" rel="noopener">http://supervisord.org/configuration.html</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status</span><br><span class="line">supervisorctl stop service</span><br><span class="line">supervisorctl restart service</span><br><span class="line">supervisorctl start service</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@koala:~# supervisorctl status</span><br><span class="line">clean_upload_event               RUNNING   pid 1857, uptime 2 days, 20:51:06</span><br><span class="line">events_consumer                  RUNNING   pid 1859, uptime 2 days, 20:51:06</span><br><span class="line">koala_online                     RUNNING   pid 1861, uptime 2 days, 20:51:06</span><br><span class="line">koala_worker                     RUNNING   pid 1860, uptime 2 days, 20:51:06</span><br><span class="line">redis                            RUNNING   pid 1862, uptime 2 days, 20:51:06</span><br><span class="line">updater                          RUNNING   pid 1864, uptime 2 days, 20:51:06</span><br><span class="line">weather                          RUNNING   pid 1858, uptime 2 days, 20:51:06</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a477be03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,10 +808,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-08-25 19:30:49 / 修改時間：19:36:59" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
+              <time title="創建時間：2021-08-25 19:30:49" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
 
           
 
@@ -254,668 +862,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cd579093/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/cd579093/" class="post-title-link" itemprop="url">linux logrotate</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 19:28:55 / 修改時間：19:29:18" itemprop="dateCreated datePublished" datetime="2021-08-25T19:28:55+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://linux.die.net/man/8/logrotate" target="_blank" rel="noopener">https://linux.die.net/man/8/logrotate</a></p>
-<p><a href="https://ihower.tw/blog/archives/3565" target="_blank" rel="noopener">https://ihower.tw/blog/archives/3565</a><br><a href="https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html" target="_blank" rel="noopener">https://blog.toright.com/posts/4622/nginx-log-%E4%BB%A5%E6%97%A5%E6%9C%9F%E6%AD%B8%E6%AA%94.html</a><br><a href="https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/" target="_blank" rel="noopener">https://zshell.cc/2018/01/15/linux-varlog--logrotate%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%BF%90%E7%BB%B4/</a><br><a href="http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/" target="_blank" rel="noopener">http://light3moon.com/2016/02/19/%E9%85%8D%E7%BD%AE%20logrotate/</a><br><a href="https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/" target="_blank" rel="noopener">https://codertw.com/%E4%BC%BA%E6%9C%8D%E5%99%A8/377513/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f, --force</span><br><span class="line">-v, --verbose</span><br><span class="line"></span><br><span class="line">logrotate -fv /etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/logrotate/status</span><br><span class="line">/etc/logrotate.conf</span><br><span class="line">/etc/logrotate.d/mysql-server</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>/etc/logrotate.d裡的設定優先權比logrotate.conf高</li>
-<li>logrotate.conf單純是一個script，需要被執行，無法主動執行</li>
-<li>因為/etc/cron.daily/logrotate設定，因此logrotate.conf被執行的最短周期是一天</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/df62d35a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/df62d35a/" class="post-title-link" itemprop="url">pthread example</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 19:22:26 / 修改時間：19:23:10" itemprop="dateCreated datePublished" datetime="2021-08-25T19:22:26+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pthread_mutex_t</span> count_lock;</span><br><span class="line"><span class="keyword">pthread_cond_t</span> count_nonzero;</span><br><span class="line"><span class="keyword">unsigned</span> count;</span><br><span class="line"></span><br><span class="line">decrement_count()</span><br><span class="line">&#123;</span><br><span class="line">    pthread_mutex_lock(&amp;count_lock);</span><br><span class="line">    <span class="keyword">while</span> (count == <span class="number">0</span>)</span><br><span class="line">        pthread_cond_wait(&amp;count_nonzero, &amp;count_lock);</span><br><span class="line">    count = count - <span class="number">1</span>;</span><br><span class="line">    pthread_mutex_unlock(&amp;count_lock);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">increment_count()</span><br><span class="line">&#123;</span><br><span class="line">    pthread_mutex_lock(&amp;count_lock);</span><br><span class="line">    <span class="keyword">if</span> (count == <span class="number">0</span>)</span><br><span class="line">        pthread_cond_signal(&amp;count_nonzero);</span><br><span class="line">    count = count + <span class="number">1</span>;</span><br><span class="line">    pthread_mutex_unlock(&amp;count_lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a7a9482c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/a7a9482c/" class="post-title-link" itemprop="url">python socket server</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 18:12:47 / 修改時間：18:13:17" itemprop="dateCreated datePublished" datetime="2021-08-25T18:12:47+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">serv.bind((<span class="string">'0.0.0.0'</span>, <span class="number">9527</span>))</span><br><span class="line">serv.listen()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn, addr = serv.accept()</span><br><span class="line">    print(<span class="string">'Client from'</span>, addr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = conn.recv(<span class="number">1024</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data: <span class="keyword">break</span></span><br><span class="line">        conn.send(data)</span><br><span class="line"></span><br><span class="line">    conn.close()</span><br><span class="line">    print(<span class="string">'Client disconnected'</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b080c008/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b080c008/" class="post-title-link" itemprop="url">split pcap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-20 16:57:43 / 修改時間：16:59:18" itemprop="dateCreated datePublished" datetime="2021-08-20T16:57:43+08:00">2021-08-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li><p>使用 wireshark 提供的程式<br>editcap.exe -c frame_size old_file new_files</p>
-</li>
-<li><p>使用 tcpdump<br>tcpdump -r old_file -w new_files -c frame_size</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4ccc247a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4ccc247a/" class="post-title-link" itemprop="url">vf mirror</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-20 14:58:46 / 修改時間：16:39:40" itemprop="dateCreated datePublished" datetime="2021-08-20T14:58:46+08:00">2021-08-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包"><a href="#使用-intel-網卡，在-dpdk-mode-下設定-vlan-mirror，以便於側錄封包" class="headerlink" title="使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包"></a>使用 intel 網卡，在 dpdk mode 下設定 vlan mirror，以便於側錄封包</h4><p>假設網卡 interface 為 enp97s0f0</p>
-<ol>
-<li>先建立 3 個 vf for enp97s0f0<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> 3 &gt; /sys/class/net/enp97s0f0/device/sriov_numvfs</span></span><br></pre></td></tr></table></figure></li>
-<li>bind dpdk driver<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.0</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py -b igb_uio 0000:61:02.1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> /opt/dpdk-19.11/usertools/dpdk-devbind.py --status-dev net</span></span><br><span class="line"></span><br><span class="line">Network devices using DPDK-compatible driver</span><br><span class="line">============================================</span><br><span class="line">0000:61:02.0 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br><span class="line">0000:61:02.1 'Ethernet Virtual Function 700 Series 37cd' drv=igb_uio unused=iavf</span><br></pre></td></tr></table></figure></li>
-<li>設定 vlan/mac for vf 0, 1 used for CU-plane (vf 0 for uplane and vf 1 for cplane)<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 vlan 2</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 vlan 1</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 0 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link <span class="built_in">set</span> enp97s0f0 vf 1 mac 00:11:22:33:44:66</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ip link show enp97s0f0</span></span><br><span class="line">1: enp97s0f0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000</span><br><span class="line">    link/ether 28:c1:3c:95:6f:9c brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    vf 0 MAC 00:11:22:33:44:66, vlan 2, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 1 MAC 00:11:22:33:44:66, vlan 1, spoof checking on, link-state auto, trust off</span><br><span class="line">    vf 2 MAC 00:00:00:00:00:00, spoof checking on, link-state auto, trust off</span><br></pre></td></tr></table></figure></li>
-<li>建立 vlan_mirror<ul>
-<li>add 1, 2 是 vf 0/1 設定的 vlan id</li>
-<li>sriov/2 是指 vf 2</li>
-<li>enp97s2f2 是 vf 2 的 interface (可以用 ifconfig 查詢)</li>
-<li>vf 2 的 mtu size 必須要設大，否則無法側錄到 uplane<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo add 1,2 &gt; /sys/class/net/enp97s0f0/device/sriov/2/vlan_mirror</span><br><span class="line">$ ifconfig enp97s2f2 mtu 9000</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>錄製封包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tcpdump -i enp97s2f2 -w ecpri.pcap</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>Reference<br><a href="https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html" target="_blank" rel="noopener">https://specs.openstack.org/openstack/neutron-specs/specs/stein/port-mirroring-sriov-vfs.html</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/85f67f4e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/85f67f4e/" class="post-title-link" itemprop="url">ssh Tunnel</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-07-06 08:47:07 / 修改時間：09:08:17" itemprop="dateCreated datePublished" datetime="2021-07-06T08:47:07+08:00">2021-07-06</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Command<br><code>ssh -N -L 9999:192.168.56.102:8080 user@192.168.56.11</code><br><code>ssh -N -L 0.0.0.0:9999:192.168.56.102:8080 user@192.168.56.11</code><br><img src="/posts/85f67f4e/image01.png" alt></li>
-</ul>
-<ol>
-<li>proxy server: <a href="mailto:user@192.168.56.11" target="_blank" rel="noopener">user@192.168.56.11</a></li>
-<li>remote server application: 192.168.56.102:8080</li>
-<li>on local PC: You can access 192.168.56.102:8080 via <a href="mailto:user@192.168.56.11" target="_blank" rel="noopener">user@192.168.56.11</a> on localhost <a href="http://localhost:9999" target="_blank" rel="noopener">http://localhost:9999</a></li>
-</ol>
-<ul>
-<li>reference<br><a href="https://blog.rex-tsou.com/2017/10/%E5%88%A9%E7%94%A8-ssh-tunnel-%E5%81%9A%E8%B7%B3%E6%9D%BFaka.-%E7%BF%BB%E7%89%86/" target="_blank" rel="noopener">https://blog.rex-tsou.com/2017/10/%E5%88%A9%E7%94%A8-ssh-tunnel-%E5%81%9A%E8%B7%B3%E6%9D%BFaka.-%E7%BF%BB%E7%89%86/</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/10ad64df/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/10ad64df/" class="post-title-link" itemprop="url">Fluent Terminal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-30 16:31:57" itemprop="dateCreated datePublished" datetime="2021-06-30T16:31:57+08:00">2021-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:29" itemprop="dateModified" datetime="2021-08-10T12:00:29+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/FluentTerminal/" itemprop="url" rel="index"><span itemprop="name">FluentTerminal</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Using Python on Fluent Terminal - CMD</li>
-</ul>
-<ol>
-<li>手動設定 Path for Python<br><img src="/posts/10ad64df/image01.png" alt></li>
-<li>使用 virtualenv 的方式<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\User\python&gt; venv\Scripts\activate.bat</span><br><span class="line"></span><br><span class="line">(venv) C:\Users\User\python&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>Using Python on Fluent Terminal - Power Shell</li>
-</ul>
-<ol>
-<li>手動設定 Path for Python</li>
-<li>使用 virtualenv 的方式<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User\python&gt; venv\Scripts\activate.ps1</span><br><span class="line">(venv) PS C:\Users\User\python&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li><p>整合 cmder<br><img src="/posts/10ad64df/image03.png" alt></p>
-</li>
-<li><p>Trouble Shooting</p>
-</li>
-</ul>
-<ol>
-<li>Power Shell 預設不能執行某些命令<br><img src="/posts/10ad64df/image02.png" alt><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\User\python&gt; Get-ExecutionPolicy</span><br><span class="line">Restricted</span><br></pre></td></tr></table></figure>
-要將值改成 RemoteSigned<br>以系統管理員身分執行 Power Shell<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Windows\system32&gt; Set-ExecutionPolicy RemoteSigned</span><br><span class="line"></span><br><span class="line">執行原則變更</span><br><span class="line">執行原則有助於防範您不信任的指令碼。如果變更執行原則，可能會使您接觸到 about_Execution_Policies 說明主題 (網址為</span><br><span class="line">https:/go.microsoft.com/fwlink/?LinkID=135170) 中所述的安全性風險。您要變更執行原則嗎?</span><br><span class="line">[Y] 是(Y)  [A] 全部皆是(A)  [N] 否(N)  [L] 全部皆否(L)  [S] 暫停(S)  [?] 說明 (預設值為 &quot;N&quot;): y</span><br><span class="line">PS C:\Windows\system32&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2a024bae/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/2a024bae/" class="post-title-link" itemprop="url">python note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 19:28:19" itemprop="dateCreated datePublished" datetime="2021-06-24T19:28:19+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-26 09:50:02" itemprop="dateModified" datetime="2021-08-26T09:50:02+08:00">2021-08-26</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>module: 可以想成一個檔案就是一個module<br>package: 可以想成一個目錄就是一個package，但必須要該folder下建立<strong>init</strong>.py，可以為空  </p>
-<ul>
-<li><p>dec to hex string，若少於 2 位數，補 0<br>hex =’{:02x}’.format(A)</p>
-</li>
-<li><p>dec to bin string，若少於 16 位數，補 0<br>bin =’{:016b}’.format(B)</p>
-</li>
-<li><p>bin string to 2’sc</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two2dec</span><span class="params">(s)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> s[<span class="number">0</span>] == <span class="string">'1'</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> * (int(<span class="string">''</span>.join(<span class="string">'1'</span> <span class="keyword">if</span> x == <span class="string">'0'</span> <span class="keyword">else</span> <span class="string">'0'</span> <span class="keyword">for</span> x <span class="keyword">in</span> s), <span class="number">2</span>) + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> int(s, <span class="number">2</span>)</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/db30bcc7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/db30bcc7/" class="post-title-link" itemprop="url">matlab note</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-06-24 17:59:39" itemprop="dateCreated datePublished" datetime="2021-06-24T17:59:39+08:00">2021-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-10 12:00:46" itemprop="dateModified" datetime="2021-08-10T12:00:46+08:00">2021-08-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Matlab/" itemprop="url" rel="index"><span itemprop="name">Matlab</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.mathworks.com/help/matlab/matlab_prog/matlab-operators-and-special-characters.html" target="_blank" rel="noopener">https://www.mathworks.com/help/matlab/matlab_prog/matlab-operators-and-special-characters.html</a><br><code>.&#39;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A=[1 2]</span><br><span class="line">A=A.&apos;</span><br><span class="line">[output]</span><br><span class="line">A =</span><br><span class="line">   1   2</span><br><span class="line"></span><br><span class="line">A =</span><br><span class="line">   1</span><br><span class="line">   2</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -980,7 +930,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -1020,7 +970,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

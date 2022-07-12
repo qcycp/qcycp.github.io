@@ -183,6 +183,851 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b0e67c8c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b0e67c8c/" class="post-title-link" itemprop="url">ptp</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-05 15:28:22" itemprop="dateCreated datePublished" datetime="2021-01-05T15:28:22+08:00">2021-01-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-08-30 09:20:16" itemprop="dateModified" datetime="2021-08-30T09:20:16+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>PTP (Precise Time Protocol)<br>Obtaining sub-100 nanosecond timing on a local area network requires an architecture that is fully IEEE-1588 compliant. The three main components are: a GPS Grandmaster clock, an Ethernet switch (transparent or boundary clock), and a PTP slave.<ul>
+<li>PTP 精準度較 NTP 好，NTP 只能精確到毫秒 (ms)，PTP 能精確到微秒 (us)</li>
+<li>NTP 協議較被廣泛用於 LAN 和 WAN 上的時間同步</li>
+</ul>
+</li>
+<li>確認網卡是否支援 PTP 功能<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># ethtool -T enp134s0f0</span><br><span class="line">Time stamping parameters for enp134s0f0:</span><br><span class="line">Capabilities:</span><br><span class="line">    hardware-transmit     (SOF_TIMESTAMPING_TX_HARDWARE)</span><br><span class="line">    software-transmit     (SOF_TIMESTAMPING_TX_SOFTWARE)</span><br><span class="line">    hardware-receive      (SOF_TIMESTAMPING_RX_HARDWARE)</span><br><span class="line">    software-receive      (SOF_TIMESTAMPING_RX_SOFTWARE)</span><br><span class="line">    software-system-clock (SOF_TIMESTAMPING_SOFTWARE)</span><br><span class="line">    hardware-raw-clock    (SOF_TIMESTAMPING_RAW_HARDWARE)</span><br><span class="line">PTP Hardware Clock: 1</span><br><span class="line">Hardware Transmit Timestamp Modes:</span><br><span class="line">    off                   (HWTSTAMP_TX_OFF)</span><br><span class="line">    on                    (HWTSTAMP_TX_ON)</span><br><span class="line">Hardware Receive Filter Modes:</span><br><span class="line">    none                  (HWTSTAMP_FILTER_NONE)</span><br><span class="line">    all                   (HWTSTAMP_FILTER_ALL)</span><br></pre></td></tr></table></figure></li>
+<li>使用 ptp4l 調整 PHC (PTP Hardware Clock) 時鐘，使用 phc2sys 調整系統時鐘</li>
+</ul>
+<ol>
+<li>使用 ptp4l 指令，將 NIC (enp134s0f0) 中的 PHC 做為 slave mode，同步為 master 的時間 (在 ptp4l.conf 中設定 master 來源)</li>
+<li>使用 phc2sys 指令，將 NIC (enp134s0f0) 中的 PHC 時間，同步到系統時間<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ptp4l -i enp134s0f0 -m -s -f ptp4l.conf</span><br><span class="line"> -i [dev]  interface device to use</span><br><span class="line"> -m        print messages to stdout</span><br><span class="line"> -s        slave only mode (master, by default)</span><br><span class="line"> -f [file] read configuration from &apos;file&apos;</span><br><span class="line"></span><br><span class="line"># phc2sys -s enp134s0f0 -w -m -n 44</span><br><span class="line"> -s [dev|name]  master clock</span><br><span class="line"> -w             wait for ptp4l</span><br><span class="line"> -m             print messages to stdout</span><br><span class="line"> -n [num]       domain number</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>Components</li>
+</ul>
+<ol>
+<li>GM (Grandmaster Clock): master 作為同步源頭</li>
+<li>OC (Ordinary Clock): 單一網路界面設備 (只有一個 PTP 通信埠)，可以是 master 或 slave</li>
+<li>BC (Boundary Clock): 多網路界面設備 (有一個以上 PTP 通信埠)，其中一個作為 PTP slave (master 是 GM)，其它則為 master (slave 為連接到 swtich 的眾多 network devices)</li>
+<li>TC (Transparent Clock): 多網路界面設備，如同一般 switch 或 router 轉送所有封包，但不作為 master 或 slave (所以 master 依舊為 GM，slave 為連接到 swtich 的眾多 network devices)，分為<br>a. end-to-end (端對端)：額外累算 event 封包停留 switch 時間，更新 correction 欄位<br>b. peer-to-peer (點對點)：只更新 Sync 和 Follow Up 的 correction 欄位，除了累算 event 封包停留時間，再減去 Link propagation delay</li>
+</ol>
+<ul>
+<li>Master/Slave<br>從通信關係上又把時鐘分為主時鐘和從時鐘，任何時鐘都能作為 Master clock 和 Slave clock，並且保證從時鐘與主時鐘時間同步<br>每個系統只有一個GMC，每個子網內只有一個主時鐘</li>
+</ul>
+<p>T1 透過 Sync 或 Follow Up 告知 Slave，如果 Sync 傳送時還不知道真正傳送時間，才用 Follow Up 送，稱為 2-Step<br>T1: Master 週期傳送 Sync 的時間<br>T2: Slave 接收 Sync 的時間<br>Slave 調整時間，讓 T2 和 T1 的變化速度一致，達到頻率同步。Drift = ((T2’-T2) - (T1’-T1))/(T1’-T1)</p>
+<p>E2E：頻率同步後<br>T3: Slave 傳送 Delay Request 的時間，Slave 只是紀錄 T3，Delay Request 並不含 T3 欄位<br>T4: Master 接收 Delay Request 的時間。T4 透過 Delay Response 告知 Slave<br>Delay = (T2 - T1 + T4 - T3)/2</p>
+<p>P2P：可用在頻率不同步時</p>
+<p>One way delay = (T2-T1 + T4-T3) / 2<br>Offset (phase offset) = Master to Slave difference – One way delay = ((T2-T1) - (T4-T3)) / 2</p>
+<p>s<br>主時鐘在t1時刻發送Sync消息：如果為1588 one-step機制，則Sync消息包含有發送時間；如果為1588 two-step機制，則Sync消息僅發送發送時間值的估計值，即t1的估計值，然後在Follow_Up消息中再發送精確的t1值</p>
+<p>2 Step下, sync msg在Transparent Clock中不必更新timestamp. 但是需要记住sync msg在device中停留多长时间(dwell time)供将来follow up用</p>
+<p>One-step clocks require hardware capable of on-the-fly correction field updates. Two-step clocks require that the software remember the dwell time of a sync message and match it to the corresponding follow up message.</p>
+<p>2-step master –&gt; 1-step transparent –&gt; slave<br>transparent clock会更新sync msg的correction filed, 不会处理follow up<br>最终slave都会把sync和follow up的时间戳相加.<br>1-step master –&gt; 2-step transparent –&gt; slave<br>transparent clock会根据sync msg而生成follow up msg</p>
+<ul>
+<li>Reference<br><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/1B2EBAC1BE7F4700A836C4AE040D5873" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/1B2EBAC1BE7F4700A836C4AE040D5873</a><br><a href="https://blog.meinbergglobal.com/2013/09/14/ieee-1588-accurate/" target="_blank" rel="noopener">https://blog.meinbergglobal.com/2013/09/14/ieee-1588-accurate/</a><br><a href="http://lirobo.blogspot.com/2020/10/precision-time-protocol.html" target="_blank" rel="noopener">http://lirobo.blogspot.com/2020/10/precision-time-protocol.html</a><br><a href="http://www.chronos.co.uk/files/pdfs/cal/TechnicalBrief-IEEE1588v2PTP.pdf" target="_blank" rel="noopener">http://www.chronos.co.uk/files/pdfs/cal/TechnicalBrief-IEEE1588v2PTP.pdf</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/11219203/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/11219203/" class="post-title-link" itemprop="url">5g_document</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-04 16:22:49" itemprop="dateCreated datePublished" datetime="2021-01-04T16:22:49+08:00">2021-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://doc.dpdk.org/dts/test_plans/vf_macfilter_test_plan.html" target="_blank" rel="noopener">https://doc.dpdk.org/dts/test_plans/vf_macfilter_test_plan.html</a></p>
+<p><a href="https://blog.csdn.net/HiWangWenBing/article/details/106878102" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106878102</a><br><a href="https://blog.csdn.net/HiWangWenBing/category_10056821.html" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/category_10056821.html</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106872841" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106872841</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106877671" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106877671</a><br><a href="https://blog.csdn.net/HiWangWenBing/article/details/106875790" target="_blank" rel="noopener">https://blog.csdn.net/HiWangWenBing/article/details/106875790</a><br><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D</a><br><a href="https://tel3c.tw/blog/post/28669" target="_blank" rel="noopener">https://tel3c.tw/blog/post/28669</a><br><a href="https://zhuanlan.zhihu.com/p/59654520" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/59654520</a><br><a href="https://www.linkedin.com/pulse/3gpp-5g-adhoc-any-decisions-ran-internal-functional-split-eiko-seidel" target="_blank" rel="noopener">https://www.linkedin.com/pulse/3gpp-5g-adhoc-any-decisions-ran-internal-functional-split-eiko-seidel</a></p>
+<p>DTU (Data Terminal Unit)<br>採用 5G/4G 無線、有線網絡，將本地串口數據經 DTU 打包成 IP 數據或者是將 IP 數據轉換成串口數據的無線通訊終端，進行遠程傳輸的設備<br>可以充當UE測試Throughput</p>
+<p>PA (Power Amplifier)<br>功率放大器</p>
+<p>SFP (Small From Pluggable)<br>SFP的最高速率可達4G，SFP+的速率是10G</p>
+<p>PDU (Packet Data Unit)<br>5G網絡以數據包的形式將終端（UE）和外部網絡之間發送和接收的數據進行傳送，通常把這些用戶的數據包叫做PDU<br>PDU session 建立過程是由UE側發起的，目的是在UE和DN之間建立一條新的連線，即終端和外部網絡之間的數據通道</p>
+<p>MCS</p>
+<p>EVM (Error Vector Magnitude)<br>經由 PF 打出來的訊號，跟理想訊號的誤差值</p>
+<p>PLMN (Public Land Mobile Network)<br>PLMN = MCC + MNC<br>MCC: 移動國家碼<br>MNC: 行動網路碼</p>
+<p><a href="https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D" target="_blank" rel="noopener">https://www.2cm.com.tw/2cm/zh-tw/tech/A64431A9FDDC48F4AFFFC99688A8743D</a><br>在通訊網路中, 無線接取部份分成4個子層 PDCP, RLC, MAC, PHY</p>
+<p>資料在各個子層中進行相對應的封裝，子層從上層收到的資料視為此子層的服務資料單元(Service Data Unit, SDU)，經過子層封裝後成為協定資料單元(Protocol Data Unit, PDU)，再傳遞給下一個子層</p>
+<p>PDCP (Packet Data Convergence Protocol)<br>負責的主要功能有資料封包的標頭(Header)壓縮與解壓縮、資料加密/解密、資料完整性的保護<br>PDCP 的 PDU 格式分成兩種，分別是攜帶資料和序號(Sequence Number, SN)的PDCP Data PDU和攜帶PDCP狀態報告(Status Report)或標頭壓縮控制(Header Compression Control)資訊的PDCP控制PDU</p>
+<p>在LTE通訊協定的設計中，每個無線承載都由一個PDCP實體(Entity)來負責管理，而根據無線承載的不同特性(單向或雙向)，以及RLC是以承認模式(AM)或非承認模式(UM)來傳輸資料，一個PDCP實體可能會對應到一或兩個RLC實體。</p>
+<p>無線承載還可分為專用無線承載(Dedicated Radio Bearer, DRB)和信令無線承載(Signaling Radio Bearer, SRB)兩種，PDCP實體提供無線承載的功能雖然均包含使用者面(User Plane)與控制面(Control Plane)資料傳送、PDCP序號維護、資料加解密、剔除過時資料封包和確保上層資料封包於重建時的順序正確和不重複，但標頭壓縮/解壓縮功能只適用於DRB，資料完整性保護亦僅適用於SRB。  </p>
+<p>RLC (Radio Link Control)<br>該子層主要的功能為對資料SDU進行切割及組合，使之成為適當大小的 PDU 送給 MAC 層。<br>RLC子層負責的另一項重要工作則是在封包遺失時進行自動重傳請求(Automatic Repeat Request, ARQ)</p>
+<p>RLC子層的操作模式可分為三類，分別為透明模式(TM)、非承認模式及承認模式。<br>透明模式為直接穿透模式，資料不須在RLC層進行重新封裝的工作，SDU即為PDU<br>而在承認和非承認模式下，RLC子層均須將所收到的SDU進行切割和重組，以組成MAC子層所要求的PDU。承認和非承認模式之間的主要差別，便是由是否支援ARQ功能進行區分。承認模式須支援ARQ功能，而非承認模式則不支援ARQ功能。在承認模式下，MAC必須在接收端對於PDU接收的結果進行回報，回報結果為接收成功(ACK)或接收失敗(NACK)，當結果為NACK時，RLC的傳送端必須進行重傳。</p>
+<p>ARQ機制旨在克服PDU遺失的問題。在傳送端會將組成的PDU暫存在緩衝區內，用以進行PDU的重傳。在重傳時，若是傳輸空間大小不足以容納須要重傳的PDU時，可以針對已經組成的PDU再次進行切割(Re-segment)，以組成PDU進行傳送。在接收端亦會對收到的PDU進行暫存動作，嘗試將收到的PDU解封裝成為SDU並且維持SDU的先後順序傳送給上層。  </p>
+<p>MAC (Media Access Control) 負責資料的重傳 (HARQ)<br>MAC子層將接手執行排程(Scheduling)、多工(Multiplexing)等任務，以組成MAC子層PDU<br>在MAC子層端，為防止RLC提供的PDU遺失，具備混合式自動回覆請求重傳(HARQ)等功能</p>
+<p>多工的目標，在於將多個不同邏輯通道的資料組合在同一個傳輸通道中傳送，在MAC子層中會將一或多個邏輯通道得到的SDU封裝在同一個 MAC PDU中，然後在傳輸通道中進行傳送。相反的接收時亦會對MAC PDU進行解多工 (De-multiplexing)的動作，將在同一個傳輸通道中的PDU拆解為一至多個邏輯通道SDU，即在接收端將SDU對應到原屬的邏輯通道</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/41da0a7b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/41da0a7b/" class="post-title-link" itemprop="url">openshift</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-01-04 16:21:20" itemprop="dateCreated datePublished" datetime="2021-01-04T16:21:20+08:00">2021-01-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>How to Setup OpenShift Origin (OKD) on Ubuntu 19.04/18.04/16.04<br><a href="https://computingforgeeks.com/how-to-setup-openshift-origin-on-ubuntu/#ex1" target="_blank" rel="noopener">https://computingforgeeks.com/how-to-setup-openshift-origin-on-ubuntu/#ex1</a></p>
+</li>
+<li><p>How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7<br><a href="https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/" target="_blank" rel="noopener">https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7b25d017/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/7b25d017/" class="post-title-link" itemprop="url">redis</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-12-31 17:00:03" itemprop="dateCreated datePublished" datetime="2020-12-31T17:00:03+08:00">2020-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Software/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>redis-client<br><a href="https://github.com/rgl/redis/downloads" target="_blank" rel="noopener">https://github.com/rgl/redis/downloads</a></p>
+</li>
+<li><p>redis-server<br>sudo apt-get install redis-server<br>sudo apt-get purge –auto-remove redis-server</p>
+</li>
+<li><p>Instruction</p>
+</li>
+</ol>
+<ul>
+<li><p>Start/Stop Redis server<br>$ sudo service redis-server start<br>$ sudo service redis-server restart<br>$ sudo service redis-server stop</p>
+</li>
+<li><p>Open Redis CLI tool<br>$ redis-cli<br>$ redis-cli -h redis15.localnet.org -p 6379 ping</p>
+</li>
+<li><p>Config<br>$ sudo vim /etc/redis/redis.conf<br>port：連結到Redis Server所通過的連接埠。預設為6379，如果有跟其他服務衝突到，應該要修改掉。<br>bind：連結到Redis Server所使用的網路介面。預設為127.0.0.1，也就是內部迴圈(lo)，僅本機可以直接連接。<br>requirepass：連結到此Redis Server所需的密碼。</p>
+<p>修改bind設定<br>$ sudo vim /etc/redis/redis.conf<br>bind 127.0.0.1 =&gt; bind 0.0.0.0</p>
+</li>
+</ul>
+<p><a href="https://blogs.technet.microsoft.com/jessicadeen/uncategorized/how-to-configure-redis-server-on-bash-on-ubuntu-on-windows-10-wsl/" target="_blank" rel="noopener">How to configure Redis-Server on Bash on Ubuntu on Windows 10 (WSL) – Jessica Deen on Technet</a></p>
+<ul>
+<li>Commands<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; set test 123</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; get test</span><br><span class="line">&quot;123&quot;</span><br><span class="line">127.0.0.1:6379&gt; exists test</span><br><span class="line">(integer) 1</span><br><span class="line">127.0.0.1:6379&gt; del test</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://redis.io/topics/rediscli" target="_blank" rel="noopener">https://redis.io/topics/rediscli</a><br><a href="https://www.itread01.com/content/1545205270.html" target="_blank" rel="noopener">https://www.itread01.com/content/1545205270.html</a><br><a href="https://pypi.org/project/redis/" target="_blank" rel="noopener">https://pypi.org/project/redis/</a><br><a href="https://www.jianshu.com/p/2639549bedc8" target="_blank" rel="noopener">https://www.jianshu.com/p/2639549bedc8</a></p>
+<p>redis-cli -p 6379 –stat</p>
+<ul>
+<li>Setup in nodejs<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const session = require(&apos;express-session&apos;);</span><br><span class="line">const RedisStore = require(&apos;connect-redis&apos;)(session);</span><br><span class="line"></span><br><span class="line">app.use(session(&#123;</span><br><span class="line">    store: new RedisStore(&#123;</span><br><span class="line">        host: &apos;localhost&apos;,</span><br><span class="line">        port: 6379,</span><br><span class="line">        ttl: 30 * 60 // valid in 30 minutes</span><br><span class="line">    &#125;),</span><br><span class="line">    secret: &apos;keyboard cat&apos;,</span><br><span class="line">    resave: false,</span><br><span class="line">    saveUninitialized: false</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">app.get(&apos;/&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    if (req.session.key) &#123;</span><br><span class="line">        res.redirect(&apos;/index&apos;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        res.redirect(&apos;/login&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.post(&apos;/login&apos;,function(req, res)&#123;</span><br><span class="line">    // when user login set the key to redis</span><br><span class="line">    req.session.key = req.body.email;</span><br><span class="line">    res.end(&apos;done&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://github.com/tj/connect-redis" target="_blank" rel="noopener">https://github.com/tj/connect-redis</a><br><a href="https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/" target="_blank" rel="noopener">https://codeforgeek.com/2015/07/using-redis-to-handle-session-in-node-js/</a></p>
+<p>SET (Setting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SET foo &quot;Hello World&quot;</span><br><span class="line">OK // setting a key</span><br></pre></td></tr></table></figure>
+
+<p>GET (Getting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br></pre></td></tr></table></figure>
+
+<p>DEL (Deleting a Key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; GET foo </span><br><span class="line">&quot;Hello World&quot; // getting a key</span><br><span class="line">127.0.0.1:6379&gt; DEL foo</span><br><span class="line">(integer) 1 // key just got deleted</span><br><span class="line">127.0.0.1:6379&gt; GET foo</span><br><span class="line">(nil) // since key is deleted therefore, result is nil.</span><br></pre></td></tr></table></figure>
+
+<p>SETEX (Setting a key with an expiry)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; SETEX foo 40 &quot;I said, Hello World!&quot;</span><br><span class="line">OK // key has been set with 40 seconds as expiration</span><br></pre></td></tr></table></figure>
+
+<p>TTL (Total Time left for a key that has a timeout)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; TTL foo</span><br><span class="line">(integer) 36 // 36 seconds left to timeout</span><br></pre></td></tr></table></figure>
+
+<p>PERSIST (Removing the timeout from key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; PERSIST foo</span><br><span class="line">(integer) 1 // turning the key from volatile to persistent (key won&apos;t expire)</span><br></pre></td></tr></table></figure>
+
+<p>RENAME (Renaming the current existing key)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; RENAME foo bar</span><br><span class="line">OK // renaming the key &apos;foo&apos; as bar</span><br></pre></td></tr></table></figure>
+
+<p>FLUSHALL (Flushing everything so far saved)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; flushall</span><br><span class="line">OK // just got flushed</span><br></pre></td></tr></table></figure>
+
+<p>dump redis data<br><a href="https://github.com/sripathikrishnan/redis-rdb-tools" target="_blank" rel="noopener">https://github.com/sripathikrishnan/redis-rdb-tools</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">查找所有key</span><br><span class="line">keys *</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 keys &apos;subject_id*&apos; &gt; keys.txt</span><br><span class="line"></span><br><span class="line">dump data to /data/dump.rdb</span><br><span class="line">redis-cli -h 172.18.66.199 -p 16379 bgsave</span><br><span class="line"></span><br><span class="line">要先把dump.rdb從redis container中複製出來</span><br><span class="line">pip install rdbtools python-lzf</span><br><span class="line"></span><br><span class="line">Memory Report</span><br><span class="line">rdb -c memory dump.rdb &gt; memory.csv</span><br><span class="line"></span><br><span class="line">data</span><br><span class="line">rdb --command json dump.rdb &gt; data.txt</span><br><span class="line">rdb --command justkeyvals --key &quot;user.*&quot; dump.rdb &gt; data.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li>設定、查詢 live time<br>redis&gt; keys *<br>1) key1<br>2) key2<br>redis&gt; EXPIRE key1 10086<br>(integer) 1<br>redis&gt; TTL key1<br>(integer) 10084</li>
+</ul>
+<p><a href="https://tachingchen.com/tw/blog/redis-data-persistence/" target="_blank" rel="noopener">https://tachingchen.com/tw/blog/redis-data-persistence/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;yes&quot;</span><br><span class="line">127.0.0.1:6379&gt; CONFIG SET stop-writes-on-bgsave-error no</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6379&gt; config get &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">1) &quot;stop-writes-on-bgsave-error&quot;</span><br><span class="line">2) &quot;no&quot;</span><br></pre></td></tr></table></figure>
+
+<p>app.pool = redis.ConnectionPool(host=app.config[‘REDIS_HOST’] , port=app.config[‘REDIS_PORT’] , decode_responses=True)<br>app.gredis = redis.Redis(connection_pool=app.pool)<br>app.gredis.config_set(“stop-writes-on-bgsave-error”, “no”)</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2de1df7e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2de1df7e/" class="post-title-link" itemprop="url">crontab</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-12-09 09:41:57" itemprop="dateCreated datePublished" datetime="2020-12-09T09:41:57+08:00">2020-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>列出所有設定<br><code>crontab -l</code></p>
+</li>
+<li><p>設定<br><code>crontab -e</code><br>進入編輯畫面編輯排程工作，若需要排程的命令需要 root 權限，可以在 root 帳戶下，執行 <code>crontab -e</code></p>
+</li>
+<li><p>刪除所有設定<br><code>crontab -r</code></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/de3e16a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/de3e16a/" class="post-title-link" itemprop="url">taskset command</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-12-08 11:01:03" itemprop="dateCreated datePublished" datetime="2020-12-08T11:01:03+08:00">2020-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>taskset 指令可以指定特定的 CPU 給 Process 使用</p>
+<ul>
+<li><p>安裝</p>
+<ul>
+<li>Ubuntu<br><code>apt install util-linux</code></li>
+<li>Centos<br><code>yum install util-linux</code></li>
+</ul>
+</li>
+<li><p>設定 CPU affinity<br><code>taskset COREMASK EXECUTABLE</code><br><code>taskset -p COREMASK PID</code><br><code>taskset -cp CORELIST PID</code></p>
+<ul>
+<li>執行 test.sh 並綁定在  CPU 0<br><code>taskset 0x1 ./test.sh</code></li>
+<li>執行 test.sh 並綁定在  CPU 0-3<br><code>taskset 0xf ./test.sh</code></li>
+<li>執行 test.sh 並綁定在  CPU 0, 4<br><code>taskset 0x11 ./test.sh</code></li>
+<li>將行程 9527 固定在 CPU 0<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# taskset -p 0x1 9527</span><br><span class="line">pid 9527&apos;s current affinity mask: f</span><br><span class="line">pid 9527&apos;s new affinity mask: 1</span><br><span class="line"></span><br><span class="line">[root@centos ~]# taskset -cp 0 9527</span><br><span class="line">pid 9527&apos;s current affinity list: 0-3</span><br><span class="line">pid 9527&apos;s new affinity list: 0</span><br></pre></td></tr></table></figure></li>
+<li>將行程 9527 固定在 CPU 2, 3<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# taskset -p 0xc 9527</span><br><span class="line">pid 9527&apos;s current affinity mask: f</span><br><span class="line">pid 9527&apos;s new affinity mask: c</span><br><span class="line"></span><br><span class="line">[root@centos ~]# taskset -cp 2,3 9527</span><br><span class="line">pid 9527&apos;s current affinity list: 0-3</span><br><span class="line">pid 9527&apos;s new affinity list: 2,3</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查看 CPU affinity<br><code>taskset -p PID</code><br><code>taskset -cp PID</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@centos ~]# taskset -p 9527</span><br><span class="line">pid 9527&apos;s current affinity mask: f</span><br><span class="line"></span><br><span class="line">[root@centos ~]# taskset -cp 9527</span><br><span class="line">pid 9527&apos;s current affinity list: 0-3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Reference<br><a href="https://blog.gtwang.org/linux/run-program-process-specific-cpu-cores-linux/" target="_blank" rel="noopener">https://blog.gtwang.org/linux/run-program-process-specific-cpu-cores-linux/</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/67ead39f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/67ead39f/" class="post-title-link" itemprop="url">VirtualBox - 重新設定 vdi disk 大小</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-11-20 18:30:27" itemprop="dateCreated datePublished" datetime="2020-11-20T18:30:27+08:00">2020-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/VirtualBox/" itemprop="url" rel="index"><span itemprop="name">VirtualBox</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>目前配置大小為 32G<br><img src="/posts/67ead39f/image01.png" alt></li>
+<li>以系統管理員身份執行 cmd，重新設定大小為 100G<br><code>VBoxManage modifyhd E:\vm\testing\testing.vdi -–resize 102400</code><br><img src="/posts/67ead39f/image02.png" alt><br><img src="/posts/67ead39f/image03.png" alt></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b408013f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b408013f/" class="post-title-link" itemprop="url">rpm</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-11-05 10:58:46" itemprop="dateCreated datePublished" datetime="2020-11-05T10:58:46+08:00">2020-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>package</p>
+<ul>
+<li>on Centos<br><code>sudo yum install rpmdevtools</code></li>
+<li>on Ubuntu<br><code>sudo apt install rpm</code></li>
+</ul>
+</li>
+<li><p>install<br><code>rpm -ivh test-1.0-1.el7.x86_64.rpm</code><br><code>rpm -ivh test-1.0-1.el7.x86_64.rpm --nodeps --force</code></p>
+</li>
+<li><p>uninstall<br><code>rpm -e test-1.0-1.el7.x86_64</code></p>
+</li>
+<li><p>list all installed rpm packages</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[user@centos ~]$ rpm -qa | grep test</span><br><span class="line">test-1.0-1.el7.x86_64</span><br></pre></td></tr></table></figure></li>
+<li><p>製作 rpm package<br>a. 建立 rpm resource folder<br><code>rpmdev-setuptree</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild/</span><br><span class="line">├── BUILD</span><br><span class="line">├── RPMS</span><br><span class="line">├── SOURCES</span><br><span class="line">├── SPECS</span><br><span class="line">└── SRPMS</span><br></pre></td></tr></table></figure>
+<p>b. 把 source tar file 放入 SOURCES<br>c. 建立 spec file template<br><code>cd rpmbuild/SPECS &amp;&amp; rpmdev-newspec test.spec</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Name:           test</span><br><span class="line">Version:        </span><br><span class="line">Release:        1%&#123;?dist&#125;</span><br><span class="line">Summary:        </span><br><span class="line"></span><br><span class="line">License:        </span><br><span class="line">URL:            </span><br><span class="line">Source0:        </span><br><span class="line"></span><br><span class="line">BuildRequires:  </span><br><span class="line">Requires:       </span><br><span class="line"></span><br><span class="line">%description</span><br><span class="line"></span><br><span class="line">%prep</span><br><span class="line">%setup -q</span><br><span class="line"></span><br><span class="line">%build</span><br><span class="line">%configure</span><br><span class="line">make %&#123;?_smp_mflags&#125;</span><br><span class="line"></span><br><span class="line">%install</span><br><span class="line">rm -rf $RPM_BUILD_ROOT</span><br><span class="line">%make_install</span><br><span class="line"></span><br><span class="line">%files</span><br><span class="line">%doc</span><br><span class="line"></span><br><span class="line">%changelog</span><br></pre></td></tr></table></figure>
+<p>d. build rpm package<br><code>rpmbuild -bb rpmbuild/SPECS/test.spec</code><br>rpm file 會產生在<br><code>rpmbuild/RPMS/x86_64/test-1.0-1.el7.x86_64.rpm</code></p>
+</li>
+<li><p>spec</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># test.spec</span><br><span class="line">Name:           test</span><br><span class="line">Version:        1.0</span><br><span class="line">Release:        1%&#123;?dist&#125;</span><br><span class="line">Summary:        TEST</span><br><span class="line">License:        TEST</span><br><span class="line">Source0:        %&#123;name&#125;.tar.gz</span><br><span class="line">#如果有多個 tar source</span><br><span class="line">#Source1:        xxx.tar.gz</span><br><span class="line"></span><br><span class="line">%description</span><br><span class="line">Description</span><br><span class="line"></span><br><span class="line">%prep</span><br><span class="line"># tar檔解壓縮後，預設目錄必須為 test-1.0，若不是 (假設根目錄為 test)，則必須指明目錄名稱</span><br><span class="line">%setup -q -n test</span><br><span class="line"># 先建立目錄 tmp，再將 test 解壓縮 (最後的目錄會是 ~/rpmbuild/BUILD/tmp/test)</span><br><span class="line">#%setup -q -c -n tmp</span><br><span class="line"># 如果有多個 tar source</span><br><span class="line">#%setup -q -b 0 -n aaa</span><br><span class="line">#%setup -q -b 1 -n bbb</span><br><span class="line"></span><br><span class="line">%install</span><br><span class="line">mkdir -p $RPM_BUILD_ROOT/home/user/test</span><br><span class="line">cp -rf test.py $RPM_BUILD_ROOT/home/user/test</span><br><span class="line"></span><br><span class="line">%clean</span><br><span class="line"></span><br><span class="line">%files</span><br><span class="line"># 這個目錄結構，就是安裝 rpm 的路徑，以及安裝的檔案</span><br><span class="line">/home/user/test</span><br><span class="line"></span><br><span class="line">%pre</span><br><span class="line"># 在安裝 rpm 前執行的動作</span><br><span class="line"></span><br><span class="line">%post</span><br><span class="line"># 在安裝 rpm 後執行的動作</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To prevent binary stripping for specific rpm, we can add following line at the top of any rpm spec file:<br><code>%global __os_install_post %{nil}</code></p>
+</li>
+<li><p>Reference<br><a href="https://idevz.org/2017/07/centos-%E5%A6%82%E4%BD%95%E6%89%93-rpm-%E5%8C%85/" target="_blank" rel="noopener">https://idevz.org/2017/07/centos-%E5%A6%82%E4%BD%95%E6%89%93-rpm-%E5%8C%85/</a><br><a href="https://longfamily.pixnet.net/blog/post/282020230-centos-rpm%E5%8C%85%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">https://longfamily.pixnet.net/blog/post/282020230-centos-rpm%E5%8C%85%E5%88%B6%E4%BD%9C%E5%8E%9F%E7%90%86</a><br><a href="https://blog.csdn.net/wangcg123/article/details/53693578" target="_blank" rel="noopener">https://blog.csdn.net/wangcg123/article/details/53693578</a><br><a href="https://blog.csdn.net/trochiluses/article/details/11179901" target="_blank" rel="noopener">https://blog.csdn.net/trochiluses/article/details/11179901</a><br><a href="https://fedoraproject.org/wiki/How_to_create_an_RPM_package/zh-tw" target="_blank" rel="noopener">https://fedoraproject.org/wiki/How_to_create_an_RPM_package/zh-tw</a><br><a href="https://rpm-packaging-guide.github.io/" target="_blank" rel="noopener">https://rpm-packaging-guide.github.io/</a><br><a href="https://www.itread01.com/content/1547001025.html" target="_blank" rel="noopener">https://www.itread01.com/content/1547001025.html</a><br><a href="https://gohalo.me/post/linux-create-rpm-package.html" target="_blank" rel="noopener">https://gohalo.me/post/linux-create-rpm-package.html</a></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/e27e5d75/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/e27e5d75/" class="post-title-link" itemprop="url">systemd</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-10-19 19:24:41" itemprop="dateCreated datePublished" datetime="2020-10-19T19:24:41+08:00">2020-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>增刪修改 service 檔案後，更新 systemd daemon<br><code>systemctl daemon-reload</code></p>
+<p>啟動<br><code>systemctl start example</code><br><code>systemctl start example.service</code></p>
+<p>關閉<br><code>systemctl stop example</code><br><code>systemctl stop example.service</code></p>
+<p>開機自動啟動<br><code>systemctl enable example.service</code><br><code>systemctl disable example.service</code></p>
+<p>查詢狀態<br><code>systemctl status example.service</code><br><code>systemctl is-active example.service</code><br><code>systemctl is-enabled example.service</code><br><code>systemctl is-failed example.service</code></p>
+<p>列出所有已啟動的服務<br><code>systemctl list-units</code></p>
+<p>列出系統上所有的服務<br><code>systemctl list-units --all</code></p>
+<p>只列出系統上所有 service 類型的服務<br><code>systemctl list-units --type=service</code></p>
+<p>列出系統上所有未啟動的服務<br><code>systemctl list-units --all --state=inactive</code></p>
+<p>查看 log<br><code>journalctl -e -u example.service</code><br><code>journalctl -e -u example.service --no-pager</code></p>
+<p>權限<br><code>chmod 644 example.service</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/systemd/system/example.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=example</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">WorkingDirectory=/home/user</span><br><span class="line">ExecStartPre=/home/user/start_pre.sh</span><br><span class="line">ExecStart=/home/uesr/start.sh</span><br><span class="line">ExecStartPost=/home/user/start_post.sh</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.gtwang.org/linux/linux-basic-systemctl-systemd-service-unit-tutorial-examples/" target="_blank" rel="noopener">https://blog.gtwang.org/linux/linux-basic-systemctl-systemd-service-unit-tutorial-examples/</a><br><a href="https://blog.gtwang.org/linux/linux-create-systemd-service-unit-for-python-echo-server-tutorial-examples/" target="_blank" rel="noopener">https://blog.gtwang.org/linux/linux-create-systemd-service-unit-for-python-echo-server-tutorial-examples/</a><br><a href="https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/c41c82d5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +1059,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
               </span>
 
           
@@ -229,852 +1074,6 @@
 
       
           
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/bfe30151/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/bfe30151/" class="post-title-link" itemprop="url">cmk</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-17 17:02:55" itemprop="dateCreated datePublished" datetime="2020-09-17T17:02:55+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Reference<br><a href="https://github.com/intel/CPU-Manager-for-Kubernetes" target="_blank" rel="noopener">https://github.com/intel/CPU-Manager-for-Kubernetes</a></li>
-<li>reset/initial<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># rm -rf /etc/cmk  &lt;== 刪除舊的配置</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl taint nodes openness cmk-   &lt;== 刪除 Taint</span></span><br></pre></td></tr></table></figure></li>
-<li>設定 cmk<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-namespace.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-rbac-rules.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl apply -f CPU-Manager-for-Kubernetes/resources/authorization/cmk-serviceaccount.yaml</span></span><br></pre></td></tr></table></figure></li>
-<li>安裝 cmk<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># edit CPU-Manager-for-Kubernetes/resources/pods/cmk-cluster-init-pod.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  labels:</span><br><span class="line">    app: cmk-cluster-init-pod</span><br><span class="line">  name: cmk-cluster-init-pod</span><br><span class="line">  namespace: cmk-namespace</span><br><span class="line">spec:</span><br><span class="line">  serviceAccountName: cmk-serviceaccount</span><br><span class="line">  containers:</span><br><span class="line">  - args:</span><br><span class="line">      <span class="comment"># Change this value to pass different options to cluster-init.</span></span><br><span class="line">      - <span class="string">"/cmk/cmk.py cluster-init --all-host --saname=cmk-serviceaccount --namespace=cmk-namespace"</span></span><br><span class="line">    <span class="built_in">command</span>:</span><br><span class="line">    - <span class="string">"/bin/bash"</span></span><br><span class="line">    - <span class="string">"-c"</span></span><br><span class="line">    image: cmk:v1.4.1</span><br><span class="line">    name: cmk-cluster-init-pod</span><br><span class="line">  restartPolicy: Never</span><br><span class="line"></span><br><span class="line">kubectl apply -f CPU-Manager-for-Kubernetes/resources/pods/cmk-cluster-init-pod.yaml</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/33ba49e8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/33ba49e8/" class="post-title-link" itemprop="url">Kuberneters namespace 無法刪除</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-17 16:51:29" itemprop="dateCreated datePublished" datetime="2020-09-17T16:51:29+08:00">2020-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>刪除 namespace 時，一直處於 Terminating 狀態</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># kubectl delete namespace &lt;ns&gt;</span><br><span class="line"></span><br><span class="line"># kubectl get namespace</span><br><span class="line">NAME              STATUS        AGE</span><br><span class="line">cdi               Active        2d23h</span><br><span class="line">default           Active        2d23h</span><br><span class="line">kube-node-lease   Active        2d23h</span><br><span class="line">kube-public       Active        2d23h</span><br><span class="line">kube-system       Active        2d23h</span><br><span class="line">kubevirt          Active        2d23h</span><br><span class="line">&lt;ns&gt;              Terminating   2d23h</span><br><span class="line">openness          Active        2d23h</span><br></pre></td></tr></table></figure>
-<p>Step1:<br><code>kubectl get namespace &lt;ns&gt; -o json &gt; tmp.json</code></p>
-<p>Step2:<br>刪除 spec 的內容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># vim tmp.json</span><br><span class="line">...</span><br><span class="line">    &quot;spec&quot;: &#123;</span><br><span class="line">        &quot;finalizers&quot;: [   &lt;== delete</span><br><span class="line">            &quot;kubernetes&quot;  &lt;== delete</span><br><span class="line">        ]                 &lt;== delete</span><br><span class="line">    &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<p>Step3: 在另一個 terminal 開啟一個 local api proxy<br><code>kubectl proxy --port=8081</code></p>
-<p>Step4:<br><code>curl -k -H &quot;Content-Type: application/json&quot; -X PUT --data-binary @tmp.json http://127.0.0.1:8081/api/v1/namespaces/&lt;ns&gt;/finalize</code></p>
-<ul>
-<li>Pod 無法刪除，停留在 Terminating 狀態<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># kubectl delete pods &lt;pod&gt; --grace-period=0 --force</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/12e6bda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/12e6bda/" class="post-title-link" itemprop="url">Deploy VM via kubevirt</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-08 17:03:31" itemprop="dateCreated datePublished" datetime="2020-09-08T17:03:31+08:00">2020-09-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Reference<br><a href="https://github.com/open-ness/edgecontroller" target="_blank" rel="noopener">https://github.com/open-ness/edgecontroller</a></li>
-<li>建立 pv<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat persistentLocalVolume.yaml</span></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv0</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol0/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: PersistentVolume</span><br><span class="line">metadata:</span><br><span class="line">  name: kv-pv1</span><br><span class="line">  labels:</span><br><span class="line">        <span class="built_in">type</span>: <span class="built_in">local</span></span><br><span class="line">spec:</span><br><span class="line">  capacity:</span><br><span class="line">        storage: 15Gi</span><br><span class="line">  accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">  persistentVolumeReclaimPolicy: Retain</span><br><span class="line">  storageClassName: <span class="built_in">local</span>-storage</span><br><span class="line">  <span class="built_in">local</span>:</span><br><span class="line">        path: /var/vd/vol1/</span><br><span class="line">  nodeAffinity:</span><br><span class="line">        required:</span><br><span class="line">          nodeSelectorTerms:</span><br><span class="line">          - matchExpressions:</span><br><span class="line">                - key: kubernetes.io/hostname</span><br><span class="line">                  operator: In</span><br><span class="line">                  values:</span><br><span class="line">                  - openness</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f persistentLocalVolume.yaml </span></span><br><span class="line">persistentvolume/kv-pv0 created</span><br><span class="line">persistentvolume/kv-pv1 created</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># k get pv</span></span><br><span class="line">NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM                         STORAGECLASS    REASON   AGE</span><br><span class="line">kv-pv0                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br><span class="line">kv-pv1                15Gi       RWO            Retain           Available                                 <span class="built_in">local</span>-storage            4s</span><br></pre></td></tr></table></figure></li>
-<li>上傳 vm image，建立 dv<ul>
-<li>vm 宣告的 size 必須小於 pv 宣告的大小 (15Gi)</li>
-<li>透過 cdi-uploadproxy 上傳 image<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl get svc -n cdi</span></span><br><span class="line">NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE</span><br><span class="line">cdi-api           ClusterIP   10.105.96.139   &lt;none&gt;        443/TCP   27h</span><br><span class="line">cdi-uploadproxy   ClusterIP   10.106.44.64    &lt;none&gt;        443/TCP   27h</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt image-upload dv centos-dv --image-path=/home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 --insecure --size=15Gi --storage-class=local-storage --uploadproxy-url=https://10.106.44.64:443</span></span><br><span class="line">DataVolume default/centos-dv created</span><br><span class="line">Waiting <span class="keyword">for</span> PVC centos-dv upload pod to be ready...</span><br><span class="line">Pod now ready</span><br><span class="line">Uploading data to https://10.106.44.64:443</span><br><span class="line"></span><br><span class="line"> 898.75 MiB / 898.75 MiB [=====================================================================================================================================================================================================================================] 100.00% 2m19s</span><br><span class="line"></span><br><span class="line">Uploading data completed successfully, waiting <span class="keyword">for</span> processing to complete, you can hit ctrl-c without interrupting the progress</span><br><span class="line">Processing completed successfully</span><br><span class="line">Uploading /home/user/CentOS-7-x86_64-GenericCloud-1907.qcow2 completed successfully</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get dv</span></span><br><span class="line">NAME        PHASE         PROGRESS   AGE</span><br><span class="line">centos-dv   UploadReady              2m24s</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>安裝 vm<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">apiVersion: kubevirt.io/v1alpha3</span><br><span class="line">kind: VirtualMachine</span><br><span class="line">metadata:</span><br><span class="line">  name: centos-vm</span><br><span class="line">spec:</span><br><span class="line">  running: <span class="literal">false</span></span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        kubevirt.io/domain: centos-vm</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">        devices:</span><br><span class="line">          disks:</span><br><span class="line">          - disk:</span><br><span class="line">              bus: virtio</span><br><span class="line">            name: rootfs</span><br><span class="line">          interfaces:</span><br><span class="line">          - name: default</span><br><span class="line">            bridge: &#123;&#125;</span><br><span class="line">        resources:</span><br><span class="line">          requests:</span><br><span class="line">            memory: 4096M</span><br><span class="line">      networks:</span><br><span class="line">      - name: default</span><br><span class="line">        pod: &#123;&#125;</span><br><span class="line">      volumes:</span><br><span class="line">        - name: rootfs</span><br><span class="line">          persistentVolumeClaim:</span><br><span class="line">            claimName: centos-dv</span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl create -f statefullVM.yaml</span></span><br><span class="line">[root@openness user]<span class="comment"># kubectl virt start centos-vm</span></span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vm</span></span><br><span class="line">NAME        AGE   RUNNING   VOLUME</span><br><span class="line">centos-vm   29s   <span class="literal">true</span>      </span><br><span class="line"></span><br><span class="line">[root@openness user]<span class="comment"># kubectl get vmi</span></span><br><span class="line">NAME        AGE   PHASE     IP            NODENAME</span><br><span class="line">centos-vm   20s   Running   10.244.0.78   openness</span><br></pre></td></tr></table></figure></li>
-<li>vm shell<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl virt console centos-vm</span></span><br><span class="line">[root@openness user]<span class="comment"># ssh 10.244.0.78</span></span><br></pre></td></tr></table></figure></li>
-<li>建立 service for cdi-uploadproxy<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line"> name: cdi-uploadproxy-nodeport</span><br><span class="line"> namespace: cdi</span><br><span class="line"> labels:</span><br><span class="line">   cdi.kubevirt.io: <span class="string">"cdi-uploadproxy"</span></span><br><span class="line">spec:</span><br><span class="line"> <span class="built_in">type</span>: NodePort</span><br><span class="line"> ports:</span><br><span class="line">   - port: 443</span><br><span class="line">     targetPort: 8443</span><br><span class="line">     nodePort: 31001</span><br><span class="line">     protocol: TCP</span><br><span class="line"> selector:</span><br><span class="line">   cdi.kubevirt.io: cdi-uploadproxy</span><br></pre></td></tr></table></figure></li>
-<li>設定 vm 使用 dedicated CPU<ul>
-<li>dedicatedCpuPlacement 設定 vm 使用 dedicated CPU</li>
-<li>isolateEmulatorThread 設定 qemu 也執行在 dedicated CPU<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># cat statefullVM.yaml</span></span><br><span class="line">...</span><br><span class="line">    spec:</span><br><span class="line">      domain:</span><br><span class="line">        cpu:</span><br><span class="line">          cores: 2</span><br><span class="line">          dedicatedCpuPlacement: <span class="literal">true</span></span><br><span class="line">          isolateEmulatorThread: <span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>設定了 dedicated CPU後，觀察 pod 的 description，可以發現有 cpumanager=true<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl describe pod virt-launcher-centos-vm-r9qxw</span></span><br><span class="line">...</span><br><span class="line">Node-Selectors:    cpumanager=<span class="literal">true</span></span><br><span class="line">                   kubevirt.io/schedulable=<span class="literal">true</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-<li>edge node 預設不會有 cpumanager 的 label，在啟動 vmi 時會有以下錯誤<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Events:</span><br><span class="line">  Type     Reason            Age        From               Message</span><br><span class="line">  ----     ------            ----       ----               -------</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 node(s) didn&apos;t match node selector.</span><br></pre></td></tr></table></figure></li>
-<li>新增 node 的 label<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@openness user]<span class="comment"># kubectl label nodes openness cpumanager=true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/21b02114/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/21b02114/" class="post-title-link" itemprop="url">vmx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-09-07 08:48:32" itemprop="dateCreated datePublished" datetime="2020-09-07T08:48:32+08:00">2020-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>檢查 cpu 是否支持虛擬化<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ lscpu | grep vmx</span><br><span class="line">Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc eagerfpu pni pclmulqdq vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single tpr_shadow flexpriority fsgsbase avx2 invpcid rdseed clflushopt md_clear flush_l1d</span><br></pre></td></tr></table></figure></li>
-<li>確認 kvm 是否加載<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep kvm</span><br><span class="line">kvm_intel             188768  0 </span><br><span class="line">kvm                   649506  1 kvm_intel</span><br><span class="line">irqbypass              13503  2 kvm,vfio_pci</span><br><span class="line">$  ll /dev/kvm</span><br><span class="line">crw-rw-rw-. 1 root root 10, 232 Sep  6 20:42 /dev/kvm</span><br></pre></td></tr></table></figure></li>
-<li>resources on Kubernetes for OpenNESS<br>如果 vm 不支援 VT-x，allocatable 的 devices.kubevirt.io/kvm 數量會顯示 “0”<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get node -o yaml</span><br><span class="line">...</span><br><span class="line">  status:</span><br><span class="line">    allocatable:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">    capacity:</span><br><span class="line">      devices.kubevirt.io/kvm: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/tun: <span class="string">"110"</span></span><br><span class="line">      devices.kubevirt.io/vhost-net: <span class="string">"110"</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
-<li>Settings of VirtualBox<ul>
-<li>VirtualBox的版本必須更新到 6.1 以上</li>
-<li>預設 “啟用 Nested VT-x/AMD-V(V)” 的選項是反灰，不能選擇的<br><img src="/posts/21b02114/virtualbox_01.JPG" alt></li>
-<li>使用指令去設定<br><code>VBoxManage.exe modifyvm vm-name --nested-hw-virt on</code></li>
-</ul>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/606eb6c7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/606eb6c7/" class="post-title-link" itemprop="url">update_go_version</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-31 10:25:51" itemprop="dateCreated datePublished" datetime="2020-08-31T10:25:51+08:00">2020-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/CentOS/" itemprop="url" rel="index"><span itemprop="name">CentOS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol start="0">
-<li>Information of go<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ go version</span><br><span class="line">go version go1.12.13 linux/amd64</span><br><span class="line">$ echo $GOROOT</span><br><span class="line">/usr/local/go</span><br></pre></td></tr></table></figure></li>
-<li>Delete old version<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo rm -rf $GOROOT</span><br></pre></td></tr></table></figure></li>
-<li>Download target go version<br><a href="https://golang.org/dl/" target="_blank" rel="noopener">https://golang.org/dl/</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://golang.org/dl/go1.15.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure></li>
-<li>Install<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo tar -C /usr/local -xzf go1.15.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/195363fe/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/195363fe/" class="post-title-link" itemprop="url">Telemetry Aware Scheduler</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-28 16:53:25" itemprop="dateCreated datePublished" datetime="2020-08-28T16:53:25+08:00">2020-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>TAS 包含兩個 container<ul>
-<li>tasext<br>a TAS Scheduler Extender which is an extension to K8s scheduler</li>
-<li>tascont<br>a TAS Policy Controller which consumes TAS policies</li>
-</ul>
-</li>
-<li>Create a secret that allows contact with TAS<br>In a production cluster, these certs should be set up as per normal cluster security policy.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret tls extender-secret --cert /etc/kubernetes/pki/ca.crt --key /etc/kubernetes/pki/ca.key</span><br></pre></td></tr></table></figure>
-Error message in tasext<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 00:45:41 http: TLS handshake error from 10.0.2.15:35194: remote error: tls: unknown certificate authority\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T00:45:41.423020853Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Update the configuration of the core K8s scheduler to configure a cluster for TAS deployment<br>主要是在 <code>scheduler-extender-configmap.yaml</code> 更新 <code>tas-service ip</code><ul>
-<li>tas-service information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                       AGE</span><br><span class="line">tas-service                ClusterIP   10.104.110.87    &lt;none&gt;        9001/TCP                      23h</span><br></pre></td></tr></table></figure></li>
-<li>configure-scheduler.sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MANIFEST_FILE=/etc/kubernetes/manifests/kube-scheduler.yaml</span><br><span class="line">CONFIG_MAP=scheduler-extender-configmap.yaml</span><br><span class="line">CLUSTER_ROLE=configmap-getter.yaml</span><br><span class="line"></span><br><span class="line">kubectl apply -f $CONFIG_MAP</span><br><span class="line">kubectl apply -f $CLUSTER_ROLE</span><br><span class="line">kubectl create clusterrolebinding scheduler-config-map --clusterrole=configmapgetter --user=system:kube-scheduler</span><br><span class="line"></span><br><span class="line">sed -i &apos;/^    - --policy-configmap/d&apos; $MANIFEST_FILE</span><br><span class="line">sed -i &apos;/^  dnsPolicy: ClusterFirstWithHostNet/d&apos; $MANIFEST_FILE</span><br><span class="line">sed -e &quot;/    - kube-scheduler/a\\</span><br><span class="line">    - --policy-configmap=scheduler-extender-policy\n    - --policy-configmap-namespace=kube-system&quot; $MANIFEST_FILE -i</span><br><span class="line">sed -e &quot;/spec/a\\</span><br><span class="line">  dnsPolicy: ClusterFirstWithHostNet&quot; $MANIFEST_FILE -i</span><br></pre></td></tr></table></figure></li>
-<li>configmap-getter.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRole</span><br><span class="line">metadata:</span><br><span class="line">  name: configmapgetter</span><br><span class="line">  namespace: kube-system </span><br><span class="line">rules:</span><br><span class="line">- apiGroups: [&quot;&quot;]</span><br><span class="line">  resources: [&quot;configmaps&quot;]</span><br><span class="line">  verbs: [&quot;get&quot;]</span><br></pre></td></tr></table></figure></li>
-<li>scheduler-extender-configmap.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: scheduler-extender-policy</span><br><span class="line">  namespace: kube-system</span><br><span class="line">data:</span><br><span class="line">  policy.cfg: |</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;kind&quot; : &quot;Policy&quot;,</span><br><span class="line">        &quot;apiVersion&quot; : &quot;v1&quot;,</span><br><span class="line">        &quot;extenders&quot; : [</span><br><span class="line">            &#123;</span><br><span class="line">              &quot;urlPrefix&quot;: &quot;https://10.104.110.87:9001&quot;,</span><br><span class="line">              &quot;apiVersion&quot;: &quot;v1&quot;,</span><br><span class="line">              &quot;prioritizeVerb&quot;: &quot;scheduler/prioritize&quot;,</span><br><span class="line">              &quot;filterVerb&quot;: &quot;scheduler/filter&quot;,</span><br><span class="line">              &quot;weight&quot;: 1,</span><br><span class="line">              &quot;enableHttps&quot;: true,</span><br><span class="line">              &quot;managedResources&quot;: [</span><br><span class="line">                   &#123;</span><br><span class="line">                     &quot;name&quot;: &quot;telemetry/scheduling&quot;,</span><br><span class="line">                     &quot;ignoredByScheduler&quot;: true</span><br><span class="line">                   &#125;</span><br><span class="line">              ],</span><br><span class="line">              &quot;ignorable&quot;: true</span><br><span class="line">          &#125;</span><br><span class="line">         ]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>apply<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ./configure-scheduler.sh</span><br><span class="line">configmap/scheduler-extender-policy configured</span><br><span class="line">clusterrole.rbac.authorization.k8s.io/configmapgetter unchanged</span><br><span class="line">Error from server (AlreadyExists): clusterrolebindings.rbac.authorization.k8s.io &quot;scheduler-config-map&quot; already exists</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Create TASPolicy<ul>
-<li>get available metric<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1 | jq .</span><br></pre></td></tr></table></figure></li>
-<li>get value of target metric<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1/nodes/*/memory_MemFree_bytes | jq .</span><br></pre></td></tr></table></figure></li>
-<li>policy.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: telemetry.intel.com/v1alpha1</span><br><span class="line">kind: TASPolicy</span><br><span class="line">metadata:</span><br><span class="line">  name: demo-policy</span><br><span class="line">  namespace: default</span><br><span class="line">spec:</span><br><span class="line">  strategies:</span><br><span class="line">    deschedule:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: LessThan</span><br><span class="line">        target: 10000000</span><br><span class="line">    dontschedule:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: LessThan</span><br><span class="line">        target: 1000000</span><br><span class="line">    scheduleonmetric:</span><br><span class="line">      rules:</span><br><span class="line">      - metricname: memory_MemFree_bytes</span><br><span class="line">        operator: GreaterThan</span><br></pre></td></tr></table></figure></li>
-<li>log of adding a policy in tascont<br>會一直去 monitor memory_MemFree_bytes 的值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering scheduleonmetric from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856944522Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: scheduleonmetric demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856986479Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.856995355Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering dontschedule from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857002389Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: dontschedule demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857008778Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857014218Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 registering deschedule from demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857019374Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Adding strategies: deschedule demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857024892Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added memory_MemFree_bytes\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.85703006Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:50 Added policy, demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:50.857034987Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:52 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:52.302196222Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:52 no metric memory_MemFree_bytes found\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:52.302220044Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:54 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:54.38687469Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:54 openness memory_MemFree_bytes = 194686976\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:54.3869245Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Evaluating demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.303365136Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 openness memory_MemFree_bytes = 194686976\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.303406196Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>log of deleting a policy in tascont<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: deschedule from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865109714Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: scheduleonmetric from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865133184Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Removed demo-policy: dontschedule from strategy register\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865155074Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 deletingpolicies/default/demo-policy\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865158043Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:02:56 Policy:  demo-policy  deleted\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:02:56.865160837Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>Linking a workload to a policy<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: demo-app</span><br><span class="line">  labels:</span><br><span class="line">    app: demo</span><br><span class="line">spec:</span><br><span class="line">  replicas: 1</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: demo</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: demo</span><br><span class="line">        telemetry-policy: demo-policy</span><br><span class="line">    spec:</span><br><span class="line">      containers:</span><br><span class="line">      - name: nginx</span><br><span class="line">        image: nginx:latest</span><br><span class="line">        imagePullPolicy: IfNotPresent</span><br><span class="line">        resources:</span><br><span class="line">          limits:</span><br><span class="line">            telemetry/scheduling: 1</span><br><span class="line">      affinity:</span><br><span class="line">        nodeAffinity:</span><br><span class="line">          requiredDuringSchedulingIgnoredDuringExecution:</span><br><span class="line">            nodeSelectorTerms:</span><br><span class="line">              - matchExpressions:</span><br><span class="line">                  - key: demo-policy</span><br><span class="line">                    operator: NotIn</span><br><span class="line">                    values:</span><br><span class="line">                      - violating</span><br></pre></td></tr></table></figure>
-<ul>
-<li>log of adding a pod with demo-policy in tasext<ul>
-<li>允許部署<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 filter request recieved\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.323434954Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 openness memory_MemFree_bytes = 160436224\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.332601831Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:05:04 Filtered nodes for demo-policy : openness \n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:05:04.332642768Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-<li>不允許部署<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 filter request recieved\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.429996533Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 openness memory_MemFree_bytes = 147173376\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.433672095Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2020/08/28 09:07:11 openness violating : memory_MemFree_bytes LessThan 5000000000\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2020-08-28T09:07:11.433697985Z&quot;&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>不允許部署時，Events of the demo-app pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Events:</span><br><span class="line">  Type     Reason            Age        From               Message</span><br><span class="line">  ----     ------            ----       ----               -------</span><br><span class="line">  Warning  FailedScheduling  &lt;unknown&gt;  default-scheduler  0/1 nodes are available: 1 Node violates.</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>Deploy and Configure Kubernetes Descheduler<ul>
-<li>Install descheduler<br>module requires Go 1.15<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/kubernetes-sigs/descheduler</span><br><span class="line">$ <span class="built_in">cd</span> descheduler</span><br><span class="line">$ make</span><br><span class="line">$ cp ./_output/bin/descheduler /usr/bin</span><br></pre></td></tr></table></figure></li>
-<li>Run the descheduler in order to stop the workloads on the offending nodes<ul>
-<li>descheduler-policy.yaml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cat descheduler-policy.yaml</span><br><span class="line">apiVersion: <span class="string">"descheduler/v1alpha1"</span></span><br><span class="line">kind: <span class="string">"DeschedulerPolicy"</span></span><br><span class="line">strategies:</span><br><span class="line">  <span class="string">"RemovePodsViolatingNodeAffinity"</span>:</span><br><span class="line">    enabled: <span class="literal">true</span></span><br><span class="line">    params:</span><br><span class="line">      nodeAffinityType:</span><br><span class="line">        - <span class="string">"requiredDuringSchedulingIgnoredDuringExecution"</span></span><br></pre></td></tr></table></figure></li>
-<li>Apply<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ descheduler --logtostderr -v4 --kubeconfig=$HOME/.kube/config --policy-config-file=descheduler-policy.yaml</span><br></pre></td></tr></table></figure></li>
-<li>Error<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I0828 10:47:32.515718   29836 node.go:45] node lister returned empty list, now fetch directly</span><br><span class="line">I0828 10:47:32.531210   29836 descheduler.go:106] The cluster size is 0 or 1 meaning eviction causes service disruption or degradation. So aborting..</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Reference<br><a href="https://github.com/intel/telemetry-aware-scheduling" target="_blank" rel="noopener">https://github.com/intel/telemetry-aware-scheduling</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9c134f6f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9c134f6f/" class="post-title-link" itemprop="url">Deployment nginx on k8s</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-14 18:10:43" itemprop="dateCreated datePublished" datetime="2020-08-14T18:10:43+08:00">2020-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>create a namespace<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ vim namespace.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Namespace</span><br><span class="line">metadata:</span><br><span class="line">  name: demo</span><br><span class="line">$ kubectl create -f namespace.yml</span><br></pre></td></tr></table></figure></li>
-<li>create a pod<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ vim pod.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-pod</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx-label</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - name: nginx</span><br><span class="line">    image: nginx</span><br><span class="line">    ports:</span><br><span class="line">    - containerPort: 80</span><br><span class="line">$ kubectl create -f pod.yml -n demo</span><br></pre></td></tr></table></figure></li>
-<li>create a deployment<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ cat deployment.yaml</span><br><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: Deployment</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-deployment</span><br><span class="line">spec:</span><br><span class="line">  replicas: 3</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      app: nginx-label</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        app: nginx-label</span><br><span class="line">    spec:</span><br><span class="line">      containers: </span><br><span class="line">        - name: nginx</span><br><span class="line">          image: nginx</span><br><span class="line">          ports:</span><br><span class="line">          - containerPort: 80</span><br><span class="line">$ kubectl create -f deployment.yml -n demo</span><br></pre></td></tr></table></figure></li>
-<li>create a service<ul>
-<li>selector 設定成 pod 的 label，代表 service 為這單一個 pod 提供封裝</li>
-<li>selector 設定為 deployment 的 label，代表 service 對這些 Replica Set 提供封裝以及 load balance<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ vim service.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: nginx-service</span><br><span class="line">spec:</span><br><span class="line">  <span class="built_in">type</span>: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - port: 9527</span><br><span class="line">    protocol: TCP</span><br><span class="line">    targetPort: 80</span><br><span class="line">  externalIPs:</span><br><span class="line">  - 10.60.6.49</span><br><span class="line">  selector: </span><br><span class="line">    app: nginx-label</span><br><span class="line">$ kubectl create -f service.yml -n demo</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>web page<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.60.6.49:9527</span><br></pre></td></tr></table></figure></li>
-<li>get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get pod -n=demo</span><br><span class="line">NAME                                READY   STATUS    RESTARTS   AGE</span><br><span class="line">nginx-deployment-58864f7df9-26tfx   1/1     Running   0          13m</span><br><span class="line">nginx-deployment-58864f7df9-dqcqv   1/1     Running   0          13m</span><br><span class="line">nginx-deployment-58864f7df9-sb9ks   1/1     Running   0          13m</span><br><span class="line">nginx-pod                           1/1     Running   0          13m</span><br><span class="line"></span><br><span class="line">$ kubectl get deployment -n=demo</span><br><span class="line">NAME               READY   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">nginx-deployment   3/3     3            3           13m</span><br><span class="line"></span><br><span class="line">$ kubectl get service -n=demo</span><br><span class="line">NAME            TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE</span><br><span class="line">nginx-service   NodePort   10.111.31.254   10.60.6.49    9527:31755/TCP   13m</span><br></pre></td></tr></table></figure></li>
-<li>直接將 pod 的 port forwarding 到 host<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl -n demo port-forward --address 0.0.0.0 pod/nginx-pod 9528:80</span><br></pre></td></tr></table></figure>
-<ul>
-<li>web page<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://10.60.6.49:9528</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>scenario<ul>
-<li>Pod + Service</li>
-<li>Deployment + Service</li>
-<li>Pod + Deployment + Service</li>
-</ul>
-</li>
-<li>Reference<br><a href="https://zhuanlan.zhihu.com/p/134637095" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/134637095</a><br><a href="https://phoenixnap.com/kb/kubectl-port-forward" target="_blank" rel="noopener">https://phoenixnap.com/kb/kubectl-port-forward</a><br><a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/61268ed9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/61268ed9/" class="post-title-link" itemprop="url">Kubernetes Commands</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-14 15:32:53" itemprop="dateCreated datePublished" datetime="2020-08-14T15:32:53+08:00">2020-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Kubernetes/" itemprop="url" rel="index"><span itemprop="name">Kubernetes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>sample yaml: web.yaml<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">frontend</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">19999</span></span><br></pre></td></tr></table></figure></li>
-<li>建立 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl apply -f web.yaml </span><br><span class="line">pod/web created</span><br></pre></td></tr></table></figure></li>
-<li>Get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl get pods</span><br><span class="line">NAME                            READY   STATUS    RESTARTS   AGE</span><br><span class="line">web                             1/1     Running   0          41s</span><br></pre></td></tr></table></figure></li>
-<li>刪除 pod<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash-4.2# kubectl delete pod web</span><br><span class="line">pod &quot;web&quot; deleted</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>kubectl create<br>It first deletes the resources and then creates it from the file provided.<br>kubectl apply<br>It directly updates in the current live source, only the attributes which are given in the file.</p>
-<p>kubectl get pods –show-labels</p>
-<p>kubectl exec -it web – /bin/bash</p>
-<p>当 Pod 包含多个容器时打开 shell<br>kubectl exec -it my-pod –container my-app – /bin/bash</p>
-<p>沒有 namespace 的元件，利用 <code>kubectl get pod</code> 查詢<br>有 namespace 的元件，要利用 <code>kubectl get pod --all-namespaces</code> 查詢</p>
-<p>kubectl get pod<br>kubectl get pod –all-namespaces<br>kubectl get pod -o wide –all-namespaces<br>kubectl get service<br>kubectl get svc<br>kubectl get namespace<br>kubectl get deployment</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4261b1b3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4261b1b3/" class="post-title-link" itemprop="url">NUMA</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-08-13 10:01:45" itemprop="dateCreated datePublished" datetime="2020-08-13T10:01:45+08:00">2020-08-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:59:26" itemprop="dateModified" datetime="2021-06-08T13:59:26+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>Socket: 實體 CPU 的數量，一般 PC 只會有一個 CPU，伺服器等級的 Server 在硬體上才會有多個 CPUs</p>
-</li>
-<li><p>Core: CPU 裡獨立的一組程式執行的硬體單元</p>
-</li>
-<li><p>Thread: Core 裡邏輯的執行單元</p>
-</li>
-<li><p>Sample</p>
-<ul>
-<li>有 1 個 CPU，每個 CPU 上有 4 Core，每個 Core 有 1 個 Threads<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ lscpu</span><br><span class="line">Thread(s) per core:  1</span><br><span class="line">Core(s) per socket:  4</span><br><span class="line">Socket(s):           1</span><br><span class="line">NUMA node(s):        1</span><br><span class="line">NUMA node0 CPU(s):   0-3</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>使用 lstopo 套件來獲取資訊</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ sudo apt install hwloc</span><br><span class="line">user@ubuntu:~$ lstopo</span><br><span class="line">Machine (7977MB)</span><br><span class="line">  Package L#0</span><br><span class="line">    L3 L#0 (8192KB) + L2 L#0 (256KB) + L1d L#0 (32KB) + L1i L#0 (32KB) + Core L#0 + PU L#0 (P#0)</span><br><span class="line">    L3 L#1 (8192KB) + L2 L#1 (256KB) + L1d L#1 (32KB) + L1i L#1 (32KB) + Core L#1 + PU L#1 (P#1)</span><br><span class="line">    L3 L#2 (8192KB) + L2 L#2 (256KB) + L1d L#2 (32KB) + L1i L#2 (32KB) + Core L#2 + PU L#2 (P#2)</span><br><span class="line">    L3 L#3 (8192KB) + L2 L#3 (256KB) + L1d L#3 (32KB) + L1i L#3 (32KB) + Core L#3 + PU L#3 (P#3)</span><br><span class="line">  HostBridge L#0</span><br><span class="line">    PCI 80ee:beef</span><br><span class="line">      GPU L#0 &quot;controlD64&quot;</span><br><span class="line">      GPU L#1 &quot;card0&quot;</span><br><span class="line">    PCI 8086:100e</span><br><span class="line">      Net L#2 &quot;em1&quot;</span><br><span class="line">    PCI 8086:100e</span><br><span class="line">      Net L#3 &quot;em2&quot;</span><br><span class="line">    PCI 8086:2829</span><br><span class="line">      Block(Disk) L#4 &quot;sda&quot;</span><br><span class="line">      Block(Removable Media Device) L#5 &quot;sr0&quot;</span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ lstopo --of png &gt; server.png</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/4261b1b3/server.png" alt></p>
-</li>
-<li><p>使用 numactl 套件來獲取資訊</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ sudo apt install numactl</span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ numactl --hardware</span><br><span class="line">available: 1 nodes (0)</span><br><span class="line">node 0 cpus: 0 1 2 3</span><br><span class="line">node 0 size: 7976 MB</span><br><span class="line">node 0 free: 5907 MB</span><br><span class="line">node distances:</span><br><span class="line">node   0 </span><br><span class="line">  0:  10 </span><br><span class="line"></span><br><span class="line">user@ubuntu:~$ numactl --show</span><br><span class="line">policy: default</span><br><span class="line">preferred node: current</span><br><span class="line">physcpubind: 0 1 2 3 </span><br><span class="line">cpubind: 0 </span><br><span class="line">nodebind: 0 </span><br><span class="line">membind: 0</span><br></pre></td></tr></table></figure></li>
-</ul>
-
       
     </div>
 
@@ -1092,7 +1091,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1157,7 +1156,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -1197,7 +1196,7 @@ Error message in tasext<figure class="highlight plain"><table><tr><td class="gut
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

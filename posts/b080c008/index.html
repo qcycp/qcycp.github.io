@@ -21,14 +21,14 @@
     var CONFIG = {"hostname":"qcycp.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="使用 wireshark 提供的程式editcap.exe -c frame_size old_file new_files  使用 tcpdumptcpdump -r old_file -w new_files -c frame_size">
+  <meta name="description" content="使用 wireshark 提供的程式切割editcap.exe -c frame_size src.pcap new.pcap  使用 tcpdump 切割tcpdump -r src.pcap -w new.pcap -C file_size(MB)  剪下editcap.exe -r src.pcap dst.pcap 1-8(只留下 frame 1-8)  合併mergecap.exe -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="split pcap">
 <meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;b080c008&#x2F;index.html">
 <meta property="og:site_name" content="筆記本">
-<meta property="og:description" content="使用 wireshark 提供的程式editcap.exe -c frame_size old_file new_files  使用 tcpdumptcpdump -r old_file -w new_files -c frame_size">
+<meta property="og:description" content="使用 wireshark 提供的程式切割editcap.exe -c frame_size src.pcap new.pcap  使用 tcpdump 切割tcpdump -r src.pcap -w new.pcap -C file_size(MB)  剪下editcap.exe -r src.pcap dst.pcap 1-8(只留下 frame 1-8)  合併mergecap.exe -">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2021-08-20T08:59:18.193Z">
+<meta property="og:updated_time" content="2022-07-12T16:09:59.685Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/b080c008/">
@@ -209,10 +209,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-08-20 16:57:43 / 修改時間：16:59:18" itemprop="dateCreated datePublished" datetime="2021-08-20T16:57:43+08:00">2021-08-20</time>
+              <time title="創建時間：2021-08-20 16:57:43" itemprop="dateCreated datePublished" datetime="2021-08-20T16:57:43+08:00">2021-08-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
 
           
 
@@ -226,9 +232,13 @@
 
       
         <ol>
-<li><p>使用 wireshark 提供的程式<br>editcap.exe -c frame_size old_file new_files</p>
+<li><p>使用 wireshark 提供的程式切割<br>editcap.exe -c frame_size src.pcap new.pcap</p>
 </li>
-<li><p>使用 tcpdump<br>tcpdump -r old_file -w new_files -c frame_size</p>
+<li><p>使用 tcpdump 切割<br>tcpdump -r src.pcap -w new.pcap -C file_size(MB)</p>
+</li>
+<li><p>剪下<br>editcap.exe -r src.pcap dst.pcap 1-8(只留下 frame 1-8)</p>
+</li>
+<li><p>合併<br>mergecap.exe -w dst.pcap src1.pcap src2.pcap</p>
 </li>
 </ol>
 
@@ -323,7 +333,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -363,7 +373,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

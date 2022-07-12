@@ -183,6 +183,626 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b83343d4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b83343d4/" class="post-title-link" itemprop="url">CUS</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2022-07-13 00:13:15 / 修改時間：00:33:11" itemprop="dateCreated datePublished" datetime="2022-07-13T00:13:15+08:00">2022-07-13</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="pdfobject-container" data-target="./CUS.pdf" data-height="500px"></div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ed619d22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ed619d22/" class="post-title-link" itemprop="url">gdb_coredump</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-05-31 21:00:48" itemprop="dateCreated datePublished" datetime="2022-05-31T21:00:48+08:00">2022-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="check-system-core-dump-config"><a href="#check-system-core-dump-config" class="headerlink" title="check system core dump config"></a>check system core dump config</h1><p>core file size (blocks, -c) 0 =&gt; </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># ulimit -a</span><br><span class="line">core file size (blocks, -c) 0</span><br><span class="line">data seg size (kbytes, -d) unlimited</span><br><span class="line">scheduling priority (-e) 0</span><br><span class="line">file size (blocks, -f) unlimited</span><br><span class="line">pending signals (-i) 132090</span><br><span class="line">max locked memory (kbytes, -l) 64</span><br><span class="line">max memory size (kbytes, -m) unlimited</span><br><span class="line">open files (-n) 1024</span><br><span class="line">pipe size (512 bytes, -p) 8</span><br><span class="line">POSIX message queues (bytes, -q) 819200</span><br><span class="line">real-time priority (-r) 0</span><br><span class="line">stack size (kbytes, -s) 8192</span><br><span class="line">cpu time (seconds, -t) unlimited</span><br><span class="line">max user processes (-u) unlimited</span><br><span class="line">virtual memory (kbytes, -v) unlimited</span><br><span class="line">file locks (-x) unlimited</span><br></pre></td></tr></table></figure>
+<h1 id="programe"><a href="#programe" class="headerlink" title="programe"></a>programe</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> *a;</span><br><span class="line">    *a = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="compile"><a href="#compile" class="headerlink" title="compile"></a>compile</h1><p>gcc -g -o test test.c</p>
+<h1 id="execute"><a href="#execute" class="headerlink" title="execute"></a>execute</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# sudo sh -c &quot;ulimit -c unlimited; ./test&quot;</span><br><span class="line">sh: line 1: 36407 segmemtatation fault (core dumped) ./test</span><br><span class="line"></span><br><span class="line">[root@gnb ~]# ll</span><br><span class="line">Total 34888</span><br><span class="line">-rw------- 1 root root 249856 May 31 20:56 core.36407</span><br><span class="line">-rwxr-xr-x 1 root root 9232 May 31 20:52 test</span><br><span class="line">-rw-r--r-- 1 root root 73 May 31 20:52 test.c</span><br></pre></td></tr></table></figure>
+<h1 id="gdb"><a href="#gdb" class="headerlink" title="gdb"></a>gdb</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# gdb test core.36407</span><br><span class="line">GNU gdb (GDB) Red Hat Enterprise Linux 7.6.1-120.el7</span><br><span class="line">Copyright (C) 2013 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line">This is free software: you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;</span><br><span class="line">and &quot;show warranty&quot; for details.</span><br><span class="line">This GDB was configured as &quot;x86_64-redhat-linux-gnu&quot;.</span><br><span class="line">For bug reporting instructions, please see:</span><br><span class="line">&lt;http://www.gnu.org/software/gdb/bugs/&gt;...</span><br><span class="line">Reading symbols from /root/test...done.</span><br><span class="line">[New LWP 36407]</span><br><span class="line">Core was generated by `./test&apos;.</span><br><span class="line">Program terminated with signal 11, Segmentation fault.</span><br><span class="line">#0 0x00000000004004ce in main () at test.c:6</span><br><span class="line">6 *a = 1;</span><br><span class="line">Missing separate debuginfos, use: debuginfo-install glibc-2.17-324.el7_9.x86_64</span><br><span class="line">(gdb) q</span><br></pre></td></tr></table></figure>
+<h1 id="backtrace"><a href="#backtrace" class="headerlink" title="backtrace"></a>backtrace</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(gdb) bt</span><br><span class="line">#0 0x00000000004004ce in main () at test.c:6</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2a024bae/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2a024bae/" class="post-title-link" itemprop="url">python_note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-04-14 11:04:49" itemprop="dateCreated datePublished" datetime="2022-04-14T11:04:49+08:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.ibm.com/docs/en/siffs/2.0.3?topic=python-installing-packages-offline-mode" target="_blank" rel="noopener">https://www.ibm.com/docs/en/siffs/2.0.3?topic=python-installing-packages-offline-mode</a><br>offline install python</p>
+<ol>
+<li><p>download python source package from<br><a href="https://www.python.org/ftp/python/" target="_blank" rel="noopener">https://www.python.org/ftp/python/</a></p>
+</li>
+<li><p>./configure<br>make<br>make altinstall</p>
+</li>
+<li><p>cd /usr/local/bin<br>ln -s python3.6 python3</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ba76d4d1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ba76d4d1/" class="post-title-link" itemprop="url">gpio</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-04-01 11:19:43" itemprop="dateCreated datePublished" datetime="2022-04-01T11:19:43+08:00">2022-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>GPIO（General-purpose input/output），通用型之輸入輸出的簡稱，其接腳可以供使用者由程式控制自由使用，PIN腳依現實考量可作為通用輸入（GPI）或通用輸出（GPO）或通用輸入與輸出（GPIO）</p>
+<p>既然一個引腳可以用於輸入、輸出或其他特殊功能，那麼一定有暫存器用來選擇這些功能。對於輸入，一定可以透過讀取某個暫存器來確定引腳電位的高低；對於輸出，一定可以透過寫入某個暫存器來讓這個引腳輸出高電位或者低電位</p>
+<p><a href="https://zh.wikipedia.org/wiki/GPIO" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/GPIO</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/965b1254/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/965b1254/" class="post-title-link" itemprop="url">mount USB in linux</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2022-03-01 11:52:40" itemprop="dateCreated datePublished" datetime="2022-03-01T11:52:40+08:00">2022-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# lsblk</span><br><span class="line">NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda               8:0    0 447.1G  0 disk</span><br><span class="line">├─sda1            8:1    0   200M  0 part /boot/efi</span><br><span class="line">├─sda2            8:2    0     1G  0 part /boot</span><br><span class="line">└─sda3            8:3    0   446G  0 part</span><br><span class="line">  ├─centos-root 253:0    0    50G  0 lvm  /</span><br><span class="line">  ├─centos-swap 253:1    0     4G  0 lvm  [SWAP]</span><br><span class="line">  └─centos-home 253:2    0   392G  0 lvm  /home</span><br></pre></td></tr></table></figure>
+<ul>
+<li>插入 USB<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# lsblk</span><br><span class="line">NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda               8:0    0 447.1G  0 disk</span><br><span class="line">├─sda1            8:1    0   200M  0 part /boot/efi</span><br><span class="line">├─sda2            8:2    0     1G  0 part /boot</span><br><span class="line">└─sda3            8:3    0   446G  0 part</span><br><span class="line">  ├─centos-root 253:0    0    50G  0 lvm  /</span><br><span class="line">  ├─centos-swap 253:1    0     4G  0 lvm  [SWAP]</span><br><span class="line">  └─centos-home 253:2    0   392G  0 lvm  /home</span><br><span class="line">sdb               8:16   1  58.9G  0 disk</span><br><span class="line">└─sdb1            8:17   1  58.9G  0 part</span><br></pre></td></tr></table></figure></li>
+<li>mount<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# mkdir /mnt/usb</span><br><span class="line">[root@gnb ~]# mount /dev/sdb1 /mnt/usb</span><br><span class="line">[root@gnb ~]# lsblk</span><br><span class="line">NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda               8:0    0 447.1G  0 disk</span><br><span class="line">├─sda1            8:1    0   200M  0 part /boot/efi</span><br><span class="line">├─sda2            8:2    0     1G  0 part /boot</span><br><span class="line">└─sda3            8:3    0   446G  0 part</span><br><span class="line">  ├─centos-root 253:0    0    50G  0 lvm  /</span><br><span class="line">  ├─centos-swap 253:1    0     4G  0 lvm  [SWAP]</span><br><span class="line">  └─centos-home 253:2    0   392G  0 lvm  /home</span><br><span class="line">sdb               8:16   1  58.9G  0 disk</span><br><span class="line">└─sdb1            8:17   1  58.9G  0 part /mnt/usb</span><br></pre></td></tr></table></figure></li>
+<li>umount<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@gnb ~]# umount /dev/sdb1</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f56010a1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f56010a1/" class="post-title-link" itemprop="url">eCPRI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-12-01 21:53:18" itemprop="dateCreated datePublished" datetime="2021-12-01T21:53:18+08:00">2021-12-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:30:31" itemprop="dateModified" datetime="2022-04-04T22:30:31+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>compression mode uplane package: 7680 bytes</p>
+<p>mac: dst(6) + src(6) = 12<br>type: 0xaefe(2)<br>vlan tag(4)<br>eCPRI header(4): eCPRI revision+message type+payload size<br>eCPRI payload = 7680 - (12+2+4+4) = 7658</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/cd116c88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/cd116c88/" class="post-title-link" itemprop="url">dhcp</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-11-05 14:41:53" itemprop="dateCreated datePublished" datetime="2021-11-05T14:41:53+08:00">2021-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-07-13 00:09:59" itemprop="dateModified" datetime="2022-07-13T00:09:59+08:00">2022-07-13</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>dhcp lease</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/dhcpd/dhcpd.leases</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@opennesswkn-1 ~]# cat /etc/dhcp/dhcpd-Vish.conf</span><br><span class="line">                                default-lease-time 86400;</span><br><span class="line">                                max-lease-time 86400;</span><br><span class="line"></span><br><span class="line">                                option domain-name-servers 192.167.27.85; #required foxconn will be removing this in the next release</span><br><span class="line"></span><br><span class="line">                                authoritative;</span><br><span class="line"></span><br><span class="line">                                option space ORU;</span><br><span class="line">                                option ORU.controller code 129 = ip-address; # Non legacy ORU controller IP address</span><br><span class="line"></span><br><span class="line">                                allow booting;</span><br><span class="line"></span><br><span class="line">                                #</span><br><span class="line">                                # Front Haul</span><br><span class="line">                                #</span><br><span class="line">                                subnet 192.167.27.0 netmask 255.255.255.0 &#123;</span><br><span class="line">                                        option ORU.controller 192.167.27.85; #  Call Home IP (DU&apos;s Front Haul IP)</span><br><span class="line">                                        vendor-option-space ORU; # Option 43 enabler</span><br><span class="line">                                        range 192.167.27.54 192.167.27.57;</span><br><span class="line">                                &#125;</span><br><span class="line">[root@opennesswkn-1 ~]#</span><br></pre></td></tr></table></figure></li>
+<li><p>dhcp server to arrange IP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br></pre></td><td class="code"><pre><span class="line">[root@opennesswkn-1 ~]# dhcpd -d -cf /etc/dhcp/dhcpd-Vish.conf</span><br><span class="line">Internet Systems Consortium DHCP Server 4.2.5</span><br><span class="line">Copyright 2004-2013 Internet Systems Consortium.</span><br><span class="line">All rights reserved.</span><br><span class="line">For info, please visit https://www.isc.org/software/dhcp/</span><br><span class="line">Not searching LDAP since ldap-server, ldap-port and ldap-base-dn were not specified in the config file</span><br><span class="line">Wrote 2 leases to leases file.</span><br><span class="line">Multiple interfaces match the same subnet: ens1f2 enp138s10f2</span><br><span class="line">Multiple interfaces match the same shared network: ens1f2 enp138s10f2</span><br><span class="line">Listening on LPF/enp138s10f2/a6:68:f5:d3:e1:81/192.167.27.0/24</span><br><span class="line">Sending on   LPF/enp138s10f2/a6:68:f5:d3:e1:81/192.167.27.0/24</span><br><span class="line"></span><br><span class="line">No subnet declaration for calibcb7350d3eb (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calibcb7350d3eb.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calibcb7350d3eb is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali88eca308ca5 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali88eca308ca5.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali88eca308ca5 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali6fd9c0fd9c9 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali6fd9c0fd9c9.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali6fd9c0fd9c9 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali9673670ae99 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali9673670ae99.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali9673670ae99 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calicf8e4629704 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calicf8e4629704.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calicf8e4629704 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali3c0ac091bde (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali3c0ac091bde.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali3c0ac091bde is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calibc45a57cfa0 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calibc45a57cfa0.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calibc45a57cfa0 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali04c1250942c (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali04c1250942c.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali04c1250942c is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for caliacc584123c6 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on caliacc584123c6.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface caliacc584123c6 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calib9f5718fa33 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calib9f5718fa33.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calib9f5718fa33 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali155810a4709 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali155810a4709.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali155810a4709 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calibb57932f6db (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calibb57932f6db.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calibb57932f6db is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali5ef0b023397 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali5ef0b023397.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali5ef0b023397 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali113b3f5507d (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali113b3f5507d.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali113b3f5507d is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for caliac4a548932e (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on caliac4a548932e.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface caliac4a548932e is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calie483a3255ac (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calie483a3255ac.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calie483a3255ac is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali8dc75f726a6 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali8dc75f726a6.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali8dc75f726a6 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali0874a0f15c3 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali0874a0f15c3.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali0874a0f15c3 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali8a35c38bedb (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali8a35c38bedb.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali8a35c38bedb is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali0637dc5e2f2 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali0637dc5e2f2.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali0637dc5e2f2 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali585b3d1d144 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali585b3d1d144.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali585b3d1d144 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali848157fe3f7 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali848157fe3f7.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali848157fe3f7 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali9a93bd66006 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali9a93bd66006.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali9a93bd66006 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali5c7419b5f53 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali5c7419b5f53.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali5c7419b5f53 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for cali91b8e8f88f1 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on cali91b8e8f88f1.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface cali91b8e8f88f1 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for calie1a9668ce36 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on calie1a9668ce36.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface calie1a9668ce36 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for docker0 (172.17.0.1).</span><br><span class="line">** Ignoring requests on docker0.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface docker0 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for virbr0 (192.168.122.1).</span><br><span class="line">** Ignoring requests on virbr0.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface virbr0 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for eno2 (192.168.3.49).</span><br><span class="line">** Ignoring requests on eno2.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface eno2 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for eno1 (10.12.87.85).</span><br><span class="line">** Ignoring requests on eno1.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface eno1 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for ens1f3 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on ens1f3.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface ens1f3 is attached. **</span><br><span class="line"></span><br><span class="line">Listening on LPF/ens1f2/3c:ec:ef:30:3d:36/192.167.27.0/24</span><br><span class="line">Sending on   LPF/ens1f2/3c:ec:ef:30:3d:36/192.167.27.0/24</span><br><span class="line"></span><br><span class="line">No subnet declaration for eth1 (169.254.3.1).</span><br><span class="line">** Ignoring requests on eth1.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface eth1 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for ens1f1 (no IPv4 addresses).</span><br><span class="line">** Ignoring requests on ens1f1.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface ens1f1 is attached. **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">No subnet declaration for ens1f0 (192.167.28.85).</span><br><span class="line">** Ignoring requests on ens1f0.  If this is not what</span><br><span class="line">   you want, please write a subnet declaration</span><br><span class="line">   in your dhcpd.conf file for the network segment</span><br><span class="line">   to which interface ens1f0 is attached. **</span><br><span class="line"></span><br><span class="line">Sending on   Socket/fallback/fallback-net</span><br><span class="line">DHCPDISCOVER from 6c:ad:ad:00:00:ef via enp138s10f2</span><br><span class="line">DHCPOFFER on 192.167.27.56 to 6c:ad:ad:00:00:ef (oru.faca.com) via enp138s10f2</span><br><span class="line">DHCPREQUEST for 192.167.27.56 (192.167.27.54) from 6c:ad:ad:00:00:ef (oru.faca.com) via enp138s10f2</span><br><span class="line">DHCPACK on 192.167.27.56 to 6c:ad:ad:00:00:ef (oru.faca.com) via enp138s10f2</span><br><span class="line">DHCPREQUEST for 192.167.27.56 (192.167.27.54) from 6c:ad:ad:00:00:ef (oru.faca.com) via ens1f2</span><br><span class="line">DHCPACK on 192.167.27.56 to 6c:ad:ad:00:00:ef (oru.faca.com) via ens1f2</span><br></pre></td></tr></table></figure></li>
+<li><p>connmanctl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">root@arria10:~/test# connmanctl services</span><br><span class="line">*A  Wired                ethernet_6cadad0000ef_cable</span><br><span class="line">root@arria10:~/test# connmanctl services ethernet_6cadad0000ef_cable</span><br><span class="line">/net/connman/service/ethernet_6cadad0000ef_cable</span><br><span class="line">  Type = ethernet</span><br><span class="line">  Security = [  ]</span><br><span class="line">  State = idle</span><br><span class="line">  Favorite = True</span><br><span class="line">  Immutable = False</span><br><span class="line">  AutoConnect = True</span><br><span class="line">  Name = Wired</span><br><span class="line">  Ethernet = [ Method=auto, Interface=qse-eth, Address=6C:AD:AD:00:00:EF, MTU=4000 ]</span><br><span class="line">  IPv4 = [  ]</span><br><span class="line">  IPv4.Configuration = [ Method=off ]</span><br><span class="line">  IPv6 = [  ]</span><br><span class="line">  IPv6.Configuration = [ Method=off ]</span><br><span class="line">  Nameservers = [  ]</span><br><span class="line">  Nameservers.Configuration = [  ]</span><br><span class="line">  Timeservers = [  ]</span><br><span class="line">  Timeservers.Configuration = [  ]</span><br><span class="line">  Domains = [  ]</span><br><span class="line">  Domains.Configuration = [  ]</span><br><span class="line">  Proxy = [  ]</span><br><span class="line">  Proxy.Configuration = [  ]</span><br><span class="line">  Provider = [  ]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查RU有沒有發出DHCP request<br>tcpdump -i eth0 udp port 67 and port 68 -vvv</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/637cddd5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/637cddd5/" class="post-title-link" itemprop="url">ptp4l_note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-10-12 16:53:34" itemprop="dateCreated datePublished" datetime="2021-10-12T16:53:34+08:00">2021-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:30:31" itemprop="dateModified" datetime="2022-04-04T22:30:31+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="ptp4l-i-eno2-m-f-ptp4l-multicast-server-conf-l-7"><a href="#ptp4l-i-eno2-m-f-ptp4l-multicast-server-conf-l-7" class="headerlink" title="ptp4l -i eno2 -m -f ptp4l-multicast-server.conf -l 7"></a>ptp4l -i eno2 -m -f ptp4l-multicast-server.conf -l 7</h1><p>…<br>ptp4l[…]: driver rejected most general HWTSTAMP filter<br>ptp4l[…]: ioctl SIOCSHWTSTAMP failed: Numerical result out of range</p>
+<p>=&gt; The nic card don’t have one-step hardware.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a32dc298/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/a32dc298/" class="post-title-link" itemprop="url">minicom</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-10-08 18:59:06" itemprop="dateCreated datePublished" datetime="2021-10-08T18:59:06+08:00">2021-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:30:31" itemprop="dateModified" datetime="2022-04-04T22:30:31+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>列出 tty 設備<br>$ dmesg | grep tty</p>
+</li>
+<li><p>執行<br>$ sudo minicom /dev/ttyUSB0<br><img src="/posts/a32dc298/image03.png" alt></p>
+</li>
+<li><p>menu<br>=&gt; crtl + A then Z<br><img src="/posts/a32dc298/image04.png" alt></p>
+</li>
+<li><p>config<br>=&gt; O<br><img src="/posts/a32dc298/image01.png" alt><br><img src="/posts/a32dc298/image02.png" alt></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/14029df0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +834,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-09-14 17:28:00" itemprop="dateModified" datetime="2021-09-14T17:28:00+08:00">2021-09-14</time>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
               </span>
 
           
@@ -247,574 +867,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8623ed20/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/8623ed20/" class="post-title-link" itemprop="url">flask_shell</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-08-31 11:54:08" itemprop="dateCreated datePublished" datetime="2021-08-31T11:54:08+08:00">2021-08-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-09-14 17:28:00" itemprop="dateModified" datetime="2021-09-14T17:28:00+08:00">2021-09-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(venv) $ flask shell</span><br><span class="line">Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:06:47) [MSC v.1914 32 bit (Intel)] on win32</span><br><span class="line">App: app [production]</span><br><span class="line">Instance: C:\tmp\work\20180828_kangaroo\backend\kangaroo\instance</span><br><span class="line">&gt;&gt;&gt; from app.models.User import User</span><br><span class="line">&gt;&gt;&gt; admin = User(username=&apos;aptg_hq@perobot.com.tw&apos;)</span><br><span class="line">&gt;&gt;&gt; admin.password = &apos;123456&apos;</span><br><span class="line">&gt;&gt;&gt; from app.foundation import db</span><br><span class="line">&gt;&gt;&gt; db.session.add(admin)</span><br><span class="line">&gt;&gt;&gt; db.session.commit()</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/29bb5527/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/29bb5527/" class="post-title-link" itemprop="url">android_setup_opencv</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:27:36 / 修改時間：10:28:23" itemprop="dateCreated datePublished" datetime="2021-08-26T10:27:36+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>download opencv sdk for Android<br><a href="https://opencv.org/releases/" target="_blank" rel="noopener">https://opencv.org/releases/</a></li>
-</ol>
-<p><a href="https://blog.csdn.net/userhu2012/article/details/89522851" target="_blank" rel="noopener">https://blog.csdn.net/userhu2012/article/details/89522851</a></p>
-<p><img src="/posts/29bb5527/image_01.png" alt></p>
-<p><img src="/posts/29bb5527/image_02.png" alt></p>
-<p>File -&gt; New -&gt; Import Module…<br><img src="/posts/29bb5527/image_03.png" alt></p>
-<p><img src="/posts/29bb5527/image_04.png" alt></p>
-<p>File -&gt; Project Structure… -&gt; app -&gt; Dependencies -&gt; choose :openCVLibrary411</p>
-<p>modify openCVLibrary411 build.gradle</p>
-<ol>
-<li>apply plugin: ‘com.android.application’ to apply plugin: ‘com.android.library’</li>
-<li>remove defaultConfig: applicationId “org.opencv”</li>
-<li>add minSdkVersion and targetSdkVersion in defaultConfig</li>
-</ol>
-<p>copy opencv-4.1.1-android-sdk\OpenCV-android-sdk\sdk\native\libs to FacePad\app\src\main\jniLibs</p>
-<p>add config in app:build.gradle</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sourceSets &#123;</span><br><span class="line">    main &#123;</span><br><span class="line">        jniLibs.srcDirs = [&apos;src/main/jniLibs&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/21332ed/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/21332ed/" class="post-title-link" itemprop="url">android_looper_handler_thread</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:26:25 / 修改時間：10:26:33" itemprop="dateCreated datePublished" datetime="2021-08-26T10:26:25+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Looper-Handler-Thread"><a href="#Looper-Handler-Thread" class="headerlink" title="Looper/Handler/Thread"></a>Looper/Handler/Thread</h1><ol>
-<li>Android的系統中，透過Looper、Handler來implement消息循環機制</li>
-<li>每一條thread都可以有自己的一個Looper，也只能有一個</li>
-<li>By default, thread是不沒有配置Looper的</li>
-<li>Looper.prepare(): 創建一個Looper給thread</li>
-<li>Looper.loop(): 進入message loop</li>
-<li>create Handler時可以指定一個Looper，若沒有特別指定，預設會是當前thread的Looper</li>
-<li>Looper負責message queue跟message loop的管理</li>
-<li>Handler主要是<br>  a. 送message到Looper的message queue去 // 透過mHandler.sendMessage(msg)<br>  b. 處理Looper中，排程到的message // 透過handler中override的handleMessage function</li>
-<li>Looper.myLooper(): 用來取得當前thread的Looper</li>
-<li>Looper.getMainLooper(): 用來取得當前process的main thread的Looper</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創建一條thread，並配置Looper</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">     <span class="keyword">public</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">          Looper.prepare();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                    ...</span><br><span class="line">               &#125;</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          Looper.loop();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/6d1dbee1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/6d1dbee1/" class="post-title-link" itemprop="url">build_apk_by_command</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:25:40 / 修改時間：10:26:01" itemprop="dateCreated datePublished" datetime="2021-08-26T10:25:40+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>D:\work\perobot\FaceRecognizeApk&gt; gradlew build</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7bb0d15b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7bb0d15b/" class="post-title-link" itemprop="url">android_anr</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:24:50 / 修改時間：10:25:07" itemprop="dateCreated datePublished" datetime="2021-08-26T10:24:50+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>ui线程阻塞5秒，广播阻塞10秒，service阻塞20秒都会产生anr异常</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9cde5900/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9cde5900/" class="post-title-link" itemprop="url">Android_base64_image_on_ImageView</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:24:11 / 修改時間：10:24:17" itemprop="dateCreated datePublished" datetime="2021-08-26T10:24:11+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.util.Base64;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"></span><br><span class="line">ImageView img = findViewById(R.id.img);</span><br><span class="line"><span class="keyword">byte</span>[] bytes = Base64.decode(base64_img, Base64.DEFAULT);</span><br><span class="line">img.setImageBitmap(BitmapFactory.decodeByteArray(bytes, <span class="number">0</span>, bytes.length));</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/508d484e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/508d484e/" class="post-title-link" itemprop="url">andriod_AppManager</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:23:52 / 修改時間：10:23:55" itemprop="dateCreated datePublished" datetime="2021-08-26T10:23:52+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://github.com/imtianx/AndroidLearningNotes/blob/master/android-tools/AppManager.java" target="_blank" rel="noopener">AndroidLearningNotes/AppManager.java at master · imtianx/AndroidLearningNotes · GitHub</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.foxconn.rtspplayer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AppManager</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Stack&lt;Activity&gt; activityStack;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AppManager instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AppManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AppManager <span class="title">getAppManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> AppManager();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            activityStack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        activityStack.add(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Activity <span class="title">currentActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> activityStack.lastElement();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Activity activity = activityStack.lastElement();</span><br><span class="line">        finishActivity(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; !activity.isFinishing()) &#123;</span><br><span class="line">            activityStack.remove(activity);</span><br><span class="line">            activity.finish();</span><br><span class="line">            activity = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Activity activity : activityStack) &#123;</span><br><span class="line">            <span class="keyword">if</span> (activity.getClass().equals(cls)) &#123;</span><br><span class="line">                finishActivity(activity);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">finishAllActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = activityStack.size(); i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != activityStack.get(i)) &#123;</span><br><span class="line">                finishActivity(activityStack.get(i));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        activityStack.clear();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Activity <span class="title">getActivity</span><span class="params">(Class&lt;?&gt; cls)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">for</span> (Activity activity : activityStack) &#123;</span><br><span class="line">                <span class="keyword">if</span> (activity.getClass().equals(cls)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> activity;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Stack&lt;Activity&gt; <span class="title">getActivitys</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> activityStack;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">AppExit</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            finishAllActivity();</span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">            System.exit(<span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception ignored) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getActivityCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = activityStack.size();</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeActivity</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (activityStack == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (activityStack.contains(activity)) &#123;</span><br><span class="line">            activityStack.remove(activity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (activity != <span class="keyword">null</span> &amp;&amp; !activity.isFinishing()) &#123;</span><br><span class="line">            activity.finish();</span><br><span class="line">            activity = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b35ea58e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b35ea58e/" class="post-title-link" itemprop="url">Android_ACTION_TIME_TICK</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:23:26 / 修改時間：10:23:33" itemprop="dateCreated datePublished" datetime="2021-08-26T10:23:26+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="ACTION-TIME-TICK"><a href="#ACTION-TIME-TICK" class="headerlink" title="ACTION_TIME_TICK"></a>ACTION_TIME_TICK</h1><p>這個廣播動作是以每分鐘一次的形式發送。但你不能通過在manifest.xml裡静態註冊，只能在代碼里通過registerReceiver()方法動態註冊</p>
-<p><a href="https://www.jianshu.com/p/ca780d0a09c7" target="_blank" rel="noopener">Intent.ACTION_TIME_TICK - 简书</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.app.ActivityManager;</span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"><span class="keyword">import</span> android.content.IntentFilter;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"hh_MainActivity"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        filter.addAction(Intent.ACTION_TIME_TICK);</span><br><span class="line">        registerReceiver(receiver, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BroadcastReceiver receiver = <span class="keyword">new</span> BroadcastReceiver() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            String action = intent.getAction();</span><br><span class="line">            <span class="keyword">if</span> (action.equals(Intent.ACTION_TIME_TICK)) &#123;</span><br><span class="line">                Log.d(TAG, <span class="string">"Receive Intent.ACTION_TIME_TICK intent"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isServiceRunning</span><span class="params">(Class&lt;?&gt; serviceClass)</span> </span>&#123;</span><br><span class="line">        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);</span><br><span class="line">        List&lt;ActivityManager.RunningServiceInfo&gt; serviceList = activityManager</span><br><span class="line">                .getRunningServices(Integer.MAX_VALUE);</span><br><span class="line">        <span class="keyword">if</span> (serviceList == <span class="keyword">null</span> || serviceList.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (ActivityManager.RunningServiceInfo info : serviceList) &#123;</span><br><span class="line">            <span class="keyword">if</span> (info.service.getClassName().equals(serviceClass.getName()))</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b7885a43/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b7885a43/" class="post-title-link" itemprop="url">android_webview_destroy</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 10:22:42 / 修改時間：10:22:55" itemprop="dateCreated datePublished" datetime="2021-08-26T10:22:42+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>WebView造成記憶體泄露</p>
-<p>關於WebView的記憶體泄露，因為WebView在加載網頁後會長期占用記憶體而不能被釋放，因此我們在Activity銷毀後要調用它的destory()方法來銷毀它以釋放記憶體。<br>最終的解決方案是：在銷毀WebView之前需要先將WebView從父容器中移除，然後在銷毀WebView。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    <span class="comment">// 先從父控件中移除WebView</span></span><br><span class="line">    mWebViewContainer.removeView(mWebView);</span><br><span class="line">    mWebView.stopLoading();</span><br><span class="line">    mWebView.getSettings().setJavaEnabled(<span class="keyword">false</span>);</span><br><span class="line">    mWebView.clearHistory();</span><br><span class="line">    mWebView.removeAllViews();</span><br><span class="line">    mWebView.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -879,7 +935,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -919,7 +975,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

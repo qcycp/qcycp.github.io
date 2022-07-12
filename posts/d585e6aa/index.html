@@ -29,8 +29,10 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="安裝1$ pip install pyinstaller  生成exe檔1$ pyinstaller &amp;lt;config&amp;gt; main.py  指定spec文件1$ pyinstaller main.spec main.py  config--noconsole: 執行exe檔時，不顯示console視窗--onefile: 打包成單一個exe檔案--icon: 指定exe檔案的icon s">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2020-06-22T01:20:20.213Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;d585e6aa&#x2F;image01.png">
+<meta property="og:updated_time" content="2021-10-18T02:09:44.928Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;d585e6aa&#x2F;image01.png">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/d585e6aa/">
 
@@ -218,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+                <time title="修改時間：2021-10-18 10:09:44" itemprop="dateModified" datetime="2021-10-18T10:09:44+08:00">2021-10-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,6 +265,11 @@
 <li><code>pyinstaller main.spec main.py</code></li>
 </ol>
 <h1 id="sample-for-spec文件"><a href="#sample-for-spec文件" class="headerlink" title="sample for spec文件"></a>sample for spec文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- mode: python ; coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">block_cipher = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = Analysis([<span class="string">'main.py'</span>],</span><br><span class="line">             pathex=[<span class="string">'D:\\FaceDetection'</span>],</span><br><span class="line">             binaries=[],</span><br><span class="line">             datas=[(<span class="string">'D:\\FaceDetection\\data'</span>, <span class="string">'data'</span>)],</span><br><span class="line">             hiddenimports=[],</span><br><span class="line">             hookspath=[],</span><br><span class="line">             runtime_hooks=[],</span><br><span class="line">             excludes=[],</span><br><span class="line">             win_no_prefer_redirects=False,</span><br><span class="line">             win_private_assemblies=False,</span><br><span class="line">             cipher=block_cipher,</span><br><span class="line">             noarchive=False)</span><br><span class="line">pyz = PYZ(a.pure, a.zipped_data,</span><br><span class="line">             cipher=block_cipher)</span><br><span class="line">exe = EXE(pyz,</span><br><span class="line">          a.scripts,</span><br><span class="line">          a.binaries,</span><br><span class="line">          a.zipfiles,</span><br><span class="line">          a.datas,</span><br><span class="line">          [],</span><br><span class="line">          name=<span class="string">'main'</span>,</span><br><span class="line">          debug=False,</span><br><span class="line">          bootloader_ignore_signals=False,</span><br><span class="line">          strip=False,</span><br><span class="line">          upx=True,</span><br><span class="line">          upx_exclude=[],</span><br><span class="line">          runtime_tmpdir=None,</span><br><span class="line">          console=False , icon=<span class="string">'D:\\FaceDetection\\data\\fd.ico'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Trouble Shooting<br><img src="/posts/d585e6aa/image01.png" alt><br><a href="https://stackoverflow.com/questions/37815371/pyinstaller-failed-to-execute-script-pyi-rth-pkgres-and-missing-packages" target="_blank" rel="noopener">https://stackoverflow.com/questions/37815371/pyinstaller-failed-to-execute-script-pyi-rth-pkgres-and-missing-packages</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall pyinstaller</span><br><span class="line">pip install https://github.com/pyinstaller/pyinstaller/archive/develop.zip</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
     
@@ -358,7 +365,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -398,7 +405,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -183,6 +183,620 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ffdb9082/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ffdb9082/" class="post-title-link" itemprop="url">python_mysql_db_session</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:43:40" itemprop="dateCreated datePublished" datetime="2021-08-26T09:43:40+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MySqlAlchemy(SQLAlchemy):</span><br><span class="line">    def apply_driver_hacks(self, app, info, options):</span><br><span class="line">        options.update(&#123;&quot;isolation_level&quot;: &quot;READ COMMITTED&quot;&#125;)</span><br><span class="line">        super(MySqlAlchemy, self).apply_driver_hacks(app, info, options)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ccf12b21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ccf12b21/" class="post-title-link" itemprop="url">python_multiprocessing_pool</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:42:37" itemprop="dateCreated datePublished" datetime="2021-08-26T09:42:37+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def task(pid):</span><br><span class="line">    # do something</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    pool = multiprocessing.Pool()</span><br><span class="line">    cpus = multiprocessing.cpu_count()</span><br><span class="line">    results = []</span><br><span class="line"></span><br><span class="line">    for i in range(0, cpus):</span><br><span class="line">        result = pool.apply_async(task, args=(i,))</span><br><span class="line">        results.append(result)</span><br><span class="line"></span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line"></span><br><span class="line">    for result in results:</span><br><span class="line">        print(result.get())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def init_worker(X):</span><br><span class="line">    # Using a dictionary is not strictly necessary. You can also</span><br><span class="line">    # use global variables.</span><br><span class="line">    var_dict[&apos;X&apos;] = X</span><br><span class="line"></span><br><span class="line">def run_ws2(args):</span><br><span class="line">    ws_client = WSClient(args.host, args.rtsp_url, args.source)</span><br><span class="line">    var_dict[args.source] = args.rtsp_url</span><br><span class="line">    ws_client.run()</span><br><span class="line"></span><br><span class="line">var_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line">with Pool(processes=len(settings), initializer=init_worker, initargs=(X)) as pool:</span><br><span class="line">    pool.map(run_ws, [setting for setting in settings])</span><br><span class="line"></span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool, Manager</span><br><span class="line">from multiprocessing.managers import BaseManager</span><br><span class="line"></span><br><span class="line">class SharedEventList(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.d = &#123;&#125;</span><br><span class="line">        self.d[&apos;hahaha&apos;] = list()</span><br><span class="line">        self.d[&apos;gogogo&apos;] = list()</span><br><span class="line"></span><br><span class="line">    def append(self, source, value):</span><br><span class="line">        self.d[source].append(value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    BaseManager.register(&apos;SharedEventList&apos;, SharedEventList)</span><br><span class="line">    manager = BaseManager()</span><br><span class="line">    manager.start()</span><br><span class="line">    event_list = manager.SharedEventList()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    pool = Pool(processes=4)</span><br><span class="line">    for i in range(4):</span><br><span class="line">        pool.apply_async(run_ws, args=(event_list,))</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a45c283d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/a45c283d/" class="post-title-link" itemprop="url">python_logging</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:40:32" itemprop="dateCreated datePublished" datetime="2021-08-26T09:40:32+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.blog.pythonlibrary.org/2014/02/11/python-how-to-create-rotating-logs/" target="_blank" rel="noopener">Python: How to Create Rotating Logs</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> RotatingFileHandler</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_logger</span><span class="params">(name)</span>:</span></span><br><span class="line">    formatter = logging.Formatter(<span class="string">'%(asctime)s - [%(filename)s:%(lineno)s] - %(levelname)s %(message)s '</span>)</span><br><span class="line">    logger = logging.getLogger(name)</span><br><span class="line">    logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line">    console = logging.StreamHandler()</span><br><span class="line">    console.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(console)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'/app/logs'</span>):</span><br><span class="line">        os.makedirs(<span class="string">'/app/logs'</span>)</span><br><span class="line"></span><br><span class="line">    file_handler = TimedRotatingFileHandler(<span class="string">'/app/logs/imfr.log'</span>, when=<span class="string">"d"</span>, interval=<span class="number">1</span>, backupCount=<span class="number">7</span>)</span><br><span class="line">    file_handler.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(file_handler)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> logger</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># set logging to file</span><br><span class="line">log_formatter = logging.Formatter(format_string)</span><br><span class="line">file_handler = logging.FileHandler(log_file_name, mode=&apos;w&apos;) # mode is file write mode, &apos;a&apos; to append</span><br><span class="line">file_handler.setFormatter(log_formatter)</span><br><span class="line"> </span><br><span class="line"># create child logger and set it to be a file handler</span><br><span class="line">logger = logging.getLogger() # or pass a string to give it a name</span><br><span class="line">logger.addHandler(file_handler)</span><br><span class="line">logger.setLevel(log_level)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b44a52cd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b44a52cd/" class="post-title-link" itemprop="url">interrupt_thread</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:39:40" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:40+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.itread01.com/content/1546799768.html" target="_blank" rel="noopener">Python強制關閉執行緒</a><br><a href="http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python" target="_blank" rel="noopener">http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_async_raise</span><span class="params">(tid, exctype)</span>:</span></span><br><span class="line">    <span class="string">"""raises the exception, performs cleanup if needed"""</span></span><br><span class="line">    tid = ctypes.c_long(tid)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> inspect.isclass(exctype):</span><br><span class="line">        exctype = type(exctype)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"invalid thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res != <span class="number">1</span>:</span><br><span class="line">        <span class="comment"># """if it returns a number greater than one, you're in trouble,</span></span><br><span class="line">        <span class="comment"># and you should call it again with exc=NULL to revert the effect"""</span></span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stop_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    _async_raise(thread.ident, SystemExit)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"begin"</span>)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        print(<span class="string">"end"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    t = TestThread()</span><br><span class="line">    t.start()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    stop_thread(t)</span><br><span class="line">    print(<span class="string">"stoped"</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">terminate_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> thread.isAlive():</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    exc = ctypes.py_object(SystemExit)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(thread.ident), exc)</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"nonexistent thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res &gt; <span class="number">1</span>:</span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(thread.ident, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f22e58f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f22e58f/" class="post-title-link" itemprop="url">image_url_to_opencv_image</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:39:00" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:00+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>METHOD #1: OpenCV, NumPy, and urllib</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import urllib.request import urlopen</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">def url_to_image(url):</span><br><span class="line">	# download the image, convert it to a NumPy array, and then read</span><br><span class="line">	# it into OpenCV format</span><br><span class="line">	resp = urlopen(url)</span><br><span class="line">	image = np.asarray(bytearray(resp.read()), dtype=&quot;uint8&quot;)</span><br><span class="line">	image = cv2.imdecode(image, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">	# return the image</span><br><span class="line">	return image</span><br><span class="line"></span><br><span class="line"># initialize the list of image URLs to download</span><br><span class="line">urls = [</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/opencv_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/google_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2014/12/adrian_face_detection_sidebar.png&quot;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image URL and display it</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = url_to_image(url)</span><br><span class="line">	cv2.imshow(&quot;Image&quot;, image)</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
+
+<p>Method #2: scikit-image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from skimage import io</span><br><span class="line"> </span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image using scikit-image</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = io.imread(url)</span><br><span class="line">	cv2.imshow(&quot;Incorrect&quot;, image)</span><br><span class="line">	cv2.imshow(&quot;Correct&quot;, cv2.cvtColor(image, cv2.COLOR_BGR2RGB))</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/33c9c691/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/33c9c691/" class="post-title-link" itemprop="url">gevent_timeout</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:36:55" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:55+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">import traceback</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    try:</span><br><span class="line">        with gevent.Timeout(1):</span><br><span class="line">            while True:</span><br><span class="line">                gevent.sleep(0.3)</span><br><span class="line">                print(&quot;do_something...&quot;)</span><br><span class="line">    except gevent.Timeout:</span><br><span class="line">        print(&quot;gevent.Timeout&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print(traceback.format_exc())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(venv) user@vm-docker:~$ python app.py</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">gevent.Timeout</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9d8d8ccf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/9d8d8ccf/" class="post-title-link" itemprop="url">gevent_spawn</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:36:25" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:25+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spawns = []</span><br><span class="line">for i in range(GEVENT_NUM):</span><br><span class="line">    spawns.append(gevent.spawn(do_something, i))</span><br><span class="line">gevent.joinall(spawns)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gevent.joinall([</span><br><span class="line">    gevent.spawn(foo, 1),</span><br><span class="line">    gevent.spawn(goo, 2)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fbf3436c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/fbf3436c/" class="post-title-link" itemprop="url">python_gevent</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:35:49" itemprop="dateCreated datePublished" datetime="2021-08-26T09:35:49+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br><span class="line">def foo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:41:48,231 - [main.py:174] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:49,233 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:50,235 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo).run()</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:38:31,008 - [main.py:174] - INFO mThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo).run()</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:39:38,280 - [main.py:174] - INFO mThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:38,281 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:39,296 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:43:04,408 - [main.py:174] - INFO mThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,410 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,411 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:175] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:182] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:06:19,773 - [main.py:174] - INFO mThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:29,785 - [main.py:166] - INFO gThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:34,791 - [main.py:170] - INFO fThread id main = 139665595115264</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:07:05,429 - [main.py:174] - INFO mThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:10,434 - [main.py:170] - INFO fThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:15,436 - [main.py:166] - INFO gThread id main = 140126333138688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:09:27,635 - [main.py:174] - INFO mThread id main = 140478560122120</span><br><span class="line">2019-07-18 10:09:32,636 - [main.py:171] - INFO fThread id main = 140478502363976</span><br><span class="line">2019-07-18 10:09:37,641 - [main.py:167] - INFO gThread id main = 140478502363720</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:08:53,700 - [main.py:174] - INFO mThread id main = 140337642030344</span><br><span class="line">2019-07-18 10:08:58,704 - [main.py:171] - INFO fThread id main = 140337584272200</span><br><span class="line">2019-07-18 10:09:03,704 - [main.py:167] - INFO gThread id main = 140337584271944</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69b994cd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/69b994cd/" class="post-title-link" itemprop="url">flask_login</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:34:46" itemprop="dateCreated datePublished" datetime="2021-08-26T09:34:46+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#declaration</span></span><br><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> LoginManager</span><br><span class="line">login_manager = LoginManager()</span><br><span class="line"></span><br><span class="line"><span class="comment">#init</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">login_manager.init_app(app)</span><br><span class="line"></span><br><span class="line"><span class="comment">#usage</span></span><br><span class="line"><span class="meta">@login_manager.user_loader</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_user</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="comment">#logger.info("load_user: id = " + id)</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> User.User.query.get(int(id))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/login', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    params = request.form <span class="keyword">or</span> request.get_json()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        username = params[<span class="string">'username'</span>]</span><br><span class="line">        password = params[<span class="string">'password'</span>]</span><br><span class="line">        remember = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_INVALID_PARAM)</span><br><span class="line"></span><br><span class="line">    user = User.query.filter_by(username=username).first()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_USER_NOT_EXIST)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> user.check_password(password):</span><br><span class="line">        login_user(user, remember=remember)</span><br><span class="line">        <span class="keyword">return</span> success_result()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_PASSWORD_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/logout')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span><span class="params">()</span>:</span></span><br><span class="line">    logout_user()</span><br><span class="line">    <span class="keyword">return</span> success_result()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eacf1c94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,10 +820,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-08-26 09:33:47 / 修改時間：09:33:51" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
+              <time title="創建時間：2021-08-26 09:33:47" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
 
           
 
@@ -238,564 +858,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4b411f65/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4b411f65/" class="post-title-link" itemprop="url">flask_background_task</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:33:03 / 修改時間：09:33:07" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:03+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ol>
-<li>celery</li>
-<li>rq</li>
-</ol>
-<p><a href="https://myapollo.com.tw/2019/06/01/flask-celery/" target="_blank" rel="noopener">https://myapollo.com.tw/2019/06/01/flask-celery/</a></p>
-<p><a href="http://www.pythondoc.com/flask-celery/first.html" target="_blank" rel="noopener">http://www.pythondoc.com/flask-celery/first.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/996f0d2c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/996f0d2c/" class="post-title-link" itemprop="url">download_file</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:32:04 / 修改時間：09:32:09" itemprop="dateCreated datePublished" datetime="2021-08-26T09:32:04+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> send_file</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/download')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">downloadFile</span> <span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#For windows you need to use drive name [ex: F:/example.pdf]</span></span><br><span class="line">    path = <span class="string">"/examples.pdf"</span></span><br><span class="line">    <span class="keyword">return</span> send_file(path, as_attachment=<span class="literal">True</span>, cache_timeout=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/5e5f185d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/5e5f185d/" class="post-title-link" itemprop="url">draw_frame</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:31:09 / 修改時間：09:31:28" itemprop="dateCreated datePublished" datetime="2021-08-26T09:31:09+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_track</span><span class="params">(ipcam_index, ipcam)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            frame, counter = ipcam.getframe()</span><br><span class="line">            <span class="keyword">if</span> frame <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                time.sleep(CONST.SLEEP_TIME_FRAME_DUPLICATED)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            resize_frame = cv2.resize(frame, (DataManager.imageWidth, DataManager.imageHeight))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> tid <span class="keyword">in</span> FaceTrackData.track_data[ipcam_index].track_list.copy():</span><br><span class="line">                tracked_position = FaceTrackData.track_data[ipcam_index].track_list[tid].tracker.get_position()</span><br><span class="line">                t_x = int(tracked_position.left())</span><br><span class="line">                t_y = int(tracked_position.top())</span><br><span class="line">                t_w = int(tracked_position.width())</span><br><span class="line">                t_h = int(tracked_position.height())</span><br><span class="line">                cv2.rectangle(resize_frame, (t_x, t_y),</span><br><span class="line">                                            (t_x + t_w , t_y + t_h),</span><br><span class="line">                                            (FaceTrackData.track_data[ipcam_index].track_list[tid].R, FaceTrackData.track_data[ipcam_index].track_list[tid].G, FaceTrackData.track_data[ipcam_index].track_list[tid].B), <span class="number">5</span>)</span><br><span class="line">            cv2.imshow(ipcam.location, resize_frame)</span><br><span class="line">            <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) == <span class="number">27</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            logging.error(<span class="string">'draw_track failed ---&gt; \n%s'</span> % traceback.format_exc())</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3b817890/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/3b817890/" class="post-title-link" itemprop="url">disable_cache_in_flask</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:30:28 / 修改時間：09:30:33" itemprop="dateCreated datePublished" datetime="2021-08-26T09:30:28+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://arusahni.net/blog/2014/03/flask-nocache.html" target="_blank" rel="noopener">Disabling caching in Flask</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from nocache import nocache</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/my_endpoint&apos;)</span><br><span class="line">@nocache</span><br><span class="line">def my_endpoint():</span><br><span class="line">    return render_template(...)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/c61afcbc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/c61afcbc/" class="post-title-link" itemprop="url">python_class</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:28:14 / 修改時間：09:28:19" itemprop="dateCreated datePublished" datetime="2021-08-26T09:28:14+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #&lt;__main__.MyClass object at 0x7f4dd1c2a470&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>str</strong>()用來定義傳回物件描述字串，通常用來描述的字串是對使用者友善的說明文字，如果對物件使用str()，所呼叫的就是<strong>str</strong>()。<br>如果要定義對開發人員較有意義的描述，例如傳回產生實例的類別名稱之類的，則可以定義<strong>repr</strong>()，如果對物件使用repr()，則所呼叫的就是<strong>repr</strong>()。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class MyClass(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.a = 10</span><br><span class="line">        self.b = &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br><span class="line"></span><br><span class="line">    #自定義當print MyClass instance object時，要返回什麼內容</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return &quot;a: &quot; + str(self.a) + &quot;, b: &quot; + str(self.b)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ins = MyClass()</span><br><span class="line">    print(ins) #a: 10, b: &#123;&apos;key&apos;: &apos;value&apos;&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dc2bade1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/dc2bade1/" class="post-title-link" itemprop="url">install_dlib_on_windows</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:27:21 / 修改時間：09:27:35" itemprop="dateCreated datePublished" datetime="2021-08-26T09:27:21+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Install dlib for python on windows</p>
-<p><a href="https://pypi.org/simple/dlib/" target="_blank" rel="noopener">Links for dlib</a></p>
-<p>pip install <a href="https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf" target="_blank" rel="noopener">https://files.pythonhosted.org/packages/0e/ce/f8a3cff33ac03a8219768f0694c5d703c8e037e6aba2e865f9bae22ed63c/dlib-19.8.1-cp36-cp36m-win_amd64.whl#sha256=794994fa2c54e7776659fddb148363a5556468a6d5d46be8dad311722d54bfcf</a></p>
-<p>pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ba4ed96a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ba4ed96a/" class="post-title-link" itemprop="url">url_for</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:26:05 / 修改時間：09:26:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:26:05+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>自定義url_for的位址與port</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_url_for</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> current_app.test_request_context():</span><br><span class="line">        <span class="comment"># With the test request context of the app</span></span><br><span class="line">        kwargs[<span class="string">'_external'</span>] = <span class="literal">True</span>    <span class="comment"># Add the _external=True keyword argument to whatever else was passed</span></span><br><span class="line">        url = url_for(*args, **kwargs)    <span class="comment"># Get the URL</span></span><br><span class="line">        url = url.replace(<span class="string">'://localhost/'</span>, <span class="string">'://localhost:15074/'</span>)</span><br><span class="line">        <span class="keyword">return</span> url</span><br><span class="line"></span><br><span class="line"><span class="meta">@render_bp.route('/system/setting/engine', methods = ['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">system_setting_engine</span><span class="params">()</span>:</span></span><br><span class="line">        fields = [k <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line"></span><br><span class="line">        values = [request.form[k] <span class="keyword">for</span> k <span class="keyword">in</span> request.form]</span><br><span class="line">        payload = dict(zip(fields, values))</span><br><span class="line"></span><br><span class="line">        <span class="comment">#print("payload",json.dumps(payload))</span></span><br><span class="line"></span><br><span class="line">        r = requests.put(HOST+<span class="string">'/config/engine'</span>, data = payload)</span><br><span class="line">        <span class="comment">#return redirect(url_for('render_bp.system_setting', _external=True))</span></span><br><span class="line">        <span class="keyword">return</span> redirect(my_url_for(<span class="string">'render_bp.system_setting'</span>, _external=<span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Reference<br><a href="https://github.com/pallets/flask/issues/824" target="_blank" rel="noopener">https://github.com/pallets/flask/issues/824</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f2123b71/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/f2123b71/" class="post-title-link" itemprop="url">websocket_client</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-08-26 09:24:31" itemprop="dateCreated datePublished" datetime="2021-08-26T09:24:31+08:00">2021-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-30 10:47:08" itemprop="dateModified" datetime="2021-08-30T10:47:08+08:00">2021-08-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gevent==1.4.0</span><br><span class="line">greenlet==0.4.15</span><br><span class="line">gunicorn==19.9.0</span><br><span class="line">six==1.12.0</span><br><span class="line">websocket==0.2.1</span><br><span class="line">websocket-client==0.55.0</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">port = <span class="number">5073</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_message</span><span class="params">(ws, message)</span>:</span></span><br><span class="line">    data = json.loads(message)</span><br><span class="line">    print(<span class="string">"receive message from server:"</span>)</span><br><span class="line">    print(data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_error</span><span class="params">(ws, error)</span>:</span></span><br><span class="line">    print(error)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_close</span><span class="params">(ws)</span>:</span></span><br><span class="line">    print(<span class="string">"### closed ###"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">on_open</span><span class="params">(ws)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">5</span>)</span><br><span class="line">            ws.send(<span class="string">"Hello"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        ws.close()</span><br><span class="line">    thread = threading.Thread(target=job)</span><br><span class="line">    thread.start()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    websocket.enableTrace(<span class="literal">True</span>)</span><br><span class="line">    <span class="comment">#ws = websocket.create_connection("ws://localhost:" + str(port) + "/")</span></span><br><span class="line">    url = &#123;<span class="string">'rtsp'</span>: <span class="string">'E6-IN-01.mp4'</span>&#125;</span><br><span class="line">    ws = websocket.WebSocketApp(<span class="string">"ws://0.0.0.0:"</span> + str(port) + <span class="string">"?"</span> + urlencode(url),</span><br><span class="line">                              on_message = on_message,</span><br><span class="line">                              on_error = on_error,</span><br><span class="line">                              on_close = on_close)</span><br><span class="line">    ws.on_open = on_open</span><br><span class="line">    ws.run_forever()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4d9192f8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4d9192f8/" class="post-title-link" itemprop="url">supervisor</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-25 19:32:48 / 修改時間：19:33:05" itemprop="dateCreated datePublished" datetime="2021-08-25T19:32:48+08:00">2021-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>Reference<br><a href="https://blog.51cto.com/lixcto/1539136" target="_blank" rel="noopener">https://blog.51cto.com/lixcto/1539136</a><br><a href="http://supervisord.org/configuration.html" target="_blank" rel="noopener">http://supervisord.org/configuration.html</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">supervisorctl status</span><br><span class="line">supervisorctl stop service</span><br><span class="line">supervisorctl restart service</span><br><span class="line">supervisorctl start service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">root@koala:~# supervisorctl status</span><br><span class="line">clean_upload_event               RUNNING   pid 1857, uptime 2 days, 20:51:06</span><br><span class="line">events_consumer                  RUNNING   pid 1859, uptime 2 days, 20:51:06</span><br><span class="line">koala_online                     RUNNING   pid 1861, uptime 2 days, 20:51:06</span><br><span class="line">koala_worker                     RUNNING   pid 1860, uptime 2 days, 20:51:06</span><br><span class="line">redis                            RUNNING   pid 1862, uptime 2 days, 20:51:06</span><br><span class="line">updater                          RUNNING   pid 1864, uptime 2 days, 20:51:06</span><br><span class="line">weather                          RUNNING   pid 1858, uptime 2 days, 20:51:06</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -860,7 +926,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -900,7 +966,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

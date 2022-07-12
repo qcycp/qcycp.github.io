@@ -183,6 +183,671 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/1555af5b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1555af5b/" class="post-title-link" itemprop="url">python_pytest</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:56:11" itemprop="dateCreated datePublished" datetime="2021-08-26T09:56:11+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://blog.csdn.net/liuchunming033/article/details/46501653" target="_blank" rel="noopener">https://blog.csdn.net/liuchunming033/article/details/46501653</a><br><a href="http://note.qidong.name/2018/01/pytest-fixture/" target="_blank" rel="noopener">http://note.qidong.name/2018/01/pytest-fixture/</a><br><a href="http://kuanghy.github.io/2018/05/08/pytest" target="_blank" rel="noopener">http://kuanghy.github.io/2018/05/08/pytest</a><br><a href="https://senarukana.github.io/2015/05/29/pytest-fixture/" target="_blank" rel="noopener">https://senarukana.github.io/2015/05/29/pytest-fixture/</a><br><a href="https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/" target="_blank" rel="noopener">https://myapollo.com.tw/2018/09/15/flask-test-client-get-post-examples/</a><br><a href="https://www.jianshu.com/p/36128049fefc" target="_blank" rel="noopener">https://www.jianshu.com/p/36128049fefc</a><br><a href="http://note.qidong.name/2018/02/pytest-mock/" target="_blank" rel="noopener">http://note.qidong.name/2018/02/pytest-mock/</a><br><a href="https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/" target="_blank" rel="noopener">https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/</a><br><a href="https://myapollo.com.tw/2017/10/27/pytest-coverage/" target="_blank" rel="noopener">https://myapollo.com.tw/2017/10/27/pytest-coverage/</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install pytest</span><br><span class="line">pip install pytest-html</span><br><span class="line">pip install pytest-cov</span><br></pre></td></tr></table></figure>
+
+<p>會安裝下列相關的套件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">atomicwrites==1.3.0</span><br><span class="line">attrs==19.1.0</span><br><span class="line">coverage==4.5.3</span><br><span class="line">more-itertools==7.0.0</span><br><span class="line">pluggy==0.9.0</span><br><span class="line">py==1.8.0</span><br><span class="line">pytest==4.4.0</span><br><span class="line">pytest-cov==2.6.1</span><br><span class="line">pytest-html==1.20.0</span><br><span class="line">pytest-metadata==1.8.0</span><br><span class="line">six==1.12.0</span><br></pre></td></tr></table></figure>
+
+<p>command</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">execute commands under /<span class="built_in">test</span></span><br><span class="line">pytest <span class="comment">#run all tests velow current dir</span></span><br><span class="line">pytest test_xxx.py <span class="comment">#run tests in module file test_xxx.py</span></span><br><span class="line">pytest --html=log.html <span class="comment">#run tests and generate report log.html</span></span><br><span class="line">pytest --cov-report=html --cov=./ <span class="comment">#run tests and calculate the coverage for test files</span></span><br><span class="line">pytest test_xxx.py::TestClass::test_func <span class="comment"># test test_func in the TestClass in the test_xxx.py</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> pytest</span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> session</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestAuth</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_login</span><span class="params">(self)</span>:</span></span><br><span class="line">        s = session()</span><br><span class="line">        base_uri = <span class="string">'http://127.0.0.1:8857'</span></span><br><span class="line">        data =&#123;<span class="string">'username'</span>: <span class="string">'admin'</span>, <span class="string">'password'</span>: <span class="string">'123456'</span>&#125;</span><br><span class="line"></span><br><span class="line">        ret = s.post(base_uri + <span class="string">'/api/auth/login'</span>, data)</span><br><span class="line">        print(ret.content)</span><br><span class="line">        <span class="keyword">assert</span> ret.status_code == <span class="number">200</span></span><br><span class="line">        response = &#123;</span><br><span class="line">            <span class="string">'code'</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">'data'</span>: &#123;&#125;,</span><br><span class="line">            <span class="string">'page'</span>: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ret_json = json.loads(ret.content)</span><br><span class="line">        <span class="keyword">assert</span> ret_json == response</span><br><span class="line">        <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
+<p>在根目錄下執行以下指令，輸出的結果會在coverage目錄裡<br><code>python -m pytest test --cov=. --cov-report html:coverage</code></p>
+<p>pytest #run all tests below current dir<br>pytest test_xxx.py #run tests in module file test_xxx.py<br>pytest –html=log.html #run tests and generate report log.html<br>pytest –cov-report=html –cov=./ #run tests and calculate the coverage for test files</p>
+<ul>
+<li>To run a specific test within a module:<br>pytest test_mod.py::test_func<br>pytest test_mod.py::TestClass::test_method</li>
+</ul>
+<p>python -m pytest -vv test –cov=. –cov-report html:coverage –html=./coverage/log.html<br>python -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html<br>docker exec -it hh_imfr bash -c “python3.6 -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html”</p>
+<p><a href="https://www.cnblogs.com/landhu/p/7462221.html" target="_blank" rel="noopener">https://www.cnblogs.com/landhu/p/7462221.html</a></p>
+<ol>
+<li>執行指定文件<br>pytest test_mod.py</li>
+<li>執行指定目錄下所有文件<br>pytest tests/</li>
+<li>執行指定module中的function<br>pytest test_mod.py::testfunc</li>
+<li>執行指定module中的class funtion<br>pytest testmod.py::testclass::test_method</li>
+</ol>
+<p>-vv 顯示詳細的信息<br>-s 捕獲輸出, 例如顯示 print 函數的輸出<br>-x 首次失敗後停止執行</p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test –cov=. –cov-report html:coverage –html=./coverage/log.html</p>
+<p>python3.6 -m pytest -vv -s test/test_WSGIServer.py –cov=. –cov-report html:coverage –html=./coverage/log.html</p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test/test_WSGIServer.py –cov=. –cov-report=html –cov-config=test/setup.cfg –html=coverage/log.html</p>
+<p><a href="https://pytest-cov.readthedocs.io/en/latest/config.html" target="_blank" rel="noopener">https://pytest-cov.readthedocs.io/en/latest/config.html</a><br><a href="https://myapollo.com.tw/2017/10/27/pytest-coverage/" target="_blank" rel="noopener">https://myapollo.com.tw/2017/10/27/pytest-coverage/</a><br><a href="https://coverage.readthedocs.io/en/latest/config.html" target="_blank" rel="noopener">Configuration reference</a></p>
+<p>ENV_FACEPP_HOST=”192.168.56.3:8866” ENV_FACEPP_ACCOUNT=”<a href="mailto:face@aptg.com.tw" target="_blank" rel="noopener">face@aptg.com.tw</a>“ ENV_FACEPP_PASSWORD=”123456” python3.6 -m pytest -vv -s test –cov=. –cov-report=html –cov-config=test/setup.cfg –html=coverage/log.html</p>
+<p>python3.6 -m pytest -vv -s app/test/test_subject.py –cov=. –cov-config=app/test/setup.cfg –cov-report=html –html=coverage/log.html<br>python3.6 -m pytest -vv -s app/test/test_event.py –cov=. –cov-config=app/test/setup.cfg –cov-report=html –html=coverage/log.html</p>
+<h3 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h3><p>pytest 路徑問題</p>
+<p>在test file中，若是import project內的module，會發生ModuleNotFoundError<br><img src="/posts/1555af5b/image_01.png" alt></p>
+<ul>
+<li><p>法一<br>在project根目錄下，直接執行<br><code>python -m pytest app/test/test_auth.py</code><br><img src="/posts/1555af5b/image_02.png" alt></p>
+</li>
+<li><p>法二<br>設定PYTHONPATH<br><img src="/posts/1555af5b/image_03.png" alt></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69706db6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/69706db6/" class="post-title-link" itemprop="url">pyqt5_webview</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:55:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:55:24+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>pip install PyQt5<br>pip install PyQtWebEngine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">from PyQt5.QtWidgets import QApplication</span><br><span class="line">from PyQt5.QtCore import QUrl</span><br><span class="line">from PyQt5.QtWebEngineWidgets import QWebEngineView</span><br><span class="line"></span><br><span class="line">app = QApplication(sys.argv)</span><br><span class="line"></span><br><span class="line">web = QWebEngineView()</span><br><span class="line">web.load(QUrl(&quot;https://tw.yahoo.com&quot;))</span><br><span class="line">web.show()</span><br><span class="line"></span><br><span class="line">sys.exit(app.exec_())</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/1953e58/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1953e58/" class="post-title-link" itemprop="url">opencv_face_detection</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:54:21" itemprop="dateCreated datePublished" datetime="2021-08-26T09:54:21+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">face_cascade = cv2.CascadeClassifier(<span class="string">'haarcascade_frontalface_default.xml'</span>)</span><br><span class="line">eye_cascade = cv2.CascadeClassifier(<span class="string">'haarcascade_eye.xml'</span>)</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">'img.jpg'</span>)</span><br><span class="line">gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">faces = face_cascade.detectMultiScale(gray, <span class="number">1.3</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> (x,y,w,h) <span class="keyword">in</span> faces:</span><br><span class="line">    img = cv2.rectangle(img,(x,y),(x+w,y+h),(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),<span class="number">2</span>)</span><br><span class="line">    roi_gray = gray[y:y+h, x:x+w]</span><br><span class="line">    roi_color = img[y:y+h, x:x+w]</span><br><span class="line">    eyes = eye_cascade.detectMultiScale(roi_gray)</span><br><span class="line">    <span class="keyword">for</span> (ex,ey,ew,eh) <span class="keyword">in</span> eyes:</span><br><span class="line">        cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(<span class="number">0</span>,<span class="number">255</span>,<span class="number">0</span>),<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'img'</span>,img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/8b5f195/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/8b5f195/" class="post-title-link" itemprop="url">opencv</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:53:40" itemprop="dateCreated datePublished" datetime="2021-08-26T09:53:40+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://blog.gtwang.org/programming/opencv-drawing-functions-tutorial/" target="_blank" rel="noopener">https://blog.gtwang.org/programming/opencv-drawing-functions-tutorial/</a></p>
+<h4 id="直線"><a href="#直線" class="headerlink" title="直線"></a>直線</h4><p>cv2.line(影像, 開始座標, 結束座標, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立一張 512x512 的 RGB 圖片（黑色）</span></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將圖片用淺灰色 (200, 200, 200) 填滿</span></span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上畫一條紅色的對角線，寬度為 5 px</span></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顯示圖片</span></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 按下任意鍵則關閉所有視窗</span></span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_01.png" alt></p>
+<h4 id="方框"><a href="#方框" class="headerlink" title="方框"></a>方框</h4><p>cv2.rectangle(影像, 頂點座標, 對向頂點座標, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上畫一個綠色方框，線條寬度為 2 px</span></span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 綠色實心方框</span></span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_02.png" alt></p>
+<h4 id="圓圈"><a href="#圓圈" class="headerlink" title="圓圈"></a>圓圈</h4><p>cv2.circle(影像, 圓心座標, 半徑, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 黃色圓圈，線條寬度為 3 px</span></span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 藍色實心圓圈</span></span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_03.png" alt></p>
+<h4 id="橢圓形"><a href="#橢圓形" class="headerlink" title="橢圓形"></a>橢圓形</h4><p>cv2.ellipse(影像, 中心座標, 軸長, 旋轉角度, 起始角度, 結束角度, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 傾斜 45 度的紫色橢圓形</span></span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">25</span>, <span class="number">55</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">360</span>, (<span class="number">205</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 傾斜 45 度的半個實心橢圓</span></span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">20</span>, <span class="number">50</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_04.png" alt></p>
+<h4 id="折線"><a href="#折線" class="headerlink" title="折線"></a>折線</h4><p>cv2.polylines(影像, 頂點座標, 封閉型, 顏色, 線條寬度)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">200</span>)</span><br><span class="line"></span><br><span class="line">cv2.line(img, (<span class="number">0</span>, <span class="number">0</span>), (<span class="number">255</span>, <span class="number">255</span>), (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">5</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">20</span>, <span class="number">60</span>), (<span class="number">120</span>, <span class="number">160</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">2</span>)</span><br><span class="line">cv2.rectangle(img, (<span class="number">40</span>, <span class="number">80</span>), (<span class="number">100</span>, <span class="number">140</span>), (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">90</span>, <span class="number">210</span>), <span class="number">30</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">3</span>)</span><br><span class="line">cv2.circle(img,(<span class="number">140</span>, <span class="number">170</span>), <span class="number">15</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>), <span class="number">-1</span>)</span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">25</span>, <span class="number">55</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">360</span>, (<span class="number">205</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">2</span>)</span><br><span class="line">cv2.ellipse(img, (<span class="number">180</span>, <span class="number">200</span>), (<span class="number">20</span>, <span class="number">50</span>), <span class="number">45</span>, <span class="number">0</span>, <span class="number">180</span>, (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>), <span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 設定多邊形頂點座標</span></span><br><span class="line">pts = np.array([[<span class="number">170</span>, <span class="number">55</span>], [<span class="number">165</span>, <span class="number">75</span>], [<span class="number">220</span>, <span class="number">80</span>], [<span class="number">200</span>, <span class="number">60</span>]], np.int32)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將座標轉為 (頂點數量, 1, 2) 的陣列</span></span><br><span class="line">pts = pts.reshape((<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 繪製多邊形</span></span><br><span class="line">cv2.polylines(img, [pts], <span class="literal">True</span>, (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>), <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_05.png" alt></p>
+<h4 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h4><p>cv2.putText(影像, 文字, 座標, 字型, 大小, 顏色, 線條寬度, 線條種類)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">400</span>, <span class="number">400</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line">img.fill(<span class="number">90</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文字</span></span><br><span class="line">text = <span class="string">'Hello, OpenCV!'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用各種字體</span></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">40</span>), cv2.FONT_HERSHEY_SIMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">80</span>), cv2.FONT_HERSHEY_PLAIN,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">120</span>), cv2.FONT_HERSHEY_DUPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">160</span>), cv2.FONT_HERSHEY_COMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">200</span>), cv2.FONT_HERSHEY_TRIPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">240</span>), cv2.FONT_HERSHEY_COMPLEX_SMALL,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">280</span>), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.putText(img, text, (<span class="number">10</span>, <span class="number">320</span>), cv2.FONT_HERSHEY_SCRIPT_COMPLEX,</span><br><span class="line">  <span class="number">1</span>, (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>), <span class="number">1</span>, cv2.LINE_AA)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_06.png" alt></p>
+<h4 id="使用-TTF-字型檔"><a href="#使用-TTF-字型檔" class="headerlink" title="使用 TTF 字型檔"></a>使用 TTF 字型檔</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont, ImageDraw, Image</span><br><span class="line"></span><br><span class="line">img = np.zeros((<span class="number">450</span>, <span class="number">450</span>, <span class="number">3</span>), np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將背景設定為大紅色</span></span><br><span class="line">img[:] = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 文字</span></span><br><span class="line">text = <span class="string">'招財\n進寶'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定 TTF 字體檔</span></span><br><span class="line">fontPath = <span class="string">"./康熙字典體.ttf"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 載入字體</span></span><br><span class="line">font = ImageFont.truetype(fontPath, <span class="number">192</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 NumPy 陣列轉為 PIL 影像</span></span><br><span class="line">imgPil = Image.fromarray(img)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在圖片上加入文字</span></span><br><span class="line">draw = ImageDraw.Draw(imgPil)</span><br><span class="line">draw.text((<span class="number">30</span>, <span class="number">30</span>),  text, font = font, fill = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 將 PIL 影像轉回 NumPy 陣列</span></span><br><span class="line">img = np.array(imgPil)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">'My Image'</span>, img)</span><br><span class="line">cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+<p><img src="/posts/8b5f195/image_07.png" alt></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ad5ef208/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ad5ef208/" class="post-title-link" itemprop="url">python_print_class_variables</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:53:02" itemprop="dateCreated datePublished" datetime="2021-08-26T09:53:02+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Animal(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.legs = 2</span><br><span class="line">        self.name = &apos;Dog&apos;</span><br><span class="line">        self.color= &apos;Spotted&apos;</span><br><span class="line">        self.smell= &apos;Alot&apos;</span><br><span class="line">        self.age  = 10</span><br><span class="line">        self.kids = 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">an = Animal()</span><br><span class="line">attrs = vars(an)</span><br><span class="line">print(&apos;, &apos;.join(&quot;%s: %s&quot; % item for item in attrs.items()))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4830199a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4830199a/" class="post-title-link" itemprop="url">python_period_jobs</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:49:14" itemprop="dateCreated datePublished" datetime="2021-08-26T09:49:14+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365109/" target="_blank" rel="noopener">https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/365109/</a><br><a href="https://segmentfault.com/a/1190000011084828" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011084828</a><br><a href="http://slark.info/2017/09/07/%E4%BB%8Eapscheduler%E8%B0%88%E5%88%B0%E5%BB%B6%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86-%E4%B8%80/" target="_blank" rel="noopener">http://slark.info/2017/09/07/%E4%BB%8Eapscheduler%E8%B0%88%E5%88%B0%E5%BB%B6%E6%97%B6%E4%BB%BB%E5%8A%A1%E5%A4%84%E7%90%86-%E4%B8%80/</a></p>
+<p>pip install apscheduler</p>
+<ul>
+<li><p>Scheduler Type<br>BlockingScheduler：僅可用在當前你的程序之內，與當前的進行共享計算資源<br>BackgroundScheduler:　在後臺執行排程，不影響當前的系統計算執行<br>AsyncIOScheduler:　如果當前系統中使用了async module，則需要使用非同步的排程器<br>GeventScheduler:　如果使用了gevent，則需要使用該排程<br>TornadoScheduler:　如果使用了Tornado, 則使用當前的排程器<br>TwistedScheduler:Twister應用的排程器<br>QtScheduler:　Qt的排程器</p>
+</li>
+<li><p>trigger组件<br>date: 只在某個時間點執行一次<br>interval: 每隔一段時間執行一次<br>cron: 使用同linux下crontab的方式</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">APScheduler==3.6.0</span><br><span class="line">pytz==2019.1</span><br><span class="line">six==1.12.0</span><br><span class="line">tzlocal==1.5.1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> apscheduler.schedulers.background <span class="keyword">import</span> BackgroundScheduler</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_date_time</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">"new work doing..."</span>)</span><br><span class="line">    time.sleep(random.randint(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">    print(time.strftime(<span class="string">"%A, %d. %B %Y %I:%M:%S %p"</span>))</span><br><span class="line"></span><br><span class="line">scheduler = BackgroundScheduler()</span><br><span class="line">scheduler.start()</span><br><span class="line"></span><br><span class="line">job = scheduler.add_job(func=print_date_time, trigger=<span class="string">"interval"</span>, seconds=<span class="number">5</span>)</span><br><span class="line">job.remove()</span><br><span class="line"></span><br><span class="line"><span class="comment">#import atexit</span></span><br><span class="line"><span class="comment"># Shut down the scheduler when exiting the app</span></span><br><span class="line"><span class="comment">#atexit.register(lambda: scheduler.shutdown())</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:49,797 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:44:49 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:49.798794097Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:49,799 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:49.801053894Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:44:54 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:54.79513305Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:54,811 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:44:54 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:54.813206541Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:44:59,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:44:59.795272865Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:03,796 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:03 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:03.798538219Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:04,812 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:04.813942546Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:09 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:09.833079458Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:10,828 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:10 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:10.829141668Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:14,797 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:14.798225389Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:19 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:19.797481515Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:23,800 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:23 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:23.801753502Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:24,791 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:24.791963078Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:29 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:29.810835667Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:34,792 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:34 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:34.792841708Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:34,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:34.793527943Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;Execution of job \&quot;print_date_time (trigger: interval[0:00:05], next run at: 2019-05-29 16:45:39 CST)\&quot; skipped: maximum number of running instances reached (1)\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:39.799708141Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:42,803 - [/app/app/foundation.py:30] - INFO Wednesday, 29. May 2019 04:45:42 PM\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:42.803948426Z&quot;&#125;</span><br><span class="line">&#123;&quot;log&quot;:&quot;2019-05-29 16:45:44,793 - [/app/app/foundation.py:28] - INFO new work doing...\n&quot;,&quot;stream&quot;:&quot;stderr&quot;,&quot;time&quot;:&quot;2019-05-29T08:45:44.793580805Z&quot;&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/de31b74d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/de31b74d/" class="post-title-link" itemprop="url">python_pympler</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:48:21" itemprop="dateCreated datePublished" datetime="2021-08-26T09:48:21+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://pypi.org/project/Pympler/" target="_blank" rel="noopener">https://pypi.org/project/Pympler/</a></p>
+<p><a href="https://stackoverflow.com/questions/47447270/how-to-find-the-largest-objects-in-memory" target="_blank" rel="noopener">https://stackoverflow.com/questions/47447270/how-to-find-the-largest-objects-in-memory</a><br><a href="https://pythonhosted.org/Pympler/muppy.html" target="_blank" rel="noopener">https://pythonhosted.org/Pympler/muppy.html</a><br><a href="https://buildmedia.readthedocs.org/media/pdf/pympler/latest/pympler.pdf" target="_blank" rel="noopener">https://buildmedia.readthedocs.org/media/pdf/pympler/latest/pympler.pdf</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from pympler import summary, muppy</span><br><span class="line"></span><br><span class="line">def memory_summary1():</span><br><span class="line">    mem_summary = summary.summarize(muppy.get_objects())</span><br><span class="line">    rows = summary.format_(mem_summary)</span><br><span class="line">    return &apos;\n&apos;.join(rows)</span><br><span class="line"></span><br><span class="line">print(memory_summary1())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from pympler import tracker</span><br><span class="line">from operator import itemgetter</span><br><span class="line"></span><br><span class="line">def memory_summary2():</span><br><span class="line">    mem = tracker.SummaryTracker()</span><br><span class="line">    for item in sorted(mem.create_summary(), reverse=True, key=itemgetter(2)):</span><br><span class="line">        print(&quot;%s&quot; % (item,))</span><br><span class="line"></span><br><span class="line">memory_summary2()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fbb05bc2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/fbb05bc2/" class="post-title-link" itemprop="url">psutil</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:46:32" itemprop="dateCreated datePublished" datetime="2021-08-26T09:46:32+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://psutil.readthedocs.io/en/release-2.2.1" target="_blank" rel="noopener">psutil documentation</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> psutil</span><br><span class="line"></span><br><span class="line"><span class="meta">@imfr_bp.route('/system/info', methods=['GET'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">imfr_system_info</span><span class="params">()</span>:</span></span><br><span class="line">    ret = &#123;&#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        ret[<span class="string">'cpu_core'</span>] = psutil.cpu_count(logical=<span class="literal">True</span>)</span><br><span class="line">        ret[<span class="string">'cpu_usage'</span>] = psutil.cpu_percent()</span><br><span class="line">        ret[<span class="string">'mem_total'</span>] = float(psutil.virtual_memory().total/(<span class="number">1024.0</span>*<span class="number">1024</span>))</span><br><span class="line">        ret[<span class="string">'mem_available'</span>] = float(psutil.virtual_memory().available/(<span class="number">1024.0</span>*<span class="number">1024</span>))</span><br><span class="line"></span><br><span class="line">        ret[<span class="string">'imfr'</span>] = &#123;&#125;</span><br><span class="line">        pids = psutil.pids()</span><br><span class="line">        <span class="keyword">for</span> pid <span class="keyword">in</span> pids:</span><br><span class="line">            process = psutil.Process(pid)</span><br><span class="line">            name = process.name()</span><br><span class="line">            <span class="keyword">if</span> name == <span class="string">'python3.6'</span>:</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'threads'</span>] = len(process.threads())</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'cpu_usage'</span>] = float(process.cpu_percent(interval=<span class="number">1</span>))</span><br><span class="line">                ret[<span class="string">'imfr'</span>][<span class="string">'mem_usage'</span>] = float(process.memory_info().rss/(<span class="number">1024.0</span>*<span class="number">1024.0</span>))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logging.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_UNKNOWN)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> success_result(ret)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:$ curl -X GET http://192.168.56.3:5074/api/system/info</span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"code"</span>: 0,</span><br><span class="line">	<span class="string">"data"</span>: &#123;</span><br><span class="line">		<span class="string">"cpu_core"</span>: 4,</span><br><span class="line">		<span class="string">"cpu_usage"</span>: 0.7,</span><br><span class="line">		<span class="string">"imfr"</span>: &#123;</span><br><span class="line">			<span class="string">"cpu_usage"</span>: 0.0,</span><br><span class="line">			<span class="string">"mem_usage"</span>: 61.76953125,</span><br><span class="line">			<span class="string">"threads"</span>: 5</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="string">"mem_available"</span>: 1270.5234375,</span><br><span class="line">		<span class="string">"mem_total"</span>: 1999.765625</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/333c708/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/333c708/" class="post-title-link" itemprop="url">diff_python2_python3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:45:51" itemprop="dateCreated datePublished" datetime="2021-08-26T09:45:51+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">user@vm-docker:~$ python3.5</span><br><span class="line">Python 3.5.2 (default, Nov 23 2017, 16:37:01)</span><br><span class="line">[GCC 5.4.0 20160609] on linux</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; abc = &#123;<span class="string">"1"</span>:<span class="string">"a"</span>, <span class="string">"2"</span>:<span class="string">"b"</span>&#125;</span><br><span class="line">&gt;&gt;&gt; aaa = abc.keys()</span><br><span class="line">&gt;&gt;&gt; aaa</span><br><span class="line">dict_keys([<span class="string">'2'</span>, <span class="string">'1'</span>])</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br><span class="line"></span><br><span class="line">user@vm-docker:~$ python2.7</span><br><span class="line">Python 2.7.12 (default, Dec  4 2017, 14:50:18)</span><br><span class="line">[GCC 5.4.0 20160609] on linux2</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; abc = &#123;<span class="string">"1"</span>:<span class="string">"a"</span>, <span class="string">"2"</span>:<span class="string">"b"</span>&#125;</span><br><span class="line">&gt;&gt;&gt; aaa = abc.keys()</span><br><span class="line">&gt;&gt;&gt; aaa</span><br><span class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>]</span><br><span class="line">&gt;&gt;&gt; <span class="built_in">exit</span>()</span><br></pre></td></tr></table></figure>
+
+<p>from urllib import urlencode<br>=&gt;from urllib.parse import urlencode</p>
+<p>import urlparse<br>=&gt;from urllib.parse import urlparse</p>
+<p>from urllib import urlencode<br>=&gt;from urllib.parse import urlencode</p>
+<p>import BaseHTTPServer<br>=&gt;import http.server</p>
+<p>不要使用tesseract，會有錯誤<br>pip install pytesseract and import pytesseract</p>
+<p>try:<br>    import Queue<br>except ImportError:<br>    import queue as Queue</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/16c8ee4f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -206,10 +871,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2021-08-26 09:44:24 / 修改時間：09:44:55" itemprop="dateCreated datePublished" datetime="2021-08-26T09:44:24+08:00">2021-08-26</time>
+              <time title="創建時間：2021-08-26 09:44:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:44:24+08:00">2021-08-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
 
           
 
@@ -244,570 +915,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ffdb9082/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ffdb9082/" class="post-title-link" itemprop="url">python_mysql_db_session</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:43:40 / 修改時間：09:43:43" itemprop="dateCreated datePublished" datetime="2021-08-26T09:43:40+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class MySqlAlchemy(SQLAlchemy):</span><br><span class="line">    def apply_driver_hacks(self, app, info, options):</span><br><span class="line">        options.update(&#123;&quot;isolation_level&quot;: &quot;READ COMMITTED&quot;&#125;)</span><br><span class="line">        super(MySqlAlchemy, self).apply_driver_hacks(app, info, options)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ccf12b21/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ccf12b21/" class="post-title-link" itemprop="url">python_multiprocessing_pool</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:42:37 / 修改時間：09:42:46" itemprop="dateCreated datePublished" datetime="2021-08-26T09:42:37+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def task(pid):</span><br><span class="line">    # do something</span><br><span class="line">    return result</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    pool = multiprocessing.Pool()</span><br><span class="line">    cpus = multiprocessing.cpu_count()</span><br><span class="line">    results = []</span><br><span class="line"></span><br><span class="line">    for i in range(0, cpus):</span><br><span class="line">        result = pool.apply_async(task, args=(i,))</span><br><span class="line">        results.append(result)</span><br><span class="line"></span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br><span class="line"></span><br><span class="line">    for result in results:</span><br><span class="line">        print(result.get())</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def init_worker(X):</span><br><span class="line">    # Using a dictionary is not strictly necessary. You can also</span><br><span class="line">    # use global variables.</span><br><span class="line">    var_dict[&apos;X&apos;] = X</span><br><span class="line"></span><br><span class="line">def run_ws2(args):</span><br><span class="line">    ws_client = WSClient(args.host, args.rtsp_url, args.source)</span><br><span class="line">    var_dict[args.source] = args.rtsp_url</span><br><span class="line">    ws_client.run()</span><br><span class="line"></span><br><span class="line">var_dict = &#123;&#125;</span><br><span class="line"></span><br><span class="line">with Pool(processes=len(settings), initializer=init_worker, initargs=(X)) as pool:</span><br><span class="line">    pool.map(run_ws, [setting for setting in settings])</span><br><span class="line"></span><br><span class="line">pool.close()</span><br><span class="line">pool.join()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from multiprocessing import Pool, Manager</span><br><span class="line">from multiprocessing.managers import BaseManager</span><br><span class="line"></span><br><span class="line">class SharedEventList(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.d = &#123;&#125;</span><br><span class="line">        self.d[&apos;hahaha&apos;] = list()</span><br><span class="line">        self.d[&apos;gogogo&apos;] = list()</span><br><span class="line"></span><br><span class="line">    def append(self, source, value):</span><br><span class="line">        self.d[source].append(value)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    BaseManager.register(&apos;SharedEventList&apos;, SharedEventList)</span><br><span class="line">    manager = BaseManager()</span><br><span class="line">    manager.start()</span><br><span class="line">    event_list = manager.SharedEventList()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    pool = Pool(processes=4)</span><br><span class="line">    for i in range(4):</span><br><span class="line">        pool.apply_async(run_ws, args=(event_list,))</span><br><span class="line">    pool.close()</span><br><span class="line">    pool.join()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a45c283d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/a45c283d/" class="post-title-link" itemprop="url">python_logging</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:40:32 / 修改時間：09:40:38" itemprop="dateCreated datePublished" datetime="2021-08-26T09:40:32+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.blog.pythonlibrary.org/2014/02/11/python-how-to-create-rotating-logs/" target="_blank" rel="noopener">Python: How to Create Rotating Logs</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> RotatingFileHandler</span><br><span class="line"><span class="keyword">from</span> logging.handlers <span class="keyword">import</span> TimedRotatingFileHandler</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_logger</span><span class="params">(name)</span>:</span></span><br><span class="line">    formatter = logging.Formatter(<span class="string">'%(asctime)s - [%(filename)s:%(lineno)s] - %(levelname)s %(message)s '</span>)</span><br><span class="line">    logger = logging.getLogger(name)</span><br><span class="line">    logger.setLevel(logging.DEBUG)</span><br><span class="line"></span><br><span class="line">    console = logging.StreamHandler()</span><br><span class="line">    console.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(console)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">'/app/logs'</span>):</span><br><span class="line">        os.makedirs(<span class="string">'/app/logs'</span>)</span><br><span class="line"></span><br><span class="line">    file_handler = TimedRotatingFileHandler(<span class="string">'/app/logs/imfr.log'</span>, when=<span class="string">"d"</span>, interval=<span class="number">1</span>, backupCount=<span class="number">7</span>)</span><br><span class="line">    file_handler.setFormatter(formatter)</span><br><span class="line">    logger.addHandler(file_handler)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> logger</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># set logging to file</span><br><span class="line">log_formatter = logging.Formatter(format_string)</span><br><span class="line">file_handler = logging.FileHandler(log_file_name, mode=&apos;w&apos;) # mode is file write mode, &apos;a&apos; to append</span><br><span class="line">file_handler.setFormatter(log_formatter)</span><br><span class="line"> </span><br><span class="line"># create child logger and set it to be a file handler</span><br><span class="line">logger = logging.getLogger() # or pass a string to give it a name</span><br><span class="line">logger.addHandler(file_handler)</span><br><span class="line">logger.setLevel(log_level)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b44a52cd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b44a52cd/" class="post-title-link" itemprop="url">interrupt_thread</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:39:40 / 修改時間：10:07:10" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:40+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="https://www.itread01.com/content/1546799768.html" target="_blank" rel="noopener">Python強制關閉執行緒</a><br><a href="http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python" target="_blank" rel="noopener">http://stackoverflow.com/questions/323972/is-there-any-way-to-kill-a-thread-in-python</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_async_raise</span><span class="params">(tid, exctype)</span>:</span></span><br><span class="line">    <span class="string">"""raises the exception, performs cleanup if needed"""</span></span><br><span class="line">    tid = ctypes.c_long(tid)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> inspect.isclass(exctype):</span><br><span class="line">        exctype = type(exctype)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"invalid thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res != <span class="number">1</span>:</span><br><span class="line">        <span class="comment"># """if it returns a number greater than one, you're in trouble,</span></span><br><span class="line">        <span class="comment"># and you should call it again with exc=NULL to revert the effect"""</span></span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stop_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    _async_raise(thread.ident, SystemExit)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestThread</span><span class="params">(threading.Thread)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">"begin"</span>)</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">        print(<span class="string">"end"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    t = TestThread()</span><br><span class="line">    t.start()</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    stop_thread(t)</span><br><span class="line">    print(<span class="string">"stoped"</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">terminate_thread</span><span class="params">(thread)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> thread.isAlive():</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    exc = ctypes.py_object(SystemExit)</span><br><span class="line">    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(thread.ident), exc)</span><br><span class="line">    <span class="keyword">if</span> res == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">"nonexistent thread id"</span>)</span><br><span class="line">    <span class="keyword">elif</span> res &gt; <span class="number">1</span>:</span><br><span class="line">        ctypes.pythonapi.PyThreadState_SetAsyncExc(thread.ident, <span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">raise</span> SystemError(<span class="string">"PyThreadState_SetAsyncExc failed"</span>)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f22e58f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/f22e58f/" class="post-title-link" itemprop="url">image_url_to_opencv_image</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:39:00 / 修改時間：09:39:05" itemprop="dateCreated datePublished" datetime="2021-08-26T09:39:00+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>METHOD #1: OpenCV, NumPy, and urllib</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import urllib.request import urlopen</span><br><span class="line">import cv2</span><br><span class="line"></span><br><span class="line">def url_to_image(url):</span><br><span class="line">	# download the image, convert it to a NumPy array, and then read</span><br><span class="line">	# it into OpenCV format</span><br><span class="line">	resp = urlopen(url)</span><br><span class="line">	image = np.asarray(bytearray(resp.read()), dtype=&quot;uint8&quot;)</span><br><span class="line">	image = cv2.imdecode(image, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">	# return the image</span><br><span class="line">	return image</span><br><span class="line"></span><br><span class="line"># initialize the list of image URLs to download</span><br><span class="line">urls = [</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/opencv_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2015/01/google_logo.png&quot;,</span><br><span class="line">	&quot;https://www.pyimagesearch.com/wp-content/uploads/2014/12/adrian_face_detection_sidebar.png&quot;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image URL and display it</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = url_to_image(url)</span><br><span class="line">	cv2.imshow(&quot;Image&quot;, image)</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
-
-<p>Method #2: scikit-image</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from skimage import io</span><br><span class="line"> </span><br><span class="line"># loop over the image URLs</span><br><span class="line">for url in urls:</span><br><span class="line">	# download the image using scikit-image</span><br><span class="line">	print &quot;downloading %s&quot; % (url)</span><br><span class="line">	image = io.imread(url)</span><br><span class="line">	cv2.imshow(&quot;Incorrect&quot;, image)</span><br><span class="line">	cv2.imshow(&quot;Correct&quot;, cv2.cvtColor(image, cv2.COLOR_BGR2RGB))</span><br><span class="line">	cv2.waitKey(0)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/33c9c691/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/33c9c691/" class="post-title-link" itemprop="url">gevent_timeout</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:36:55 / 修改時間：09:36:59" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:55+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import gevent</span><br><span class="line">import traceback</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    try:</span><br><span class="line">        with gevent.Timeout(1):</span><br><span class="line">            while True:</span><br><span class="line">                gevent.sleep(0.3)</span><br><span class="line">                print(&quot;do_something...&quot;)</span><br><span class="line">    except gevent.Timeout:</span><br><span class="line">        print(&quot;gevent.Timeout&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print(traceback.format_exc())</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(venv) user@vm-docker:~$ python app.py</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">do_something...</span><br><span class="line">gevent.Timeout</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/9d8d8ccf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9d8d8ccf/" class="post-title-link" itemprop="url">gevent_spawn</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:36:25 / 修改時間：09:36:30" itemprop="dateCreated datePublished" datetime="2021-08-26T09:36:25+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spawns = []</span><br><span class="line">for i in range(GEVENT_NUM):</span><br><span class="line">    spawns.append(gevent.spawn(do_something, i))</span><br><span class="line">gevent.joinall(spawns)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gevent.joinall([</span><br><span class="line">    gevent.spawn(foo, 1),</span><br><span class="line">    gevent.spawn(goo, 2)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fbf3436c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/fbf3436c/" class="post-title-link" itemprop="url">python_gevent</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:35:49 / 修改時間：09:35:52" itemprop="dateCreated datePublished" datetime="2021-08-26T09:35:49+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br><span class="line">def foo():</span><br><span class="line">    while True:</span><br><span class="line">        logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line">        gevent.sleep(1)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:41:48,231 - [main.py:174] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:49,233 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">2019-07-18 09:41:50,235 - [main.py:181] - INFO mThread id main = 140059510753024</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo).run()</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:38:31,008 - [main.py:174] - INFO mThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:31,009 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:170] - INFO fThread id main = 140436039460608</span><br><span class="line">2019-07-18 09:38:32,011 - [main.py:166] - INFO gThread id main = 140436039460608</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo).run()</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:39:38,280 - [main.py:174] - INFO mThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:38,281 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">2019-07-18 09:39:39,296 - [main.py:166] - INFO gThread id main = 140345852270336</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:43:04,408 - [main.py:174] - INFO mThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:04,409 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,410 - [main.py:166] - INFO gThread id main = 139723512018688</span><br><span class="line">2019-07-18 09:43:05,411 - [main.py:170] - INFO fThread id main = 139723512018688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.spawn(goo)</span><br><span class="line">    gevent.spawn(foo)</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:175] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:44:59,346 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:182] - INFO mThread id main = 140233629611272</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:166] - INFO gThread id main = 140233571852872</span><br><span class="line">2019-07-18 09:45:00,347 - [main.py:170] - INFO fThread id main = 140233571853128</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:06:19,773 - [main.py:174] - INFO mThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:29,785 - [main.py:166] - INFO gThread id main = 139665595115264</span><br><span class="line">2019-07-18 10:06:34,791 - [main.py:170] - INFO fThread id main = 139665595115264</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:07:05,429 - [main.py:174] - INFO mThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:10,434 - [main.py:170] - INFO fThread id main = 140126333138688</span><br><span class="line">2019-07-18 10:07:15,436 - [main.py:166] - INFO gThread id main = 140126333138688</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    time.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    time.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:09:27,635 - [main.py:174] - INFO mThread id main = 140478560122120</span><br><span class="line">2019-07-18 10:09:32,636 - [main.py:171] - INFO fThread id main = 140478502363976</span><br><span class="line">2019-07-18 10:09:37,641 - [main.py:167] - INFO gThread id main = 140478502363720</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">from gevent import monkey;monkey.patch_all()</span><br><span class="line">def goo():</span><br><span class="line">    gevent.sleep(10)</span><br><span class="line">    logger.info(&apos;gThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">def foo():</span><br><span class="line">    gevent.sleep(5)</span><br><span class="line">    logger.info(&apos;fThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    logger.info(&apos;mThread id main = %s&apos; % threading.current_thread().ident)</span><br><span class="line"></span><br><span class="line">    gevent.joinall([</span><br><span class="line">        gevent.spawn(goo),</span><br><span class="line">        gevent.spawn(foo)</span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">2019-07-18 10:08:53,700 - [main.py:174] - INFO mThread id main = 140337642030344</span><br><span class="line">2019-07-18 10:08:58,704 - [main.py:171] - INFO fThread id main = 140337584272200</span><br><span class="line">2019-07-18 10:09:03,704 - [main.py:167] - INFO gThread id main = 140337584271944</span><br><span class="line">&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/69b994cd/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/69b994cd/" class="post-title-link" itemprop="url">flask_login</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-              
-
-              <time title="創建時間：2021-08-26 09:34:46 / 修改時間：09:34:56" itemprop="dateCreated datePublished" datetime="2021-08-26T09:34:46+08:00">2021-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#declaration</span></span><br><span class="line"><span class="keyword">from</span> flask_login <span class="keyword">import</span> LoginManager</span><br><span class="line">login_manager = LoginManager()</span><br><span class="line"></span><br><span class="line"><span class="comment">#init</span></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">login_manager.init_app(app)</span><br><span class="line"></span><br><span class="line"><span class="comment">#usage</span></span><br><span class="line"><span class="meta">@login_manager.user_loader</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_user</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="comment">#logger.info("load_user: id = " + id)</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> User.User.query.get(int(id))</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/login', methods=['POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    params = request.form <span class="keyword">or</span> request.get_json()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        username = params[<span class="string">'username'</span>]</span><br><span class="line">        password = params[<span class="string">'password'</span>]</span><br><span class="line">        remember = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        logger.error(traceback.format_exc())</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_INVALID_PARAM)</span><br><span class="line"></span><br><span class="line">    user = User.query.filter_by(username=username).first()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> user:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_USER_NOT_EXIST)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> user.check_password(password):</span><br><span class="line">        login_user(user, remember=remember)</span><br><span class="line">        <span class="keyword">return</span> success_result()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> error_result(ErrorCode.ERROR_PASSWORD_ERROR)</span><br><span class="line"></span><br><span class="line"><span class="meta">@auth_bp.route('/auth/logout')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logout</span><span class="params">()</span>:</span></span><br><span class="line">    logout_user()</span><br><span class="line">    <span class="keyword">return</span> success_result()</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -872,7 +983,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -912,7 +1023,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

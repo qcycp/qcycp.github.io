@@ -183,6 +183,783 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/741b618f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/741b618f/" class="post-title-link" itemprop="url">ftplib in Python</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-21 08:42:02" itemprop="dateCreated datePublished" datetime="2020-05-21T08:42:02+08:00">2020-05-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>Connection</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ftplib <span class="keyword">import</span> FTP</span><br><span class="line"></span><br><span class="line">ftp = FTP()</span><br><span class="line">ftp.set_debuglevel(<span class="number">2</span>)</span><br><span class="line">ftp.connect(<span class="string">'192.168.56.3'</span>, <span class="number">21</span>)</span><br><span class="line">ftp.login(<span class="string">'account'</span>, <span class="string">'password'</span>)</span><br><span class="line">print(ftp.getwelcome())</span><br><span class="line">ftp.quit()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>General Operation</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set the current directory on the server.</span></span><br><span class="line">ftp.cwd(pathname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create a new directory on the server.</span></span><br><span class="line">ftp.mkd(pathname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Return the pathname of the current directory on the server.</span></span><br><span class="line">ftp.pwd()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove the directory named dirname on the server.</span></span><br><span class="line">ftp.rmd(dirname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Rename file fromname on the server to toname.</span></span><br><span class="line">ftp.rename(fromname, toname)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Remove the file named filename from the server.</span></span><br><span class="line">ftp.delete(filename)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Request the size of the file named filename on the server.</span></span><br><span class="line">ftp.size(filename)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Produce a directory listing as returned by the LIST command.</span></span><br><span class="line">ftp.dir()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Return a list of file names as returned by the NLST command.</span></span><br><span class="line">ftp.nlst()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Upload</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(local_filename,<span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ftp.storbinary(<span class="string">'STOR %s'</span> % server_filename, f, <span class="number">1024</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Download</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(local_filename, <span class="string">"wb"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    ftp.retrbinary(<span class="string">'RETR %s'</span> % server_filename, f.write, <span class="number">1024</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b7198fcc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b7198fcc/" class="post-title-link" itemprop="url">File Payload in pytest</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-04 16:58:10" itemprop="dateCreated datePublished" datetime="2020-05-04T16:58:10+08:00">2020-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>在pytest中，若參數為file，直接放在data payload裡，不可以用files參數<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_recognize</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'avatar.png'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        payload = &#123;</span><br><span class="line">            <span class="string">'file'</span>: f,</span><br><span class="line">            <span class="string">'screen_token'</span>: <span class="string">'123'</span></span><br><span class="line">        &#125;</span><br><span class="line">        ret = test_app.post(<span class="string">'/recognize'</span>, data=payload)</span><br></pre></td></tr></table></figure></li>
+<li>一般的post request<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">recognize</span><span class="params">(self)</span>:</span></span><br><span class="line">    payload = &#123; </span><br><span class="line">        <span class="string">'screen_token'</span>: <span class="string">'123'</span></span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">'http://ip:port/recognize'</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">'avatar.png'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        ret = requests.post(url, data=payload, files=&#123;<span class="string">'file'</span>: f&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b57b0f6a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b57b0f6a/" class="post-title-link" itemprop="url">Example for video.js</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-04 14:06:04" itemprop="dateCreated datePublished" datetime="2020-05-04T14:06:04+08:00">2020-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用video.js在瀏覽器上播放影片<br><a href="https://videojs.com/" target="_blank" rel="noopener">https://videojs.com/</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>VideoJS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://vjs.zencdn.net/7.3.0/video-js.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://vjs.zencdn.net/7.3.0/video.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.video-js</span> <span class="selector-class">.vjs-time-control</span>&#123;<span class="attribute">display</span>:block;&#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.video-js</span> <span class="selector-class">.vjs-remaining-time</span>&#123;<span class="attribute">display</span>:none;&#125;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"my-video"</span> <span class="attr">class</span>=<span class="string">"video-js vjs-big-play-centered"</span>&gt;</span><span class="tag">&lt;<span class="name">video</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">const</span> player = videojs(<span class="string">'my-video'</span>,&#123;</span></span><br><span class="line"><span class="actionscript">            sources:[&#123; src: <span class="string">"http://192.168.56.3:8081/mv.mp4"</span>&#125;],</span></span><br><span class="line">            playbackRates: [0.5, 1, 2, 4],</span><br><span class="line"><span class="actionscript">            loop:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            muted:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            width:<span class="string">"1280"</span>,</span></span><br><span class="line"><span class="actionscript">            height:<span class="string">"720"</span>,</span></span><br><span class="line"><span class="actionscript">            controls:<span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">            autoplay: <span class="literal">true</span></span></span><br><span class="line">        &#125;);</span><br><span class="line"><span class="actionscript">        player.on(<span class="string">"playing"</span>,()=&gt;&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'playing'</span>);</span></span><br><span class="line">        &#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dbaaf77f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/dbaaf77f/" class="post-title-link" itemprop="url">Setup a File Server Quickly</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-30 10:00:37" itemprop="dateCreated datePublished" datetime="2020-04-30T10:00:37+08:00">2020-04-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>透過nodejs，在ubuntu中快速建立一個File server</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install nodejs</span><br><span class="line">$ sudo apt install npm</span><br><span class="line">$ sudo npm install http-server -g</span><br><span class="line">$ http-server</span><br><span class="line">Starting up http-server, serving ./</span><br><span class="line">Available on:</span><br><span class="line">  http://127.0.0.1:8080</span><br><span class="line">  http://10.0.2.15:8080</span><br><span class="line">  http://192.168.96.4:8080</span><br><span class="line">Hit CTRL-C to stop the server</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b9c5d30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b9c5d30/" class="post-title-link" itemprop="url">RTSP Player on Web Page</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-29 11:40:29" itemprop="dateCreated datePublished" datetime="2020-04-29T11:40:29+08:00">2020-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>git source: <a href="https://github.com/qcycp/SampleCode/tree/master/HTML_RTSP_Player" target="_blank" rel="noopener">https://github.com/qcycp/SampleCode/tree/master/HTML_RTSP_Player</a></li>
+<li>reference: <a href="https://my.oschina.net/chengpengvb/blog/1832469?p=4" target="_blank" rel="noopener">https://my.oschina.net/chengpengvb/blog/1832469?p=4</a></li>
+</ul>
+<p>包含三個部份</p>
+<ol>
+<li><p>NodeJS: contains a http server to receive content from ffmpeg and send out these data via websocket<br><code>$ node websocket.js secret 8081 8082</code></p>
+</li>
+<li><p>FFmpeg: decode rtsp streaming and encode to mpeg1, then send to a http streaming<br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -r 20 -q 0 -f mpegts -codec:v mpeg1video -codec:a mp2 -s 1280x720 http://127.0.0.1:8081/secret/rtsp</code></p>
+</li>
+<li><p>JSMpeg: receive video content via websocket and do MPEG1 video &amp; MP2 audio decode in JavaScript</p>
+</li>
+</ol>
+<ul>
+<li><p>FFmpeg</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-rtsp_transport tcp: receive rtsp streaming input via tcp</span><br><span class="line">-i rtsp://10.60.6.28:8554/CH001.sdp: rtsp streaming input</span><br><span class="line">-r 20: set output frame rate, MPEG-1/2 does not support 15/1 fps</span><br><span class="line">-q 0: use fixed quality scale</span><br><span class="line">-f mpegts: set force output format</span><br><span class="line">-codec:v mpeg1video: set output video codec</span><br><span class="line">-codec:a mp2:  set output audio codec</span><br><span class="line">-s 1280x720: set output frame size</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JSMpeg</p>
+</li>
+</ul>
+<ol>
+<li><a href="https://github.com/phoboslab/jsmpeg" target="_blank" rel="noopener">https://github.com/phoboslab/jsmpeg</a></li>
+<li>MPEG1 Video &amp; MP2 Audio Decoder in JavaScript<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"video"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"jsmpeg.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'video'</span>);</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> url = <span class="string">'ws://127.0.0.1:8082/rtsp'</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> player = <span class="keyword">new</span> JSMpeg.Player(url, &#123;canvas: canvas&#125;);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/2ffce39e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2ffce39e/" class="post-title-link" itemprop="url">FFmpeg 常用指令</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-28 16:46:00" itemprop="dateCreated datePublished" datetime="2020-04-28T16:46:00+08:00">2020-04-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>show video information<br><code>$ ffprobe -show_format -i input.mp4</code></p>
+</li>
+<li><p>play local video<br><code>$ ffplay input.mp4</code></p>
+</li>
+<li><p>play rtsp streaming<br><code>$ ffplay rtsp://10.60.6.28:8554/CH001.sdp</code><br><code>$ ffplay -rtsp_transport tcp rtsp://10.60.6.28:8554/CH001.sdp</code></p>
+</li>
+<li><p>speed up the video by 2x<br><code>$ ffmpeg -i input.mp4 -filter:v &quot;setpts=PTS/2&quot; output.mp4</code><br>Note that: if original fps is 30 and play by 2x speed up, we can set fps to 60 to prevent frame loss<br><code>$ ffmpeg -i input.mp4 -r 60 -filter:v &quot;setpts=PTS/2&quot; output.mp4</code></p>
+</li>
+<li><p>slow down the video by 1/2x<br><code>$ ffmpeg -i input.mp4 -filter:v &quot;setpts=PTS*2&quot; output.mp4</code></p>
+</li>
+<li><p>modify the frame rate to 15<br><code>$ ffmpeg -i input.mp4 -r 15 output.mp4</code></p>
+</li>
+<li><p>modify the frame size to 1920x1080<br><code>$ ffmpeg -i input.mp4 -s 1920x1080 output.mp4</code></p>
+</li>
+<li><p>record rtsp streaming to file without video and audio decode/encode<br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -acodec copy -vcodec copy output.mp4</code><br><code>$ ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -codec copy output.mp4</code></p>
+</li>
+<li><p>cut the video from 00:00:10 to 00:00:35<br><code>$ ffmpeg -i input.mp4 -ss 00:00:10 -t 00:00:25 output.mp4</code><br>You can do the following operation(change all frames to key frame) at first to do precise cutting<br><code>$ ffmpeg -i output.mp4 -strict -2  -qscale 0 -intra keyoutput.mp4</code></p>
+</li>
+<li><p>concate two video file<br><code>$ ffmpeg -f concat -safe 0 -i list.txt -c copy concat.mp4</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat list.txt</span><br><span class="line">file part1.mp4</span><br><span class="line">file part2.mp4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>capture screenshot at 00:00:10<br><code>$ ffmpeg -i input.mp4 -ss 00:00:10 -vframes 1 screenshot.jpg</code></p>
+</li>
+<li><p>capture 20 screenshots from 00:00:42 by 10 images per second<br><code>$ ffmpeg -i abc.mp4 -ss 00:00:42 -r 10 -vframes 20 %d.jpg</code></p>
+</li>
+<li><p>translate between video and images<br><code>$ ffmpeg -i output.mp4 image%d.jpg</code><br><code>$ ffmpeg -f image2 -i image%d.jpg output.mp4</code></p>
+</li>
+<li><p>flip and rotate video<br><code>$ ffmpeg -i input.mp4 -vf hflip output.mp4</code><br><code>$ ffmpeg -i input.mp4 -vf vflip output.mp4</code><br><code>$ ffmpeg -i input.mp4 -vf transpose=1 output.mp4</code></p>
+</li>
+<li><p>extract audio<br><code>$ ffmpeg -i input.mp4 -acodec copy -vn out.aac</code></p>
+</li>
+<li><p>extract video<br><code>$ ffmpeg -i input.mp4 -vcodec copy -an out.h264</code></p>
+</li>
+<li><p>merge audo and video<br><code>$ ffmpeg -i out.h264 -i out.aac -vcodec copy -acodec copy out.mp4</code></p>
+</li>
+<li><p>crop video<br>crop format: crop=out_w:out_h:x:y<br>if x, y are missing, crop the video base on center<br>if x, y are set to be 0, 0, crop the video base on left top corner<br><code>$ ffmpeg -i input.mp4 -vf crop=in_w-400:in_h-200 -c:v libx264 -c:a copy -video_size 1280x720 output.mp4</code></p>
+</li>
+<li><p>以下寫法相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-codec:v</span><br><span class="line">-c:v</span><br><span class="line">-vcodec</span><br><span class="line"></span><br><span class="line">-frames:v</span><br><span class="line">-vframes</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>note</p>
+</li>
+</ul>
+<p>-crf is parameter for x264, 0 代表無損壓縮<br>-re: Read input at native frame rate. Mainly used to simulate a grab device. i.e. if you wanted to stream a video file, then you would want to use this, otherwise it might stream it too fast.</p>
+<ul>
+<li><p>轉流<br>ffmpeg -rtsp_transport tcp -i rtsp://10.60.6.28:8554/CH001.sdp -q 0 -f mpegts -codec:v mpeg1video -s 1280x720 <a href="http://192.168.56.3:8081/secret/live" target="_blank" rel="noopener">http://192.168.56.3:8081/secret/live</a></p>
+</li>
+<li><p>推流<br>ffmpeg -re -i input.mp4 -q 0 -f mpegts -codec:v mpeg1video -s 1280x720 <a href="http://192.168.56.3:8081/secret/live" target="_blank" rel="noopener">http://192.168.56.3:8081/secret/live</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7bd7c7e8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/7bd7c7e8/" class="post-title-link" itemprop="url">Execute MySQL Commands in shell script</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-23 16:55:45" itemprop="dateCreated datePublished" datetime="2020-04-23T16:55:45+08:00">2020-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> $(seq 1 10000)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    mysql --user=root --password=1234 db_name -e <span class="string">"INSERT INTO table_name (id, date) VALUES (<span class="variable">$i</span>, <span class="variable">$(date +%s)</span>);"</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/fa21d003/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/fa21d003/" class="post-title-link" itemprop="url">uuid Generator in Linux</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-23 14:29:20" itemprop="dateCreated datePublished" datetime="2020-04-23T14:29:20+08:00">2020-04-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>透過系統中的uuid檔案，生成UUID</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">371a8e69-d35c-4eb1-bc3c-36accca6a6a0</span><br><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">0c1f3448-a089-4f4a-aaca-a7dc817f6cea</span><br><span class="line">$ cat /proc/sys/kernel/random/uuid</span><br><span class="line">8fff67aa-093d-441d-ae57-277ae5fb1bde</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ca10b1f5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ca10b1f5/" class="post-title-link" itemprop="url">Crontab in Docker</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-15 11:30:40" itemprop="dateCreated datePublished" datetime="2020-04-15T11:30:40+08:00">2020-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="手動執行cron-task，並查看目前系統中執行的cron-task"><a href="#手動執行cron-task，並查看目前系統中執行的cron-task" class="headerlink" title="手動執行cron task，並查看目前系統中執行的cron task"></a>手動執行cron task，並查看目前系統中執行的cron task</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker cp cron-task container:/etc/cron.d/</span><br><span class="line">root@847d0eb77dfe:/<span class="comment"># cd /etc/cron.d/</span></span><br><span class="line">root@847d0eb77dfe:/etc/cron.d<span class="comment"># crontab cron-task</span></span><br><span class="line">root@847d0eb77dfe:/etc/cron.d<span class="comment"># cd /var/spool/cron/crontabs/</span></span><br><span class="line">root@847d0eb77dfe:/var/spool/cron/crontabs<span class="comment"># cat root</span></span><br><span class="line"><span class="comment"># DO NOT EDIT THIS FILE - edit the master and reinstall.</span></span><br><span class="line"><span class="comment"># (parse-log-cron installed on Wed May  1 14:55:42 2019)</span></span><br><span class="line"><span class="comment"># (Cron version -- $Id: crontab.c,v 2.13 1994/01/17 03:20:37 vixie Exp $)</span></span><br><span class="line">00 * * * * run-one /usr/bin/python3.6 /app.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="在Dockerfile中設定cron-task"><a href="#在Dockerfile中設定cron-task" class="headerlink" title="在Dockerfile中設定cron task"></a>在Dockerfile中設定cron task</h4><ol>
+<li><p>create cron-task</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">00 * * * * run-one /usr/bin/python3.6 /app.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>in Dockerfile</p>
+</li>
+</ol>
+<ul>
+<li>apt-get install cron run-one</li>
+<li>add cron tasks script<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RUN apt-get update &amp;&amp; \</span><br><span class="line">    apt-get install --no-install-recommends -y cron run-one &amp;&amp; \</span><br><span class="line">ADD cron_task /etc/cron.d/cron-task</span><br><span class="line">RUN chmod 0644 /etc/cron.d/cron-task &amp;&amp; \</span><br><span class="line">    crontab /etc/cron.d/cron-task</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li>in supervisord.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:cron]</span><br><span class="line"><span class="built_in">command</span>=/usr/sbin/cron -f</span><br><span class="line"></span><br><span class="line">stdout_logfile_maxbytes = 0</span><br><span class="line">stdout_logfile = /dev/stdout</span><br><span class="line">stderr_logfile_maxbytes = 0</span><br><span class="line">stderr_logfile = /dev/stderr</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dd240c9a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +991,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-25 19:39:23" itemprop="dateModified" datetime="2021-08-25T19:39:23+08:00">2021-08-25</time>
+                <time title="修改時間：2021-08-30 09:20:16" itemprop="dateModified" datetime="2021-08-30T09:20:16+08:00">2021-08-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,801 +1106,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f9c9d078/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/f9c9d078/" class="post-title-link" itemprop="url">jq</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-15 10:28:55" itemprop="dateCreated datePublished" datetime="2020-04-15T10:28:55+08:00">2020-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>使用curl執行webapi，可以把結果拋給jq，格式化json的內容</p>
-<p><code>sudo apt install jq</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'&#123; "name":"John", "age":31, "city":"New York" &#125;'</span> | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"John"</span>,</span><br><span class="line">  <span class="string">"age"</span>: 31,</span><br><span class="line">  <span class="string">"city"</span>: <span class="string">"New York"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>sample 1</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,</span><br><span class="line">  <span class="string">"data"</span>: &#123;</span><br><span class="line">    <span class="string">"token"</span>: <span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq .data</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"token"</span>: <span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq .data.token</span><br><span class="line"><span class="string">"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"</span></span><br><span class="line"></span><br><span class="line">$ curl -X POST -d <span class="string">'username=admin&amp;password=123456'</span> http://localhost/api/login | jq -r .data.token</span><br><span class="line">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9</span><br></pre></td></tr></table></figure>
-
-<p>sample 2</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X GET http://localhost/api/data</span><br><span class="line">&#123;<span class="string">"code"</span>:0,<span class="string">"data"</span>:[&#123;<span class="string">"Location"</span>:<span class="string">"4F"</span>,<span class="string">"URL"</span>:<span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,<span class="string">"status"</span>:null&#125;]&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"code"</span>: 0,</span><br><span class="line">  <span class="string">"data"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">      <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">      <span class="string">"status"</span>: null</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">    <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">    <span class="string">"status"</span>: null</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data[0]</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"Location"</span>: <span class="string">"4F"</span>,</span><br><span class="line">  <span class="string">"URL"</span>: <span class="string">"rtsp://localhost:8888/CH001.sdp"</span>,</span><br><span class="line">  <span class="string">"status"</span>: null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq .data[0].URL</span><br><span class="line"><span class="string">"rtsp://localhost:8888/CH001.sdp"</span></span><br><span class="line"></span><br><span class="line">$ curl -X GET http://localhost/api/data | jq -r .data[0].URL</span><br><span class="line">rtsp://localhost:8888/CH001.sdp</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eb6b61c0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/eb6b61c0/" class="post-title-link" itemprop="url">chkdsk</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-15 10:21:07" itemprop="dateCreated datePublished" datetime="2020-04-15T10:21:07+08:00">2020-04-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>當隨身碟出現以下錯誤時，可以透過chkdsk來修復<br><img src="/posts/eb6b61c0/error.jpg" alt></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/f</span><br><span class="line">修復硬碟上的錯誤。必須鎖定硬碟。如果 chkdsk 無法鎖定磁碟區</span><br><span class="line">則會顯示一條訊息，詢問您是否希望在下次重新啟動電腦時檢查該驅動器</span><br><span class="line">/v</span><br><span class="line">當檢查硬碟時，顯示所有目錄中每個文件的名稱</span><br><span class="line">/r</span><br><span class="line">找到壞軌區並恢復可讀取的信息。必須鎖定硬碟</span><br><span class="line">/x</span><br><span class="line">僅在 NTFS 上使用。如果必要，首先強制卸載磁碟區</span><br><span class="line">該磁碟槽的所有打開指令&amp;檔案都無效。/x 還包含了/f 的功能</span><br><span class="line">/i</span><br><span class="line">僅隨 NTFS 使用。對索引項執行充分檢查，降低運行 chkdsk 的所用時間量</span><br><span class="line">/c</span><br><span class="line">僅隨 NTFS 使用。跳過文件夾結構中的週期檢查，減少運行 chkdsk 所需的時間量</span><br><span class="line">/l[:size]</span><br><span class="line">僅隨 NTFS 使用。將日誌文件的大小更改為由用戶輸入的大小</span><br><span class="line">如果省略該參數，則 /l 會顯示當前日誌文件的大小</span><br><span class="line">/?</span><br><span class="line">在命令提示符顯示幫助。</span><br></pre></td></tr></table></figure>
-
-<p><img src="/posts/eb6b61c0/chkdsk.png" alt></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4294109/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4294109/" class="post-title-link" itemprop="url">Sort with structs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-14 16:51:56" itemprop="dateCreated datePublished" datetime="2020-04-14T16:51:56+08:00">2020-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>針對struct內的某個欄位，進行sort</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    Person() : name(<span class="string">""</span>),  age(INT_MAX) &#123;&#125;</span><br><span class="line">    <span class="built_in">string</span> name;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Person&amp; rhs) <span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> age &lt; rhs.age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; Person;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Person *data = <span class="keyword">new</span> Person[<span class="number">4</span>];</span><br><span class="line">    data[<span class="number">0</span>].name = <span class="string">"Nick"</span>; data[<span class="number">0</span>].age = <span class="number">37</span>;</span><br><span class="line">    data[<span class="number">1</span>].name = <span class="string">"John"</span>; data[<span class="number">1</span>].age = <span class="number">45</span>;</span><br><span class="line">    data[<span class="number">2</span>].name = <span class="string">"Mary"</span>; data[<span class="number">2</span>].age = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">0</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">0</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">1</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">1</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">2</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">2</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    sort(data, data+<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">0</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">0</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">1</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">1</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">2</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">2</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    sort(data, data+<span class="number">3</span>, [](Person a, Person b)&#123; <span class="keyword">return</span> a.age &gt; b.age; &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">0</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">0</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">1</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">1</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; data[<span class="number">2</span>].name &lt;&lt; <span class="string">": "</span> &lt;&lt; data[<span class="number">2</span>].age &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Nick: 37</span><br><span class="line">John: 45</span><br><span class="line">Mary: 20</span><br><span class="line"></span><br><span class="line">Mary: 20</span><br><span class="line">Nick: 37</span><br><span class="line">John: 45</span><br><span class="line"></span><br><span class="line">John: 45</span><br><span class="line">Nick: 37</span><br><span class="line">Mary: 20</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/3db6e2b6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/3db6e2b6/" class="post-title-link" itemprop="url">Open Web Page using Selenium</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-04-01 17:30:14" itemprop="dateCreated datePublished" datetime="2020-04-01T17:30:14+08:00">2020-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    chrome_options = webdriver.ChromeOptions()</span><br><span class="line">    chrome_options.add_argument(<span class="string">'--headless'</span>)</span><br><span class="line">    chrome_options.add_argument(<span class="string">'--no-sandbox'</span>)</span><br><span class="line">    chrome_options.add_argument(<span class="string">'--disable-dev-shm-usage'</span>)</span><br><span class="line">    driver = webdriver.Chrome(executable_path=<span class="string">'/usr/bin/chromedriver'</span>, options=chrome_options)</span><br><span class="line">    driver.implicitly_wait(<span class="number">30</span>)</span><br><span class="line">    driver.get(<span class="string">'https://google.com'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FROM python:3.6-alpine</span><br><span class="line"></span><br><span class="line">ADD app.py /</span><br><span class="line">RUN apk add --update bash chromium chromium-chromedriver</span><br><span class="line">RUN pip install selenium</span><br><span class="line">CMD [<span class="string">"python"</span>, <span class="string">"app.py"</span>]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/7212f3ac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7212f3ac/" class="post-title-link" itemprop="url">stress</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-31 16:49:09" itemprop="dateCreated datePublished" datetime="2020-03-31T16:49:09+08:00">2020-03-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>透過stress可以模擬系統busy的狀況<br><code>sudo apt install stress</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">`stress&apos; imposes certain types of compute stress on your system</span><br><span class="line"></span><br><span class="line">Usage: stress [OPTION [ARG]] ...</span><br><span class="line"> -?, --help         show this help statement</span><br><span class="line">     --version      show version statement</span><br><span class="line"> -v, --verbose      be verbose</span><br><span class="line"> -q, --quiet        be quiet</span><br><span class="line"> -n, --dry-run      show what would have been done</span><br><span class="line"> -t, --timeout N    timeout after N seconds</span><br><span class="line">     --backoff N    wait factor of N microseconds before work starts</span><br><span class="line"> -c, --cpu N        spawn N workers spinning on sqrt()</span><br><span class="line"> -i, --io N         spawn N workers spinning on sync()</span><br><span class="line"> -m, --vm N         spawn N workers spinning on malloc()/free()</span><br><span class="line">     --vm-bytes B   malloc B bytes per vm worker (default is 256MB)</span><br><span class="line">     --vm-stride B  touch a byte every B bytes (default is 4096)</span><br><span class="line">     --vm-hang N    sleep N secs before free (default none, 0 is inf)</span><br><span class="line">     --vm-keep      redirty memory instead of freeing and reallocating</span><br><span class="line"> -d, --hdd N        spawn N workers spinning on write()/unlink()</span><br><span class="line">     --hdd-bytes B  write B bytes per hdd worker (default is 1GB)</span><br><span class="line"></span><br><span class="line">Example: stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 10s</span><br><span class="line"></span><br><span class="line">Note: Numbers may be suffixed with s,m,h,d,y (time) or B,K,M,G (size).</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4228bd6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4228bd6/" class="post-title-link" itemprop="url">Append Date/Time to File</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-18 10:00:24" itemprop="dateCreated datePublished" datetime="2020-03-18T10:00:24+08:00">2020-03-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programming/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">time_t</span> rawtime;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tm</span> * <span class="title">timeinfo</span>;</span></span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">80</span>];</span><br><span class="line"></span><br><span class="line">    time (&amp;rawtime);</span><br><span class="line">    timeinfo = localtime(&amp;rawtime);</span><br><span class="line"></span><br><span class="line">    strftime(buffer,<span class="number">80</span>,<span class="string">"%Y-%m-%d %H:%M:%S\n"</span>,timeinfo);</span><br><span class="line"></span><br><span class="line">    ofstream myfile;</span><br><span class="line">    myfile.open(<span class="string">"test.txt"</span>, ios_base::app);</span><br><span class="line">    myfile &lt;&lt; <span class="built_in">string</span>(buffer);</span><br><span class="line">    myfile.close();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/327d13d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/327d13d/" class="post-title-link" itemprop="url">在category跟tag頁面，加上年份分隔</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-05 15:16:35" itemprop="dateCreated datePublished" datetime="2020-03-05T15:16:35+08:00">2020-03-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-06-22 09:20:20" itemprop="dateModified" datetime="2020-06-22T09:20:20+08:00">2020-06-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <img src="/posts/327d13d/before.jpg" class title="修改前">
-<p>category跟tag的改法一樣</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/themes/next/layout/category.swig b/themes/next/layout/category.swig</span><br><span class="line">index 8e3aa72..83e7916 100644</span><br><span class="line">--- a/themes/next/layout/category.swig</span><br><span class="line">+++ b/themes/next/layout/category.swig</span><br><span class="line">@@ -20,6 +20,19 @@</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">       &#123;% for post in page.posts %&#125;</span><br><span class="line">+</span><br><span class="line">+          &#123;# Show year #&#125;</span><br><span class="line">+          &#123;% set year %&#125;</span><br><span class="line">+          &#123;% set post.year = date(post.date, &apos;YYYY&apos;) %&#125;</span><br><span class="line">+</span><br><span class="line">+          &#123;% if post.year !== year %&#125;</span><br><span class="line">+              &#123;% set year = post.year %&#125;</span><br><span class="line">+              &lt;div class=&quot;collection-title&quot;&gt;</span><br><span class="line">+                &lt;h2 class=&quot;archive-year motion-element&quot; id=&quot;archive-year-&#123;&#123; year &#125;&#125;&quot;&gt;&#123;&#123; year &#125;&#125;&lt;/h2&gt;</span><br><span class="line">+              &lt;/div&gt;</span><br><span class="line">+          &#123;% endif %&#125;</span><br><span class="line">+          &#123;# endshow #&#125;</span><br><span class="line">+</span><br><span class="line">         &#123;&#123; post_template.render(post) &#125;&#125;</span><br><span class="line">       &#123;% endfor %&#125;</span><br><span class="line">     &lt;/div&gt;</span><br><span class="line">@@ -36,3 +49,11 @@</span><br><span class="line"> &#123;% block sidebar %&#125;</span><br><span class="line">   &#123;&#123; sidebar_template.render(false) &#125;&#125;</span><br><span class="line"> &#123;% endblock %&#125;</span><br><span class="line">+</span><br><span class="line">+&#123;% block script_extra %&#125;</span><br><span class="line">+  &#123;% if theme.use_motion %&#125;</span><br><span class="line">+    &lt;script type=&quot;text/javascript&quot; id=&quot;motion.page.archive&quot;&gt;</span><br><span class="line">+      $(&apos;.archive-year&apos;).velocity(&apos;transition.slideLeftIn&apos;);</span><br><span class="line">+    &lt;/script&gt;</span><br><span class="line">+  &#123;% endif %&#125;</span><br><span class="line">+&#123;% endblock %&#125;</span><br><span class="line">\ No newline at end of file</span><br></pre></td></tr></table></figure>
-<img src="/posts/327d13d/after.jpg" class title="修改後">
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dd6717ac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/dd6717ac/" class="post-title-link" itemprop="url">rclone</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-04 09:34:33" itemprop="dateCreated datePublished" datetime="2020-03-04T09:34:33+08:00">2020-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-06-08 13:46:51" itemprop="dateModified" datetime="2021-06-08T13:46:51+08:00">2021-06-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/rclone/" itemprop="url" rel="index"><span itemprop="name">rclone</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li><p>下載<br><a href="https://rclone.org/downloads/" target="_blank" rel="noopener">https://rclone.org/downloads/</a><br>直接解壓縮 rclone-v1.51.0-windows-amd64.zip</p>
-</li>
-<li><p>設定config</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rclone config</span></span><br><span class="line">No remotes found - make a new one</span><br><span class="line">n) New remote</span><br><span class="line">s) Set configuration password</span><br><span class="line">q) Quit config</span><br><span class="line"><span class="meta">n/s/q&gt;</span><span class="bash"> n</span></span><br><span class="line"><span class="meta">name&gt;</span><span class="bash"> GD</span></span><br><span class="line">Type of storage to configure.</span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line">Choose a number from below, or type in your own value</span><br><span class="line">...</span><br><span class="line">13 / Google Drive</span><br><span class="line">   \ "drive"</span><br><span class="line">...</span><br><span class="line"><span class="meta">Storage&gt;</span><span class="bash"> 13</span></span><br><span class="line">** See help for drive backend at: https://rclone.org/drive/ **</span><br><span class="line"></span><br><span class="line">Google Application Client Id</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">See https://rclone.org/drive/#making-your-own-client-id for how to create your own.</span><br><span class="line">If you leave this blank, it will use an internal key which is low performance.</span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line"><span class="meta">client_id&gt;</span></span><br><span class="line">Google Application Client Secret</span><br><span class="line">Setting your own is recommended.</span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line"><span class="meta">client_secret&gt;</span></span><br><span class="line">Scope that rclone should use when requesting access from drive.</span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line">Choose a number from below, or type in your own value</span><br><span class="line"> 1 / Full access all files, excluding Application Data Folder.</span><br><span class="line">   \ "drive"</span><br><span class="line"> 2 / Read-only access to file metadata and file contents.</span><br><span class="line">   \ "drive.readonly"</span><br><span class="line">   / Access to files created by rclone only.</span><br><span class="line"> 3 | These are visible in the drive website.</span><br><span class="line">   | File authorization is revoked when the user deauthorizes the app.</span><br><span class="line">   \ "drive.file"</span><br><span class="line">   / Allows read and write access to the Application Data folder.</span><br><span class="line"> 4 | This is not visible in the drive website.</span><br><span class="line">   \ "drive.appfolder"</span><br><span class="line">   / Allows read-only access to file metadata but</span><br><span class="line"> 5 | does not allow any access to read or download file content.</span><br><span class="line">   \ "drive.metadata.readonly"</span><br><span class="line"><span class="meta">scope&gt;</span><span class="bash"> 1</span></span><br><span class="line">ID of the root folder</span><br><span class="line">Leave blank normally.</span><br><span class="line"></span><br><span class="line">Fill in to access "Computers" folders (see docs), or for rclone to use</span><br><span class="line">a non root folder as its starting point.</span><br><span class="line"></span><br><span class="line">Note that if this is blank, the first time rclone runs it will fill it</span><br><span class="line">in with the ID of the root folder.</span><br><span class="line"></span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line"><span class="meta">root_folder_id&gt;</span></span><br><span class="line">Service Account Credentials JSON file path</span><br><span class="line">Leave blank normally.</span><br><span class="line">Needed only if you want use SA instead of interactive login.</span><br><span class="line">Enter a string value. Press Enter for the default ("").</span><br><span class="line"><span class="meta">service_account_file&gt;</span></span><br><span class="line">Edit advanced config? (y/n)</span><br><span class="line">y) Yes</span><br><span class="line">n) No (default)</span><br><span class="line"><span class="meta">y/n&gt;</span><span class="bash"> n</span></span><br><span class="line">Remote config</span><br><span class="line">Use auto config?</span><br><span class="line"> * Say Y if not sure</span><br><span class="line"> * Say N if you are working on a remote or headless machine</span><br><span class="line">y) Yes (default)</span><br><span class="line">n) No</span><br><span class="line"><span class="meta">y/n&gt;</span><span class="bash"> y</span></span><br><span class="line">If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth?state=dcXtut6iPOjzZEkRgNhRGw</span><br><span class="line">Log in and authorize rclone for access</span><br><span class="line">Waiting for code...</span><br><span class="line">Got code</span><br><span class="line">Configure this as a team drive?</span><br><span class="line">y) Yes</span><br><span class="line">n) No (default)</span><br><span class="line"><span class="meta">y/n&gt;</span><span class="bash"> n</span></span><br><span class="line">--------------------</span><br><span class="line">[GD]</span><br><span class="line">type = drive</span><br><span class="line">scope = drive</span><br><span class="line">token = &#123;"access_token":"XXXX","token_type":"Bearer","refresh_token":"YYYY","expiry":"2020-03-04T10:53:52.6578174+08:00"&#125;</span><br><span class="line">--------------------</span><br><span class="line">y) Yes this is OK (default)</span><br><span class="line">e) Edit this remote</span><br><span class="line">d) Delete this remote</span><br><span class="line"><span class="meta">y/e/d&gt;</span><span class="bash"> y</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>client_id和client_secret可以略過不設定</li>
-<li>root_folder_id和service_account_file可以略過不設定</li>
-<li>在設定過程中，會自動開啟網頁要求同意rclone存取Google Drive的權限<table style="width: 70%;">
-<tbody><tr>
-<td>　<img alt src="/posts/dd6717ac/permission1.jpg">　</td>
-<td>　<img alt src="/posts/dd6717ac/permission2.jpg">　</td>
-</tr></tbody></table>
-</li>
-</ul>
-</li>
-<li><p>操作</p>
-<ul>
-<li>list<br>lsd -&gt; 列出GD:目錄下的資料夾 (–max-depth預設為1，即只會列出第一層目錄下的資料夾)<br>ls -&gt; 列出GD:目錄下的檔案 (預設會列出所有的檔案)<br>ls –max-depth 1 -&gt; 列出GD:目錄下，第一層的檔案<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rclone lsd GD:</span></span><br><span class="line">        -1 2018-09-18 09:00:36        -1 folder1</span><br><span class="line">        -1 2018-09-18 08:50:55        -1 folder2</span><br><span class="line"><span class="meta">$</span><span class="bash"> rclone ls --max-depth 1 GD:</span></span><br><span class="line">    28263 file1.xlsx</span><br><span class="line">  3554240 file2.docx</span><br></pre></td></tr></table></figure></li>
-<li>copy file from local to remote<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rclone copy -v README.txt GD:</span></span><br><span class="line">2020/03/04 10:18:31 INFO  : README.txt: Copied (new)</span><br><span class="line">2020/03/04 10:18:31 INFO  :</span><br><span class="line">Transferred:      838.637k / 838.637 kBytes, 100%, 222.683 kBytes/s, ETA 0s</span><br><span class="line">Transferred:            1 / 1, 100%</span><br><span class="line">Elapsed time:         3.7s</span><br><span class="line"><span class="meta">$</span><span class="bash"> rclone copy -v folder GD:/folder</span></span><br><span class="line">2020/03/04 10:27:57 INFO  : Google drive root 'folder': Waiting for checks to finish</span><br><span class="line">2020/03/04 10:27:57 INFO  : Google drive root 'folder': Waiting for transfers to finish</span><br><span class="line">2020/03/04 10:28:00 INFO  : api.txt: Copied (new)</span><br><span class="line">2020/03/04 10:28:01 INFO  : issue.txt: Copied (new)</span><br><span class="line">2020/03/04 10:28:01 INFO  : index.html: Copied (new)</span><br><span class="line">2020/03/04 10:28:04 INFO  : log.txt: Copied (new)</span><br><span class="line">2020/03/04 10:28:22 INFO  : 192.168.56.3_2020-02-18_10-19-22.log: Copied (new)</span><br><span class="line">2020/03/04 10:28:22 INFO  :</span><br><span class="line">Transferred:        7.076M / 7.076 MBytes, 100%, 285.334 kBytes/s, ETA 0s</span><br><span class="line">Transferred:            5 / 5, 100%</span><br><span class="line">Elapsed time:        25.3s</span><br></pre></td></tr></table></figure></li>
-<li>copy file from remote to local<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rclone copy -v GD:/file.txt .</span></span><br><span class="line">2020/03/04 10:21:54 INFO  : file.txt: Copied (new)</span><br><span class="line">2020/03/04 10:21:54 INFO  :</span><br><span class="line">Transferred:      838.637k / 838.637 kBytes, 100%, 513.379 kBytes/s, ETA 0s</span><br><span class="line">Transferred:            1 / 1, 100%</span><br><span class="line">Elapsed time:         1.6s</span><br><span class="line"><span class="meta">$</span><span class="bash"> rclone copy -v GD:/folder ./folder</span></span><br><span class="line">2020/03/04 10:24:36 INFO  : Local file system at //?/D:/rclone-v1.51.0-windows-amd64/folder: Waiting for checks to finish</span><br><span class="line">2020/03/04 10:24:36 INFO  : Local file system at //?/D:/rclone-v1.51.0-windows-amd64/folder: Waiting for transfers to finish</span><br><span class="line">2020/03/04 10:24:36 INFO  : api.txt: Copied (new)</span><br><span class="line">2020/03/04 10:24:37 INFO  : index.html: Copied (new)</span><br><span class="line">2020/03/04 10:24:37 INFO  : issue.txt: Copied (new)</span><br><span class="line">2020/03/04 10:24:37 INFO  : log.txt: Copied (new)</span><br><span class="line">2020/03/04 10:24:38 INFO  : 192.168.56.3_2020-02-18_10-19-22.log: Copied (new)</span><br><span class="line">2020/03/04 10:24:38 INFO  :</span><br><span class="line">Transferred:        7.076M / 7.076 MBytes, 100%, 4.007 MBytes/s, ETA 0s</span><br><span class="line">Transferred:            5 / 5, 100%</span><br><span class="line">Elapsed time:         1.7s</span><br></pre></td></tr></table></figure></li>
-<li>query size<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> rclone size GD:</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rclone size GD:folder</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> rclone size GD:folder/subfolder</span></span><br><span class="line">Total objects: 7</span><br><span class="line">Total size: 596.513 MBytes (625489224 Bytes)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ab21860c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/ab21860c/" class="post-title-link" itemprop="url">Hexo Guide</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-03-03 09:31:33" itemprop="dateCreated datePublished" datetime="2020-03-03T09:31:33+08:00">2020-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-08-20 14:19:17" itemprop="dateModified" datetime="2021-08-20T14:19:17+08:00">2021-08-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="安裝hexo，並且使用git追蹤所有資料"><a href="#安裝hexo，並且使用git追蹤所有資料" class="headerlink" title="安裝hexo，並且使用git追蹤所有資料"></a>安裝hexo，並且使用git追蹤所有資料</h4><ol start="0">
-<li><p>Pre-required</p>
-<ul>
-<li>Node.js</li>
-<li>git</li>
-</ul>
-</li>
-<li><p>安裝hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g (預設裝的hexo是4.0.0)</span><br><span class="line">$ npm install hexo@5.0.0</span><br></pre></td></tr></table></figure></li>
-<li><p>建立github repository<br>qcycp.github.io</p>
-</li>
-<li><p>建立branch<br>master: hexo生成的網頁資料<br>hexo (set default): raw data的markdown檔案</p>
-</li>
-<li><p>in a new and empty folder <code>tmp</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></li>
-<li><p>建立本機端hexo project</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://github.com/qcycp/qcycp.github.io.git -b hexo</span><br><span class="line">$ cp -rf tmp/* qcycp.github.io/</span><br><span class="line">$ cd qcycp.github.io/</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-<li><p>設定config<br>edit _config.yml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: http://github.com/qcycp/qcycp.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></li>
-<li><p>將source code進到hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m &quot;setup Hexo&quot;</span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure></li>
-<li><p>將hexo內容進到master</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></li>
-<li><p>網頁<br><a href="https://qcycp.github.io/">https://qcycp.github.io/</a></p>
-</li>
-<li><p>re-setup hexo project</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone http://github.com/qcycp/qcycp.github.io.git -b hexo</span><br><span class="line">$ cd qcycp.github.io</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改資料夾或檔名大小寫<br>假設原本已經建立了tag為AAA，後來改成aaa時，網頁連結會修改為/aaa/index.html<br>但是在gitlab中的資料夾，依然會是AAA，所以實際上會造成網頁連結404<br>預設git在windows中，是不分大小寫的，所以hexo在checkin時，才會無法對大小修改進行更新</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> .deploy_git</span><br><span class="line">$ git config core.ignorecase <span class="literal">false</span></span><br><span class="line">$ rm -rf tags/AAA <span class="comment">#把舊的git目錄結構刪除，再重新上傳，根據需求處理categories或tags中的目錄</span></span><br><span class="line">$ git commit -m <span class="string">"update"</span></span><br><span class="line">$ git push <span class="comment">#在.deploy_git中操作的，是qcycp.github.io.git(master)生成的網頁資料</span></span><br><span class="line">$ <span class="built_in">cd</span> ../</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
-<h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$ cat package.json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"hexo-site"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.0"</span>,</span><br><span class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"build"</span>: <span class="string">"hexo generate"</span>,</span><br><span class="line">    <span class="attr">"clean"</span>: <span class="string">"hexo clean"</span>,</span><br><span class="line">    <span class="attr">"deploy"</span>: <span class="string">"hexo deploy"</span>,</span><br><span class="line">    <span class="attr">"server"</span>: <span class="string">"hexo server"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"hexo"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"4.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"hexo"</span>: <span class="string">"^4.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-abbrlink"</span>: <span class="string">"^2.0.5"</span>, <span class="comment">/* 建立文章唯一的link */</span></span><br><span class="line">    <span class="attr">"hexo-asset-link"</span>: <span class="string">"^1.2.1"</span>, <span class="comment">/* 支援圖片目錄、自動上傳的套件 */</span></span><br><span class="line">    <span class="attr">"hexo-blog-encrypt"</span>: <span class="string">"^3.0.3"</span>, <span class="comment">/* 支援文章加密的套件 */</span></span><br><span class="line">    <span class="attr">"hexo-deployer-git"</span>: <span class="string">"^2.0.0"</span>, <span class="comment">/* 支援git部署的套件 */</span></span><br><span class="line">    <span class="attr">"hexo-generator-archive"</span>: <span class="string">"^1.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-generator-category"</span>: <span class="string">"^1.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-generator-index"</span>: <span class="string">"^1.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-generator-search"</span>: <span class="string">"^2.4.0"</span>, <span class="comment">/* 支援搜尋的套件 */</span></span><br><span class="line">    <span class="attr">"hexo-generator-tag"</span>: <span class="string">"^1.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-hide-posts"</span>: <span class="string">"^0.1.0"</span>, <span class="comment">/* 支援文章隱藏的套件 */</span></span><br><span class="line">    <span class="attr">"hexo-renderer-ejs"</span>: <span class="string">"^1.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-renderer-marked"</span>: <span class="string">"^2.0.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-renderer-stylus"</span>: <span class="string">"^1.1.0"</span>, <span class="comment">/* 默認安裝 */</span></span><br><span class="line">    <span class="attr">"hexo-server"</span>: <span class="string">"^1.0.0"</span> <span class="comment">/* 默認安裝 */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd qcycp.github.io</span><br><span class="line">$ git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br><span class="line">$ git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>建立tags頁面<br>$ hexo new page tags<br>$ cd source/tags/<br>$ edit index.md<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2019-11-07 12:45:26</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-$ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /|| home</span><br><span class="line">  tags: /tags/||tags</span><br></pre></td></tr></table></figure></li>
-<li>canvas_nest 套件<br>在空白處會有移動的線條動畫<ul>
-<li>安裝<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd themes/next</span><br><span class="line">git clone https://github.com/theme-next/theme-next-canvas-nest source/lib/canvas-nest</span><br></pre></td></tr></table></figure></li>
-<li>設定<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Canvas-nest</span><br><span class="line"># Dependencies: https://github.com/theme-next/theme-next-canvas-nest</span><br><span class="line">canvas_nest:</span><br><span class="line">  enable: true</span><br><span class="line">  onmobile: true # display on mobile or not</span><br><span class="line">  color: &quot;0,0,255&quot; # RGB values, use &apos;,&apos; to separate</span><br><span class="line">  opacity: 0.5 # the opacity of line: 0~1</span><br><span class="line">  zIndex: -1 # z-index property of the background</span><br><span class="line">  count: 99 # the number of lines</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="套件"><a href="#套件" class="headerlink" title="套件"></a>套件</h4><ul>
-<li>hexo-generator-search</li>
-<li>文章連結唯一化<br>Hexo 的文章連結預設是採用發佈時間或標題來使用，如果變更會導至連結改變，不利分享或 SEO，可安裝 hexo-abbrlink 解決<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ cd qcycp.github.io</span><br><span class="line">$ npm install hexo-abbrlink --save</span><br><span class="line">$ vim _config.yml</span><br><span class="line">permalink: posts/:abbrlink/</span><br><span class="line"></span><br><span class="line"># abbrlink config</span><br><span class="line">abbrlink:</span><br><span class="line">  alg: crc32  #support crc16(default) and crc32</span><br><span class="line">  rep: hex    #support dec(default) and hex</span><br></pre></td></tr></table></figure></li>
-<li>安裝上傳本地圖片的外掛<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd qcycp.github.io</span><br><span class="line">$ npm install https://github.com/CodeFalling/hexo-asset-image –save</span><br></pre></td></tr></table></figure>
-執行hexo new article_name<br>在 source/_posts 資料夾內除了生成 article_name.md 檔案還會生成一個 article_name 的資料夾，把圖片複製到資料夾中，使用下方任一方式新增圖片<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image.jpg 我是圖片 %&#125;</span><br><span class="line">![我是圖片](image.jpg)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
-<li>新建文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new article_name</span><br><span class="line">$ cd source/_post</span><br><span class="line">$ edit article_name.md</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></li>
-<li>草稿<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new draft article_name</span><br><span class="line">$ cd source/_drafts</span><br><span class="line">$ edit article_name.md</span><br><span class="line">$ hexo publish article_name.md</span><br></pre></td></tr></table></figure>
-可以手動將文章</li>
-<li>local server<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line"></span><br><span class="line">$ hexp server --draft // 可以顯示草稿文章</span><br></pre></td></tr></table></figure></li>
-<li>刪除文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd source/_post</span><br><span class="line">$ rm target_file</span><br><span class="line">$ hexo clean</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h4><p><a href="https://yaoandy107.github.io/hexo-tutorial/" target="_blank" rel="noopener">https://yaoandy107.github.io/hexo-tutorial/</a><br><a href="https://epsi-rns.gitlab.io/ssg/2019/05/30/hexo-summary/" target="_blank" rel="noopener">https://epsi-rns.gitlab.io/ssg/2019/05/30/hexo-summary/</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一頁"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
   </nav>
 
 
@@ -1188,7 +1174,7 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">218</span>
+          <span class="site-state-item-count">227</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -1228,7 +1214,7 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
