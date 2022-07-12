@@ -8,7 +8,7 @@
       <link href="/posts/b83343d4/"/>
       <url>/posts/b83343d4/</url>
       
-        <content type="html"><![CDATA[<div class="pdfobject-container" data-target="CUS.pdf" data-height="500px"></div>]]></content>
+        <content type="html"><![CDATA[<div class="pdfobject-container" data-target="./CUS.pdf" data-height="500px"></div>]]></content>
       
       
       
