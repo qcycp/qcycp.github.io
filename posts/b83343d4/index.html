@@ -26,7 +26,7 @@
 <meta property="og:url" content="https:&#x2F;&#x2F;qcycp.github.io&#x2F;posts&#x2F;b83343d4&#x2F;index.html">
 <meta property="og:site_name" content="筆記本">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2022-07-12T16:33:11.992Z">
+<meta property="og:updated_time" content="2022-07-12T17:03:38.210Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/b83343d4/">
@@ -209,7 +209,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-07-13 00:13:15 / 修改時間：00:33:11" itemprop="dateCreated datePublished" datetime="2022-07-13T00:13:15+08:00">2022-07-13</time>
+              <time title="創建時間：2022-07-13 00:13:15 / 修改時間：01:03:38" itemprop="dateCreated datePublished" datetime="2022-07-13T00:13:15+08:00">2022-07-13</time>
             </span>
 
           
@@ -223,7 +223,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="pdfobject-container" data-target="./CUS.pdf" data-height="500px"></div>
+        <div class="pdfobject-container" data-target="CUS.pdf" data-height="500px"></div>
     </div>
 
     
@@ -400,6 +400,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

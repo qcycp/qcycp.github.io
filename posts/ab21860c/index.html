@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="筆記本">
 <meta property="og:description" content="安裝hexo，並且使用git追蹤所有資料 Pre-required  Node.js git   安裝hexo 12$ npm install hexo-cli -g (預設裝的hexo是4.0.0)$ npm install hexo@5.0.0 建立github repositoryqcycp.github.io  建立branchmaster: hexo生成的網頁資料hexo (set de">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2022-07-12T16:15:45.510Z">
+<meta property="og:updated_time" content="2022-07-12T16:54:17.481Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://qcycp.github.io/posts/ab21860c/">
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-07-13 00:15:45" itemprop="dateModified" datetime="2022-07-13T00:15:45+08:00">2022-07-13</time>
+                <time title="修改時間：2022-07-13 00:54:17" itemprop="dateModified" datetime="2022-07-13T00:54:17+08:00">2022-07-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,8 +299,9 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
 
 </li>
 </ul>
-<h1 id="pdf"><a href="#pdf" class="headerlink" title="pdf"></a>pdf</h1><p>$ npm install –save hexo-pdf</p>
-<div class="pdfobject-container" data-target="document.pdf" data-height="500px"></div>
+<h1 id="pdf"><a href="#pdf" class="headerlink" title="pdf"></a>pdf</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save hexo-pdf</span><br><span class="line">&#123;% pdf document.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<p>themes/next/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pdf:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
 
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
 <li>新建文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new article_name</span><br><span class="line">$ cd source/_post</span><br><span class="line">$ edit article_name.md</span><br><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure></li>
@@ -496,6 +497,26 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
