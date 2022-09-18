@@ -183,6 +183,71 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eacf1c94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/eacf1c94/" class="post-title-link" itemprop="url">flask_doc</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:33:47" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>pip install flask_docs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask_docs import ApiDoc</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 本地加载</span><br><span class="line"># app.config[&apos;API_DOC_CDN&apos;] = False</span><br><span class="line"></span><br><span class="line"># 禁用文档页面</span><br><span class="line"># app.config[&apos;API_DOC_ENABLE&apos;] = False</span><br><span class="line"></span><br><span class="line"># 需要显示文档的 Api</span><br><span class="line">app.config[&apos;API_DOC_MEMBER&apos;] = [&apos;api&apos;, &apos;platform&apos;]</span><br><span class="line"></span><br><span class="line"># 需要排除的 RESTful Api 文档</span><br><span class="line">app.config[&apos;RESTFUL_API_DOC_EXCLUDE&apos;] = []</span><br><span class="line"></span><br><span class="line">ApiDoc(app)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/4b411f65/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -781,87 +846,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/a477be03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/a477be03/" class="post-title-link" itemprop="url">nginx</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-08-25 19:30:49" itemprop="dateCreated datePublished" datetime="2021-08-25T19:30:49+08:00">2021-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>$host 與 $http_host的區別在於當使用非80/443端口的時候，$http_host = $host:$port</p>
-<ul>
-<li><p>client_max_body_size<br>這個directive設定Nginx可以處理的最大request body大小。如果收到的請求大於指定的大小，那麼Nginx會回复HTTP 413錯誤（Request Entity too large）。如果web服務器提供大文件上傳的話，那麼設置好這個directive很重要。<br>Nginx默認為這個directive設定的值是1m</p>
-</li>
-<li><p>client_body_buffer_size<br>這個directive設定了request body的緩衝大小。如果body超過了緩衝的大小，那麼整個body或者部分body將被寫入一個臨時文件。如果Nginx被設置成使用文件緩衝而不使用內存緩衝，那麼這個dirctive就無效。 client_body_buffer_size在32位系統上默認是8k，在64位系統上默認是16k</p>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/a477be03/image_01.png" alt></p>
-<ul>
-<li><p>autoindex_exact_size關閉，讓檔案大小用人類可讀的方式呈現</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /logs &#123;</span><br><span class="line">    root /app/;</span><br><span class="line">    autoindex_exact_size off;</span><br><span class="line">    autoindex on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/posts/a477be03/image_02.png" alt><br><img src="/posts/a477be03/image_03.png" alt></p>
-</li>
-<li><p>Reference<br><a href="https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97" target="_blank" rel="noopener">https://www.linuxdashen.com/nginx%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%85%8D%E7%BD%AE%E7%BC%93%E5%86%B2%E3%80%81%E8%B6%85%E6%97%B6%E3%80%81%E5%8E%8B%E7%BC%A9%E5%92%8C%E6%97%A5%E5%BF%97</a></p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -930,7 +914,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">227</span>
+          <span class="site-state-item-count">228</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

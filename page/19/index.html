@@ -183,6 +183,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/dd240c9a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/dd240c9a/" class="post-title-link" itemprop="url">shell script Notes</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-04-15 10:56:34" itemprop="dateCreated datePublished" datetime="2020-04-15T10:56:34+08:00">2020-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2021-08-30 09:20:16" itemprop="dateModified" datetime="2021-08-30T09:20:16+08:00">2021-08-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/Shell-Script/" itemprop="url" rel="index"><span itemprop="name">Shell Script</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>get the folder where the shell script is<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIR=`dirname $0`</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><a href="https://www.tutorialspoint.com/unix/shell_scripting.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/unix/shell_scripting.htm</a><br>!   This is logical negation. This inverts a true condition into false and vice versa. [ ! false ] is true.<br>-o  This is logical OR. If one of the operands is true, then the condition becomes true. [ $a -lt 20 -o $b -gt 100 ] is true.<br>-a  This is logical AND. If both the operands are true, then the condition becomes true otherwise false. [ $a -lt 20 -a $b -gt 100 ] is false.<br>-z  Checks if the given string operand size is zero; if it is zero length, then it returns true. [ -z $a ] is not true.<br>-n  Checks if the given string operand size is non-zero; if it is nonzero length, then it returns true. [ -n $a ] is not false.<br>=   Checks if the value of two operands are equal or not; if yes, then the condition becomes true. [ $a = $b ] is not true.<br>!=  Checks if the value of two operands are equal or not; if values are not equal then the condition becomes true. [ $a != $b ] is true.<br>-f file Checks if file is an ordinary file as opposed to a directory or special file; if yes, then the condition becomes true. [ -f $file ] is true.<br>-d file Checks if file is a directory; if yes, then the condition becomes true. [ -d $file ] is not true.</p>
+<ul>
+<li><p>check symbolic link</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">lrwxrwxrwx. 1 root root 22 Dec 31 16:26 bbu_cli -&gt; /home/user/bbu_cli</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -L bbu_cli ] ; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"This is a symbolic link"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>除了stdout，把所有output也導一份到test.log去<br>set -x: 把執行的command也印出來</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">NOW=$(date +<span class="string">"%Y-%m-%d-%H:%M:%S"</span>)</span><br><span class="line"><span class="built_in">exec</span> &amp;&gt; &gt;(tee <span class="built_in">test</span>-<span class="variable">$NOW</span>.<span class="built_in">log</span>)</span><br><span class="line"><span class="built_in">set</span> -x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字串處理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result=$(echo $msg | grep xxx)</span><br><span class="line">if [ -z &quot;$result&quot; ]; then</span><br><span class="line">    echo &quot;msg中找不到xxx內容&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果script中有多個block commands利用&amp;進行背景執行，透過wait可以不退出script，直到直到執行Ctrl+C，並且，透過trap signal可以將所有背景執行的command也終止</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">trap</span> <span class="string">"exit"</span> INT TERM ERR</span><br><span class="line"><span class="built_in">trap</span> <span class="string">"kill 0"</span> EXIT</span><br><span class="line"></span><br><span class="line">tail -F test.log &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>echo -n 不換行輸出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$echo</span> -n <span class="string">"123"</span></span><br><span class="line"><span class="variable">$echo</span> <span class="string">"456"</span></span><br><span class="line"></span><br><span class="line">output: </span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>echo -e 處理特殊字符<br>若字符串中出現字符，則特别加以處理，不會將它當成一般文字輸出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\a 發出警告聲；</span><br><span class="line">\b 删除前一个字符；</span><br><span class="line">\c 最後不加上换行符號；</span><br><span class="line">\f 换行但光标仍舊停留在原来的位置；</span><br><span class="line">\n 换行且光标移至行首；</span><br><span class="line">\r 光标移至行首，但不换行；</span><br><span class="line">\t 插入tab；</span><br><span class="line">\v 与\f相同；</span><br><span class="line">\\ 插入\字符；</span><br><span class="line">\nnn 插入nnn（八进制）所代表的ASCII字符；</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大小寫轉換</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NAME=&quot;NaMe&quot;</span><br><span class="line">echo $&#123;NAME^&#125; =&gt; Name</span><br><span class="line">echo $&#123;NAME^^&#125; =&gt; NAME</span><br><span class="line">echo $&#123;NAME,&#125; =&gt; naMe</span><br><span class="line">echo $&#123;NAME,,&#125; =&gt; name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>stdin/stdout/stderr<br>0: stdin<br>1: stdout<br>2: stderr</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; /dev/null 2&gt;&amp;1 =&gt; stdout 跟 stderr 都丟掉</span><br><span class="line">2&gt;&amp;1 =&gt; 把 stderr 導到 stdout</span><br><span class="line">&gt; 等同於 1&gt;</span><br><span class="line">&amp;&gt; file =&gt; 把 stdout 跟 stderr 都導向 file</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="Close-STDOUT-file-descriptor"><a href="#Close-STDOUT-file-descriptor" class="headerlink" title="Close STDOUT file descriptor"></a>Close STDOUT file descriptor</h1><p>exec 1&lt;&amp;-</p>
+<h1 id="Close-STDERR-FD"><a href="#Close-STDERR-FD" class="headerlink" title="Close STDERR FD"></a>Close STDERR FD</h1><p>exec 2&lt;&amp;-</p>
+<h1 id="Open-STDOUT-as-LOG-FILE-file-for-read-and-write"><a href="#Open-STDOUT-as-LOG-FILE-file-for-read-and-write" class="headerlink" title="Open STDOUT as $LOG_FILE file for read and write."></a>Open STDOUT as $LOG_FILE file for read and write.</h1><p>exec 1&lt;&gt;$LOG_FILE</p>
+<h1 id="Redirect-STDERR-to-STDOUT"><a href="#Redirect-STDERR-to-STDOUT" class="headerlink" title="Redirect STDERR to STDOUT"></a>Redirect STDERR to STDOUT</h1><p>exec 2&gt;&amp;1</p>
+<h1 id="for-lines-in-command-result"><a href="#for-lines-in-command-result" class="headerlink" title="for lines in command result"></a>for lines in command result</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update-alternatives --display java | while read line ; do</span><br><span class="line">    echo $line</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h1 id="delete-specific-cron-job"><a href="#delete-specific-cron-job" class="headerlink" title="delete specific cron job"></a>delete specific cron job</h1><p>保留 “job command” 以外的 cron jobs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l 2&gt;/dev/null | grep -v &apos;job command&apos; | crontab -</span><br></pre></td></tr></table></figure>
+
+<h1 id="dynamic-variable"><a href="#dynamic-variable" class="headerlink" title="dynamic variable"></a>dynamic variable</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">id=0</span><br><span class="line">A_0=1</span><br><span class="line">A_1=2</span><br><span class="line"></span><br><span class="line">target=A_$&#123;id&#125;</span><br><span class="line">echo $&#123;!target&#125; #1</span><br></pre></td></tr></table></figure>
+<h1 id="filename-and-extension"><a href="#filename-and-extension" class="headerlink" title="filename and extension"></a>filename and extension</h1><p>filename=$(basename – “$fullfile”)<br>extension=”${filename##<em>.}”<br>filename=”${filename%.</em>}”</p>
+<p><a href="https://blog.csdn.net/toopoo/article/details/105409383" target="_blank" rel="noopener">https://blog.csdn.net/toopoo/article/details/105409383</a><br>將導向檔案的log，加上時間戳記</p>
+<ul>
+<li><p>Process Uptime<br>ps -p <process_id> -o etime</process_id></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; ps -p 1 -o etime</span><br><span class="line">ELAPSED</span><br><span class="line">21:51</span><br><span class="line">&gt;&gt; ps -p 1 -o etime=</span><br><span class="line">03:24:30</span><br><span class="line">&gt;&gt; ps -p 1 -o etimes=</span><br><span class="line">12270</span><br></pre></td></tr></table></figure></li>
+<li><p>string<br>${string:index:length}<br>test=123<br>${test:0:1} //1<br>${test:1:1} //2<br>${test:2:1} //3</p>
+</li>
+<li><p>isdigit<br>if [[ $value =~ ^[0-9]+$ ]];then<br>echo $value is a digit<br>fi<br>if [[ ! $value =~ ^[0-9]+$ ]];then<br>echo $value is not a digit<br>fi<br>if [[ $value =~ ^-?[0-9]+$ ]];then<br>echo $value is a digit<br>fi<br>The ^ indicates the beginning of the input pattern<br>The - is a literal “-“<br>The ? means “0 or 1 of the preceding (-)”<br>The + means “1 or more of the preceding ([0-9])”<br>The $ indicates the end of the input pattern</p>
+</li>
+<li><p>return value of function</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">foo()</span><br><span class="line">&#123;</span><br><span class="line">    a=<span class="variable">$1</span></span><br><span class="line">    b=<span class="variable">$2</span></span><br><span class="line">    <span class="built_in">echo</span> `expr <span class="variable">$a</span> \* 2 + <span class="variable">$b</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ret=$(foo 1 2)</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$ret</span> <span class="comment"># 4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>array</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">array 宣告</span><br><span class="line">declare -a array</span><br><span class="line"></span><br><span class="line">建立 array with items</span><br><span class="line">array=( item1 item2 item3 )</span><br><span class="line"></span><br><span class="line">for index in $&#123;!array[@]&#125;; do</span><br><span class="line">    echo $((index+1))/$&#123;#array[@]&#125;</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">// 1/3</span><br><span class="line">// 2/3</span><br><span class="line">// 3/3</span><br><span class="line"></span><br><span class="line">array+=(item4)</span><br><span class="line"></span><br><span class="line">for i in $&#123;array[@]&#125;; do</span><br><span class="line">    echo $i</span><br><span class="line">done</span><br><span class="line">// item1</span><br><span class="line">// item2</span><br><span class="line">// item3</span><br><span class="line">// item4</span><br></pre></td></tr></table></figure></li>
+<li><p>check item in an array</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array=(1 2 3)</span><br><span class="line">value=3</span><br><span class="line">if [[ &quot;$&#123;array[@]&#125;&quot; =~ &quot;$value&quot; ]]; then</span><br><span class="line">  echo &quot;found $value in the array&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li><p>check item is a list</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list=&quot;a ab abc&quot;</span><br><span class="line">value=bc</span><br><span class="line">if [[ $list =~ (^|[[:space:]])&quot;$value&quot;($|[[:space:]]) ]]; then</span><br><span class="line">  echo &quot;found $value in the list&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li><p>array difference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">array_diff()</span><br><span class="line">&#123;</span><br><span class="line">    eval local ARR1=\(\&quot;\$&#123;$2[@]&#125;\&quot;\)</span><br><span class="line">    eval local ARR2=\(\&quot;\$&#123;$3[@]&#125;\&quot;\)</span><br><span class="line">    local IFS=$&apos;\n&apos;</span><br><span class="line">    mapfile -t $1 &lt; &lt;(comm -23 &lt;(echo &quot;$&#123;ARR1[*]&#125;&quot; | sort) &lt;(echo &quot;$&#123;ARR2[*]&#125;&quot; | sort))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array1=(1 2)</span><br><span class="line">array2=(2 3 4)</span><br><span class="line"></span><br><span class="line">array_diff RESULT array1 array2</span><br><span class="line">echo &quot;$&#123;RESULT[@]&#125;&quot; // 1</span><br><span class="line"></span><br><span class="line">array_diff RESULT array2 array1</span><br><span class="line">echo &quot;$&#123;RESULT[@]&#125;&quot; // 3 4</span><br></pre></td></tr></table></figure></li>
+<li><p>color<br>Text Style<br>Code | Description</p>
+</li>
+</ul>
+<p>—–|——-<br>0 | Reset/Normal<br>1 | Bold text<br>2 | Faint text<br>3 | Italics<br>4 | Underlined text</p>
+<p>Color | Foreground | Background<br>Black | 30 | 40<br>Red | 31 | 41<br>Green | 32 | 42<br>Yellow | 33 | 43<br>Blue | 34 | 44<br>Magenta | 35 | 45<br>Cyan | 36 | 46<br>Light Gray | 37 | 47<br>Gray | 90 | 100<br>Light Red | 91 | 101<br>Light Green 92 | 102<br>Light Yellow | 93 | 103<br>Light Blue | 94 | 104<br>Light Magenta | 95 | 105<br>Light Cyan | 96 | 106<br>White | 97 | 107</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">RED=&apos;\033[0;31m&apos;</span><br><span class="line">BOLD=&apos;\033[1m&apos;</span><br><span class="line">BOLD_RED=&apos;\033[1;31m&apos;</span><br><span class="line">NC=&apos;\033[0m&apos;</span><br><span class="line"></span><br><span class="line">echo -e $&#123;RED&#125;RED$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD&#125;BOLD$&#123;NC&#125;</span><br><span class="line">echo -e $&#123;BOLD_RED&#125;BOLD_RED$&#123;NC&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在shell script中，某些指令出錯<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Run something like: [[ $ABC =~ regexp ]] #&gt; [[: not found</span><br><span class="line">start_service.sh: source: not found</span><br></pre></td></tr></table></figure>
+因為 Image 中 sh 並非 bash，而是 dash<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /bin/sh #&gt; /bin/sh -&gt; dash</span><br></pre></td></tr></table></figure>
+將 sh 改指向 sh<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rm /bin/sh</span><br><span class="line">$ ln -s /bin/bash /bin/sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/f9c9d078/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -974,90 +1124,6 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/99132266/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/99132266/" class="post-title-link" itemprop="url">md5sum</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-02-27 16:47:32" itemprop="dateCreated datePublished" datetime="2020-02-27T16:47:32+08:00">2020-02-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2021-01-18 10:23:03" itemprop="dateModified" datetime="2021-01-18T10:23:03+08:00">2021-01-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/" itemprop="url" rel="index"><span itemprop="name">Software</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software/mk5/" itemprop="url" rel="index"><span itemprop="name">mk5</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>針對檔案製作 md5 checksum，可以用該 checksum 檢察該檔案是否是原先的檔案內容，避免在傳輸或上傳、下載的過程中，檔案有破損或被修改過<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file</span><br><span class="line">$ md5sum file &gt; file.md5sum</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file: OK</span><br></pre></td></tr></table></figure></li>
-<li>檔案內容被修改過<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file: FAILED</span><br><span class="line">md5sum: WARNING: 1 computed checksum did NOT match</span><br></pre></td></tr></table></figure></li>
-<li>每個檔案都可以產生一組唯一的checksum<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat file.md5sum</span><br><span class="line">09b91cdeb925bff08fda813dcb7f187a  file</span><br></pre></td></tr></table></figure></li>
-<li>對於要檢查的檔案，檔名不能做任何修改，且要跟file.md5sum的位置一致<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ mv file file_2</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">md5sum: file: No such file or directory</span><br><span class="line">date.1: FAILED open or read</span><br><span class="line">md5sum: WARNING: 1 listed file could not be read</span><br></pre></td></tr></table></figure></li>
-<li>可以針對多個檔案製作 md5sum<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ date &gt; file_1</span><br><span class="line">$ date &gt; file_2</span><br><span class="line">$ md5sum file_1 file_2 &gt; file.md5sum</span><br><span class="line">$ md5sum -c file.md5sum</span><br><span class="line">file_1: OK</span><br><span class="line">file_2: OK</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1126,7 +1192,7 @@ $ cd themes/next/<br>$ edit _config.yml<figure class="highlight plain"><table><t
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">227</span>
+          <span class="site-state-item-count">228</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

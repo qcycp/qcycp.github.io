@@ -183,6 +183,85 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/e3a8a05c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/e3a8a05c/" class="post-title-link" itemprop="url">CPU Information</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-08-13 09:05:12" itemprop="dateCreated datePublished" datetime="2020-08-13T09:05:12+08:00">2020-08-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/System/" itemprop="url" rel="index"><span itemprop="name">System</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">user@ubuntu:~$ lscpu</span><br><span class="line">Architecture:          x86_64</span><br><span class="line">CPU op-mode(s):        32-bit, 64-bit</span><br><span class="line">Byte Order:            Little Endian</span><br><span class="line">CPU(s):                8</span><br><span class="line">On-line CPU(s) list:   0-7</span><br><span class="line">Thread(s) per core:    1</span><br><span class="line">Core(s) per socket:    1</span><br><span class="line">Socket(s):             8</span><br><span class="line">NUMA node(s):          1</span><br><span class="line">Vendor ID:             GenuineIntel</span><br><span class="line">CPU family:            6</span><br><span class="line">Model:                 79</span><br><span class="line">Model name:            Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz</span><br><span class="line">Stepping:              1</span><br><span class="line">CPU MHz:               2195.109</span><br><span class="line">BogoMIPS:              4396.04</span><br><span class="line">Hypervisor vendor:     Xen</span><br><span class="line">Virtualization type:   full</span><br><span class="line">L1d cache:             32K</span><br><span class="line">L1i cache:             32K</span><br><span class="line">L2 cache:              256K</span><br><span class="line">L3 cache:              25600K</span><br><span class="line">NUMA node0 CPU(s):     0-7</span><br><span class="line">Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush acpi mmx fxsr sse sse2 ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl cpuid pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single pti intel_ppin fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt</span><br></pre></td></tr></table></figure>
+<h5 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h5><ul>
+<li>Get information<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ wmic</span><br><span class="line">wmic:root\cli&gt;cpu get Name</span><br><span class="line">Name</span><br><span class="line">Intel(R) Core(TM) i7-8550U CPU @ 1.80GHz</span><br><span class="line"></span><br><span class="line">wmic:root\cli&gt;cpu get NumberOfCores</span><br><span class="line">NumberOfCores</span><br><span class="line">4</span><br><span class="line"></span><br><span class="line">wmic:root\cli&gt;cpu get NumberOfLogicalProcessors</span><br><span class="line">NumberOfLogicalProcessors</span><br><span class="line">8</span><br></pre></td></tr></table></figure></li>
+<li>有一個 CPU，CPU 上有 4 Cores，每個 Core 有兩個 Threads，所以邏輯上總共有 8 核可以使用<br>對應到 Socket, Core, Thread 的結果為<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread(s) per core:    2</span><br><span class="line">Core(s) per socket:    4</span><br><span class="line">Socket(s):             1</span><br></pre></td></tr></table></figure></li>
+<li>Get detail information of CPU<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wmic:root\cli&gt;cpu get</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/645e3264/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1057,90 +1136,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/b401a0da/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/b401a0da/" class="post-title-link" itemprop="url">nsenter</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2020-07-20 09:04:24" itemprop="dateCreated datePublished" datetime="2020-07-20T09:04:24+08:00">2020-07-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分類於</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>nsenter 可以用來進入 target process 所在的 Namespace 中執行命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ nsenter -h</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line"> nsenter [options] [&lt;program&gt; [&lt;argument&gt;...]]</span><br><span class="line"></span><br><span class="line">Run a program with namespaces of other processes.</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"> -a, --all              enter all namespaces</span><br><span class="line"> -t, --target &lt;pid&gt;     target process to get namespaces from</span><br><span class="line"> -m, --mount[=&lt;file&gt;]   enter mount namespace</span><br><span class="line"> -u, --uts[=&lt;file&gt;]     enter UTS namespace (hostname etc)</span><br><span class="line"> -i, --ipc[=&lt;file&gt;]     enter System V IPC namespace</span><br><span class="line"> -n, --net[=&lt;file&gt;]     enter network namespace</span><br><span class="line"> -p, --pid[=&lt;file&gt;]     enter pid namespace</span><br><span class="line"> -C, --cgroup[=&lt;file&gt;]  enter cgroup namespace</span><br><span class="line"> -U, --user[=&lt;file&gt;]    enter user namespace</span><br><span class="line"> -S, --setuid &lt;uid&gt;     <span class="built_in">set</span> uid <span class="keyword">in</span> entered namespace</span><br><span class="line"> -G, --setgid &lt;gid&gt;     <span class="built_in">set</span> gid <span class="keyword">in</span> entered namespace</span><br><span class="line">     --preserve-credentials <span class="keyword">do</span> not touch uids or gids</span><br><span class="line"> -r, --root[=&lt;dir&gt;]     <span class="built_in">set</span> the root directory</span><br><span class="line"> -w, --wd[=&lt;dir&gt;]       <span class="built_in">set</span> the working directory</span><br><span class="line"> -F, --no-fork          <span class="keyword">do</span> not fork before executing &lt;program&gt;</span><br><span class="line"> -Z, --follow-context   <span class="built_in">set</span> SELinux context according to --target PID</span><br><span class="line"></span><br><span class="line"> -h, --<span class="built_in">help</span>             display this <span class="built_in">help</span></span><br><span class="line"> -V, --version          display version</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在 host 中，下指令到 container 內<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ PID=$(docker inspect --format &#123;&#123;.State.Pid&#125;&#125; my_container)</span><br><span class="line">$ sudo nsenter -m -u -i -n -t <span class="variable">$PID</span> ls</span><br><span class="line">app  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  requirements.txt  root  run  sbin  srv  sys  tmp  usr  var</span><br></pre></td></tr></table></figure></li>
-<li>在 container 中，下指令到 host<br>必須先允許 container 存取 host namespace 的權限</li>
-</ol>
-<ul>
-<li>透過 docker run 指令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --privileged --pid=host ...</span><br></pre></td></tr></table></figure></li>
-<li>透過 docker compose<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privileged: true</span><br><span class="line">pid: &quot;host&quot;</span><br></pre></td></tr></table></figure></li>
-<li>container 中，在 host 執行的 process 為 <code>PID=1</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">exec</span> -it my_container bash</span><br><span class="line">root@5185b2a94319:~<span class="comment"># nsenter -m -u -i -n -t 1 ls</span></span><br><span class="line">bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  snap  srv  swap.img  sys  tmp  usr  var  vmlinuz  vmlinuz.old</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1209,7 +1204,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">227</span>
+          <span class="site-state-item-count">228</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

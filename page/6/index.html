@@ -183,6 +183,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
+    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/16c8ee4f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Nick Cheng">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="筆記本">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/16c8ee4f/" class="post-title-link" itemprop="url">objgraph</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-08-26 09:44:24" itemprop="dateCreated datePublished" datetime="2021-08-26T09:44:24+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://pypi.org/project/graphviz/" target="_blank" rel="noopener">https://pypi.org/project/graphviz/</a><br><a href="https://pypi.org/project/objgraph/" target="_blank" rel="noopener">https://pypi.org/project/objgraph/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import objgraph</span><br><span class="line"></span><br><span class="line">for typ, n in objgraph.most_common_types(limit=None):</span><br><span class="line">    print(&apos;&#123;typ:30&#125; &#123;n:&gt;10&#125;&apos;.format(typ=typ, n=n))</span><br><span class="line"></span><br><span class="line">for info in objgraph.growth(limit=None):</span><br><span class="line">    print(&apos;+++ %s&apos;,  (info,))</span><br><span class="line"></span><br><span class="line">print(&quot;leaking_objects: %s&quot; % len(objgraph.get_leaking_objects()))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install objgraph</span><br><span class="line">apt-get install xdot</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> objgraph</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(<span class="string">"********************* objgraph.show_most_common_types() ************************"</span>)</span><br><span class="line">    objgraph.show_most_common_types()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"********************* objgraph.show_growth(limit=10) ************************"</span>)</span><br><span class="line">    _list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    objgraph.show_growth(limit=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">********************* objgraph.show_most_common_types() ************************</span></span><br><span class="line"><span class="string">function                   1969</span></span><br><span class="line"><span class="string">dict                       1153</span></span><br><span class="line"><span class="string">wrapper_descriptor         998</span></span><br><span class="line"><span class="string">tuple                      976</span></span><br><span class="line"><span class="string">weakref                    774</span></span><br><span class="line"><span class="string">method_descriptor          732</span></span><br><span class="line"><span class="string">builtin_function_or_method 693</span></span><br><span class="line"><span class="string">getset_descriptor          378</span></span><br><span class="line"><span class="string">set                        346</span></span><br><span class="line"><span class="string">list                       299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">function                       1969     +1969</span></span><br><span class="line"><span class="string">dict                           1081     +1081</span></span><br><span class="line"><span class="string">wrapper_descriptor              998      +998</span></span><br><span class="line"><span class="string">tuple                           861      +861</span></span><br><span class="line"><span class="string">weakref                         774      +774</span></span><br><span class="line"><span class="string">method_descriptor               732      +732</span></span><br><span class="line"><span class="string">builtin_function_or_method      693      +693</span></span><br><span class="line"><span class="string">getset_descriptor               378      +378</span></span><br><span class="line"><span class="string">set                             346      +346</span></span><br><span class="line"><span class="string">list                            299      +299</span></span><br><span class="line"><span class="string">********************* objgraph.show_growth(limit=10) ************************</span></span><br><span class="line"><span class="string">list      300        +1</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
     <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/ffdb9082/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -793,71 +864,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://qcycp.github.io/posts/eacf1c94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Nick Cheng">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="筆記本">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/eacf1c94/" class="post-title-link" itemprop="url">flask_doc</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-08-26 09:33:47" itemprop="dateCreated datePublished" datetime="2021-08-26T09:33:47+08:00">2021-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2022-04-04 22:27:55" itemprop="dateModified" datetime="2022-04-04T22:27:55+08:00">2022-04-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>pip install flask_docs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask_docs import ApiDoc</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"># 本地加载</span><br><span class="line"># app.config[&apos;API_DOC_CDN&apos;] = False</span><br><span class="line"></span><br><span class="line"># 禁用文档页面</span><br><span class="line"># app.config[&apos;API_DOC_ENABLE&apos;] = False</span><br><span class="line"></span><br><span class="line"># 需要显示文档的 Api</span><br><span class="line">app.config[&apos;API_DOC_MEMBER&apos;] = [&apos;api&apos;, &apos;platform&apos;]</span><br><span class="line"></span><br><span class="line"># 需要排除的 RESTful Api 文档</span><br><span class="line">app.config[&apos;RESTFUL_API_DOC_EXCLUDE&apos;] = []</span><br><span class="line"></span><br><span class="line">ApiDoc(app)</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -926,7 +932,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">227</span>
+          <span class="site-state-item-count">228</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
